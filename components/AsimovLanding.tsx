@@ -261,7 +261,7 @@ export default function AsimovCampLanding() {
           <div>
             <h2 className="text-2xl md:text-3xl font-bold">Engineering, ethics, and imagination</h2>
             <p className="mt-3 text-neutral-300 max-w-prose">
-              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and foundaing member of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair elite competition experience with hands‑on mentoring and design‑driven engineering.
+              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and founding member of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair elite competition experience with hands‑on mentoring and design‑driven engineering.
             </p>
             <div className="mt-6 grid sm:grid-cols-2 gap-4">
               {features.map((f) => (
