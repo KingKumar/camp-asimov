@@ -324,8 +324,8 @@ export default function AsimovCampLanding() {
               We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.
             </p>
             <div className="mt-4 text-sm">
-              <div className="text-neutral-300">Lead Coach: Ronit Kumar</div>
-              <div className="text-neutral-300">Brentwood School Robotics (10 → 50 students), BCIL co‑founder; Crossroads Robotics coach</div>
+              <div className="text-neutral-300">Academic Director: Ronit Kumar</div>
+              <div className="text-neutral-300">Bringing experience as Robotics Program Head at Brentwood School and Crossroads School.</div>
               <div className="text-neutral-300">Los Angeles, CA</div>
             </div>
           </div>
@@ -336,7 +336,7 @@ export default function AsimovCampLanding() {
           >
             <div className="grid gap-3">
               <Input placeholder="Your email" type="email" required className="bg-black/30 border" style={{ borderColor: ink.line }} />
-              <Textarea placeholder="How can we help?" required className="bg_black/30 border min-h-[120px]" style={{ borderColor: ink.line }} />
+              <Textarea placeholder="Message" required className="bg_black/30 border min-h-[120px]" style={{ borderColor: ink.line }} />
               <Button type="submit" className="w-fit" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
                 Send
               </Button>
