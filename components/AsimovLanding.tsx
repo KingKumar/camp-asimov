@@ -22,43 +22,55 @@ const ink = {
 };
 
 const features = [
-  { icon: <Cpu className="w-5 h-5" />, title: "All-Maker • All-Robotics",
-    text: "Mechanical design, CAD, microcontrollers, sensors, and battle-ready builds." },
+  { icon: <Cpu className="w-5 h-5" />, title: "All‑Maker • All‑Robotics",
+    text: "Mechanical design, CAD, microcontrollers, sensors, and battle‑ready builds." },
   { icon: <Wrench className="w-5 h-5" />, title: "Fabrication Lab",
     text: "3D printing, laser cutting, prototyping rigs, safe soldering, and tool certification." },
   { icon: <Video className="w-5 h-5" />, title: "Cinematic Showcase",
-    text: "Demo Day with story, aesthetics, and Asimov-grade presentation." },
+    text: "Demo Day with story, aesthetics, and Asimov‑grade presentation." },
   { icon: <Shield className="w-5 h-5" />, title: "Safety First",
-    text: "Three Laws-inspired safety training, PPE, and supervised build zones." },
+    text: "Three Laws‑inspired safety training, PPE, and supervised build zones." },
 ];
 
 const programs = [
   {
-    title: "Foundations: Bots & Brains (Ages 10–12)",
-    blurb: "Team robots learn to see, sense, and strategize. Intro to design, code, and mission play.",
-    bullets: ["Drive bases & manipulators", "Arduino / MicroPython basics", "Design thinking sprints"],
+    title: "3‑Week Robotics Intensive (Ages 10–12)",
+    blurb: "Foundations in design‑driven development: 3D design & CAD, safe fabrication, and autonomous behaviors.",
+    bullets: [
+      "3D design & CAD (Onshape)",
+      "Design‑driven development & iteration",
+      "Microcontrollers (Arduino/MicroPython) & sensors",
+    ],
   },
   {
-    title: "Robopsychology Lab (Ages 12–14)",
-    blurb: "Behavior, autonomy, and competition strategy—where software meets chassis.",
-    bullets: ["Path planning & sensors", "CAD for custom parts", "Iteration journals (ENG notebooks)"],
+    title: "3‑Week Robotics Intensive (Ages 12–14)",
+    blurb: "From chassis to code: build with premier parts (goBilda), integrate sensors, and ship reliable mechanisms.",
+    bullets: [
+      "goBilda ecosystem & mechanical best practices",
+      "Path planning & sensor fusion",
+      "Custom parts (CAD → 3D print/laser cut)",
+    ],
   },
   {
-    title: "Foundation Works: Advanced FTC Prep (Ages 14–17)",
-    blurb: "Serious build culture: drivetrains, mechanisms, reliability testing, and match pressure.",
-    bullets: ["Subsystem ownership", "Git + code reviews", "Event-style scrimmage"],
+    title: "3‑Week Advanced Track (Ages 14–17)",
+    blurb: "Competition‑level builds: subsystem ownership, reliability testing, and advanced coding.",
+    bullets: [
+      "Subsystem ownership & design reviews",
+      "Advanced coding patterns & Git workflow",
+      "Event‑style scrimmage & presentation",
+    ],
   },
 ];
 
 const faqs = [
-  { q: "What does an Asimov-themed camp mean?",
+  { q: "What does an Asimov‑themed camp mean?",
     a: "We fuse hard engineering with narrative design—students build capable robots and craft the story around them. It’s STEAM with purpose: logic, ethics, and imagination." },
   { q: "Is it safe for new makers?",
-    a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work." },
+    a: "Yes. Every student completes tool training, PPE checks, and staff‑guided build steps before independent work." },
   { q: "Do you provide gear?",
     a: "We supply tools, kits, and lab materials. Students bring a labeled water bottle, lunch, and curiosity." },
   { q: "Refunds & transfers?",
-    a: "Full refund (minus processing) up to 30 days pre-start; 50% from 14–29 days; credits within 14 days." },
+    a: "Full refund (minus processing) up to 30 days pre‑start; 50% from 14–29 days; credits within 14 days." },
 ];
 
 export default function AsimovCampLanding() {
@@ -110,11 +122,10 @@ export default function AsimovCampLanding() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-black leading-tight"
             >
-              “Any sufficiently advanced camp is indistinguishable from magic.”*
+              LA’s premier mentor‑driven robotics & maker camp
             </motion.h1>
             <p className="mt-6 text-lg text-neutral-300 max-w-prose">
-              Build like a <strong>Foundation</strong> engineer. Think like a <strong>Robopsychologist</strong>.
-              Our summer program for ages 10–17 turns ideas into working robots—guided by safety, ethics, and serious fun.
+              Independent schools often can’t give robotics‑obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor‑heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
@@ -126,7 +137,7 @@ export default function AsimovCampLanding() {
               </Button>
             </div>
             <p className="mt-4 text-xs text-neutral-400">
-              *Paraphrased with love for the Golden Age. Not an actual quote.
+              Led by coach <strong>Ronit Kumar</strong> — Brentwood School Robotics (grew 10 → 50), BCIL co‑founder; now coaching at Crossroads.
             </p>
           </div>
 
@@ -136,9 +147,7 @@ export default function AsimovCampLanding() {
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
               <div className="relative rounded-3xl border p-6 md:p-8" style={{ borderColor: ink.line, background: ink.surface }}>
                 <div className="grid grid-cols-3 gap-3 text-center text-sm">
-                  {[
-                    ["8", "Weeks"], ["10–17", "Ages"], ["1:8", "Staff Ratio"],
-                  ].map(([n, l]) => (
+                  {[ ["3", "Weeks"], ["10–17", "Ages"], ["1:8", "Staff Ratio"] ].map(([n, l]) => (
                     <div key={l} className="rounded-xl p-4 border" style={{ borderColor: ink.line, background: ink.panel }}>
                       <div className="font-bold text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
@@ -151,12 +160,7 @@ export default function AsimovCampLanding() {
                     <Shield className="w-4 h-4" /> Three Laws Safety Protocols
                   </div>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    {[
-                      "PPE & tool certification",
-                      "Soldering + laser SOPs",
-                      "Daily check-in/out with PIN",
-                      "Medical & allergy flags",
-                    ].map((t) => (
+                    {[ "PPE & tool certification", "Soldering + laser SOPs", "Daily check‑in/out with PIN", "Medical & allergy flags" ].map((t) => (
                       <div key={t} className="flex items-start gap-2">
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} />
                         <span className="text-neutral-300">{t}</span>
@@ -175,16 +179,15 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center gap-3">
             <Sparkles className="w-5 h-5" style={{ color: ink.accent2 }} />
-            <h2 className="text-2xl md:text-3xl font-bold">Choose your track</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">3‑Week Robotics Intensives — Choose your track</h2>
           </div>
-          <p className="mt-2 text-neutral-400 max-w-prose">
-            Progressive pathways from first build to competition-ready. Every team ships a working robot—and a story worth telling.
+          <p className="mt-2 text-neutral-300 max-w-prose">
+            Every student is exposed to <strong>3D design</strong>, <strong>design‑driven development</strong>, <strong>goBilda</strong> (premier parts), <strong>mechanical engineering</strong> best practices, and <strong>advanced coding</strong> — in three weeks of focused build time.
           </p>
 
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             {programs.map((p) => (
-              <Card key={p.title} className="border rounded-2xl"
-                style={{ borderColor: ink.line, backgroundColor: ink.surface }}>
+              <Card key={p.title} className="border rounded-2xl" style={{ borderColor: ink.line, backgroundColor: ink.surface }}>
                 <CardHeader>
                   <CardTitle className="text-lg font-bold text-white leading-snug">{p.title}</CardTitle>
                 </CardHeader>
@@ -198,13 +201,42 @@ export default function AsimovCampLanding() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-4 w-full font-medium"
-                    style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                    View weeks
-                  </Button>
+                  <Button className="mt-4 w-full font-medium" style={{ backgroundColor: ink.accent, color: "#081b17" }}>View weeks</Button>
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TUITION & DATES */}
+      <section id="pricing" className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl md:text-3xl font-bold">Tuition & Dates</h2>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
+              <div className="text-neutral-400 text-sm">Tuition</div>
+              <div className="mt-2 text-3xl font-extrabold">$1,200 <span className="text-base font-medium text-neutral-400">/ week</span></div>
+              <div className="mt-1 text-neutral-400 text-sm">3‑week camp • $3,600 total</div>
+              <Button className="mt-6 w-full" style={{ backgroundColor: ink.accent, color: '#081b17' }}>Register</Button>
+            </div>
+            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
+              <div className="text-neutral-400 text-sm">Ages</div>
+              <div className="mt-2 text-xl font-semibold">10–17</div>
+              <ul className="mt-3 space-y-2 text-sm text-neutral-300">
+                <li>Tracks by age/experience</li>
+                <li>1:8 staff ratio • tool certifications</li>
+                <li>LA location • Mon–Fri</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
+              <div className="text-neutral-400 text-sm">What’s included</div>
+              <ul className="mt-3 space-y-2 text-sm text-neutral-300">
+                <li>goBilda parts library & safe fab lab</li>
+                <li>Onshape CAD, Arduino/MicroPython</li>
+                <li>Daily field tests & Demo Day showcase</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -215,13 +247,11 @@ export default function AsimovCampLanding() {
           <div>
             <h2 className="text-2xl md:text-3xl font-bold">Engineering, ethics, and imagination</h2>
             <p className="mt-3 text-neutral-300 max-w-prose">
-              Founded by veteran LA robotics coach Ronit Kumar, our lab blends competition-tested engineering with
-              design and storytelling. Students keep build journals, review code in pairs, and present like pros.
+              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and co‑founder of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair elite competition experience with hands‑on mentoring and design‑driven engineering.
             </p>
             <div className="mt-6 grid sm:grid-cols-2 gap-4">
               {features.map((f) => (
-                <div key={f.title} className="rounded-2xl border p-5"
-                  style={{ borderColor: ink.line, background: ink.surface }}>
+                <div key={f.title} className="rounded-2xl border p-5" style={{ borderColor: ink.line, background: ink.surface }}>
                   <div className="flex items-center gap-2 font-semibold">{f.icon} {f.title}</div>
                   <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
                 </div>
@@ -234,7 +264,7 @@ export default function AsimovCampLanding() {
             </div>
             <ul className="mt-3 space-y-3 text-sm text-neutral-300">
               {[
-                ["09:00", "Stand-up & goals"],
+                ["09:00", "Stand‑up & goals"],
                 ["09:20", "Tool time: certification or CAD"],
                 ["10:00", "Subsystem builds"],
                 ["12:00", "Lunch & field tests"],
@@ -245,8 +275,7 @@ export default function AsimovCampLanding() {
                 <li key={t} className="flex gap-4"><span className="text-neutral-500 w-16">{t}</span> <span>{d}</span></li>
               ))}
             </ul>
-            <Button className="mt-6" variant="outline"
-              style={{ borderColor: ink.accent2, color: ink.accent2 }}>
+            <Button className="mt-6" variant="outline" style={{ borderColor: ink.accent2, color: ink.accent2 }}>
               Download Parent Packet <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
@@ -258,17 +287,12 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
           <p className="mt-2 text-neutral-400 max-w-prose">
-            Modeled on “Three Laws” principles: protect, obey procedures, and preserve learning.
-            Every student earns badges before specific tools.
+            Modeled on “Three Laws” principles: protect, obey procedures, and preserve learning. Every student earns badges before specific tools.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {["PPE checks at entry","Certified tool zones","Laser & solder SOPs","Allergy & emergency flags"].map((s) => (
-              <div key={s} className="rounded-2xl border p-5 text-sm"
-                   style={{ borderColor: ink.line, background: ink.surface }}>
-                <div className="flex items-start gap-2">
-                  <Shield className="w-4 h-4" style={{ color: ink.accent }} />
-                  <span className="text-neutral-300">{s}</span>
-                </div>
+              <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
+                <div className="flex items-start gap-2"><Shield className="w-4 h-4" style={{ color: ink.accent }} /> <span className="text-neutral-300">{s}</span></div>
               </div>
             ))}
           </div>
@@ -281,8 +305,7 @@ export default function AsimovCampLanding() {
           <h2 className="text-2xl md:text-3xl font-bold">FAQ</h2>
           <div className="mt-8 grid gap-6">
             {faqs.map((f) => (
-              <div key={f.q} className="rounded-2xl border p-5"
-                   style={{ borderColor: ink.line, background: ink.surface }}>
+              <div key={f.q} className="rounded-2xl border p-5" style={{ borderColor: ink.line, background: ink.surface }}>
                 <div className="font-semibold">{f.q}</div>
                 <p className="mt-2 text-sm text-neutral-400">{f.a}</p>
               </div>
@@ -300,7 +323,8 @@ export default function AsimovCampLanding() {
               We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.
             </p>
             <div className="mt-4 text-sm">
-              <div className="text-neutral-300">Email: hello@campasimov.com</div>
+              <div className="text-neutral-300">Lead Coach: Ronit Kumar</div>
+              <div className="text-neutral-300">Brentwood School Robotics (10 → 50 students), BCIL co‑founder; Crossroads Robotics coach</div>
               <div className="text-neutral-300">Los Angeles, CA</div>
             </div>
           </div>
@@ -310,12 +334,9 @@ export default function AsimovCampLanding() {
             style={{ borderColor: ink.line, background: ink.surface }}
           >
             <div className="grid gap-3">
-              <Input placeholder="Your email" type="email" required
-                     className="bg-black/30 border" style={{ borderColor: ink.line }} />
-              <Textarea placeholder="How can we help?" required
-                        className="bg_black/30 border min-h-[120px]" style={{ borderColor: ink.line }} />
-              <Button type="submit" className="w-fit"
-                style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+              <Input placeholder="Your email" type="email" required className="bg-black/30 border" style={{ borderColor: ink.line }} />
+              <Textarea placeholder="How can we help?" required className="bg_black/30 border min-h-[120px]" style={{ borderColor: ink.line }} />
+              <Button type="submit" className="w-fit" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
                 Send
               </Button>
             </div>
