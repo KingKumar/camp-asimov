@@ -137,7 +137,7 @@ export default function AsimovCampLanding() {
               </Button>
             </div>
             <p className="mt-4 text-xs text-neutral-400">
-              Led by coach <strong>Ronit Kumar</strong> — Bringing experience as Robotics Program Head at Brentwood School and Crossroads School.
+              Led by Technologist and Educator <strong>Ronit Kumar</strong> — Bringing experience as Robotics Program Head at Brentwood School and Crossroads School.
             </p>
           </div>
 
