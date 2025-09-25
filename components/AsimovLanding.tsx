@@ -175,40 +175,53 @@ export default function AsimovCampLanding() {
         </div>
       </section>
 
-      {/* PROGRAMS */}
-      <section id="programs" className="py-20 border-t" style={{ borderColor: ink.line }}>
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex items-center gap-3">
-            <Sparkles className="w-5 h-5" style={{ color: ink.accent2 }} />
-            <h2 className="text-2xl md:text-3xl font-bold">3‑Week Robotics Intensives — Choose your track</h2>
-          </div>
-          <p className="mt-2 text-neutral-300 max-w-prose">
-            Every student is exposed to <strong>3D design</strong>, <strong>design‑driven development</strong>, <strong>goBilda</strong> (premier parts), <strong>mechanical engineering</strong> best practices, and <strong>advanced coding</strong> — in three weeks of focused build time.
-          </p>
+      {/* PROGRAM DETAILS */}
+      <section className="py-16 bg-gray-950 text-white">
+  <div className="max-w-5xl mx-auto px-6">
+    <h2 className="text-3xl font-bold mb-4 text-center">3-Week Robotics Intensive</h2>
+    <p className="text-lg text-gray-300 mb-10 text-center">
+      A single, immersive summer experience that covers everything your child needs to excel in competitive robotics programs.
+    </p>
 
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {programs.map((p) => (
-              <Card key={p.title} className="border rounded-2xl" style={{ borderColor: ink.line, backgroundColor: ink.surface }}>
-                <CardHeader>
-                  <CardTitle className="text-lg font-bold text-white leading-snug">{p.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-base text-neutral-100 leading-relaxed">
-                  <p>{p.blurb}</p>
-                  <ul className="mt-3 space-y-2">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-2 items-start">
-                        <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="mt-4 w-full font-medium" style={{ backgroundColor: ink.accent, color: "#081b17" }}>View weeks</Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid md:grid-cols-2 gap-8">
+      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+        <h3 className="text-xl font-semibold mb-3">Week 1: Design & Build</h3>
+        <ul className="space-y-2 text-gray-300 list-disc list-inside">
+          <li>3D design fundamentals (Onshape CAD)</li>
+          <li>Hands-on builds with <strong>goBilda</strong> parts</li>
+          <li>Design-driven development process</li>
+        </ul>
+      </div>
+
+      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+        <h3 className="text-xl font-semibold mb-3">Week 2: Code & Control</h3>
+        <ul className="space-y-2 text-gray-300 list-disc list-inside">
+          <li>Arduino & MicroPython basics</li>
+          <li>Sensor integration & path planning</li>
+          <li>Mechanical + software systems working together</li>
+        </ul>
+      </div>
+
+      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+        <h3 className="text-xl font-semibold mb-3">Week 3: Compete & Iterate</h3>
+        <ul className="space-y-2 text-gray-300 list-disc list-inside">
+          <li>Subsystem ownership & iteration journals</li>
+          <li>Testing & reliability under competition pressure</li>
+          <li>Scrimmage showcase for families</li>
+        </ul>
+      </div>
+
+      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+        <h3 className="text-xl font-semibold mb-3">Ages & Levels</h3>
+        <ul className="space-y-2 text-gray-300 list-disc list-inside">
+          <li>Ages 10–12: foundations in design & coding</li>
+          <li>Ages 12–14: strategy, autonomy, advanced builds</li>
+          <li>Ages 14–17: competitive prep & leadership roles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* TUITION & DATES */}
       <section id="pricing" className="py-20 border-t" style={{ borderColor: ink.line }}>
