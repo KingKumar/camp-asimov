@@ -33,35 +33,35 @@ const features = [
     text: "Three Laws‑inspired safety training, PPE, and supervised build zones." },
 ];
 
-const programs = [
-  {
-    title: "3‑Week Robotics Intensive (Ages 10–12)",
-    blurb: "Foundations in design‑driven development: 3D design & CAD, safe fabrication, and autonomous behaviors.",
-    bullets: [
-      "3D design & CAD (Onshape)",
-      "Design‑driven development & iteration",
-      "Microcontrollers (Arduino/MicroPython) & sensors",
-    ],
-  },
-  {
-    title: "3‑Week Robotics Intensive (Ages 12–14)",
-    blurb: "From chassis to code: build with premier parts (goBilda), integrate sensors, and ship reliable mechanisms.",
-    bullets: [
-      "goBilda ecosystem & mechanical best practices",
-      "Path planning & sensor fusion",
-      "Custom parts (CAD → 3D print/laser cut)",
-    ],
-  },
-  {
-    title: "3‑Week Advanced Track (Ages 14–17)",
-    blurb: "Competition‑level builds: subsystem ownership, reliability testing, and advanced coding.",
-    bullets: [
-      "Subsystem ownership & design reviews",
-      "Advanced coding patterns & Git workflow",
-      "Event‑style scrimmage & presentation",
-    ],
-  },
-];
+// const programs = [
+//   {
+//     title: "3‑Week Robotics Intensive (Ages 10–12)",
+//     blurb: "Foundations in design‑driven development: 3D design & CAD, safe fabrication, and autonomous behaviors.",
+//     bullets: [
+//       "3D design & CAD (Onshape)",
+//       "Design‑driven development & iteration",
+//       "Microcontrollers (Arduino/MicroPython) & sensors",
+//     ],
+//   },
+//   {
+//     title: "3‑Week Robotics Intensive (Ages 12–14)",
+//     blurb: "From chassis to code: build with premier parts (goBilda), integrate sensors, and ship reliable mechanisms.",
+//     bullets: [
+//       "goBilda ecosystem & mechanical best practices",
+//       "Path planning & sensor fusion",
+//       "Custom parts (CAD → 3D print/laser cut)",
+//     ],
+//   },
+//   {
+//     title: "3‑Week Advanced Track (Ages 14–17)",
+//     blurb: "Competition‑level builds: subsystem ownership, reliability testing, and advanced coding.",
+//     bullets: [
+//       "Subsystem ownership & design reviews",
+//       "Advanced coding patterns & Git workflow",
+//       "Event‑style scrimmage & presentation",
+//     ],
+//   },
+// ];
 
 const faqs = [
   { q: "What does an Asimov‑themed camp mean?",
