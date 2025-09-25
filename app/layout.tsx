@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Camp Asimov — Robotics & Maker Summer Camp",
   description: "Build robots, code, and create your future at Camp Asimov. Summer robotics & maker camp for ages 10–17.",
+  keywords: [
+    "LA robotics camp",
+    "summer STEM Los Angeles",
+    "robotics classes for kids",
+    "Camp Asimov",
+    "STEM education LA",
+    "robotics summer program"
+  ],
   icons: {
     icon: "/favicon.ico", 
   },
