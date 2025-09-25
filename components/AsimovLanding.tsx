@@ -158,10 +158,10 @@ export default function AsimovCampLanding() {
 
                 <div className="mt-6 border rounded-2xl p-5" style={{ borderColor: ink.line }}>
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
-                    <Trophy className="w-4 h-4" /> The premier LA robotics summer camp — expert coaching, small teams, big results.
+                    <Trophy className="w-4 h-4" /> Expert coaching, small teams, big results.
                   </div>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    {[ "Advanced 3D Computer Aided Design", "Advanced Concepts in Programming", "Building with the best parts on the market", "Deep Learning of 3D printers, laser cutters, and CNC" ].map((t) => (
+                    {[ "Advanced 3D Computer Aided Design", "Advanced Concepts in Programming", "Building with the best parts on the market", "3D printers, laser cutters, and CNC" ].map((t) => (
                       <div key={t} className="flex items-start gap-2">
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} />
                         <span className="text-neutral-300">{t}</span>
