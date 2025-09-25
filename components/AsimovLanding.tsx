@@ -148,7 +148,7 @@ export default function AsimovCampLanding() {
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
               <div className="relative rounded-3xl border p-6 md:p-8" style={{ borderColor: ink.line, background: ink.surface }}>
                 <div className="grid grid-cols-3 gap-3 text-center text-sm">
-                  {[ ["3", "Weeks"], ["10–17", "Ages"], ["1:8", "Teacher:Student Ratio"] ].map(([n, l]) => (
+                  {[ ["3", "Weeks"], ["10–17", "Ages"], ["1:8", "Teacher : Student Ratio"] ].map(([n, l]) => (
                     <div key={l} className="rounded-xl p-4 border" style={{ borderColor: ink.line, background: ink.panel }}>
                       <div className="font-bold text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
