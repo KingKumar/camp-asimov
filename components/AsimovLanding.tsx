@@ -101,7 +101,7 @@ export default function AsimovCampLanding() {
             <span className="font-semibold tracking-wide">CAMP ASIMOV</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
-            <a href="#programs" className="hover:text-white">Programs</a>
+            <a href="#programs" className="hover:text-white">Program Details</a>
             <a href="#why" className="hover:text-white">Why Us</a>
             <a href="#safety" className="hover:text-white">Safety</a>
             <a href="#faq" className="hover:text-white">FAQ</a>
@@ -114,7 +114,7 @@ export default function AsimovCampLanding() {
       </header>
 
       {/* HERO */}
-      <section className="relative">
+      <section id="program" className="relative">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
