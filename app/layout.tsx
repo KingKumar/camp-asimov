@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Camp Asimov — Robotics & Maker Summer Camp",
   description: "Build robots, code, and create your future at Camp Asimov. Summer robotics & maker camp for ages 10–17.",
   icons: {
-    icon: "public/favicon.png", 
+    icon: "/favicon.png", 
   },
 };
 
