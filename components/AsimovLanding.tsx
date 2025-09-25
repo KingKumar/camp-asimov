@@ -4,7 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Rocket, Cpu, Sparkles, Video, Wrench,
-  CalendarDays, ChevronRight
+  CalendarDays, ChevronRight,
+  Trophy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -157,7 +158,7 @@ export default function AsimovCampLanding() {
 
                 <div className="mt-6 border rounded-2xl p-5" style={{ borderColor: ink.line }}>
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
-                    <Shield className="w-4 h-4" /> The premier LA robotics summer camp — expert coaching, small teams, big results.
+                    <Trophy className="w-4 h-4" /> The premier LA robotics summer camp — expert coaching, small teams, big results.
                   </div>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                     {[ "Advanced 3D Computer Aided Design", "Advanced Concepts in Programming", "Building with the best parts on the market", "Comprehensive Instruction on Fabrication Tools (3D printing/ laser cutter/ CNC machining)" ].map((t) => (
