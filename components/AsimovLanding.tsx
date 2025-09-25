@@ -114,7 +114,7 @@ export default function AsimovCampLanding() {
       </header>
 
       {/* HERO */}
-      <section id="program" className="relative">
+      <section className="relative">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
@@ -176,7 +176,7 @@ export default function AsimovCampLanding() {
       </section>
 
       {/* PROGRAM DETAILS */}
-      <section className="py-16 bg-gray-950 text-white">
+      <section id="programs" className="py-16 bg-gray-950 text-white">
   <div className="max-w-5xl mx-auto px-6">
     <h2 className="text-3xl font-bold mb-4 text-center">3-Week Robotics Intensive</h2>
     <p className="text-lg text-gray-300 mb-10 text-center">
