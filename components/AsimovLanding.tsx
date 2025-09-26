@@ -30,7 +30,7 @@ const features = [
   { icon: <Video className="w-5 h-5" />, title: "Cinematic Showcase",
     text: "Demo Day with story, aesthetics, and Asimov‑grade presentation." },
   { icon: <Shield className="w-5 h-5" />, title: "Safety First",
-    text: "Three Laws‑inspired safety training, PPE, and supervised build zones." },
+    text: "Safety-first engineering practices: tool training, PPE, and supervised builds" },
 ];
 
 // const programs = [
@@ -323,7 +323,7 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
           <p className="mt-2 text-neutral-400 max-w-prose">
-            Modeled on “Three Laws” principles: protect, obey procedures, and preserve learning. Every student earns badges before specific tools.
+            Safety-first engineering practices: tool training, PPE, and supervised builds
           </p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {["PPE checks at entry","Certified tool zones","Laser & solder SOPs","Allergy & emergency flags"].map((s) => (
@@ -365,18 +365,39 @@ export default function AsimovCampLanding() {
             </div>
           </div>
           <form
-            onSubmit={(e) => { e.preventDefault(); alert("Message sent — we’ll reply within 1–2 business days."); }}
-            className="rounded-2xl border p-6"
-            style={{ borderColor: ink.line, background: ink.surface }}
-          >
-            <div className="grid gap-3">
-              <Input placeholder="Your email" type="email" required className="bg-black/30 border" style={{ borderColor: ink.line }} />
-              <Textarea placeholder="Message" required className="bg_black/30 border min-h-[120px]" style={{ borderColor: ink.line }} />
-              <Button type="submit" className="w-fit" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            className="space-y-4"
+            >
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+            />
+            <textarea
+                name="message"
+                placeholder="Your Message"
+                required
+                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+                rows={4}
+            />
+            <button
+                type="submit"
+                className="px-6 py-3 rounded-xl font-semibold"
+                style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+            >
                 Send
-              </Button>
-            </div>
-          </form>
+            </button>
+            </form>
         </div>
       </section>
 
