@@ -296,9 +296,15 @@ export default function AsimovCampLanding() {
                 <li key={t} className="flex gap-4"><span className="text-neutral-500 w-16">{t}</span> <span>{d}</span></li>
               ))}
             </ul>
-            <Button className="mt-6" variant="outline" style={{ borderColor: ink.accent2, color: ink.accent2 }}>
-              Download Parent Packet <ChevronRight className="w-4 h-4 ml-2" />
-            </Button>
+            <a
+            href="/parent-packet.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-xl font-semibold"
+            style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+            >
+            Download Parent Packet
+            </a>
           </div>
         </div>
       </section>
