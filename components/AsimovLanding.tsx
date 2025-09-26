@@ -39,15 +39,56 @@ const features = [
 ];
 
 const faqs = [
-  { q: "What does an Asimov-themed camp mean?",
-    a: "We fuse hard engineering with narrative design—students build capable robots and craft the story around them. It’s STEAM with purpose: logic, ethics, and imagination." },
-  { q: "Is it safe for new makers?",
-    a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work." },
-  { q: "Do you provide gear?",
-    a: "We supply tools, kits, and lab materials. Students bring a labeled water bottle, lunch, and curiosity." },
-  { q: "Refunds & transfers?",
-    a: "Full refund (minus processing) up to 30 days pre-start; 50% from 14–29 days; credits within 14 days." },
+  {
+    q: "Where is it and what are the hours?",
+    a: "Camp runs Mon–Fri, 9:00–3:30 at our Los Angeles location (final site announced after enrollment). Early drop 8:30 and late pickup until 4:00 are available."
+  },
+  {
+    q: "What experience is required?",
+    a: "No prior robotics required. We group by age and experience and start with tool/coding foundations before advancing to competitive build work."
+  },
+  {
+    q: "What do students bring and wear?",
+    a: "Closed-toe shoes, hair tied back, no dangling jewelry, a labeled water bottle, and lunch. We supply all tools, materials, and safety gear."
+  },
+  {
+    q: "How do you handle allergies and medications?",
+    a: "Tell us on the registration form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing."
+  },
+  {
+    q: "What is your teacher : student ratio?",
+    a: "We target a 1:8 Teacher : Student ratio, with additional mentors during machine time."
+  },
+  {
+    q: "What’s the device/phone policy?",
+    a: "Phones stay away during build and lecture blocks; brief check-ins at lunch or transitions are okay."
+  },
+  {
+    q: "Photos and media?",
+    a: "Media is opt-in at registration. If you opt out, we’ll mark the roster and avoid capturing your student in photos or video."
+  },
+  {
+    q: "Behavior & safety expectations",
+    a: "We maintain a positive, inclusive environment. Unsafe behavior, harassment, or repeated disruption may result in removal to protect the group (prorated refunds at the director’s discretion)."
+  },
+  {
+    q: "Refunds & transfers",
+    a: "Full refund (minus processing) up to 30 days pre-start; 50% from 14–29 days; credits within 14 days. You can transfer to a later session if space allows."
+  },
+  {
+    q: "Financial aid or discounts",
+    a: "Limited need-based scholarships and sibling discounts may be available — email us at hello@campasimov.com."
+  },
+  {
+    q: "What does an Asimov-themed camp mean?",
+    a: "We fuse hard engineering with narrative design—students build capable robots and craft the story around them. It’s STEAM with purpose: logic, ethics, and imagination."
+  },
+  {
+    q: "Is it safe for new makers?",
+    a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work."
+  }
 ];
+
 
 export default function AsimovCampLanding() {
   const [email, setEmail] = useState("");
@@ -320,39 +361,66 @@ export default function AsimovCampLanding() {
       </section>
 
       {/* SAFETY */}
-      <section id="safety" className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <section id="safety" className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
-          <p className="mt-2 text-neutral-400 max-w-prose">
-            Safety-first engineering practices: tool training, PPE, and supervised builds.
-          </p>
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {["PPE checks at entry","Certified tool zones","Laser & solder SOPs","Allergy & emergency flags"].map((s) => (
-              <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
-                <div className="flex items-start gap-2">
-                  <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
-                  <span className="text-neutral-300">{s}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
 
-      {/* FAQ */}
-      <section id="faq" className="py-20 border-t" style={{ borderColor: ink.line }}>
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl md:text-3xl font-bold">FAQ</h2>
-          <div className="mt-8 grid gap-6">
-            {faqs.map((f) => (
-              <div key={f.q} className="rounded-2xl border p-5" style={{ borderColor: ink.line, background: ink.surface }}>
-                <div className="font-semibold">{f.q}</div>
-                <p className="mt-2 text-sm text-neutral-400">{f.a}</p>
-              </div>
+            <p className="mt-2 text-neutral-400 max-w-prose">
+            We operate a youth-safety program that meets California requirements for youth-serving organizations.
+            All staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and
+            <strong> mandated reporter training</strong>. Students progress through <strong>tool certifications</strong>,
+            wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs
+            (laser cutter, 3D printers, soldering, CNC). We train lithium-ion battery handling for robotics power systems and
+            maintain on-site emergency supplies.
+            </p>
+
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+                "PPE & Certified Tool Zones — Eye protection, hair secured, closed-toe shoes; badges required for laser, 3D printers, soldering.",
+                "Laser & Fab SOPs (ANSI Z136-aligned) — Enclosed Class-1 operation, interlocks maintained, venting checked, signage posted.",
+                "Fume Control & ESD — Local exhaust for soldering, flux training, burn kit on bench; anti-static handling for electronics.",
+                "Medical & Emergency Ready — Allergy/med alerts, epi-pen/inhaler plan, CPR/First Aid trained staff, incident logs & notifications.",
+            ].map((s) => (
+                <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
+                <div className="flex items-start gap-2">
+                    <Shield className="w-4 h-4" style={{ color: ink.accent }} />
+                    <span className="text-neutral-300">{s}</span>
+                </div>
+                </div>
             ))}
-          </div>
+            </div>
+
+            {/* Compliance line + optional Safety Plan PDF link */}
+            <div className="mt-4 text-xs text-neutral-500">
+            California compliance: staff/regular volunteers complete <strong>Live Scan</strong> background checks and
+            <strong> mandated reporter training</strong>; written child-safety policies maintained per AB 506.
+            {" "}
+            <a href="/safety-plan.pdf" target="_blank" rel="noopener noreferrer" className="underline text-teal-300">
+                View our Safety Plan (PDF)
+            </a>
+            </div>
         </div>
-      </section>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <div className="mx-auto max-w-5xl px-6">
+            <h2 className="text-2xl md:text-3xl font-bold">FAQ</h2>
+            <div className="mt-8 grid gap-6">
+            {faqs.map((f) => (
+                <div
+                key={f.q}
+                className="rounded-2xl border p-6"
+                style={{ borderColor: ink.line, background: ink.surface }}
+                >
+                <div className="font-semibold text-neutral-100">{f.q}</div>
+                <p className="mt-2 text-sm text-neutral-300 leading-relaxed">{f.a}</p>
+                </div>
+            ))}
+            </div>
+        </div>
+        </section>
+
 
       {/* CONTACT */}
       <section id="contact" className="py-20 border-t" style={{ borderColor: ink.line }}>
