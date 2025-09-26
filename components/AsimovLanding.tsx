@@ -258,6 +258,15 @@ export default function AsimovCampLanding() {
                 <li>Daily field tests & Demo Day showcase</li>
               </ul>
             </div>
+            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
+            <div className="text-neutral-400 text-sm">Logistics</div>
+            <ul className="mt-3 space-y-2 text-sm text-neutral-300">
+                <li>📅 Dates: June 9–27 • July 7–25</li>
+                <li>🕘 Hours: 9:00 am – 3:30 pm</li>
+                <li>📍 Location: Los Angeles (exact site TBD)</li>
+                <li>👩‍🏫 1:8 staff ratio</li>
+            </ul>
+            </div>
           </div>
         </div>
       </section>
