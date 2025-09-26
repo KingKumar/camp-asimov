@@ -114,7 +114,7 @@ export default function AsimovCampLanding() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3 items-center">
               <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a href="#program">View Sessions</a>
+                <a href="#program">Curriculum Overview</a>
               </Button>
               <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: "#00f0b5", color: "#081b17" }}>
                 <a href={STRIPE_LINK} target="_blank" rel="noreferrer" aria-label="Register — $1,200 per week">
