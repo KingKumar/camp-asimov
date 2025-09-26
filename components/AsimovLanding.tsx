@@ -132,6 +132,13 @@ export default function AsimovCampLanding() {
               <Button size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
                 View Sessions
               </Button>
+              <a
+                href="#pricing"
+                className="px-6 py-3 rounded-xl font-semibold"
+                style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+                >
+                Register — $1,200/week
+                </a>
               <Button size="lg" variant="outline" className="px-6 py-6 text-base border"
                 style={{ borderColor: ink.accent2, color: ink.accent2 }}>
                 Watch Overview
@@ -239,15 +246,15 @@ export default function AsimovCampLanding() {
               <div className="mt-2 text-xl font-semibold">10–17</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
                 <li>Tracks by age/experience</li>
-                <li>1:8 staff ratio • tool certifications</li>
-                <li>LA location • Mon–Fri</li>
+                <li>1:8 teache to student ratio • tool certifications</li>
+                <li>LA location • Mon–Fri 8am-5pm</li>
               </ul>
             </div>
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="text-neutral-400 text-sm">What’s included</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                <li>goBilda parts library & safe fab lab</li>
-                <li>Onshape CAD, Arduino/MicroPython</li>
+                <li>goBilda parts  & safe fab lab</li>
+                <li>Autodesk Fusion360 CAD, Java Based Coding</li>
                 <li>Daily field tests & Demo Day showcase</li>
               </ul>
             </div>
@@ -369,6 +376,10 @@ export default function AsimovCampLanding() {
           </div>
         </div>
       </footer>
+
+      <p className="text-xs text-neutral-400">
+  Camp Asimov is not affiliated with, or endorsed by, the estate of Isaac Asimov.
+    </p>
     </div>
   );
 }
