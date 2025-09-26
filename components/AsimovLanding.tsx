@@ -127,7 +127,7 @@ export default function AsimovCampLanding() {
               </Button>
             </div>
             <p className="mt-4 text-xs text-neutral-400">
-              Led by technologist & educator <strong>Ronit Kumar</strong> — program builder at Brentwood (grew 10 → 50), BCIL co-founder; now coaching at Crossroads.
+            Led by technologist & educator <strong>Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
             </p>
           </div>
 
@@ -364,7 +364,7 @@ export default function AsimovCampLanding() {
             </p>
             <div className="mt-4 text-sm">
               <div className="text-neutral-300">Academic Director: Ronit Kumar</div>
-              <div className="text-neutral-300">Brentwood Robotics (10 → 50), BCIL co-founder; now Crossroads Robotics coach</div>
+              <div className="text-neutral-300">Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
               <div className="text-neutral-300">Los Angeles, CA</div>
               <div className="text-neutral-300">
                 Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>
