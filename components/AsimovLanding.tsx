@@ -4,13 +4,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Rocket, Cpu, Sparkles, Video, Wrench,
-  CalendarDays, ChevronRight,
-  Trophy
+  CalendarDays, ChevronRight, Trophy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+// ------------------------------------
+// Config / constants (edit these)
+// ------------------------------------
+const STRIPE_LINK = "https://buy.stripe.com/REPLACE_ME"; // <- paste your Stripe Payment Link
+const CONTACT_EMAIL = "kumi12345@gmail.com";            // <- or any email you want visible
 
 // Asimov-inspired palette
 const ink = {
@@ -23,55 +28,25 @@ const ink = {
 };
 
 const features = [
-  { icon: <Cpu className="w-5 h-5" />, title: "All‑Maker • All‑Robotics",
-    text: "Mechanical design, CAD, microcontrollers, sensors, and battle‑ready builds." },
+  { icon: <Cpu className="w-5 h-5" />, title: "All-Maker • All-Robotics",
+    text: "Mechanical design, CAD, control systems, sensors, and competition-ready builds." },
   { icon: <Wrench className="w-5 h-5" />, title: "Fabrication Lab",
     text: "3D printing, laser cutting, prototyping rigs, safe soldering, and tool certification." },
   { icon: <Video className="w-5 h-5" />, title: "Cinematic Showcase",
-    text: "Demo Day with story, aesthetics, and Asimov‑grade presentation." },
+    text: "Demo Day with story, aesthetics, and presentation." },
   { icon: <Shield className="w-5 h-5" />, title: "Safety First",
-    text: "Safety-first engineering practices: tool training, PPE, and supervised builds" },
+    text: "Safety-first engineering practices: tool training, PPE, and supervised builds." },
 ];
 
-// const programs = [
-//   {
-//     title: "3‑Week Robotics Intensive (Ages 10–12)",
-//     blurb: "Foundations in design‑driven development: 3D design & CAD, safe fabrication, and autonomous behaviors.",
-//     bullets: [
-//       "3D design & CAD (Onshape)",
-//       "Design‑driven development & iteration",
-//       "Microcontrollers (Arduino/MicroPython) & sensors",
-//     ],
-//   },
-//   {
-//     title: "3‑Week Robotics Intensive (Ages 12–14)",
-//     blurb: "From chassis to code: build with premier parts (goBilda), integrate sensors, and ship reliable mechanisms.",
-//     bullets: [
-//       "goBilda ecosystem & mechanical best practices",
-//       "Path planning & sensor fusion",
-//       "Custom parts (CAD → 3D print/laser cut)",
-//     ],
-//   },
-//   {
-//     title: "3‑Week Advanced Track (Ages 14–17)",
-//     blurb: "Competition‑level builds: subsystem ownership, reliability testing, and advanced coding.",
-//     bullets: [
-//       "Subsystem ownership & design reviews",
-//       "Advanced coding patterns & Git workflow",
-//       "Event‑style scrimmage & presentation",
-//     ],
-//   },
-// ];
-
 const faqs = [
-  { q: "What does an Asimov‑themed camp mean?",
+  { q: "What does an Asimov-themed camp mean?",
     a: "We fuse hard engineering with narrative design—students build capable robots and craft the story around them. It’s STEAM with purpose: logic, ethics, and imagination." },
   { q: "Is it safe for new makers?",
-    a: "Yes. Every student completes tool training, PPE checks, and staff‑guided build steps before independent work." },
+    a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work." },
   { q: "Do you provide gear?",
     a: "We supply tools, kits, and lab materials. Students bring a labeled water bottle, lunch, and curiosity." },
   { q: "Refunds & transfers?",
-    a: "Full refund (minus processing) up to 30 days pre‑start; 50% from 14–29 days; credits within 14 days." },
+    a: "Full refund (minus processing) up to 30 days pre-start; 50% from 14–29 days; credits within 14 days." },
 ];
 
 export default function AsimovCampLanding() {
@@ -93,21 +68,30 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
       {/* NAV */}
-      <header className="sticky top-0 z-40 border-b"
-        style={{ borderColor: ink.line, background: "rgba(10,11,16,0.7)", backdropFilter: "blur(6px)" }}>
+      <header
+        className="sticky top-0 z-40 border-b"
+        style={{ borderColor: ink.line, background: "rgba(10,11,16,0.7)", backdropFilter: "blur(6px)" }}
+      >
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Rocket className="h-6 w-6" style={{ color: ink.accent }} />
+            <Rocket className="h-6 w-6" style={{ color: ink.accent }} aria-hidden />
             <span className="font-semibold tracking-wide">CAMP ASIMOV</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
-            <a href="#programs" className="hover:text-white">Program Details</a>
+            <a href="#program" className="hover:text-white">Program Details</a>
             <a href="#why" className="hover:text-white">Why Us</a>
             <a href="#safety" className="hover:text-white">Safety</a>
             <a href="#faq" className="hover:text-white">FAQ</a>
             <a href="#contact" className="hover:text-white">Contact</a>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-              <a href="https://buy.stripe.com/REPLACE_ME" target="_blank" rel="noreferrer">Register</a>
+              <a
+                href={STRIPE_LINK}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Register for Camp Asimov via secure checkout"
+              >
+                Register
+              </a>
             </Button>
           </nav>
         </div>
@@ -123,33 +107,31 @@ export default function AsimovCampLanding() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-black leading-tight"
             >
-              LA’s premier mentor‑driven robotics & maker camp
+              LA’s premier mentor-driven robotics & maker camp
             </motion.h1>
             <p className="mt-6 text-lg text-neutral-300 max-w-prose">
-              Independent schools often can’t give robotics‑obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor‑heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
+              Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                View Sessions
+            <div className="mt-8 flex flex-wrap gap-3 items-center">
+              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+                <a href="#program">View Sessions</a>
               </Button>
-              <a
-                href="#pricing"
-                className="px-6 py-3 rounded-xl font-semibold"
-                style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
-                >
-                Register — $1,200/week
+              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: "#00f0b5", color: "#081b17" }}>
+                <a href={STRIPE_LINK} target="_blank" rel="noreferrer" aria-label="Register — $1,200 per week">
+                  Register — $1,200/week
                 </a>
+              </Button>
               <Button size="lg" variant="outline" className="px-6 py-6 text-base border"
                 style={{ borderColor: ink.accent2, color: ink.accent2 }}>
                 Watch Overview
               </Button>
             </div>
             <p className="mt-4 text-xs text-neutral-400">
-              Led by Technologist and Educator <strong>Ronit Kumar</strong> — Bringing experience as Robotics Program Head at Brentwood School and Crossroads School.
+              Led by technologist & educator <strong>Ronit Kumar</strong> — program builder at Brentwood (grew 10 → 50), BCIL co-founder; now coaching at Crossroads.
             </p>
           </div>
 
-          {/* hero stats + safety */}
+          {/* hero stats + highlights */}
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <div className="relative">
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
@@ -165,12 +147,17 @@ export default function AsimovCampLanding() {
 
                 <div className="mt-6 border rounded-2xl p-5" style={{ borderColor: ink.line }}>
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
-                    <Trophy className="w-4 h-4" /> Expert coaching, small teams, big results.
+                    <Trophy className="w-4 h-4" aria-hidden /> Expert coaching, small teams, big results.
                   </div>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    {[ "Advanced 3D Computer Aided Design", "Advanced Concepts in Programming", "Building with the best parts on the market", "3D printers, laser cutters, and CNC" ].map((t) => (
+                    {[
+                      "Fusion 360 CAD (3D design fundamentals)",
+                      "Java programming (REV Robotics Control Hub / FTC SDK)",
+                      "Builds with REV Robotics + goBilda ecosystem",
+                      "3D printers, laser cutters, and CNC",
+                    ].map((t) => (
                       <div key={t} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} />
+                        <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
                         <span className="text-neutral-300">{t}</span>
                       </div>
                     ))}
@@ -183,89 +170,98 @@ export default function AsimovCampLanding() {
       </section>
 
       {/* PROGRAM DETAILS */}
-      <section id="programs" className="py-16 bg-gray-950 text-white">
-  <div className="max-w-5xl mx-auto px-6">
-    <h2 className="text-3xl font-bold mb-4 text-center">3-Week Robotics Intensive</h2>
-    <p className="text-lg text-gray-300 mb-10 text-center">
-      A single, immersive summer experience that covers everything your child needs to excel in competitive robotics programs.
-    </p>
+      <section id="program" className="py-16 bg-gray-950 text-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-4 text-center">3-Week Robotics Intensive</h2>
+          <p className="text-lg text-gray-300 mb-10 text-center">
+            A single, immersive summer experience that covers everything your child needs to excel in competitive robotics programs.
+          </p>
 
-    <div className="grid md:grid-cols-2 gap-8">
-      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-        <h3 className="text-xl font-semibold mb-3">Week 1: Design & Build</h3>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>3D design fundamentals (Onshape CAD)</li>
-          <li>Hands-on builds with <strong>goBilda</strong> parts</li>
-          <li>Design-driven development process</li>
-        </ul>
-      </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-semibold mb-3">Week 1: Design & Build</h3>
+              <ul className="space-y-2 text-gray-300 list-disc list-inside">
+                <li>3D design fundamentals (<strong>Autodesk Fusion 360</strong>)</li>
+                <li>Hands-on mechanical builds (REV + goBilda)</li>
+                <li>Design-driven development & iteration</li>
+              </ul>
+            </div>
 
-      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-        <h3 className="text-xl font-semibold mb-3">Week 2: Code & Control</h3>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>Arduino & MicroPython basics</li>
-          <li>Sensor integration & path planning</li>
-          <li>Mechanical + software systems working together</li>
-        </ul>
-      </div>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-semibold mb-3">Week 2: Code & Control</h3>
+              <ul className="space-y-2 text-gray-300 list-disc list-inside">
+                <li><strong>Java</strong> programming with REV Robotics Control Hub</li>
+                <li>Sensor integration & path planning</li>
+                <li>Mechanical + software systems working together</li>
+              </ul>
+            </div>
 
-      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-        <h3 className="text-xl font-semibold mb-3">Week 3: Compete & Iterate</h3>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>Subsystem ownership & iteration journals</li>
-          <li>Testing & reliability under competition pressure</li>
-          <li>Scrimmage showcase for families</li>
-        </ul>
-      </div>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-semibold mb-3">Week 3: Compete & Iterate</h3>
+              <ul className="space-y-2 text-gray-300 list-disc list-inside">
+                <li>Subsystem ownership & iteration journals</li>
+                <li>Testing & reliability under competition pressure</li>
+                <li>Final Friday Family Scrimmage Showcase</li>
+              </ul>
+            </div>
 
-      <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-        <h3 className="text-xl font-semibold mb-3">Ages & Levels</h3>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>Ages 10–12: foundations in design & coding</li>
-          <li>Ages 12–14: strategy, autonomy, advanced builds</li>
-          <li>Ages 14–17: competitive prep & leadership roles</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-semibold mb-3">Ages & Levels</h3>
+              <ul className="space-y-2 text-gray-300 list-disc list-inside">
+                <li>Ages 10–12: foundations in design & coding</li>
+                <li>Ages 12–14: strategy, autonomy, advanced builds</li>
+                <li>Ages 14–17: competitive prep & leadership roles</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* TUITION & DATES */}
       <section id="pricing" className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-bold">Tuition & Dates</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
+          <div className="mt-6 grid md:grid-cols-4 gap-6">
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="text-neutral-400 text-sm">Tuition</div>
-              <div className="mt-2 text-3xl font-extrabold">$1,200 <span className="text-base font-medium text-neutral-400">/ week</span></div>
-              <div className="mt-1 text-neutral-400 text-sm">3‑week camp • $3,600 total</div>
-              <Button className="mt-6 w-full" style={{ backgroundColor: ink.accent, color: '#081b17' }}>Register</Button>
+              <div className="mt-2 text-3xl font-extrabold">
+                $1,200 <span className="text-base font-medium text-neutral-400">/ week</span>
+              </div>
+              <div className="mt-1 text-neutral-400 text-sm">3-week intensive • $3,600 total</div>
+              <Button asChild className="mt-6 w-full" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+                <a href={STRIPE_LINK} target="_blank" rel="noreferrer" aria-label="Register for Camp Asimov">
+                  Register
+                </a>
+              </Button>
             </div>
+
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="text-neutral-400 text-sm">Ages</div>
               <div className="mt-2 text-xl font-semibold">10–17</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                <li>Tracks by age/experience</li>
-                <li>1:8 teache to student ratio • tool certifications</li>
-                <li>LA location • Mon–Fri 8am-5pm</li>
+                <li>Grouped by age/experience</li>
+                <li>1:8 <strong>Teacher : Student</strong> ratio</li>
+                <li>LA location • Mon–Fri 9:00–3:30</li>
               </ul>
             </div>
+
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="text-neutral-400 text-sm">What’s included</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                <li>goBilda parts  & safe fab lab</li>
-                <li>Autodesk Fusion360 CAD, Java Based Coding</li>
+                <li>REV Robotics + goBilda parts & safe fab lab</li>
+                <li>Autodesk Fusion 360 CAD, Java programming</li>
                 <li>Daily field tests & Demo Day showcase</li>
               </ul>
             </div>
+
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
-            <div className="text-neutral-400 text-sm">Logistics</div>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-300">
+              <div className="text-neutral-400 text-sm">Logistics</div>
+              <ul className="mt-3 space-y-2 text-sm text-neutral-300">
                 <li>📅 Dates: June 9–27 • July 7–25</li>
                 <li>🕘 Hours: 9:00 am – 3:30 pm</li>
                 <li>📍 Location: Los Angeles (exact site TBD)</li>
-                <li>👩‍🏫 1:8 staff ratio</li>
-            </ul>
+                <li>👩‍🏫 1:8 Teacher : Student ratio</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -277,7 +273,7 @@ export default function AsimovCampLanding() {
           <div>
             <h2 className="text-2xl md:text-3xl font-bold">Engineering, ethics, and imagination</h2>
             <p className="mt-3 text-neutral-300 max-w-prose">
-              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and founding member of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair elite competition experience with hands‑on mentoring and design‑driven engineering.
+              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and founding member of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair competition-tested engineering with hands-on mentoring and design-driven build culture.
             </p>
             <div className="mt-6 grid sm:grid-cols-2 gap-4">
               {features.map((f) => (
@@ -290,11 +286,11 @@ export default function AsimovCampLanding() {
           </div>
           <div className="rounded-3xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
             <div className="flex items-center gap-2 text-neutral-300 text-sm">
-              <CalendarDays className="w-4 h-4" /> Sample Day
+              <CalendarDays className="w-4 h-4" aria-hidden /> Sample Day
             </div>
             <ul className="mt-3 space-y-3 text-sm text-neutral-300">
               {[
-                ["09:00", "Stand‑up & goals"],
+                ["09:00", "Stand-up & goals"],
                 ["09:20", "Tool time: certification or CAD"],
                 ["10:00", "Subsystem builds"],
                 ["12:00", "Lunch & field tests"],
@@ -305,15 +301,20 @@ export default function AsimovCampLanding() {
                 <li key={t} className="flex gap-4"><span className="text-neutral-500 w-16">{t}</span> <span>{d}</span></li>
               ))}
             </ul>
-            <a
-            href="/parent-packet.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl font-semibold"
-            style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+            <Button
+              asChild
+              className="mt-6 inline-flex"
+              style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
             >
-            Download Parent Packet
-            </a>
+              <a
+                href="/parent-packet.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Parent Packet"
+              >
+                Download Parent Packet
+              </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -323,12 +324,15 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
           <p className="mt-2 text-neutral-400 max-w-prose">
-            Safety-first engineering practices: tool training, PPE, and supervised builds
+            Safety-first engineering practices: tool training, PPE, and supervised builds.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {["PPE checks at entry","Certified tool zones","Laser & solder SOPs","Allergy & emergency flags"].map((s) => (
               <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
-                <div className="flex items-start gap-2"><Shield className="w-4 h-4" style={{ color: ink.accent }} /> <span className="text-neutral-300">{s}</span></div>
+                <div className="flex items-start gap-2">
+                  <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
+                  <span className="text-neutral-300">{s}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -360,44 +364,49 @@ export default function AsimovCampLanding() {
             </p>
             <div className="mt-4 text-sm">
               <div className="text-neutral-300">Academic Director: Ronit Kumar</div>
-              <div className="text-neutral-300">Bringing experience as Robotics Program Head at Brentwood School and Crossroads School.</div>
+              <div className="text-neutral-300">Brentwood Robotics (10 → 50), BCIL co-founder; now Crossroads Robotics coach</div>
               <div className="text-neutral-300">Los Angeles, CA</div>
+              <div className="text-neutral-300">
+                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>
+              </div>
             </div>
           </div>
+
+          {/* Formspree form (replace YOUR_FORM_ID) */}
           <form
             action="https://formspree.io/f/YOUR_FORM_ID"
             method="POST"
             className="space-y-4"
-            >
+          >
             <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
             />
             <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
             />
             <textarea
-                name="message"
-                placeholder="Your Message"
-                required
-                className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
-                rows={4}
+              name="message"
+              placeholder="Your Message"
+              required
+              className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-700"
+              rows={4}
             />
-            <button
-                type="submit"
-                className="px-6 py-3 rounded-xl font-semibold"
-                style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+            <Button
+              type="submit"
+              className="px-6 py-3 rounded-xl font-semibold"
+              style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
             >
-                Send
-            </button>
-            </form>
+              Send
+            </Button>
+          </form>
         </div>
       </section>
 
@@ -411,11 +420,10 @@ export default function AsimovCampLanding() {
             <a className="hover:text-neutral-300" href="#">Staff Login</a>
           </div>
         </div>
+        <p className="text-xs text-neutral-400 mt-4">
+          Camp Asimov is not affiliated with, or endorsed by, the estate of Isaac Asimov.
+        </p>
       </footer>
-
-      <p className="text-xs text-neutral-400">
-  Camp Asimov is not affiliated with, or endorsed by, the estate of Isaac Asimov.
-    </p>
     </div>
   );
 }
