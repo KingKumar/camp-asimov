@@ -445,7 +445,7 @@ export default function AsimovCampLanding() {
 
           {/* Formspree form (replace YOUR_FORM_ID) */}
           <form
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://formspree.io/f/mqaygyjp"
             method="POST"
             className="space-y-4"
           >
