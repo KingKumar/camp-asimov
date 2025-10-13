@@ -25,19 +25,24 @@ export default function StaffPortalPage() {
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 text-white">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Staff Portal</h1>
+    <>
+      <header className="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-[#0d0f15] rounded-t-2xl">
+        <h1 className="text-3xl font-bold text-white">Staff Portal</h1>
         <button
           onClick={handleLogout}
           disabled={busy}
-          className="px-4 py-2 rounded-xl font-semibold"
-          style={{ backgroundColor: "#7AA2F7", color: "#081b17", opacity: busy ? 0.7 : 1 }}
+          className="px-4 py-2 rounded-xl font-semibold transition"
+          style={{
+            backgroundColor: "#5DE4C7",
+            color: "#081b17",
+            opacity: busy ? 0.7 : 1,
+          }}
         >
           {busy ? "Signing out…" : "Sign out"}
         </button>
-      </div>
+      </header>
 
+<main className="max-w-5xl mx-auto px-6 py-12 text-white">
       <p className="mt-2 text-neutral-400">
         Internal resources for instructors and mentors.
       </p>
@@ -78,5 +83,6 @@ export default function StaffPortalPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }
