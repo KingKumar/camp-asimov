@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 // Config / constants (edit these)
 // ------------------------------------
 const STRIPE_LINK = "https://buy.stripe.com/REPLACE_ME"; // <- paste your Stripe Payment Link
-const CONTACT_EMAIL = "kumi12345@gmail.com";            // <- or any email you want visible
+const CONTACT_EMAIL = "info@campasimov.com";            // <- or any email you want visible
 
 // Asimov-inspired palette
 const ink = {
