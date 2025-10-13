@@ -124,15 +124,18 @@ export default function AsimovCampLanding() {
             <a href="#safety" className="hover:text-white">Safety</a>
             <a href="#faq" className="hover:text-white">FAQ</a>
             <a href="#contact" className="hover:text-white">Contact</a>
+            <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+                 <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+            </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-              <a
-                href={STRIPE_LINK}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Register for Camp Asimov via secure checkout"
-              >
-                Register
-              </a>
+                <a
+                    href={STRIPE_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Register for Camp Asimov via secure checkout"
+                >
+                    Register
+                </a>
             </Button>
           </nav>
         </div>
