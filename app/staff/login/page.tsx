@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function StaffLoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -14,15 +16,20 @@ export default function StaffLoginPage() {
     try {
       const res = await fetch("/api/staff/login", {
         method: "POST",
-        body: new URLSearchParams({ password }),
+        body: new URLSearchParams({ password: password.trim() }),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       });
+
       if (res.ok) {
-        window.location.href = "/staff";
-      } else {
-        const data = await res.json().catch(() => ({}));
-        setError(data?.message || "Invalid password");
+        // Cookie is set; now navigate client-side (no reload needed)
+        router.push("/staff");
+        return;
       }
+
+      const data = await res.json().catch(() => ({}));
+      setError(data?.message || "Invalid password");
+    } catch (e) {
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
