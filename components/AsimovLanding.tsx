@@ -165,10 +165,6 @@ export default function AsimovCampLanding() {
                   Register — $1,200/week
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="px-6 py-6 text-base border"
-                style={{ borderColor: ink.accent2, color: ink.accent2 }}>
-                Watch Overview
-              </Button>
             </div>
             <p className="mt-4 text-xs text-neutral-400">
             Led by technologist & educator <strong>Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
