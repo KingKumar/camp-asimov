@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import SessionPicker from "@/components/SessionPicker";
+
 
 // ------------------------------------
 // Config / constants (edit these)
@@ -128,14 +130,7 @@ export default function AsimovCampLanding() {
                  <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
             </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a
-                    href={STRIPE_LINK}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Register for Camp Asimov via secure checkout"
-                >
-                    Register
-                </a>
+                 <a href="#pricing">Register</a>
             </Button>
           </nav>
         </div>
@@ -160,11 +155,7 @@ export default function AsimovCampLanding() {
               <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
                 <a href="#program">Curriculum Overview</a>
               </Button>
-              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: "#00f0b5", color: "#081b17" }}>
-                <a href={STRIPE_LINK} target="_blank" rel="noreferrer" aria-label="Register — $1,200 per week">
-                  Register — $1,200/week
-                </a>
-              </Button>
+              <SessionPicker compact />
             </div>
             <p className="mt-4 text-xs text-neutral-400">
             Led by technologist & educator <strong>Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
@@ -268,11 +259,10 @@ export default function AsimovCampLanding() {
                 $1,200 <span className="text-base font-medium text-neutral-400">/ week</span>
               </div>
               <div className="mt-1 text-neutral-400 text-sm">3-week intensive • $3,600 total</div>
-              <Button asChild className="mt-6 w-full" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a href={STRIPE_LINK} target="_blank" rel="noreferrer" aria-label="Register for Camp Asimov">
-                  Register
-                </a>
-              </Button>
+              <div className="mt-6">
+                     <SessionPicker compact />
+                </div>
+
             </div>
 
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
