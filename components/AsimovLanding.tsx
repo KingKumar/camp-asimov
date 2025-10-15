@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 // ------------------------------------
 // Config / constants (edit these)
 // ------------------------------------
-const STRIPE_LINK = "https://buy.stripe.com/REPLACE_ME"; // <- paste your Stripe Payment Link
+const STRIPE_LINK = "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00"; // <- paste your Stripe Payment Link
 const CONTACT_EMAIL = "info@campasimov.com";            // <- or any email you want visible
 
 // Asimov-inspired palette
@@ -301,7 +301,7 @@ export default function AsimovCampLanding() {
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="text-neutral-400 text-sm">Logistics</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                <li>📅 Dates: June 9–27 • July 7–25</li>
+                <li>📅 Dates: June 8–26 • July 6–24</li>
                 <li>🕘 Hours: 9:00 am – 3:30 pm</li>
                 <li>📍 Location: Los Angeles (exact site TBD)</li>
                 <li>👩‍🏫 1:8 Teacher : Student ratio</li>
