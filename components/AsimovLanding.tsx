@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     q: "Financial aid or discounts",
-    a: "Limited need-based scholarships and sibling discounts may be available — email us at hello@campasimov.com."
+    a: "Limited need-based scholarships and sibling discounts may be available — email us at info@campasimov.com."
   },
   {
     q: "What does an Asimov-themed camp mean?",
