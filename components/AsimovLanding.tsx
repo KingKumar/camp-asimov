@@ -472,9 +472,9 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between">
           <div>© {new Date().getFullYear()} Camp Asimov. All rights reserved.</div>
           <div className="flex gap-4">
-            <a className="hover:text-neutral-300" href="#">Privacy</a>
-            <a className="hover:text-neutral-300" href="#">Refunds</a>
-            <a className="hover:text-neutral-300" href="#">Staff Login</a>
+            <a className="hover:text-neutral-300" href="/privacy.html">Privacy</a>
+            <a className="hover:text-neutral-300" href="/refunds.html">Refunds</a>
+            <a className="hover:text-neutral-300" href="/staff">Staff Login</a>
           </div>
         </div>
         
