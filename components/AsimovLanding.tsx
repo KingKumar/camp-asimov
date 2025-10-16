@@ -477,9 +477,7 @@ export default function AsimovCampLanding() {
             <a className="hover:text-neutral-300" href="#">Staff Login</a>
           </div>
         </div>
-        <p className="text-xs text-neutral-400 mt-4">
-          Camp Asimov is not affiliated with, or endorsed by, the estate of Isaac Asimov.
-        </p>
+        
       </footer>
     </div>
   );
