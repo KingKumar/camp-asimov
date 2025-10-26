@@ -91,67 +91,48 @@ const faqs = [
   }
 ];
 
-function AutoPlayVideo({
-  src,
-  poster,
-  caption,
-  className = "h-[280px] md:h-[360px] lg:h-[420px]"
-}: {
+function AutoPlayVideo(props: {
   src: string;
   poster?: string;
   caption?: string;
   className?: string;
 }) {
+  const {
+    src,
+    poster,
+    caption,
+    className = "h-[280px] md:h-[360px] lg:h-[420px]",
+  } = props;
+
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    el.muted = true;
 
+    el.muted = true; // ensure autoplay works
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) el.play().catch(() => {});
-        else el.pause();
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
       },
       { threshold: 0.25 }
     );
+
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+    };
   }, []);
 
   return (
     <figure
-      className="relative rounded-2xl overflow-hidden border flex flex-col justify-between"
-      style={{
-        borderColor: ink.line,
-        background: ink.surface,
-        minHeight: "280px"
-      }}
-    >
-      <video
-        ref={ref}
-        src={src}
-        playsInline
-        muted
-        loop
-        preload="metadata"
-        poster={poster}
-        className={`w-full object-cover flex-1 ${className}`}
-      />
-      {caption && (
-        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-400 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
-, []);
-
-  return (
-    <figure
-      className="rounded-2xl overflow-hidden border"
+      className="relative rounded-2xl overflow-hidden border"
       style={{ borderColor: ink.line, background: ink.surface }}
     >
       <video
@@ -164,12 +145,15 @@ function AutoPlayVideo({
         poster={poster}
         className={`w-full object-cover ${className}`}
       />
-      {caption && (
-        <figcaption className="p-3 text-xs text-neutral-400">{caption}</figcaption>
-      )}
+      {caption ? (
+        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-400 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
+          {caption}
+        </figcaption>
+      ) : null}
     </figure>
   );
 }
+
 
 
 export default function AsimovCampLanding() {
