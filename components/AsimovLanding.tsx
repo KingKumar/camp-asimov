@@ -147,7 +147,7 @@ function AutoPlayVideo({
     </figure>
   );
 }
-
+, []);
 
   return (
     <figure
