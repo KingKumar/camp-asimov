@@ -162,6 +162,7 @@ function AutoPlayVideo(props: {
 export default function AsimovCampLanding() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -172,6 +173,11 @@ export default function AsimovCampLanding() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
 
   return (
@@ -189,45 +195,83 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
       {/* NAV */}
-      <header
-          className={`sticky top-0 z-40 border-b w-full transition-all duration-300 ${
-            scrolled ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]" : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
-          }`}
-          style={{ borderColor: ink.line }}
-        >
-          <div className="w-full px-8 md:px-12 lg:px-16 flex items-center justify-between transition-all duration-300">
-            {/* Left: Logo */}
-            <div className="flex items-center gap-3 shrink-0">
-              <Rocket
-                className={`h-6 w-6 transition-all duration-300 ${scrolled ? "scale-90" : "scale-100"}`}
-                style={{ color: ink.accent }}
-                aria-hidden
-              />
-              <span
-                className={`font-semibold tracking-wide transition-all duration-300 ${
-                  scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
-                }`}
-              >
-                CAMP ASIMOV
-              </span>
-            </div>
+     <header
+        className={`sticky top-0 z-50 border-b w-full transition-all duration-300 ${
+          scrolled ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]" : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
+        }`}
+        style={{ borderColor: ink.line }}
+      >
+        <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-between">
+          {/* Left: Logo */}
+          <div className="flex items-center gap-3 shrink-0">
+            <Rocket
+              className={`h-6 w-6 transition-all duration-300 ${scrolled ? "scale-90" : "scale-100"}`}
+              style={{ color: ink.accent }}
+              aria-hidden
+            />
+            <span
+              className={`font-semibold tracking-wide transition-all duration-300 ${
+                scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
+              }`}
+            >
+              CAMP ASIMOV
+            </span>
+          </div>
 
-            {/* Right: Nav */}
-            <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
-              <a href="#program" className="hover:text-white">Program Details</a>
-              <a href="#why" className="hover:text-white">Why Us</a>
-              <a href="#safety" className="hover:text-white">Safety</a>
-              <a href="#faq" className="hover:text-white">FAQ</a>
-              <a href="#contact" className="hover:text-white">Contact</a>
-              <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-                <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+          {/* Right: Desktop nav */}
+          <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
+            <a href="#program" className="hover:text-white">Program Details</a>
+            <a href="#why" className="hover:text-white">Why Us</a>
+            <a href="#safety" className="hover:text-white">Safety</a>
+            <a href="#faq" className="hover:text-white">FAQ</a>
+            <a href="#contact" className="hover:text-white">Contact</a>
+            <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+              <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+            </Button>
+            <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+              <a href="#pricing">Register</a>
+            </Button>
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
+            style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
+            aria-label="Open menu"
+            aria-controls="mobile-menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* Mobile panel */}
+        <div
+          id="mobile-menu"
+          className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
+            mobileOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t" style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}>
+            <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5">Program Details</a>
+            <a href="#why" className="block px-3 py-2 rounded-lg hover:bg-white/5">Why Us</a>
+            <a href="#safety" className="block px-3 py-2 rounded-lg hover:bg-white/5">Safety</a>
+            <a href="#faq" className="block px-3 py-2 rounded-lg hover:bg-white/5">FAQ</a>
+            <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5">Contact</a>
+            <div className="flex gap-2 pt-2">
+              <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+                <a href="/staff">Staff Portal</a>
               </Button>
-              <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+              <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
                 <a href="#pricing">Register</a>
               </Button>
-            </nav>
+            </div>
           </div>
-        </header>
+        </div>
+      </header>
+
 
 
 
