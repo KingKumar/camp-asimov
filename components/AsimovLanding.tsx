@@ -150,6 +150,17 @@ export default function AsimovCampLanding() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40); // toggle true after scrolling 40px
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
     <div
       className="min-h-screen w-full text-white"
@@ -165,18 +176,30 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
       {/* NAV */}
-     <header
-          className="sticky top-0 z-40 border-b w-full"
-          style={{ borderColor: ink.line, background: "rgba(10,11,16,0.7)", backdropFilter: "blur(6px)" }}
+      <header
+          className={`sticky top-0 z-40 border-b w-full transition-all duration-300 ${
+            scrolled ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]" : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
+          }`}
+          style={{ borderColor: ink.line }}
         >
-          <div className="w-full px-8 md:px-12 lg:px-16 flex items-center justify-between">
+          <div className="w-full px-8 md:px-12 lg:px-16 flex items-center justify-between transition-all duration-300">
             {/* Left: Logo */}
             <div className="flex items-center gap-3 shrink-0">
-              <Rocket className="h-6 w-6" style={{ color: ink.accent }} aria-hidden />
-              <span className="font-semibold tracking-wide text-base md:text-lg">CAMP ASIMOV</span>
+              <Rocket
+                className={`h-6 w-6 transition-all duration-300 ${scrolled ? "scale-90" : "scale-100"}`}
+                style={{ color: ink.accent }}
+                aria-hidden
+              />
+              <span
+                className={`font-semibold tracking-wide transition-all duration-300 ${
+                  scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
+                }`}
+              >
+                CAMP ASIMOV
+              </span>
             </div>
 
-            {/* Right: Nav buttons */}
+            {/* Right: Nav */}
             <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
               <a href="#program" className="hover:text-white">Program Details</a>
               <a href="#why" className="hover:text-white">Why Us</a>
@@ -192,6 +215,7 @@ export default function AsimovCampLanding() {
             </nav>
           </div>
         </header>
+
 
 
       {/* HERO */}
