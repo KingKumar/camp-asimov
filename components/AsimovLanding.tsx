@@ -441,7 +441,7 @@ export default function AsimovCampLanding() {
     {/* Right: Autoplaying video reel */}
     <div className="grid sm:grid-cols-2 gap-4">
       <AutoPlayVideo src="/videos/blockdelivery.mp4" poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
-      <AutoPlayVideo src="/videos/intake_cycle.mp4" poster="/videos/posters/intake.jpg" caption="Intake + cycle testing" />
+      <AutoPlayVideo src="/videos/conedelivery.mp4" poster="/videos/posters/intake.jpg" caption="Cycle testing" />
       <AutoPlayVideo src="/videos/autonomous.mp4" poster="/videos/posters/auton.jpg" caption="Autonomous pathing & sensors" />
       <AutoPlayVideo src="/videos/scrimmage.mp4" poster="/videos/posters/scrim.jpg" caption="Scrimmage stress-testing" />
     </div>
