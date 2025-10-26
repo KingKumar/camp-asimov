@@ -95,7 +95,7 @@ function AutoPlayVideo({
   src,
   poster,
   caption,
-  className = "h-56"
+  className = "h-[280px] md:h-[360px] lg:h-[420px]"
 }: {
   src: string;
   poster?: string;
@@ -107,21 +107,47 @@ function AutoPlayVideo({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    el.muted = true; // allow autoplay everywhere
+    el.muted = true;
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          el.play().catch(() => {});
-        } else {
-          el.pause();
-        }
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
       },
       { threshold: 0.25 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  return (
+    <figure
+      className="relative rounded-2xl overflow-hidden border flex flex-col justify-between"
+      style={{
+        borderColor: ink.line,
+        background: ink.surface,
+        minHeight: "280px"
+      }}
+    >
+      <video
+        ref={ref}
+        src={src}
+        playsInline
+        muted
+        loop
+        preload="metadata"
+        poster={poster}
+        className={`w-full object-cover flex-1 ${className}`}
+      />
+      {caption && (
+        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-400 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 
   return (
     <figure
