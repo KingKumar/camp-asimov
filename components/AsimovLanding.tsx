@@ -144,7 +144,10 @@ function AutoPlayVideo(props: {
         preload="metadata"
         poster={poster}
         className={`w-full object-cover ${className}`}
+        disablePictureInPicture
+        controls={false}
       />
+
       {caption ? (
         <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-400 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
           {caption}
