@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Rocket, Cpu, Sparkles, Video, Wrench,
@@ -90,6 +90,60 @@ const faqs = [
     a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work."
   }
 ];
+
+function AutoPlayVideo({
+  src,
+  poster,
+  caption,
+  className = "h-56"
+}: {
+  src: string;
+  poster?: string;
+  caption?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.muted = true; // allow autoplay everywhere
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <figure
+      className="rounded-2xl overflow-hidden border"
+      style={{ borderColor: ink.line, background: ink.surface }}
+    >
+      <video
+        ref={ref}
+        src={src}
+        playsInline
+        muted
+        loop
+        preload="metadata"
+        poster={poster}
+        className={`w-full object-cover ${className}`}
+      />
+      {caption && (
+        <figcaption className="p-3 text-xs text-neutral-400">{caption}</figcaption>
+      )}
+    </figure>
+  );
+}
 
 
 export default function AsimovCampLanding() {
@@ -298,56 +352,61 @@ export default function AsimovCampLanding() {
       </section>
 
       {/* WHY US */}
-      <section id="why" className="py-20 border-t" style={{ borderColor: ink.line }}>
-        <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold">Engineering, ethics, and imagination</h2>
-            <p className="mt-3 text-neutral-300 max-w-prose">
-              Founded and led by LA robotics coach <strong>Ronit Kumar</strong> — builder of programs at <strong>Brentwood School</strong> (grew from <strong>10 → 50</strong> students) and founding member of the school’s <strong>BCIL</strong>; now coaching at <strong>Crossroads School</strong>. We pair competition-tested engineering with hands-on mentoring and design-driven build culture.
-            </p>
-            <div className="mt-6 grid sm:grid-cols-2 gap-4">
-              {features.map((f) => (
-                <div key={f.title} className="rounded-2xl border p-5" style={{ borderColor: ink.line, background: ink.surface }}>
-                  <div className="flex items-center gap-2 font-semibold">{f.icon} {f.title}</div>
-                  <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
-                </div>
-              ))}
-            </div>
+     {/* WHY US */}
+<section id="why" className="py-20 border-t" style={{ borderColor: ink.line }}>
+  <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-10">
+    {/* Left: Student-centered story */}
+    <div>
+      <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
+      <p className="mt-3 text-neutral-300 max-w-prose">
+        Camp Asimov is a mentor-driven build lab where students own real subsystems,
+        make decisions, and see the impact of their choices on a working robot.
+        We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>:
+        students ship working mechanisms, document their process, and present like pros.
+      </p>
+
+      <div className="mt-6 grid sm:grid-cols-2 gap-4">
+        {[
+          { title: "Authentic builds",
+            text: "Drive bases, intakes, linkages, wiring, sensors—students take subsystems from sketch → CAD → fab → test." },
+          { title: "Mentored mastery",
+            text: "Tight feedback loops with coach check-ins, pairing, and tool certifications to build safely and fast." },
+          { title: "Competitive readiness",
+            text: "Code control loops, integrate sensors, and stress-test under time pressure—skills that transfer to FTC/US school teams." },
+          { title: "Portfolio & storytelling",
+            text: "Iteration journals, photos/video, and a Demo Day reel students can share with teams and programs." },
+        ].map((f) => (
+          <div
+            key={f.title}
+            className="rounded-2xl border p-5"
+            style={{ borderColor: ink.line, background: ink.surface }}
+          >
+            <div className="font-semibold">{f.title}</div>
+            <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
           </div>
-          <div className="rounded-3xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
-            <div className="flex items-center gap-2 text-neutral-300 text-sm">
-              <CalendarDays className="w-4 h-4" aria-hidden /> Sample Day
-            </div>
-            <ul className="mt-3 space-y-3 text-sm text-neutral-300">
-              {[
-                ["09:00", "Stand-up & goals"],
-                ["09:20", "Tool time: certification or CAD"],
-                ["10:00", "Subsystem builds"],
-                ["12:00", "Lunch & field tests"],
-                ["13:00", "Code + sensors"],
-                ["14:30", "Iteration + bug bashes"],
-                ["15:30", "Scrimmage or film demo"],
-              ].map(([t, d]) => (
-                <li key={t} className="flex gap-4"><span className="text-neutral-500 w-16">{t}</span> <span>{d}</span></li>
-              ))}
-            </ul>
-            <Button
-              asChild
-              className="mt-6 inline-flex"
-              style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
-            >
-              <a
-                href="/parent-packet.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download Parent Packet"
-              >
-                Download Parent Packet
-              </a>
-            </Button>
-          </div>
+        ))}
+      </div>
+
+      {/* Coach blurb */}
+      <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
+        <div className="text-sm text-neutral-300">
+          Led by <strong>Ronit Kumar</strong> — LA robotics coach & maker-educator (Brentwood School program
+          growth <strong>10 → 50</strong>, founding BCIL member; now coaching at Crossroads). I specialize in helping
+          students turn curiosity into working robots through CAD, safe fabrication, and competition-tested code.
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Right: Autoplaying video reel */}
+    <div className="grid sm:grid-cols-2 gap-4">
+      <AutoPlayVideo src="/videos/drive_practice.mp4" poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
+      <AutoPlayVideo src="/videos/intake_cycle.mp4" poster="/videos/posters/intake.jpg" caption="Intake + cycle testing" />
+      <AutoPlayVideo src="/videos/autonomous.mp4" poster="/videos/posters/auton.jpg" caption="Autonomous pathing & sensors" />
+      <AutoPlayVideo src="/videos/scrimmage.mp4" poster="/videos/posters/scrim.jpg" caption="Scrimmage stress-testing" />
+    </div>
+  </div>
+</section>
+
 
       {/* SAFETY */}
         <section id="safety" className="py-20 border-t" style={{ borderColor: ink.line }}>
