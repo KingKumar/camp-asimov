@@ -128,3 +128,47 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ------------------------------------------------------
+   🌐 Camp Asimov Global Layout Enhancements
+   ------------------------------------------------------ */
+
+/* Make all .max-w-7xl containers a bit wider site-wide */
+@layer utilities {
+  .max-w-7xl {
+    max-width: 1500px !important; /* default was ~1280px */
+  }
+}
+
+/* Increase default font sizes for readability */
+@layer base {
+  html {
+    font-size: 17px; /* slightly larger than Tailwind's default 16px */
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px; /* bigger on desktop/laptop */
+    }
+  }
+
+  body {
+    @apply leading-relaxed; /* improves readability of paragraphs */
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl font-black leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl font-bold leading-snug;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-snug;
+  }
+
+  p {
+    @apply text-[1.05rem] md:text-[1.1rem];
+  }
+}
