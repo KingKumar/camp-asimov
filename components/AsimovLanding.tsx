@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Rocket, Cpu, Sparkles, Video, Wrench,
-  CalendarDays, ChevronRight, Trophy
+  CalendarDays, ChevronRight, Trophy, Menu, X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -163,7 +163,6 @@ export default function AsimovCampLanding() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -175,10 +174,15 @@ export default function AsimovCampLanding() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
+  useEffect(() => {
+      document.body.style.overflow = mobileOpen ? "hidden" : "";
+      return () => { document.body.style.overflow = ""; };
+    }, [mobileOpen]);
 
   return (
     <div
@@ -195,7 +199,7 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
       {/* NAV */}
-     <header
+      <header
         className={`sticky top-0 z-50 border-b w-full transition-all duration-300 ${
           scrolled ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]" : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
         }`}
@@ -238,10 +242,10 @@ export default function AsimovCampLanding() {
             type="button"
             className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
             style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
-            aria-label="Open menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu"
             aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => setMobileOpen(v => !v)}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -254,18 +258,21 @@ export default function AsimovCampLanding() {
             mobileOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t" style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}>
-            <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5">Program Details</a>
-            <a href="#why" className="block px-3 py-2 rounded-lg hover:bg-white/5">Why Us</a>
-            <a href="#safety" className="block px-3 py-2 rounded-lg hover:bg-white/5">Safety</a>
-            <a href="#faq" className="block px-3 py-2 rounded-lg hover:bg-white/5">FAQ</a>
-            <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5">Contact</a>
+          <div
+            className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t"
+            style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}
+          >
+            <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Program Details</a>
+            <a href="#why" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Why Us</a>
+            <a href="#safety" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Safety</a>
+            <a href="#faq" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>FAQ</a>
+            <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
             <div className="flex gap-2 pt-2">
               <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-                <a href="/staff">Staff Portal</a>
+                <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
               </Button>
               <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a href="#pricing">Register</a>
+                <a href="#pricing" onClick={() => setMobileOpen(false)}>Register</a>
               </Button>
             </div>
           </div>
