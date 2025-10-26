@@ -443,7 +443,7 @@ export default function AsimovCampLanding() {
       <AutoPlayVideo src="/videos/blockdelivery.mp4" poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
       <AutoPlayVideo src="/videos/conedelivery.mp4" poster="/videos/posters/intake.jpg" caption="Cycle testing" />
       <AutoPlayVideo src="/videos/autonomous.mp4" poster="/videos/posters/auton.jpg" caption="Autonomous pathing & sensors" />
-      <AutoPlayVideo src="/videos/scrimmage.mp4" poster="/videos/posters/scrim.jpg" caption="Scrimmage stress-testing" />
+      <AutoPlayVideo src="/videos/lift.mp4" poster="/videos/posters/scrim.jpg" caption="Mechanical lift stress-testing" />
     </div>
   </div>
 </section>
