@@ -172,3 +172,18 @@ html {
     @apply text-[1.05rem] md:text-[1.1rem];
   }
 }
+
+/* --- Keep anchors from hiding under the sticky header --- */
+@layer base {
+  :root {
+    /* Choose a safe offset a bit larger than your header's max height */
+    --header-offset: 110px;
+  }
+  @media (min-width: 768px) {
+    :root { --header-offset: 128px; }
+  }
+  html {
+    /* Browsers will add this offset when scrolling to #anchors */
+    scroll-padding-top: var(--header-offset);
+  }
+}
