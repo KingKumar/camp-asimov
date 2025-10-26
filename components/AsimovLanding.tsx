@@ -165,30 +165,34 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
       {/* NAV */}
-      <header
-        className="sticky top-0 z-40 border-b"
-        style={{ borderColor: ink.line, background: "rgba(10,11,16,0.7)", backdropFilter: "blur(6px)" }}
-      >
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Rocket className="h-6 w-6" style={{ color: ink.accent }} aria-hidden />
-            <span className="font-semibold tracking-wide">CAMP ASIMOV</span>
+     <header
+          className="sticky top-0 z-40 border-b w-full"
+          style={{ borderColor: ink.line, background: "rgba(10,11,16,0.7)", backdropFilter: "blur(6px)" }}
+        >
+          <div className="w-full px-8 md:px-12 lg:px-16 flex items-center justify-between">
+            {/* Left: Logo */}
+            <div className="flex items-center gap-3 shrink-0">
+              <Rocket className="h-6 w-6" style={{ color: ink.accent }} aria-hidden />
+              <span className="font-semibold tracking-wide text-base md:text-lg">CAMP ASIMOV</span>
+            </div>
+
+            {/* Right: Nav buttons */}
+            <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
+              <a href="#program" className="hover:text-white">Program Details</a>
+              <a href="#why" className="hover:text-white">Why Us</a>
+              <a href="#safety" className="hover:text-white">Safety</a>
+              <a href="#faq" className="hover:text-white">FAQ</a>
+              <a href="#contact" className="hover:text-white">Contact</a>
+              <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+                <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+              </Button>
+              <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+                <a href="#pricing">Register</a>
+              </Button>
+            </nav>
           </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
-            <a href="#program" className="hover:text-white">Program Details</a>
-            <a href="#why" className="hover:text-white">Why Us</a>
-            <a href="#safety" className="hover:text-white">Safety</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-            <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-                 <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
-            </Button>
-            <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                 <a href="#pricing">Register</a>
-            </Button>
-          </nav>
-        </div>
-      </header>
+        </header>
+
 
       {/* HERO */}
       <section className="relative">
