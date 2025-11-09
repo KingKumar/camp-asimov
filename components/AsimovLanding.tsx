@@ -346,13 +346,13 @@ export default function AsimovCampLanding() {
 
      {/* PROGRAM DETAILS */}
 <section
-  id="program"
   className="py-20 border-t scroll-mt-28 md:scroll-mt-32"
   style={{ borderColor: ink.line }}
 >
   <div className="mx-auto max-w-7xl px-6 text-white">
 
     <motion.h2
+      id="program"
       initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
