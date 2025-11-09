@@ -80,15 +80,20 @@ function AutoPlayVideo(props: {
   src: string;
   poster?: string;
   caption?: string;
-  className?: string; // optional; no fixed heights!
+  className?: string;
+  /** optionally force a ratio: "16/9" | "4/3" | "1/1" | "9/16" */
+  ratio?: "16/9" | "4/3" | "1/1" | "9/16";
 }) {
-  const { src, poster, caption, className = "" } = props;
+  const { src, poster, caption, className = "", ratio } = props;
   const ref = useRef<HTMLVideoElement | null>(null);
   const [needsTap, setNeedsTap] = useState(false);
+  const [isPortrait, setIsPortrait] = useState<boolean | null>(null);
 
+  // Autoplay/observe
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
     el.muted = true;
     el.playsInline = true;
 
@@ -99,13 +104,22 @@ function AutoPlayVideo(props: {
 
     const io = new IntersectionObserver(([entry]) => {
       if (!entry) return;
-      if (entry.isIntersecting) tryPlay();
-      else el.pause();
+      if (entry.isIntersecting) tryPlay(); else el.pause();
     }, { threshold: 0.25 });
 
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  const onMeta = () => {
+    const el = ref.current;
+    if (!el) return;
+    // Determine natural orientation
+    const { videoWidth: w, videoHeight: h } = el;
+    if (w && h) setIsPortrait(h > w);
+    // also attempt a play once metadata is ready
+    el.play().catch(() => setNeedsTap(true));
+  };
 
   const onTapPlay = async () => {
     const el = ref.current;
@@ -114,45 +128,52 @@ function AutoPlayVideo(props: {
     catch { el.controls = true; }
   };
 
+  // Decide wrapper ratio class
+  const ratioClass = (() => {
+    if (ratio === "9/16") return "aspect-[9/16]";
+    if (ratio === "4/3")  return "aspect-[4/3]";
+    if (ratio === "1/1")  return "aspect-square";
+    if (ratio === "16/9") return "aspect-video";
+    // auto mode:
+    if (isPortrait === null) return "aspect-video"; // default before we know
+    return isPortrait ? "aspect-[9/16]" : "aspect-video";
+  })();
+
   return (
     <figure
       className={`relative rounded-2xl overflow-hidden border ${className}`}
       style={{ borderColor: ink.line, background: "black" }}
     >
-      {/* Aspect-ratio wrapper prevents cropping/jank */}
-      <div className="relative w-full aspect-video">
+      <div className={`relative w-full ${ratioClass}`}>
         <video
-            ref={ref}
-            autoPlay
-            muted
-            playsInline
-            loop
-            preload="metadata"
-            poster={poster}
-            className="absolute inset-0 w-full h-full object-contain bg-black"
-            disablePictureInPicture
-            controls={false}
-            onLoadedData={() => {
-            if (ref.current) ref.current.play().catch(() => setNeedsTap(true));
-            }}
+          ref={ref}
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="metadata"
+          poster={poster}
+          onLoadedMetadata={onMeta}
+          className="absolute inset-0 w-full h-full object-cover"
+          disablePictureInPicture
+          controls={false}
         >
-            <source src={src} type="video/mp4" />
+          <source src={src} type="video/mp4" />
         </video>
 
         {needsTap && (
-            <button
+          <button
             type="button"
             onClick={onTapPlay}
             className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
             aria-label="Play video"
-            >
+          >
             <div className="rounded-full border px-5 py-2 text-sm text-white/90">
-                Tap to play
+              Tap to play
             </div>
-            </button>
+          </button>
         )}
-        </div>
-
+      </div>
 
       {caption ? (
         <figcaption className="absolute bottom-2 left-3 right-3 text-xs md:text-[13px] text-neutral-200 bg-black/35 backdrop-blur-sm px-2 py-1 rounded-md">
@@ -162,6 +183,7 @@ function AutoPlayVideo(props: {
     </figure>
   );
 }
+
 
 
 
