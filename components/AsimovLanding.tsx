@@ -139,12 +139,27 @@ export default function AsimovCampLanding() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  /** shrink header on scroll */
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+ const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+        ([entry]) => {
+        // scrolled = header should shrink
+        setScrolled(!entry.isIntersecting);
+        },
+        {
+        rootMargin: "-1px 0px 0px 0px",
+        threshold: 0,
+        }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+    }, []);
+
 
   /** prevent background scroll when mobile menu opens */
   useEffect(() => {
@@ -166,105 +181,103 @@ export default function AsimovCampLanding() {
       }}
     >
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
-
+      <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
       {/* =======================================
           ✅ NAV
       ======================================= */}
-      <header
-        className={`sticky top-0 z-50 border-b w-full transition-all duration-300 ${
-          scrolled
-            ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]"
-            : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
+      {/* ================= NAV ================= */}
+<header
+  className={`
+    sticky top-0 z-50 border-b w-full
+    transition-all duration-300
+    ${scrolled
+      ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]"
+      : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
+    }
+  `}
+  style={{ borderColor: ink.line }}
+>
+  <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-between">
+    
+    {/* LEFT — LOGO */}
+    <div className="flex items-center gap-3 shrink-0">
+      <Rocket
+        className={`h-6 w-6 transition-all duration-300 ${
+          scrolled ? "scale-90" : "scale-100"
         }`}
-        style={{ borderColor: ink.line }}
+        style={{ color: ink.accent }}
+        aria-hidden
+      />
+      <span
+        className={`font-semibold tracking-wide transition-all duration-300 ${
+          scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
+        }`}
       >
-        <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-between">
-          {/* logo */}
-          <div className="flex items-center gap-3 shrink-0">
-            <Rocket
-              className={`h-6 w-6 transition-all duration-300 ${
-                scrolled ? "scale-90" : "scale-100"
-              }`}
-              style={{ color: ink.accent }}
-            />
-            <span
-              className={`font-semibold tracking-wide transition-all duration-300 ${
-                scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
-              }`}
-            >
-              CAMP ASIMOV
-            </span>
-          </div>
+        CAMP ASIMOV
+      </span>
+    </div>
 
-          {/* desktop nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
-            <a href="#program" className="hover:text-white">Program Details</a>
-            <a href="#why" className="hover:text-white">Why Us</a>
-            <a href="#safety" className="hover:text-white">Safety</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-            <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-              <a href="/staff">Staff Portal</a>
-            </Button>
-            <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-              <a href="#pricing">Register</a>
-            </Button>
-          </nav>
+    {/* RIGHT — DESKTOP NAV */}
+    <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
+      <a href="#program" className="hover:text-white">Program Details</a>
+      <a href="#why" className="hover:text-white">Why Us</a>
+      <a href="#safety" className="hover:text-white">Safety</a>
+      <a href="#faq" className="hover:text-white">FAQ</a>
+      <a href="#contact" className="hover:text-white">Contact</a>
 
-          {/* mobile menu toggle */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
-            style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileOpen((s) => !s)}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+      <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+        <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+      </Button>
+      <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+        <a href="#pricing">Register</a>
+      </Button>
+    </nav>
 
-        {/* mobile nav panel */}
-        <div
-          className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
-            mobileOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div
-            className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t"
-            style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}
-          >
-            {[
-              ["Program Details", "#program"],
-              ["Why Us", "#why"],
-              ["Safety", "#safety"],
-              ["FAQ", "#faq"],
-              ["Contact", "#contact"],
-            ].map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                className="block px-3 py-2 rounded-lg hover:bg-white/5"
-                onClick={() => setMobileOpen(false)}
-              >
-                {label}
-              </a>
-            ))}
+    {/* MOBILE — HAMBURGER */}
+    <button
+      type="button"
+      className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
+      style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
+      aria-label={mobileOpen ? "Close menu" : "Open menu"}
+      aria-controls="mobile-menu"
+      aria-expanded={mobileOpen}
+      onClick={() => setMobileOpen(v => !v)}
+    >
+      {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+    </button>
+  </div>
 
-            <div className="flex gap-2 pt-2">
-              <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-                <a href="/staff" onClick={() => setMobileOpen(false)}>
-                  Staff Portal
-                </a>
-              </Button>
-              <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a href="#pricing" onClick={() => setMobileOpen(false)}>
-                  Register
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+  {/* MOBILE DROPDOWN */}
+  <div
+    id="mobile-menu"
+    className={`
+      md:hidden overflow-hidden transition-[max-height,opacity]
+      duration-300
+      ${mobileOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}
+    `}
+  >
+    <div
+      className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t"
+      style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}
+    >
+      <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Program Details</a>
+      <a href="#why"     className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Why Us</a>
+      <a href="#safety"  className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Safety</a>
+      <a href="#faq"     className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>FAQ</a>
+      <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
+
+      <div className="flex gap-2 pt-2">
+        <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+          <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
+        </Button>
+        <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+          <a href="#pricing" onClick={() => setMobileOpen(false)}>Register</a>
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
+
 
 
       {/* HERO */}
