@@ -76,28 +76,53 @@ const faqs = [
 // ======================================
 // ✅ FIXED VIDEO COMPONENT
 // ======================================
-function AutoPlayVideo({
-  src,
-  poster,
-  caption,
-  aspect = "16/9", // pass "9/16" for vertical clips
-}: {
-  src: string;
+function AutoPlayVideo(props: {
+  src: string;           // MP4 (H.264 + AAC) in /public/videos/...
   poster?: string;
   caption?: string;
-  aspect?: string;
+  className?: string;
 }) {
+  const {
+    src,
+    poster,
+    caption,
+    className = "h-[280px] md:h-[360px] lg:h-[420px]",
+  } = props;
+
   const ref = useRef<HTMLVideoElement | null>(null);
+  const [needsTap, setNeedsTap] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    el.muted = true;
+
+    el.muted = true;       // iOS autoplay requirement
+    el.playsInline = true; // iOS Safari
+    let triedOnce = false;
+
+    const playAttempt = async () => {
+      if (!el) return;
+      try {
+        await el.play();
+        setNeedsTap(false);
+      } catch {
+        // Browser blocked autoplay (common on mobile) — show tap overlay
+        setNeedsTap(true);
+      }
+    };
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) el.play().catch(() => {});
-        else el.pause();
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          // only attempt once per intersection to avoid spam
+          if (!triedOnce) {
+            triedOnce = true;
+            playAttempt();
+          }
+        } else {
+          el.pause();
+        }
       },
       { threshold: 0.25 }
     );
@@ -106,31 +131,64 @@ function AutoPlayVideo({
     return () => io.disconnect();
   }, []);
 
+  const onTapPlay = async () => {
+    const el = ref.current;
+    if (!el) return;
+    try {
+      await el.play();
+      setNeedsTap(false);
+    } catch {
+      // give user controls as a last resort
+      el.controls = true;
+    }
+  };
+
   return (
     <figure
-      className={`relative overflow-hidden rounded-2xl border bg-black aspect-[${aspect}]`}
-      style={{ borderColor: ink.line }}
+      className="relative rounded-2xl overflow-hidden border"
+      style={{ borderColor: ink.line, background: ink.surface }}
     >
       <video
         ref={ref}
-        src={src}
-        playsInline
+        autoPlay
         muted
+        playsInline
         loop
         preload="metadata"
         poster={poster}
-        className="absolute inset-0 w-full h-full object-contain"
+        className={`w-full object-cover ${className}`}
         disablePictureInPicture
         controls={false}
-      />
-      {caption && (
-        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-300 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
+      >
+        <source src={src} type="video/mp4" />
+        {/* Optional: add a WebM source for desktop Chrome if you have it
+        <source src={srcWebm} type="video/webm" />
+        */}
+      </video>
+
+      {/* Tap-to-play overlay if autoplay failed */}
+      {needsTap && (
+        <button
+          type="button"
+          onClick={onTapPlay}
+          className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
+          aria-label="Play video"
+        >
+          <div className="rounded-full border px-5 py-2 text-sm text-white/90">
+            Tap to play
+          </div>
+        </button>
+      )}
+
+      {caption ? (
+        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-300 bg-black/35 backdrop-blur-sm px-2 py-1 rounded-md">
           {caption}
         </figcaption>
-      )}
+      ) : null}
     </figure>
   );
 }
+
 
 // ======================================
 // PAGE
