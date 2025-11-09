@@ -77,55 +77,31 @@ const faqs = [
 // ✅ FIXED VIDEO COMPONENT
 // ======================================
 function AutoPlayVideo(props: {
-  src: string;           // MP4 (H.264 + AAC) in /public/videos/...
+  src: string;
   poster?: string;
   caption?: string;
-  className?: string;
+  className?: string; // optional; no fixed heights!
 }) {
-  const {
-    src,
-    poster,
-    caption,
-    className = "h-[280px] md:h-[360px] lg:h-[420px]",
-  } = props;
-
+  const { src, poster, caption, className = "" } = props;
   const ref = useRef<HTMLVideoElement | null>(null);
   const [needsTap, setNeedsTap] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    el.muted = true;
+    el.playsInline = true;
 
-    el.muted = true;       // iOS autoplay requirement
-    el.playsInline = true; // iOS Safari
-    let triedOnce = false;
-
-    const playAttempt = async () => {
-      if (!el) return;
-      try {
-        await el.play();
-        setNeedsTap(false);
-      } catch {
-        // Browser blocked autoplay (common on mobile) — show tap overlay
-        setNeedsTap(true);
-      }
+    const tryPlay = async () => {
+      try { await el.play(); setNeedsTap(false); }
+      catch { setNeedsTap(true); }
     };
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        if (entry.isIntersecting) {
-          // only attempt once per intersection to avoid spam
-          if (!triedOnce) {
-            triedOnce = true;
-            playAttempt();
-          }
-        } else {
-          el.pause();
-        }
-      },
-      { threshold: 0.25 }
-    );
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry) return;
+      if (entry.isIntersecting) tryPlay();
+      else el.pause();
+    }, { threshold: 0.25 });
 
     io.observe(el);
     return () => io.disconnect();
@@ -134,60 +110,62 @@ function AutoPlayVideo(props: {
   const onTapPlay = async () => {
     const el = ref.current;
     if (!el) return;
-    try {
-      await el.play();
-      setNeedsTap(false);
-    } catch {
-      // give user controls as a last resort
-      el.controls = true;
-    }
+    try { await el.play(); setNeedsTap(false); }
+    catch { el.controls = true; }
   };
 
   return (
     <figure
-      className="relative rounded-2xl overflow-hidden border"
-      style={{ borderColor: ink.line, background: ink.surface }}
+      className={`relative rounded-2xl overflow-hidden border ${className}`}
+      style={{ borderColor: ink.line, background: "black" }}
     >
-      <video
-        ref={ref}
-        autoPlay
-        muted
-        playsInline
-        loop
-        preload="metadata"
-        poster={poster}
-        className={`w-full object-cover ${className}`}
-        disablePictureInPicture
-        controls={false}
-      >
-        <source src={src} type="video/mp4" />
-        {/* Optional: add a WebM source for desktop Chrome if you have it
-        <source src={srcWebm} type="video/webm" />
-        */}
-      </video>
-
-      {/* Tap-to-play overlay if autoplay failed */}
-      {needsTap && (
-        <button
-          type="button"
-          onClick={onTapPlay}
-          className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
-          aria-label="Play video"
+      {/* Aspect-ratio wrapper prevents cropping/jank */}
+      <div className="relative w-full aspect-video sm:aspect-[16/9] lg:aspect-[4/3]">
+        <video
+          ref={ref}
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="metadata"
+          poster={poster}
+          className={`
+            absolute inset-0 w-full h-full
+            object-contain sm:object-cover
+          `}
+          disablePictureInPicture
+          controls={false}
+          onLoadedData={() => {
+            if (ref.current) ref.current.play().catch(() => setNeedsTap(true));
+          }}
         >
-          <div className="rounded-full border px-5 py-2 text-sm text-white/90">
-            Tap to play
-          </div>
-        </button>
-      )}
+          <source src={src} type="video/mp4" />
+        </video>
+
+        {/* Tap-to-play fallback on iOS/Low Power Mode */}
+        {needsTap && (
+          <button
+            type="button"
+            onClick={onTapPlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
+            aria-label="Play video"
+          >
+            <div className="rounded-full border px-5 py-2 text-sm text-white/90">
+              Tap to play
+            </div>
+          </button>
+        )}
+      </div>
 
       {caption ? (
-        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-300 bg-black/35 backdrop-blur-sm px-2 py-1 rounded-md">
+        <figcaption className="absolute bottom-2 left-3 right-3 text-xs md:text-[13px] text-neutral-200 bg-black/35 backdrop-blur-sm px-2 py-1 rounded-md">
           {caption}
         </figcaption>
       ) : null}
     </figure>
   );
 }
+
 
 
 // ======================================
