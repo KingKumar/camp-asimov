@@ -729,10 +729,10 @@ export default function AsimovCampLanding() {
 
     
 {/* WHY US */}
-<section id="why" className="py-20 border-t scroll-mt-20" style={{ borderColor: ink.line }}>
+<section className="py-20 border-t scroll-mt-20" style={{ borderColor: ink.line }}>
   <div className="mx-auto max-w-7xl px-6">
     {/* Heading + intro */}
-    <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
+    <h2 id="why" className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
     <p className="mt-3 text-neutral-300 max-w-3xl">
       Camp Asimov is a mentor-driven build lab where students own real subsystems,
       make decisions, and see the impact of their choices on a working robot.
@@ -788,9 +788,9 @@ export default function AsimovCampLanding() {
 
 
       {/* SAFETY */}
-        <section id="safety" className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <section className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-7xl px-6">
-            <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
+            <h2 id="safety" className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
 
             <p className="mt-2 text-neutral-400 max-w-prose">
             We operate a youth-safety program that meets California requirements for youth-serving organizations.
@@ -830,9 +830,9 @@ export default function AsimovCampLanding() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <section className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-2xl md:text-3xl font-bold">FAQ</h2>
+            <h2 id="faq" className="text-2xl md:text-3xl font-bold">FAQ</h2>
             <div className="mt-8 grid gap-6">
             {faqs.map((f) => (
                 <div
