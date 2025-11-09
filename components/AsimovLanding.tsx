@@ -727,64 +727,64 @@ export default function AsimovCampLanding() {
         </div>
       </section>
 
-      {/* WHY US */}
-<section id="why" className="py-20 border-t" style={{ borderColor: ink.line }}>
-  <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-10">
-    {/* Left: Student-centered story */}
-    <div>
-      <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
-      <p className="mt-3 text-neutral-300 max-w-prose">
-        Camp Asimov is a mentor-driven build lab where students own real subsystems,
-        make decisions, and see the impact of their choices on a working robot.
-        We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>:
-        students ship working mechanisms, document their process, and present like pros.
-      </p>
+    
+{/* WHY US */}
+<section id="why" className="py-20 border-t scroll-mt-20" style={{ borderColor: ink.line }}>
+  <div className="mx-auto max-w-7xl px-6">
+    {/* Heading + intro */}
+    <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
+    <p className="mt-3 text-neutral-300 max-w-3xl">
+      Camp Asimov is a mentor-driven build lab where students own real subsystems,
+      make decisions, and see the impact of their choices on a working robot.
+      We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>:
+      students ship working mechanisms, document their process, and present like pros.
+    </p>
 
-      <div className="mt-6 grid sm:grid-cols-2 gap-4">
-        {[
-          { title: "Authentic builds",
-            text: "Drive bases, intakes, linkages, wiring, sensors—students take subsystems from sketch → CAD → fab → test." },
-          { title: "Mentored mastery",
-            text: "Tight feedback loops with coach check-ins, pairing, and tool certifications to build safely and fast." },
-          { title: "Competitive readiness",
-            text: "Code control loops, integrate sensors, and stress-test under time pressure—skills that transfer to FTC/US school teams." },
-          { title: "Portfolio & storytelling",
-            text: "Iteration journals, photos/video, and a Demo Day reel students can share with teams and programs." },
-        ].map((f) => (
-          <div
-            key={f.title}
-            className="rounded-2xl border p-5"
-            style={{ borderColor: ink.line, background: ink.surface }}
-          >
-            <div className="font-semibold">{f.title}</div>
-            <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Coach blurb */}
-    <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
-      <div className="text-sm text-neutral-300 leading-relaxed">
-        Led by <strong>Ronit Kumar</strong> — a beloved robotics coach who has spent more than a decade teaching in Los Angeles’s
-        independent school system and over fifteen years immersed in competitive robotics as a student, mentor, and program head.
-        Ronit has guided hundreds of students through design challenges and competition seasons, always with the same belief: 
-        <em>kids are incredibly capable and come up with the most creative solutions when trusted and supported.</em>
-         Camp Asimov exists to give them the skills and environment to build confidence in their ideas — to turn imagination into
-        working machines and to see themselves as engineers.
-      </div>
-</div>
-
+    {/* Feature cards */}
+    <div className="mt-6 grid sm:grid-cols-2 gap-4">
+      {[
+        { title: "Authentic builds",
+          text: "Drive bases, intakes, linkages, wiring, sensors—students take subsystems from sketch → CAD → fab → test." },
+        { title: "Mentored mastery",
+          text: "Tight feedback loops with coach check-ins, pairing, and tool certifications to build safely and fast." },
+        { title: "Competitive readiness",
+          text: "Code control loops, integrate sensors, and stress-test under time pressure—skills that transfer to FTC/US school teams." },
+        { title: "Portfolio & storytelling",
+          text: "Iteration journals, photos/video, and a Demo Day reel students can share with teams and programs." },
+      ].map((f) => (
+        <div
+          key={f.title}
+          className="rounded-2xl border p-5"
+          style={{ borderColor: ink.line, background: ink.surface }}
+        >
+          <div className="font-semibold">{f.title}</div>
+          <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
+        </div>
+      ))}
     </div>
 
-    {/* Right: Autoplaying video reel */}
-    <div className="grid sm:grid-cols-2 gap-4">
-      <AutoPlayVideo src="/videos/blockdelivery.mp4" poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
-      <AutoPlayVideo src="/videos/conedelivery.mp4" poster="/videos/posters/intake.jpg" caption="Cycle testing" />
-      <AutoPlayVideo src="/videos/autonomous.mp4" poster="/videos/posters/auton.jpg" caption="Autonomous pathing & sensors" />
-      <AutoPlayVideo src="/videos/lift.mp4" poster="/videos/posters/scrim.jpg" caption="Mechanical lift stress-testing" />
+    {/* Coach blurb */}
+    <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
+      <div className="text-sm text-neutral-300 leading-relaxed max-w-4xl">
+        Led by <strong>Ronit Kumar</strong> — a beloved robotics coach who has spent more than a decade teaching in Los Angeles’s
+        independent school system and over fifteen years immersed in competitive robotics as a student, mentor, and program head.
+        Ronit has guided hundreds of students through design challenges and competition seasons, always with the same belief:
+        <em> kids are incredibly capable and come up with the most creative solutions when trusted and supported.</em>
+        Camp Asimov exists to give them the skills and environment to build confidence in their ideas — to turn imagination into
+        working machines and to see themselves as engineers.
+      </div>
+    </div>
+
+    {/* 4-up video reel UNDER the info */}
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <AutoPlayVideo src="/videos/blockdelivery.mp4"  poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
+      <AutoPlayVideo src="/videos/conedelivery.mp4"   poster="/videos/posters/intake.jpg" caption="Cycle testing" />
+      <AutoPlayVideo src="/videos/autonomous.mp4"     poster="/videos/posters/auton.jpg"  caption="Autonomous pathing & sensors" />
+      <AutoPlayVideo src="/videos/lift.mp4"           poster="/videos/posters/scrim.jpg"  caption="Mechanical lift stress-testing" />
     </div>
   </div>
 </section>
+
 
 
       {/* SAFETY */}
