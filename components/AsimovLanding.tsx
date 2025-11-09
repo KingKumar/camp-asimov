@@ -120,7 +120,7 @@ function AutoPlayVideo(props: {
       style={{ borderColor: ink.line, background: "black" }}
     >
       {/* Aspect-ratio wrapper prevents cropping/jank */}
-      <div className="relative w-full aspect-video sm:aspect-[16/9] lg:aspect-[4/3]">
+      <div className="relative w-full aspect-video md:aspect-[16/9]">
         <video
           ref={ref}
           autoPlay
@@ -131,7 +131,8 @@ function AutoPlayVideo(props: {
           poster={poster}
           className={`
             absolute inset-0 w-full h-full
-            object-contain sm:object-cover
+            object-contain md:object-cover
+            [min-width:100%] [min-height:100%]
           `}
           disablePictureInPicture
           controls={false}
