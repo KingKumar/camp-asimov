@@ -120,43 +120,39 @@ function AutoPlayVideo(props: {
       style={{ borderColor: ink.line, background: "black" }}
     >
       {/* Aspect-ratio wrapper prevents cropping/jank */}
-      <div className="relative w-full aspect-video md:aspect-[16/9]">
+      <div className="relative w-full aspect-video">
         <video
-          ref={ref}
-          autoPlay
-          muted
-          playsInline
-          loop
-          preload="metadata"
-          poster={poster}
-          className={`
-            absolute inset-0 w-full h-full
-            object-contain md:object-cover
-            [min-width:100%] [min-height:100%]
-          `}
-          disablePictureInPicture
-          controls={false}
-          onLoadedData={() => {
+            ref={ref}
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="metadata"
+            poster={poster}
+            className="absolute inset-0 w-full h-full object-contain bg-black"
+            disablePictureInPicture
+            controls={false}
+            onLoadedData={() => {
             if (ref.current) ref.current.play().catch(() => setNeedsTap(true));
-          }}
+            }}
         >
-          <source src={src} type="video/mp4" />
+            <source src={src} type="video/mp4" />
         </video>
 
-        {/* Tap-to-play fallback on iOS/Low Power Mode */}
         {needsTap && (
-          <button
+            <button
             type="button"
             onClick={onTapPlay}
             className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
             aria-label="Play video"
-          >
+            >
             <div className="rounded-full border px-5 py-2 text-sm text-white/90">
-              Tap to play
+                Tap to play
             </div>
-          </button>
+            </button>
         )}
-      </div>
+        </div>
+
 
       {caption ? (
         <figcaption className="absolute bottom-2 left-3 right-3 text-xs md:text-[13px] text-neutral-200 bg-black/35 backdrop-blur-sm px-2 py-1 rounded-md">
