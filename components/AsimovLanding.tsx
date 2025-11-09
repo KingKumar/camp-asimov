@@ -732,8 +732,8 @@ export default function AsimovCampLanding() {
 <section className="py-20 border-t scroll-mt-20" style={{ borderColor: ink.line }}>
   <div className="mx-auto max-w-7xl px-6">
     {/* Heading + intro */}
-    <h2 id="why" className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
-    <p className="mt-3 text-neutral-300 max-w-3xl">
+    <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
+    <p id="why" className="mt-3 text-neutral-300 max-w-3xl">
       Camp Asimov is a mentor-driven build lab where students own real subsystems,
       make decisions, and see the impact of their choices on a working robot.
       We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>:
