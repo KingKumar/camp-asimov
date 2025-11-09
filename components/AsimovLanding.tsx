@@ -12,128 +12,104 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SessionPicker from "@/components/SessionPicker";
 
-
 // ------------------------------------
-// Config / constants (edit these)
+// Config / constants
 // ------------------------------------
-const STRIPE_LINK = "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00"; // <- paste your Stripe Payment Link
-const CONTACT_EMAIL = "info@campasimov.com";            // <- or any email you want visible
+const STRIPE_LINK = "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00";
+const CONTACT_EMAIL = "info@campasimov.com";
 
-// Asimov-inspired palette
 const ink = {
   bg: "#0A0B10",
   surface: "#101219",
   panel: "#0f1321",
-  accent: "#5DE4C7",   // mint
-  accent2: "#7AA2F7",  // blue
+  accent: "#5DE4C7",
+  accent2: "#7AA2F7",
   line: "rgba(255,255,255,0.08)",
 };
 
 const features = [
-  { icon: <Cpu className="w-5 h-5" />, title: "All-Maker • All-Robotics",
-    text: "Mechanical design, CAD, control systems, sensors, and competition-ready builds." },
-  { icon: <Wrench className="w-5 h-5" />, title: "Fabrication Lab",
-    text: "3D printing, laser cutting, prototyping rigs, safe soldering, and tool certification." },
-  { icon: <Video className="w-5 h-5" />, title: "Cinematic Showcase",
-    text: "Demo Day with story, aesthetics, and presentation." },
-  { icon: <Shield className="w-5 h-5" />, title: "Safety First",
-    text: "Safety-first engineering practices: tool training, PPE, and supervised builds." },
+  {
+    icon: <Cpu className="w-5 h-5" />,
+    title: "All-Maker • All-Robotics",
+    text: "Mechanical design, CAD, control systems, sensors, and competition-ready builds.",
+  },
+  {
+    icon: <Wrench className="w-5 h-5" />,
+    title: "Fabrication Lab",
+    text: "3D printing, laser cutting, prototyping rigs, safe soldering, and tool certification.",
+  },
+  {
+    icon: <Video className="w-5 h-5" />,
+    title: "Cinematic Showcase",
+    text: "Demo Day with story, aesthetics, and presentation.",
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: "Safety First",
+    text: "Safety-first engineering practices: tool training, PPE, and supervised builds.",
+  },
 ];
 
 const faqs = [
   {
     q: "Where is it and what are the hours?",
-    a: "Camp runs Mon–Fri, 9:00–3:30 at our Los Angeles location (final site announced after enrollment). Early drop 8:30 and late pickup until 4:00 are available."
+    a: "Camp runs Mon–Fri, 9:00–3:30 at our Los Angeles location (final site announced after enrollment). Early drop 8:30 and late pickup until 4:00 are available.",
   },
   {
     q: "What experience is required?",
-    a: "No prior robotics required. We group by age and experience and start with tool/coding foundations before advancing to competitive build work."
+    a: "No prior robotics required. We group by age and experience and start with tool/coding foundations before advancing to competitive build work.",
   },
   {
     q: "What do students bring and wear?",
-    a: "Closed-toe shoes, hair tied back, no dangling jewelry, a labeled water bottle, and lunch. We supply all tools, materials, and safety gear."
+    a: "Closed-toe shoes, hair tied back, no dangling jewelry, a labeled water bottle, and lunch. We supply all tools, materials, and safety gear.",
   },
   {
     q: "How do you handle allergies and medications?",
-    a: "Tell us on the registration form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing."
+    a: "Tell us on the registration form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing.",
   },
   {
     q: "What is your teacher : student ratio?",
-    a: "We target a 1:8 Teacher : Student ratio, with additional mentors during machine time."
+    a: "We target a 1:8 Teacher : Student ratio, with additional mentors during machine time.",
   },
-  {
-    q: "What’s the device/phone policy?",
-    a: "Phones stay away during build and lecture blocks; brief check-ins at lunch or transitions are okay."
-  },
-  {
-    q: "Photos and media?",
-    a: "Media is opt-in at registration. If you opt out, we’ll mark the roster and avoid capturing your student in photos or video."
-  },
-  {
-    q: "Behavior & safety expectations",
-    a: "We maintain a positive, inclusive environment. Unsafe behavior, harassment, or repeated disruption may result in removal to protect the group (prorated refunds at the director’s discretion)."
-  },
-  {
-    q: "Refunds & transfers",
-    a: "Full refund (minus processing) up to 30 days pre-start; 50% from 14–29 days; credits within 14 days. You can transfer to a later session if space allows."
-  },
-  {
-    q: "Financial aid or discounts",
-    a: "Limited need-based scholarships and sibling discounts may be available — email us at info@campasimov.com."
-  },
-  {
-    q: "What does an Asimov-themed camp mean?",
-    a: "We fuse hard engineering with narrative design—students build capable robots and craft the story around them. It’s STEAM with purpose: logic, ethics, and imagination."
-  },
-  {
-    q: "Is it safe for new makers?",
-    a: "Yes. Every student completes tool training, PPE checks, and staff-guided build steps before independent work."
-  }
 ];
 
-function AutoPlayVideo(props: {
+// ======================================
+// ✅ FIXED VIDEO COMPONENT
+// ======================================
+function AutoPlayVideo({
+  src,
+  poster,
+  caption,
+  aspect = "16/9", // pass "9/16" for vertical clips
+}: {
   src: string;
   poster?: string;
   caption?: string;
-  className?: string;
+  aspect?: string;
 }) {
-  const {
-    src,
-    poster,
-    caption,
-    className = "h-[280px] md:h-[360px] lg:h-[420px]",
-  } = props;
-
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    el.muted = true;
 
-    el.muted = true; // ensure autoplay works
     const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (!entry) return;
-        if (entry.isIntersecting) {
-          el.play().catch(() => {});
-        } else {
-          el.pause();
-        }
+      ([entry]) => {
+        if (entry?.isIntersecting) el.play().catch(() => {});
+        else el.pause();
       },
       { threshold: 0.25 }
     );
 
     io.observe(el);
-    return () => {
-      io.disconnect();
-    };
+    return () => io.disconnect();
   }, []);
 
   return (
     <figure
-      className="relative rounded-2xl overflow-hidden border"
-      style={{ borderColor: ink.line, background: ink.surface }}
+      className={`relative overflow-hidden rounded-2xl border bg-black aspect-[${aspect}]`}
+      style={{ borderColor: ink.line }}
     >
       <video
         ref={ref}
@@ -143,46 +119,40 @@ function AutoPlayVideo(props: {
         loop
         preload="metadata"
         poster={poster}
-        className={`w-full object-cover ${className}`}
+        className="absolute inset-0 w-full h-full object-contain"
         disablePictureInPicture
         controls={false}
       />
-
-      {caption ? (
-        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-400 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
+      {caption && (
+        <figcaption className="absolute bottom-2 left-3 right-3 text-xs text-neutral-300 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
           {caption}
         </figcaption>
-      ) : null}
+      )}
     </figure>
   );
 }
 
-
-
+// ======================================
+// PAGE
+// ======================================
 export default function AsimovCampLanding() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40); // toggle true after scrolling 40px
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  /** shrink header on scroll */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /** prevent background scroll when mobile menu opens */
   useEffect(() => {
-      document.body.style.overflow = mobileOpen ? "hidden" : "";
-      return () => { document.body.style.overflow = ""; };
-    }, [mobileOpen]);
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   return (
     <div
@@ -195,23 +165,27 @@ export default function AsimovCampLanding() {
         `,
       }}
     >
-      {/* subtle star grid */}
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
 
-      {/* NAV */}
+      {/* =======================================
+          ✅ NAV
+      ======================================= */}
       <header
         className={`sticky top-0 z-50 border-b w-full transition-all duration-300 ${
-          scrolled ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]" : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
+          scrolled
+            ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]"
+            : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
         }`}
         style={{ borderColor: ink.line }}
       >
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-between">
-          {/* Left: Logo */}
+          {/* logo */}
           <div className="flex items-center gap-3 shrink-0">
             <Rocket
-              className={`h-6 w-6 transition-all duration-300 ${scrolled ? "scale-90" : "scale-100"}`}
+              className={`h-6 w-6 transition-all duration-300 ${
+                scrolled ? "scale-90" : "scale-100"
+              }`}
               style={{ color: ink.accent }}
-              aria-hidden
             />
             <span
               className={`font-semibold tracking-wide transition-all duration-300 ${
@@ -222,7 +196,7 @@ export default function AsimovCampLanding() {
             </span>
           </div>
 
-          {/* Right: Desktop nav */}
+          {/* desktop nav */}
           <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
             <a href="#program" className="hover:text-white">Program Details</a>
             <a href="#why" className="hover:text-white">Why Us</a>
@@ -230,30 +204,27 @@ export default function AsimovCampLanding() {
             <a href="#faq" className="hover:text-white">FAQ</a>
             <a href="#contact" className="hover:text-white">Contact</a>
             <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-              <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
+              <a href="/staff">Staff Portal</a>
             </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
               <a href="#pricing">Register</a>
             </Button>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* mobile menu toggle */}
           <button
             type="button"
             className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
             style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-controls="mobile-menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(v => !v)}
+            onClick={() => setMobileOpen((s) => !s)}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile panel */}
+        {/* mobile nav panel */}
         <div
-          id="mobile-menu"
           className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
             mobileOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
           }`}
@@ -262,24 +233,38 @@ export default function AsimovCampLanding() {
             className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t"
             style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}
           >
-            <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Program Details</a>
-            <a href="#why" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Why Us</a>
-            <a href="#safety" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Safety</a>
-            <a href="#faq" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>FAQ</a>
-            <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
+            {[
+              ["Program Details", "#program"],
+              ["Why Us", "#why"],
+              ["Safety", "#safety"],
+              ["FAQ", "#faq"],
+              ["Contact", "#contact"],
+            ].map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                className="block px-3 py-2 rounded-lg hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+
             <div className="flex gap-2 pt-2">
               <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
-                <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
+                <a href="/staff" onClick={() => setMobileOpen(false)}>
+                  Staff Portal
+                </a>
               </Button>
               <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
-                <a href="#pricing" onClick={() => setMobileOpen(false)}>Register</a>
+                <a href="#pricing" onClick={() => setMobileOpen(false)}>
+                  Register
+                </a>
               </Button>
             </div>
           </div>
         </div>
       </header>
-
-
 
 
       {/* HERO */}
