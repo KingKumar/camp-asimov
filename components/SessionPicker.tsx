@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 
 type Session = { id: string; label: string; link: string; soldOut?: boolean };
 
@@ -11,18 +10,20 @@ const SESSIONS: Session[] = [
   // { id: "july", label: "July 6–24", link: "", soldOut: true },
 ];
 
-export default function SessionPicker({ compact = false }: { compact?: boolean }) {
-  const router = useRouter();
+/** Optional analytics typing (avoids `any`) */
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+  }
+}
 
+export default function SessionPicker({ compact = false }: { compact?: boolean }) {
   // Preselect first available session
-  const firstAvailable = useMemo(
-    () => SESSIONS.find((s) => !s.soldOut)?.id ?? "",
-    []
-  );
+  const firstAvailable = useMemo(() => SESSIONS.find((s) => !s.soldOut)?.id ?? "", []);
   const [sel, setSel] = useState<string>(firstAvailable);
   const [status, setStatus] = useState<"idle" | "going">("idle");
 
-  // Optional: read ?session= param to preselect from URL
+  // Allow ?session=june preselect
   useEffect(() => {
     const url = new URL(window.location.href);
     const q = url.searchParams.get("session");
@@ -37,23 +38,25 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
     if (!selected || selected.soldOut || !selected.link) return;
     setStatus("going");
 
-    // 🔎 simple analytics hook (swap for GA/Plausible later)
-    try {
-      (window as any).dataLayer?.push?.({
+    // Optional analytics without `any`
+    if (typeof window !== "undefined" && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
         event: "cta_enroll_click",
         session_id: selected.id,
         session_label: selected.label,
       });
-    } catch {}
+    }
 
-    // Use same-tab navigation (best for Stripe checkout flow)
+    // Same-tab Stripe checkout is best for completion rate
     window.location.href = selected.link;
   };
 
   if (compact) {
     return (
       <div className="flex gap-2 items-center">
-        <label className="sr-only" htmlFor="camp-session">Choose session</label>
+        <label className="sr-only" htmlFor="camp-session">
+          Choose session
+        </label>
         <select
           id="camp-session"
           value={sel}
@@ -63,7 +66,8 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
         >
           {SESSIONS.map((s) => (
             <option key={s.id} value={s.id} disabled={!!s.soldOut}>
-              {s.label}{s.soldOut ? " — Sold out" : ""}
+              {s.label}
+              {s.soldOut ? " — Sold out" : ""}
             </option>
           ))}
         </select>
@@ -131,7 +135,6 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
             : "Select a session"}
         </button>
 
-        {/* Optional secondary CTA to learn more */}
         <a
           href="#pricing"
           className="px-6 py-3 rounded-xl border"
