@@ -331,53 +331,284 @@ export default function AsimovCampLanding() {
         </div>
       </section>
 
-      {/* PROGRAM DETAILS */}
-      <section id="program" className="py-16 bg-gray-950 text-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-4 text-center">3-Week Robotics Intensive</h2>
-          <p className="text-lg text-gray-300 mb-10 text-center">
-            A single, immersive summer experience that covers everything your child needs to excel in competitive robotics programs.
+     {/* PROGRAM DETAILS */}
+<section
+  id="program"
+  className="py-20 border-t scroll-mt-28 md:scroll-mt-32"
+  style={{ borderColor: ink.line }}
+>
+  <div className="mx-auto max-w-7xl px-6 text-white">
+
+    <motion.h2
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
+      className="text-3xl md:text-4xl font-bold text-center"
+    >
+      3-Week Robotics Intensive
+    </motion.h2>
+
+    <motion.p
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45 }}
+      viewport={{ once: true }}
+      className="mt-4 text-lg text-neutral-300 text-center max-w-4xl mx-auto"
+    >
+      A single, immersive program that moves students from core engineering
+      principles to tested, competition-ready mechanisms. Each week blends
+      hands-on building, structured coaching, and iteration—no kits, no
+      busywork, just real robotics.
+    </motion.p>
+
+    {/* Week-by-Week breakdown */}
+    <div className="mt-10 grid md:grid-cols-2 gap-6">
+
+      {/* WEEK 1 */}
+      <motion.article
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
+        style={{ background: ink.surface, borderColor: ink.line }}
+      >
+        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-indigo-500/10 via-transparent to-teal-400/10" />
+        <div className="relative">
+          <h3 className="text-xl font-semibold">
+            Week 1 — Design, Fabrication & Rapid Prototyping
+          </h3>
+
+          <p className="mt-2 text-neutral-300">
+            Students learn safe fabrication and bring mechanisms from concept → CAD →
+            prototype → hardware.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold mb-3">Week 1: Design & Build</h3>
-              <ul className="space-y-2 text-gray-300 list-disc list-inside">
-                <li>3D design fundamentals (<strong>Autodesk Fusion 360</strong>)</li>
-                <li>Hands-on mechanical builds (REV + goBilda)</li>
-                <li>Design-driven development & iteration</li>
+          <div className="mt-4 grid sm:grid-cols-2 gap-6">
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li>3D design with <strong>Autodesk Fusion 360</strong></li>
+                <li>Drivetrains, intakes, linkages (REV + goBilda)</li>
+                <li>Design-driven development & feedback loops</li>
+                <li>Safe lab operation & tool certification</li>
               </ul>
             </div>
-
-            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold mb-3">Week 2: Code & Control</h3>
-              <ul className="space-y-2 text-gray-300 list-disc list-inside">
-                <li><strong>Java</strong> programming with REV Robotics Control Hub</li>
-                <li>Sensor integration & path planning</li>
-                <li>Mechanical + software systems working together</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold mb-3">Week 3: Compete & Iterate</h3>
-              <ul className="space-y-2 text-gray-300 list-disc list-inside">
-                <li>Subsystem ownership & iteration journals</li>
-                <li>Testing & reliability under competition pressure</li>
-                <li>Final Friday Family Scrimmage Showcase</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold mb-3">Ages & Levels</h3>
-              <ul className="space-y-2 text-gray-300 list-disc list-inside">
-                <li>Ages 10–12: foundations in design & coding</li>
-                <li>Ages 12–14: strategy, autonomy, advanced builds</li>
-                <li>Ages 14–17: competitive prep & leadership roles</li>
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Outcomes</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li>Early prototypes completed</li>
+                <li>Fusion files & sketches saved</li>
+                <li>Understanding mechanical trade-offs</li>
+                <li>Confident, safe shop habits</li>
               </ul>
             </div>
           </div>
         </div>
-      </section>
+      </motion.article>
+
+      {/* WEEK 2 */}
+      <motion.article
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
+        style={{ background: ink.surface, borderColor: ink.line }}
+      >
+        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-teal-400/10 via-transparent to-indigo-500/10" />
+        <div className="relative">
+          <h3 className="text-xl font-semibold">
+            Week 2 — Code, Control Systems & Sensor Integration
+          </h3>
+
+          <p className="mt-2 text-neutral-300">
+            Students bring mechanisms to life with structured programming and integrated sensing.
+          </p>
+
+          <div className="mt-4 grid sm:grid-cols-2 gap-6">
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li><strong>Java</strong> with REV Control Hub</li>
+                <li>Encoders, positional control, driver controls</li>
+                <li>Sensor integration (distance/vision)</li>
+                <li>Intro to autonomous routines & path planning</li>
+              </ul>
+            </div>
+
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Outcomes</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li>Operable robot subsystems</li>
+                <li>Functional OpModes</li>
+                <li>Sensing + feedback control working on-bot</li>
+                <li>First mini-autonomous routines</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+
+      {/* WEEK 3 */}
+      <motion.article
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
+        viewport={{ once: true }}
+        className="rounded-2xl p-6 border shadow-lg md:col-span-2 relative overflow-hidden"
+        style={{ background: ink.surface, borderColor: ink.line }}
+      >
+        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-br from-indigo-400/10 via-transparent to-teal-300/10" />
+        <div className="relative">
+          <h3 className="text-xl font-semibold">Week 3 — Test, Iterate, Compete</h3>
+
+          <p className="mt-2 text-neutral-300">
+            Students stress-test, analyze failures, and iterate under pressure—ending with our
+            <strong> Family Scrimmage Showcase</strong>.
+          </p>
+
+          <div className="mt-4 grid md:grid-cols-2 gap-6">
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li>Reliability testing & failure analysis</li>
+                <li>Iteration journals & subsystem ownership</li>
+                <li>Strategy refinement & driver practice</li>
+                <li>Presentation & storytelling</li>
+              </ul>
+            </div>
+            <div>
+              <div className="text-sm font-medium text-neutral-200">Outcomes</div>
+              <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+                <li>Reliable competition systems</li>
+                <li>Clear documentation of changes</li>
+                <li>Real scrimmage match experience</li>
+                <li>Polished final presentation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+    </div>
+
+    {/* Daily Rhythm */}
+    <motion.div
+      initial={{ y: 40, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true }}
+      className="mt-8 rounded-2xl p-5 border text-sm"
+      style={{ background: ink.panel, borderColor: ink.line }}
+    >
+      <div className="font-semibold text-neutral-100">Daily Rhythm</div>
+      <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
+        <li>Morning briefing & safety checks</li>
+        <li>Build blocks (mechanical / coding / testing)</li>
+        <li>Coach check-ins & feedback loops</li>
+        <li>End-of-day demos & iteration planning</li>
+      </ul>
+    </motion.div>
+
+    {/* Divider */}
+    <div className="mt-12 h-px w-full" style={{ background: ink.line }} />
+
+    {/* SKILL PROGRESSION */}
+    <motion.div
+      initial={{ y: 40, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="mt-12"
+    >
+      <h3 className="text-2xl md:text-3xl font-bold text-center">
+        Skill Progression (not age-based)
+      </h3>
+
+      <p className="mt-3 text-neutral-300 text-center max-w-3xl mx-auto">
+        Students are placed where they’ll be challenged. Movement between levels
+        is encouraged as abilities grow.
+      </p>
+
+      <div className="mt-10 flex flex-col items-center gap-4">
+
+        {/* LEVEL 3 */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.45 }}
+          viewport={{ once: true }}
+          className="w-full md:w-2/3 lg:w-1/2 rounded-2xl p-6 border text-center relative overflow-hidden"
+          style={{ borderColor: ink.line, background: ink.panel }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 pointer-events-none" />
+          <div className="relative">
+            <div className="flex items-center justify-center gap-2 text-teal-300 text-sm uppercase tracking-wide font-semibold">
+              <Trophy className="h-4 w-4" /> Level 3 — Competitive Leadership
+            </div>
+            <p className="mt-2 text-neutral-200 text-sm">
+              Advanced build strategy, autonomous systems, data-driven iteration,
+              subsystem leadership, & mentoring peers.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* LEVEL 2 */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.45, delay: 0.05 }}
+          viewport={{ once: true }}
+          className="w-full md:w-3/4 lg:w-2/3 rounded-2xl p-6 border text-center relative overflow-hidden"
+          style={{ borderColor: ink.line, background: ink.surface }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 pointer-events-none" />
+          <div className="relative">
+            <div className="flex items-center justify-center gap-2 text-indigo-300 text-sm uppercase tracking-wide font-semibold">
+              <Wrench className="h-4 w-4" /> Level 2 — Intermediate Integration
+            </div>
+            <p className="mt-2 text-neutral-200 text-sm">
+              CAD → Build → Wiring → Code → Sensing → Testing.
+              Students own subsystems and contribute to strategic development.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* LEVEL 1 */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="w-full md:w-5/6 rounded-2xl p-6 border text-center relative overflow-hidden"
+          style={{ borderColor: ink.line, background: "#111521" }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/10 to-transparent pointer-events-none" />
+          <div className="relative">
+            <div className="flex items-center justify-center gap-2 text-neutral-300 text-sm uppercase tracking-wide font-semibold">
+              <Cpu className="h-4 w-4" /> Level 1 — Foundations
+            </div>
+            <p className="mt-2 text-neutral-200 text-sm">
+              Tool safety, CAD basics, programming fundamentals, mechanical
+              principles, fast prototyping, & growth mindset.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="mt-8 text-center text-sm text-neutral-500">
+        <em>
+          Age groupings are for social fit —
+          <strong> skills determine challenge level.</strong>
+        </em>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
+
+     
 
       {/* TUITION & DATES */}
       <section id="pricing" className="py-20 border-t" style={{ borderColor: ink.line }}>
