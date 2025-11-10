@@ -19,12 +19,12 @@ const STRIPE_LINK = "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00";
 const CONTACT_EMAIL = "info@campasimov.com";
 
 const ink = {
-  bg:    "#06121e",
-  surface:"#0b2035",
-  panel: "#0d2742",
-  accent:"#2dd4bf",  // mint
-  accent2:"#60a5fa", // blue
-  line:  "rgba(255,255,255,0.14)",
+  bg:    "#0c0f1a",
+  surface:"#151b33",
+  panel: "#1a2140",
+  accent:"#fb7185",  // coral/rose
+  accent2:"#f59e0b", // amber
+  line:  "rgba(255,255,255,0.12)",
 };
 
 const features = [
