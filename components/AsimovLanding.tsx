@@ -246,7 +246,7 @@ export default function AsimovCampLanding() {
             background: `
               radial-gradient(1200px 600px at 10% -10%, rgba(122,162,247,.18), transparent 60%),
               radial-gradient(800px 400px at 90% 10%, rgba(93,228,199,.12), transparent 60%),
-              linear-gradient(180deg, rgba(10,11,16,0.78), rgba(7,8,14,0.92))
+              linear-gradient(180deg, rgba(10,11,16,0.45), rgba(7,8,14,0.60))
             `,
           }}
         />
