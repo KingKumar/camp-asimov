@@ -225,16 +225,33 @@ export default function AsimovCampLanding() {
   }, [mobileOpen]);
 
   return (
-    <div
-      className="min-h-screen w-full text-white"
-      style={{
-        background: `
-          radial-gradient(1200px 600px at 10% -10%, rgba(122,162,247,.18), transparent 60%),
-          radial-gradient(800px 400px at 90% 10%, rgba(93,228,199,.12), transparent 60%),
-          linear-gradient(180deg, ${ink.bg}, #07080e)
-        `,
-      }}
-    >
+    <div className="min-h-screen w-full text-white relative overflow-hidden">
+      {/* Full-page video background */}
+      <div className="fixed inset-0 -z-10">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        >
+          <source src="/videos/homepage.mp4" type="video/mp4" />
+        </video>
+        {/* Readability overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(1200px 600px at 10% -10%, rgba(122,162,247,.18), transparent 60%),
+              radial-gradient(800px 400px at 90% 10%, rgba(93,228,199,.12), transparent 60%),
+              linear-gradient(180deg, rgba(10,11,16,0.78), rgba(7,8,14,0.92))
+            `,
+          }}
+        />
+      </div>
+
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
       <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
       {/* =======================================
