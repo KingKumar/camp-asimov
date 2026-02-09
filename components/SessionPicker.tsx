@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 type Session = { id: string; label: string; link: string; soldOut?: boolean };
 
@@ -57,20 +58,27 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
         <label className="sr-only" htmlFor="camp-session">
           Choose session
         </label>
-        <select
-          id="camp-session"
-          value={sel}
-          onChange={(e) => setSel(e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-700 text-sm"
-          aria-describedby="session-help"
-        >
-          {SESSIONS.map((s) => (
-            <option key={s.id} value={s.id} disabled={!!s.soldOut}>
-              {s.label}
-              {s.soldOut ? " — Sold out" : ""}
-            </option>
-          ))}
-        </select>
+        <div className="relative w-full">
+          <select
+            id="camp-session"
+            value={sel}
+            onChange={(e) => setSel(e.target.value)}
+            className="w-full appearance-none px-4 py-2.5 pr-11 rounded-xl bg-neutral-900/80 border border-neutral-700/70 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] focus:outline-none focus:ring-2 focus:ring-teal-300/40"
+            aria-describedby="session-help"
+          >
+            {SESSIONS.map((s) => (
+              <option key={s.id} value={s.id} disabled={!!s.soldOut}>
+                {s.label}
+                {s.soldOut ? " — Sold out" : ""}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-white/10 to-white/0 shadow-[0_0_0_1px_rgba(0,0,0,0.2)]">
+              <ChevronDown className="h-4 w-4 text-teal-200/90" />
+            </div>
+          </div>
+        </div>
         <button
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
