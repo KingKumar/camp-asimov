@@ -393,27 +393,56 @@ export default function AsimovCampLanding() {
             <div className="relative">
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
               <div className="relative rounded-3xl border p-6 md:p-8" style={{ borderColor: ink.line, background: ink.surface }}>
-                <div className="grid grid-cols-3 gap-3 text-center text-sm">
-                  {[ ["3", "Weeks"], ["10–17", "Ages"], ["1:8", "Teacher : Student Ratio"] ].map(([n, l]) => (
-                    <div key={l} className="rounded-xl p-4 border" style={{ borderColor: ink.line, background: ink.panel }}>
-                      <div className="font-bold text-xl">{n}</div>
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Camp Snapshot</div>
+                    <div className="mt-1 text-lg md:text-xl font-semibold text-white">Build fast. Lead teams. Ship real robots.</div>
+                  </div>
+                  <div className="hidden md:flex items-center gap-2 text-xs text-neutral-400">
+                    <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
+                    Safety-first lab
+                  </div>
+                </div>
+
+                {/* Stats strip */}
+                <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
+                  {[
+                    ["3", "Weeks"],
+                    ["10–17", "Ages"],
+                    ["1:8", "Teacher : Student"],
+                  ].map(([n, l]) => (
+                    <div
+                      key={l}
+                      className="rounded-xl border px-3 py-3"
+                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.75)" }}
+                    >
+                      <div className="font-extrabold text-lg md:text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 border rounded-2xl p-5" style={{ borderColor: ink.line }}>
+                {/* Capabilities */}
+                <div className="mt-5 rounded-2xl border p-4" style={{ borderColor: ink.line, background: ink.panel }}>
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
-                    <Trophy className="w-4 h-4" aria-hidden /> Expert coaching, small teams, big results.
+                    <Trophy className="w-4 h-4" aria-hidden />
+                    Expert coaching, small teams, big results.
                   </div>
-                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm">
                     {[
-                      "Fusion 360 CAD (3D design fundamentals)",
-                      "Java programming (REV Robotics Control Hub / FTC SDK)",
-                      "Builds with REV Robotics + goBilda ecosystem",
-                      "3D printers, laser cutters, and CNC",
+                      "Fusion 360 CAD & rapid prototyping",
+                      "Java FTC SDK + control loops",
+                      "REV + goBilda competitive builds",
+                      "3D printing, laser cutting, CNC",
+                      "Sensor integration & auton paths",
+                      "Demo Day + portfolio reel",
                     ].map((t) => (
-                      <div key={t} className="flex items-start gap-2">
+                      <div
+                        key={t}
+                        className="flex items-start gap-2 rounded-lg border px-3 py-2"
+                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.65)" }}
+                      >
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
                         <span className="text-neutral-300">{t}</span>
                       </div>
