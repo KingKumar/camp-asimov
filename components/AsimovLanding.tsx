@@ -267,14 +267,18 @@ export default function AsimovCampLanding() {
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
       <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
       {/* Floating highlight reel toggle */}
-      <Button
+      <button
         type="button"
         onClick={() => setShowReel((v) => !v)}
-        className="fixed bottom-6 right-6 z-[70] shadow-xl"
-        style={{ backgroundColor: ink.accent, color: "#081b17" }}
+        className="fixed bottom-6 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide text-[#071410]
+                   bg-gradient-to-r from-teal-300 via-cyan-300 to-emerald-300
+                   shadow-[0_10px_30px_rgba(94,234,212,0.35)] ring-1 ring-white/40
+                   transition-transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-[0.98]"
+        aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
       >
+        <Sparkles className="h-4 w-4" />
         {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
-      </Button>
+      </button>
 
       {/* Highlight reel overlay */}
       {showReel && (
@@ -451,7 +455,10 @@ export default function AsimovCampLanding() {
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <div className="relative">
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
-              <div className="relative rounded-3xl border p-6 md:p-8" style={{ borderColor: ink.line, background: ink.surface }}>
+              <div
+                className="relative rounded-3xl border p-6 md:p-8 backdrop-blur-md"
+                style={{ borderColor: ink.line, background: "rgba(10,12,18,0.55)" }}
+              >
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div>
@@ -474,7 +481,7 @@ export default function AsimovCampLanding() {
                     <div
                       key={l}
                       className="rounded-xl border px-3 py-3"
-                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.75)" }}
+                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.45)" }}
                     >
                       <div className="font-extrabold text-lg md:text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
@@ -483,7 +490,10 @@ export default function AsimovCampLanding() {
                 </div>
 
                 {/* Capabilities */}
-                <div className="mt-5 rounded-2xl border p-4" style={{ borderColor: ink.line, background: ink.panel }}>
+                <div
+                  className="mt-5 rounded-2xl border p-4"
+                  style={{ borderColor: ink.line, background: "rgba(10,12,18,0.45)" }}
+                >
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
                     <Trophy className="w-4 h-4" aria-hidden />
                     Expert coaching, small teams, big results.
@@ -500,7 +510,7 @@ export default function AsimovCampLanding() {
                       <div
                         key={t}
                         className="flex items-start gap-2 rounded-lg border px-3 py-2"
-                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.65)" }}
+                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.35)" }}
                       >
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
                         <span className="text-neutral-300">{t}</span>
