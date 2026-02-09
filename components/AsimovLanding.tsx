@@ -907,10 +907,10 @@ export default function AsimovCampLanding() {
 
     {/* 4-up video reel UNDER the info */}
     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <AutoPlayVideo src="/videos/blockdelivery.mp4"  poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" ratio="4/3" />
-      <AutoPlayVideo src="/videos/conedelivery.mp4"   poster="/videos/posters/intake.jpg" caption="Cycle testing" ratio="4/3" />
-      <AutoPlayVideo src="/videos/autonomous.mp4"     poster="/videos/posters/auton.jpg"  caption="Autonomous pathing & sensors" ratio="4/3" />
-      <AutoPlayVideo src="/videos/lift.mp4"           poster="/videos/posters/scrim.jpg"  caption="Mechanical lift stress-testing" ratio="4/3" />
+      <AutoPlayVideo src="/videos/blockdelivery.mp4"  poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" ratio="9/16" />
+      <AutoPlayVideo src="/videos/conedelivery.mp4"   poster="/videos/posters/intake.jpg" caption="Cycle testing" ratio="9/16" />
+      <AutoPlayVideo src="/videos/autonomous.mp4"     poster="/videos/posters/auton.jpg"  caption="Autonomous pathing & sensors" ratio="9/16" />
+      <AutoPlayVideo src="/videos/lift.mp4"           poster="/videos/posters/scrim.jpg"  caption="Mechanical lift stress-testing" ratio="9/16" />
     </div>
   </div>
 </section>
