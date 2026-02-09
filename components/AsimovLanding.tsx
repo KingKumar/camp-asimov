@@ -822,12 +822,14 @@ export default function AsimovCampLanding() {
     {/* Coach blurb */}
     <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
       <div className="text-sm text-neutral-300 leading-relaxed max-w-4xl">
-        Led by <strong>Ronit Kumar</strong> — a beloved robotics coach who has spent more than a decade teaching in Los Angeles’s
+        Led by <strong>Ronit Kumar</strong>, a beloved robotics coach who has spent more than a decade teaching in Los Angeles’s
         independent school system and over fifteen years immersed in competitive robotics as a student, mentor, and program head.
         Ronit has guided hundreds of students through design challenges and competition seasons, always with the same belief:
-        <em> kids are incredibly capable and come up with the most creative solutions when trusted and supported.</em>
-        Camp Asimov exists to give them the skills and environment to build confidence in their ideas — to turn imagination into
-        working machines and to see themselves as engineers.
+        <em> kids are incredibly capable and come up with the most creative solutions when trusted and supported.</em>{" "}
+        <span className="block mt-2">
+          Camp Asimov exists to give them the skills and environment to build confidence in their ideas. It turns imagination into
+          working machines and helps them see themselves as engineers.
+        </span>
       </div>
     </div>
 
