@@ -780,9 +780,10 @@ export default function AsimovCampLanding() {
         </motion.div>
       </div>
 
-      <div className="mt-8 text-center text-sm text-neutral-500">
-        <em>
-          Age groupings are for social fit —
+      <div className="mt-8 text-center text-sm">
+        <em className="inline-block rounded-full border px-4 py-2 text-neutral-200 backdrop-blur-sm"
+            style={{ borderColor: ink.line, background: "rgba(8,10,16,0.55)" }}>
+          Age groupings are for social fit,
           <strong> skills determine challenge level.</strong>
         </em>
       </div>
@@ -909,14 +910,19 @@ export default function AsimovCampLanding() {
         <div className="mx-auto max-w-7xl px-6">
             <h2 id="safety" className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
 
-            <p className="mt-2 text-neutral-400 max-w-prose">
-            We operate a youth-safety program that meets California requirements for youth-serving organizations.
-            All staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and
-            <strong> mandated reporter training</strong>. Students progress through <strong>tool certifications</strong>,
-            wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs
-            (laser cutter, 3D printers, soldering, CNC). We train lithium-ion battery handling for robotics power systems and
-            maintain on-site emergency supplies.
-            </p>
+            <div
+              className="mt-4 rounded-2xl border p-5 md:p-6"
+              style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
+            >
+              <p className="text-neutral-200 leading-relaxed">
+                We operate a youth-safety program that meets California requirements for youth-serving organizations.
+                All staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and
+                <strong> mandated reporter training</strong>. Students progress through <strong>tool certifications</strong>,
+                wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs
+                (laser cutter, 3D printers, soldering, CNC). We train lithium-ion battery handling for robotics power systems and
+                maintain on-site emergency supplies.
+              </p>
+            </div>
 
             <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -935,13 +941,15 @@ export default function AsimovCampLanding() {
             </div>
 
             {/* Compliance line + optional Safety Plan PDF link */}
-            <div className="mt-4 text-xs text-neutral-500">
-            California compliance: staff/regular volunteers complete <strong>Live Scan</strong> background checks and
-            <strong> mandated reporter training</strong>; written child-safety policies maintained per AB 506.
-            {" "}
-            <a href="/safety-plan.pdf" target="_blank" rel="noopener noreferrer" className="underline text-teal-300">
+            <div
+              className="mt-4 text-xs text-neutral-200 rounded-full inline-flex items-center gap-2 px-4 py-2 border"
+              style={{ borderColor: ink.line, background: "rgba(8,10,16,0.55)" }}
+            >
+              California compliance: staff/regular volunteers complete <strong>Live Scan</strong> background checks and
+              <strong> mandated reporter training</strong>; written child-safety policies maintained per AB 506.
+              <a href="/safety-plan.pdf" target="_blank" rel="noopener noreferrer" className="underline text-teal-300">
                 View our Safety Plan (PDF)
-            </a>
+              </a>
             </div>
         </div>
         </section>
@@ -969,17 +977,20 @@ export default function AsimovCampLanding() {
       {/* CONTACT */}
       <section id="contact" className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold">Questions? Talk to a human.</h3>
-            <p className="mt-2 text-neutral-400">
+          <div
+            className="rounded-2xl border p-6 md:p-7"
+            style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
+          >
+            <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>
+            <p className="mt-2 text-neutral-200">
               We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.
             </p>
-            <div className="mt-4 text-sm">
-              <div className="text-neutral-300">Academic Director: Ronit Kumar</div>
-              <div className="text-neutral-300">Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
-              <div className="text-neutral-300">Los Angeles, CA</div>
-              <div className="text-neutral-300">
-                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>
+            <div className="mt-4 text-sm text-neutral-200 space-y-1">
+              <div><span className="font-semibold text-white">Academic Director:</span> Ronit Kumar</div>
+              <div>Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
+              <div>Los Angeles, CA</div>
+              <div>
+                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline text-teal-200">{CONTACT_EMAIL}</a>
               </div>
             </div>
           </div>
