@@ -138,13 +138,21 @@ function AutoPlayVideo(props: {
     if (isPortrait === null) return "aspect-video"; // default before we know
     return isPortrait ? "aspect-[9/16]" : "aspect-video";
   })();
+  const ratioValue = (() => {
+    if (ratio === "9/16") return "9 / 16";
+    if (ratio === "4/3") return "4 / 3";
+    if (ratio === "1/1") return "1 / 1";
+    if (ratio === "16/9") return "16 / 9";
+    if (isPortrait === null) return "16 / 9";
+    return isPortrait ? "9 / 16" : "16 / 9";
+  })();
 
   return (
     <figure
       className={`relative rounded-2xl overflow-hidden border ${className}`}
       style={{ borderColor: ink.line, background: "black" }}
     >
-      <div className={`relative w-full ${ratioClass}`}>
+      <div className={`relative w-full ${ratioClass}`} style={{ aspectRatio: ratioValue }}>
         <video
           ref={ref}
           autoPlay
@@ -886,10 +894,10 @@ export default function AsimovCampLanding() {
 
     {/* 4-up video reel UNDER the info */}
     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <AutoPlayVideo src="/videos/blockdelivery.mp4"  poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" />
-      <AutoPlayVideo src="/videos/conedelivery.mp4"   poster="/videos/posters/intake.jpg" caption="Cycle testing" />
-      <AutoPlayVideo src="/videos/autonomous.mp4"     poster="/videos/posters/auton.jpg"  caption="Autonomous pathing & sensors" />
-      <AutoPlayVideo src="/videos/lift.mp4"           poster="/videos/posters/scrim.jpg"  caption="Mechanical lift stress-testing" />
+      <AutoPlayVideo src="/videos/blockdelivery.mp4"  poster="/videos/posters/drive.jpg" caption="Driver practice & tuning" ratio="16/9" />
+      <AutoPlayVideo src="/videos/conedelivery.mp4"   poster="/videos/posters/intake.jpg" caption="Cycle testing" ratio="16/9" />
+      <AutoPlayVideo src="/videos/autonomous.mp4"     poster="/videos/posters/auton.jpg"  caption="Autonomous pathing & sensors" ratio="16/9" />
+      <AutoPlayVideo src="/videos/lift.mp4"           poster="/videos/posters/scrim.jpg"  caption="Mechanical lift stress-testing" ratio="16/9" />
     </div>
   </div>
 </section>
