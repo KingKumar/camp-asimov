@@ -821,7 +821,7 @@ export default function AsimovCampLanding() {
 
     {/* Coach blurb */}
     <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
-      <div className="text-sm text-neutral-300 leading-relaxed max-w-4xl">
+      <div className="text-base md:text-lg text-neutral-200 leading-relaxed text-center">
         Led by <strong>Ronit Kumar</strong>, a beloved robotics coach who has spent more than a decade teaching in Los Angeles’s
         independent school system and over fifteen years immersed in competitive robotics as a student, mentor, and program head.
         Ronit has guided hundreds of students through design challenges and competition seasons, always with the same belief:
