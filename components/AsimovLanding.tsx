@@ -457,7 +457,7 @@ export default function AsimovCampLanding() {
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
               <div
                 className="relative rounded-3xl border p-6 md:p-8 backdrop-blur-md"
-                style={{ borderColor: ink.line, background: "rgba(10,12,18,0.55)" }}
+                style={{ borderColor: ink.line, background: "rgba(10,12,18,0.28)" }}
               >
                 {/* Header */}
                 <div className="flex items-center justify-between">
@@ -481,7 +481,7 @@ export default function AsimovCampLanding() {
                     <div
                       key={l}
                       className="rounded-xl border px-3 py-3"
-                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.45)" }}
+                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.22)" }}
                     >
                       <div className="font-extrabold text-lg md:text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
@@ -492,7 +492,7 @@ export default function AsimovCampLanding() {
                 {/* Capabilities */}
                 <div
                   className="mt-5 rounded-2xl border p-4"
-                  style={{ borderColor: ink.line, background: "rgba(10,12,18,0.45)" }}
+                  style={{ borderColor: ink.line, background: "rgba(10,12,18,0.22)" }}
                 >
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
                     <Trophy className="w-4 h-4" aria-hidden />
@@ -510,7 +510,7 @@ export default function AsimovCampLanding() {
                       <div
                         key={t}
                         className="flex items-start gap-2 rounded-lg border px-3 py-2"
-                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.35)" }}
+                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.18)" }}
                       >
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
                         <span className="text-neutral-300">{t}</span>
