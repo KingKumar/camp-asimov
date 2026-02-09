@@ -334,9 +334,9 @@ export default function AsimovCampLanding() {
 
 
       {/* HERO */}
-      <section className="relative min-h-screen">
+      <section className="relative min-h-screen overflow-hidden">
         {/* Hero-only video background */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -360,7 +360,7 @@ export default function AsimovCampLanding() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-36 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
               initial={{ y: 14, opacity: 0 }}
