@@ -78,10 +78,10 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
           aria-live="polite"
         >
-          {status === "going" ? "Opening…" : "Continue"}
+          {status === "going" ? "Opening…" : "Register for Summer 2026"}
         </button>
         <span id="session-help" className="sr-only">
-          Select a session and press continue to proceed to payment.
+          Select a session and press Register for Summer 2026 to proceed to payment.
         </span>
       </div>
     );
