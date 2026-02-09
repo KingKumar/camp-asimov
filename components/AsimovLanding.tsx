@@ -846,10 +846,10 @@ export default function AsimovCampLanding() {
     
 {/* WHY US */}
 <section className="py-20 border-t scroll-mt-20" style={{ borderColor: ink.line }}>
-  <div className="mx-auto max-w-7xl px-6">
+  <div className="mx-auto max-w-7xl px-6 text-center">
     {/* Heading + intro */}
     <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
-    <p id="why" className="mt-3 text-neutral-300 max-w-3xl">
+    <p id="why" className="mt-3 text-neutral-200 max-w-3xl mx-auto">
       Camp Asimov is a mentor-driven build lab where students own real subsystems,
       make decisions, and see the impact of their choices on a working robot.
       We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>:
@@ -870,11 +870,11 @@ export default function AsimovCampLanding() {
       ].map((f) => (
         <div
           key={f.title}
-          className="rounded-2xl border p-5"
+          className="rounded-2xl border p-5 text-left"
           style={{ borderColor: ink.line, background: ink.surface }}
         >
           <div className="font-semibold">{f.title}</div>
-          <p className="mt-2 text-sm text-neutral-400">{f.text}</p>
+          <p className="mt-2 text-sm text-neutral-300">{f.text}</p>
         </div>
       ))}
     </div>
@@ -906,15 +906,15 @@ export default function AsimovCampLanding() {
 
 
       {/* SAFETY */}
-        <section className="py-20 border-t" style={{ borderColor: ink.line }}>
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="py-20 border-t" style={{ borderColor: ink.line }}>
+        <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 id="safety" className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
 
             <div
               className="mt-4 rounded-2xl border p-5 md:p-6"
               style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
             >
-              <p className="text-neutral-200 leading-relaxed">
+              <p className="text-neutral-200 leading-relaxed text-center">
                 We operate a youth-safety program that meets California requirements for youth-serving organizations.
                 All staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and
                 <strong> mandated reporter training</strong>. Students progress through <strong>tool certifications</strong>,
@@ -924,7 +924,7 @@ export default function AsimovCampLanding() {
               </p>
             </div>
 
-            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
             {[
                 "PPE & Certified Tool Zones — Eye protection, hair secured, closed-toe shoes; badges required for laser, 3D printers, soldering.",
                 "Laser & Fab SOPs (ANSI Z136-aligned) — Enclosed Class-1 operation, interlocks maintained, venting checked, signage posted.",
