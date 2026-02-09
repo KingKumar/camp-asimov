@@ -53,7 +53,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
 
   if (compact) {
     return (
-      <div className="flex gap-2 items-center">
+      <div className="flex flex-col gap-2">
         <label className="sr-only" htmlFor="camp-session">
           Choose session
         </label>
@@ -61,7 +61,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           id="camp-session"
           value={sel}
           onChange={(e) => setSel(e.target.value)}
-          className="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-700 text-sm"
+          className="w-full px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-700 text-sm"
           aria-describedby="session-help"
         >
           {SESSIONS.map((s) => (
@@ -74,7 +74,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
         <button
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
-          className="px-4 py-2 rounded-xl font-semibold disabled:opacity-50"
+          className="w-full px-4 py-2 rounded-lg text-sm font-semibold leading-tight disabled:opacity-50"
           style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
           aria-live="polite"
         >

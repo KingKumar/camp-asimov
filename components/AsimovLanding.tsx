@@ -408,7 +408,7 @@ export default function AsimovCampLanding() {
 
       {/* HERO */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 grid md:grid-cols-2 gap-12 items-center">
+        <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 md:pt-24 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
               initial={{ y: 14, opacity: 0 }}
