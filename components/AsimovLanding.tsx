@@ -225,7 +225,10 @@ export default function AsimovCampLanding() {
   }, [mobileOpen]);
 
   return (
-    <div className="min-h-screen w-full text-white relative overflow-hidden">
+    <div
+      className="min-h-screen w-full text-white relative overflow-hidden"
+      style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+    >
       {/* Full-page video background */}
       <div className="fixed inset-0 -z-10">
         <video
@@ -361,10 +364,14 @@ export default function AsimovCampLanding() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-black leading-tight"
+              style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
             >
               LA’s premier mentor-driven robotics & maker camp
             </motion.h1>
-            <p className="mt-6 text-lg text-neutral-300 max-w-prose">
+            <p
+              className="mt-6 text-lg text-neutral-300 max-w-prose"
+              style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
+            >
               Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 items-center">
@@ -373,7 +380,10 @@ export default function AsimovCampLanding() {
               </Button>
               <SessionPicker compact />
             </div>
-            <p className="mt-4 text-xs text-neutral-400">
+            <p
+              className="mt-4 text-xs text-neutral-400"
+              style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}
+            >
             Led by technologist & educator <strong>Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
             </p>
           </div>
