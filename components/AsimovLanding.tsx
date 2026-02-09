@@ -444,10 +444,10 @@ export default function AsimovCampLanding() {
               <SessionPicker compact />
             </div>
             <p
-              className="mt-4 text-xs text-neutral-400"
-              style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}
+              className="mt-4 inline-flex items-center rounded-full border px-3 py-1.5 text-[11px] md:text-xs text-neutral-200 backdrop-blur-sm"
+              style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)", borderColor: ink.line, background: "rgba(8,10,16,0.55)" }}
             >
-            Led by technologist & educator <strong>Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
+              Led by technologist & educator <strong className="mx-1">Ronit Kumar</strong> — bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.
             </p>
           </div>
 
