@@ -64,6 +64,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
             value={sel}
             onChange={(e) => setSel(e.target.value)}
             className="w-full appearance-none px-4 py-2.5 pr-11 rounded-xl bg-neutral-900/80 border border-neutral-700/70 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] focus:outline-none focus:ring-2 focus:ring-teal-300/40"
+            style={{ WebkitAppearance: "none", MozAppearance: "none", appearance: "none", backgroundImage: "none" }}
             aria-describedby="session-help"
           >
             {SESSIONS.map((s) => (
