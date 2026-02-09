@@ -193,6 +193,7 @@ function AutoPlayVideo(props: {
 export default function AsimovCampLanding() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showReel, setShowReel] = useState(false);
 
  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
@@ -218,11 +219,11 @@ export default function AsimovCampLanding() {
 
   /** prevent background scroll when mobile menu opens */
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = mobileOpen || showReel ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
+  }, [mobileOpen, showReel]);
 
   return (
     <div
@@ -257,6 +258,56 @@ export default function AsimovCampLanding() {
 
       <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
       <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
+      {/* Floating highlight reel toggle */}
+      <Button
+        type="button"
+        onClick={() => setShowReel((v) => !v)}
+        className="fixed bottom-6 right-6 z-[70] shadow-xl"
+        style={{ backgroundColor: ink.accent, color: "#081b17" }}
+      >
+        {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
+      </Button>
+
+      {/* Highlight reel overlay */}
+      {showReel && (
+        <div
+          className="fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Highlight Reel"
+          onClick={() => setShowReel(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute -top-10 right-0 rounded-full border px-3 py-1 text-sm text-white/90"
+              style={{ borderColor: ink.line, background: "rgba(10,11,16,0.8)" }}
+              onClick={() => setShowReel(false)}
+              aria-label="Close highlight reel"
+            >
+              <span className="inline-flex items-center gap-2">
+                <X className="h-4 w-4" /> Close
+              </span>
+            </button>
+            <div className="aspect-video overflow-hidden rounded-2xl border" style={{ borderColor: ink.line }}>
+              <video
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+              >
+                <source src="/videos/homepage.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
       {/* =======================================
           ✅ NAV
       ======================================= */}
