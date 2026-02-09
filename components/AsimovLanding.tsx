@@ -227,7 +227,7 @@ export default function AsimovCampLanding() {
   return (
     <div
       className="min-h-screen w-full text-white relative overflow-hidden"
-      style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+      style={{ textShadow: "0 2px 12px rgba(0,0,0,0.75)" }}
     >
       {/* Full-page video background */}
       <div className="fixed inset-0 -z-10">
