@@ -954,12 +954,17 @@ export default function AsimovCampLanding() {
 
             {/* Compliance line + optional Safety Plan PDF link */}
             <div
-              className="mt-4 text-xs text-neutral-200 rounded-full inline-flex items-center gap-2 px-4 py-2 border"
+              className="mt-4 text-xs md:text-sm text-neutral-200 rounded-2xl border px-4 py-3 backdrop-blur-sm max-w-3xl mx-auto leading-relaxed"
               style={{ borderColor: ink.line, background: "rgba(8,10,16,0.55)" }}
             >
               California compliance: staff/regular volunteers complete <strong>Live Scan</strong> background checks and
               <strong> mandated reporter training</strong>; written child-safety policies maintained per AB 506.
-              <a href="/safety-plan.pdf" target="_blank" rel="noopener noreferrer" className="underline text-teal-300">
+              <a
+                href="/safety-plan.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block sm:inline underline text-teal-300 mt-2 sm:mt-0 sm:ml-2"
+              >
                 View our Safety Plan (PDF)
               </a>
             </div>
