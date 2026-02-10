@@ -275,6 +275,7 @@ export default function AsimovCampLanding() {
                    shadow-[0_10px_30px_rgba(94,234,212,0.35)] ring-1 ring-white/40
                    transition-transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-[0.98]"
         aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
+        style={{ textShadow: "none" }}
       >
         <Sparkles className="h-4 w-4" />
         {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
@@ -363,10 +364,10 @@ export default function AsimovCampLanding() {
       <a href="#faq" className="hover:text-white">FAQ</a>
       <a href="#contact" className="hover:text-white">Contact</a>
 
-      <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+      <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17", textShadow: "none" }}>
         <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
       </Button>
-      <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+      <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
         <a href="#pricing">Register</a>
       </Button>
     </nav>
@@ -405,10 +406,10 @@ export default function AsimovCampLanding() {
       <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
 
       <div className="flex gap-2 pt-2">
-        <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17" }}>
+        <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17", textShadow: "none" }}>
           <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
         </Button>
-        <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+        <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
           <a href="#pricing" onClick={() => setMobileOpen(false)}>Register</a>
         </Button>
       </div>
@@ -438,7 +439,7 @@ export default function AsimovCampLanding() {
               Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 items-center">
-              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17" }}>
+              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
                 <a href="#program">Curriculum Overview</a>
               </Button>
               <SessionPicker compact />
@@ -1042,7 +1043,7 @@ export default function AsimovCampLanding() {
             <Button
               type="submit"
               className="px-6 py-3 rounded-xl font-semibold"
-              style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+              style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
             >
               Send
             </Button>

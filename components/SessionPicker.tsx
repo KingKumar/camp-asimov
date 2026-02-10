@@ -84,7 +84,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
           className="w-full px-4 py-2 rounded-lg text-sm font-semibold leading-tight disabled:opacity-50"
-          style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+          style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
           aria-live="polite"
         >
           {status === "going" ? "Opening…" : "Register for Summer 2026"}
@@ -132,7 +132,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
           className="px-6 py-3 rounded-xl font-semibold disabled:opacity-50"
-          style={{ backgroundColor: "#00f0b5", color: "#081b17" }}
+          style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
           aria-live="polite"
         >
           {status === "going"
