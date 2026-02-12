@@ -440,11 +440,18 @@ export default function AsimovCampLanding() {
             >
               Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3 items-center">
-              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="px-6 py-6 text-base border"
+                style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
+              >
                 <a href="#program">Curriculum Overview</a>
               </Button>
-              <SessionPicker compact />
+              <div className="w-full max-w-md mx-auto">
+                <SessionPicker compact />
+              </div>
             </div>
             <p
               className="mt-4 inline-block max-w-2xl rounded-full border px-4 py-2 text-xs md:text-sm text-neutral-200 backdrop-blur-sm text-center"
