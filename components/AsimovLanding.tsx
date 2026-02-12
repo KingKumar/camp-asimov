@@ -1063,6 +1063,9 @@ export default function AsimovCampLanding() {
             className="rounded-2xl border p-6 md:p-7"
             style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
           >
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Contact us to learn more about LA's #1 robotics summer camp.
+            </h2>
             <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>
             <p className="mt-2 text-neutral-200">
               We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.
