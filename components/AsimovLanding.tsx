@@ -4,18 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Cpu, Sparkles, Video, Wrench,
-  CalendarDays, ChevronRight, Trophy, Menu, X
+  Trophy, Menu, X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import SessionPicker from "@/components/SessionPicker";
 
 // ------------------------------------
 // Config / constants
 // ------------------------------------
-const STRIPE_LINK = "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00";
 const CONTACT_EMAIL = "info@campasimov.com";
 
 const ink = {
@@ -27,28 +23,6 @@ const ink = {
   line: "rgba(255,255,255,0.08)",
 };
 
-const features = [
-  {
-    icon: <Cpu className="w-5 h-5" />,
-    title: "All-Maker • All-Robotics",
-    text: "Mechanical design, CAD, control systems, sensors, and competition-ready builds.",
-  },
-  {
-    icon: <Wrench className="w-5 h-5" />,
-    title: "Fabrication Lab",
-    text: "3D printing, laser cutting, prototyping rigs, safe soldering, and tool certification.",
-  },
-  {
-    icon: <Video className="w-5 h-5" />,
-    title: "Cinematic Showcase",
-    text: "Demo Day with story, aesthetics, and presentation.",
-  },
-  {
-    icon: <Shield className="w-5 h-5" />,
-    title: "Safety First",
-    text: "Safety-first engineering practices: tool training, PPE, and supervised builds.",
-  },
-];
 
 const faqs = [
   {
@@ -1065,7 +1039,7 @@ export default function AsimovCampLanding() {
             style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              Contact us to learn more about LA's #1 robotics summer camp.
+              Contact us to learn more about LA&apos;s #1 robotics summer camp.
             </h2>
             <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>
             <p className="mt-2 text-neutral-200">
