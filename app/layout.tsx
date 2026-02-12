@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Camp Asimov — Robotics & Maker Summer Camp",
+  title: "Camp Asimov: Robotics & Maker Summer Camp",
   description: "Build robots, code, and create your future at Camp Asimov. Summer robotics & maker camp for ages 10–17.",
   keywords: [
     "LA robotics camp",
