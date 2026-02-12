@@ -265,9 +265,10 @@ export default function AsimovCampLanding() {
       <button
         type="button"
         onClick={() => setShowReel((v) => !v)}
-        className="fixed bottom-6 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
+        className="fixed bottom-24 md:bottom-10 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
                    border shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
-                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] active:scale-[0.98]"
+                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] active:scale-[0.98]
+                   lg:right-10"
         aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
         style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
       >
