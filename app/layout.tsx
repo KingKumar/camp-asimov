@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "robotics summer program"
   ],
   openGraph: {
-    title: "Camp Asimov  -  LA’s Robotics & Maker Summer Camp",
+    title: "Camp Asimov: LA’s Robotics & Maker Summer Camp",
     description:
       "3-week intensive with CAD, goBilda, coding, and a family scrimmage showcase. Ages 10–17.",
     url: "https://www.campasimov.com",
