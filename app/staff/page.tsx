@@ -33,8 +33,8 @@ export default function StaffPortalPage() {
           disabled={busy}
           className="px-4 py-2 rounded-xl font-semibold transition"
           style={{
-            backgroundColor: "#5DE4C7",
-            color: "#081b17",
+            backgroundColor: "#8EF4D2",
+            color: "#071410",
             opacity: busy ? 0.7 : 1,
           }}
         >
@@ -52,7 +52,7 @@ export default function StaffPortalPage() {
         <section className="rounded-2xl border p-6" style={{ borderColor: "rgba(255,255,255,0.08)", background: "#101219" }}>
           <h2 className="text-xl font-semibold">Training Modules</h2>
           <ul className="mt-3 space-y-2 text-sm text-neutral-300 list-disc list-inside">
-            <li><Link href="/staff/modules/cad" className="underline">3D CAD (Fusion 360) — Video Series</Link></li>
+            <li><Link href="/staff/modules/cad" className="underline">3D CAD (Fusion 360)  -  Video Series</Link></li>
             <li><Link href="/staff/modules/ethos" className="underline">Camp Ethos & Teaching Mindset</Link></li>
             <li><Link href="/staff/modules/compliance" className="underline">AB 506 & Youth Protection</Link></li>
             <li><Link href="/staff/modules/lab" className="underline">Lab Certification: Laser, 3D, Solder</Link></li>

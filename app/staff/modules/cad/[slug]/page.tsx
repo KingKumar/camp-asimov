@@ -7,7 +7,7 @@ import { CAD_LESSONS } from "../lessons";
 
 const PANEL_BG = "#101219";
 const BORDER = "rgba(255,255,255,0.08)";
-const ACCENT = "#7AA2F7";
+const ACCENT = "#8EF4D2";
 
 export default function CadLessonPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -51,7 +51,7 @@ export default function CadLessonPage() {
         <Link
           href="/staff/modules/cad"
           className="px-4 py-2 rounded-xl font-semibold"
-          style={{ backgroundColor: ACCENT, color: "#081b17" }}
+          style={{ backgroundColor: ACCENT, color: "#071410" }}
         >
           All CAD Lessons
         </Link>
@@ -103,7 +103,7 @@ export default function CadLessonPage() {
             className="px-5 py-3 rounded-xl font-semibold"
             style={{
               backgroundColor: completed[lessonSlug] ? "#16a34a" : ACCENT,
-              color: "#081b17",
+              color: "#071410",
             }}
           >
             {completed[lessonSlug] ? "Mark as Incomplete" : "Mark Complete"}

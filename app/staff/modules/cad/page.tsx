@@ -6,7 +6,7 @@ import { CAD_LESSONS } from "./lessons";
 
 const PANEL_BG = "#101219";
 const BORDER = "rgba(255,255,255,0.08)";
-const ACCENT = "#7AA2F7";
+const ACCENT = "#8EF4D2";
 
 export default function CadModuleIndex() {
   const [completed, setCompleted] = useState<Record<string, boolean>>({});
@@ -27,11 +27,11 @@ export default function CadModuleIndex() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-12 text-white">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">3D CAD — Staff Training</h1>
+        <h1 className="text-3xl font-bold">3D CAD  -  Staff Training</h1>
         <Link
           href="/staff"
           className="px-4 py-2 rounded-xl font-semibold"
-          style={{ backgroundColor: ACCENT, color: "#081b17" }}
+          style={{ backgroundColor: ACCENT, color: "#071410" }}
         >
           Staff Portal
         </Link>

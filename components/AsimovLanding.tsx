@@ -23,7 +23,7 @@ const ink = {
   surface: "#101219",
   panel: "#0f1321",
   accent: "#8EF4D2",
-  accent2: "#7AA2F7",
+  accent2: "#8EF4D2",
   line: "rgba(255,255,255,0.08)",
 };
 
@@ -332,7 +332,7 @@ export default function AsimovCampLanding() {
 >
   <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-between">
     
-    {/* LEFT — LOGO */}
+    {/* LEFT  -  LOGO */}
     <div className="flex items-center gap-3 shrink-0">
       <img
         src="/favicon.ico"
@@ -350,7 +350,7 @@ export default function AsimovCampLanding() {
       </span>
     </div>
 
-    {/* RIGHT — DESKTOP NAV */}
+    {/* RIGHT  -  DESKTOP NAV */}
     <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
       <a href="#program" className="hover:text-white">Program Details</a>
       <a href="#why" className="hover:text-white">Why Us</a>
@@ -370,7 +370,7 @@ export default function AsimovCampLanding() {
       </Button>
     </nav>
 
-    {/* MOBILE — HAMBURGER */}
+    {/* MOBILE  -  HAMBURGER */}
     <button
       type="button"
       className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
@@ -584,7 +584,7 @@ export default function AsimovCampLanding() {
     >
       A single, immersive program that moves students from core engineering
       principles to tested, competition-ready mechanisms. Each week blends
-      hands-on building, structured coaching, and iteration—no kits, no
+      hands-on building, structured coaching, and iteration - no kits, no
       busywork, just real robotics.
     </motion.p>
 
@@ -603,7 +603,7 @@ export default function AsimovCampLanding() {
         <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-indigo-500/10 via-transparent to-teal-400/10" />
         <div className="relative">
           <h3 className="text-xl font-semibold">
-            Week 1 — Design, Fabrication & Rapid Prototyping
+            Week 1  -  Design, Fabrication & Rapid Prototyping
           </h3>
 
           <p className="mt-2 text-neutral-300">
@@ -646,7 +646,7 @@ export default function AsimovCampLanding() {
         <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-teal-400/10 via-transparent to-indigo-500/10" />
         <div className="relative">
           <h3 className="text-xl font-semibold">
-            Week 2 — Code, Control Systems & Sensor Integration
+            Week 2  -  Code, Control Systems & Sensor Integration
           </h3>
 
           <p className="mt-2 text-neutral-300">
@@ -688,10 +688,10 @@ export default function AsimovCampLanding() {
       >
         <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-br from-indigo-400/10 via-transparent to-teal-300/10" />
         <div className="relative">
-          <h3 className="text-xl font-semibold">Week 3 — Test, Iterate, Compete</h3>
+          <h3 className="text-xl font-semibold">Week 3  -  Test, Iterate, Compete</h3>
 
           <p className="mt-2 text-neutral-300">
-            Students stress-test, analyze failures, and iterate under pressure—ending with our
+            Students stress-test, analyze failures, and iterate under pressure - ending with our
             <strong> Family Scrimmage Showcase</strong>.
           </p>
 
@@ -771,7 +771,7 @@ export default function AsimovCampLanding() {
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 pointer-events-none" />
           <div className="relative">
             <div className="flex items-center justify-center gap-2 text-teal-300 text-sm uppercase tracking-wide font-semibold">
-              <Trophy className="h-4 w-4" /> Level 3 — Competitive Leadership
+              <Trophy className="h-4 w-4" /> Level 3  -  Competitive Leadership
             </div>
             <p className="mt-2 text-neutral-200 text-sm">
               Advanced build strategy, autonomous systems, data-driven iteration,
@@ -792,7 +792,7 @@ export default function AsimovCampLanding() {
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 pointer-events-none" />
           <div className="relative">
             <div className="flex items-center justify-center gap-2 text-indigo-300 text-sm uppercase tracking-wide font-semibold">
-              <Wrench className="h-4 w-4" /> Level 2 — Intermediate Integration
+              <Wrench className="h-4 w-4" /> Level 2  -  Intermediate Integration
             </div>
             <p className="mt-2 text-neutral-200 text-sm">
               CAD → Build → Wiring → Code → Sensing → Testing.
@@ -813,7 +813,7 @@ export default function AsimovCampLanding() {
           <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/10 to-transparent pointer-events-none" />
           <div className="relative">
             <div className="flex items-center justify-center gap-2 text-neutral-300 text-sm uppercase tracking-wide font-semibold">
-              <Cpu className="h-4 w-4" /> Level 1 — Foundations
+              <Cpu className="h-4 w-4" /> Level 1  -  Foundations
             </div>
             <p className="mt-2 text-neutral-200 text-sm">
               Tool safety, CAD basics, programming fundamentals, mechanical
@@ -889,7 +889,7 @@ export default function AsimovCampLanding() {
             <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
               <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">What’s included</div>
               <div className="mt-2 text-sm text-neutral-300">
-                A premium, all‑inclusive program built for real skill growth — no hidden fees.
+                A premium, all‑inclusive program built for real skill growth  -  no hidden fees.
               </div>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-300">
                 <li>Expert coaching in small teams (1:8 ratio)</li>
@@ -921,11 +921,11 @@ export default function AsimovCampLanding() {
     <div className="mt-6 grid sm:grid-cols-2 gap-4">
       {[
         { title: "Authentic builds",
-          text: "Drive bases, intakes, linkages, wiring, sensors—students take subsystems from sketch → CAD → fab → test." },
+          text: "Drive bases, intakes, linkages, wiring, sensors - students take subsystems from sketch → CAD → fab → test." },
         { title: "Mentored mastery",
           text: "Tight feedback loops with coach check-ins, pairing, and tool certifications to build safely and fast." },
         { title: "Competitive readiness",
-          text: "Code control loops, integrate sensors, and stress-test under time pressure—skills that transfer to FTC/US school teams." },
+          text: "Code control loops, integrate sensors, and stress-test under time pressure - skills that transfer to FTC/US school teams." },
         { title: "Portfolio & storytelling",
           text: "Iteration journals, photos/video, and a Demo Day reel students can share with teams and programs." },
       ].map((f) => (
@@ -987,10 +987,10 @@ export default function AsimovCampLanding() {
 
             <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
             {[
-                "PPE & Certified Tool Zones — Eye protection, hair secured, closed-toe shoes; badges required for laser, 3D printers, soldering.",
-                "Laser & Fab SOPs (ANSI Z136-aligned) — Enclosed Class-1 operation, interlocks maintained, venting checked, signage posted.",
-                "Fume Control & ESD — Local exhaust for soldering, flux training, burn kit on bench; anti-static handling for electronics.",
-                "Medical & Emergency Ready — Allergy/med alerts, epi-pen/inhaler plan, CPR/First Aid trained staff, incident logs & notifications.",
+                "PPE & Certified Tool Zones  -  Eye protection, hair secured, closed-toe shoes; badges required for laser, 3D printers, soldering.",
+                "Laser & Fab SOPs (ANSI Z136-aligned)  -  Enclosed Class-1 operation, interlocks maintained, venting checked, signage posted.",
+                "Fume Control & ESD  -  Local exhaust for soldering, flux training, burn kit on bench; anti-static handling for electronics.",
+                "Medical & Emergency Ready  -  Allergy/med alerts, epi-pen/inhaler plan, CPR/First Aid trained staff, incident logs & notifications.",
             ].map((s) => (
                 <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
                 <div className="flex items-start gap-2">
