@@ -529,7 +529,7 @@ export default function AsimovCampLanding() {
                         sub: "Safe tooling, fixtures, and iteration workflow.",
                       },
                       {
-                        title: "Sensor integration & auton paths",
+                        title: "Sensor integration & autonomous pathing",
                         sub: "Distance/IMU sensors, autonomous routines.",
                       },
                       {
@@ -886,13 +886,18 @@ export default function AsimovCampLanding() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border p-6 lg:col-span-2" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
+            <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
               <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">What’s included</div>
-              <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm text-neutral-300">
-                <li>REV Robotics + goBilda parts & safe fab lab</li>
-                <li>Autodesk Fusion 360 CAD, Java programming</li>
-                <li>Daily field tests & Demo Day showcase</li>
-                <li>Tools, materials, PPE, and coaching</li>
+              <div className="mt-2 text-sm text-neutral-300">
+                A premium, all‑inclusive program built for real skill growth — no hidden fees.
+              </div>
+              <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-300">
+                <li>Expert coaching in small teams (1:8 ratio)</li>
+                <li>FTC‑grade parts: REV Robotics + goBilda builds</li>
+                <li>Autodesk Fusion 360 CAD + Java programming</li>
+                <li>Full lab access, safety training, PPE included</li>
+                <li>Daily testing, iteration, and Demo Day showcase</li>
+                <li>Portfolio photos/video + presentation coaching</li>
               </ul>
             </div>
           </div>
