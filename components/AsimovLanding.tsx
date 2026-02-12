@@ -512,20 +512,41 @@ export default function AsimovCampLanding() {
                   </div>
                   <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm">
                     {[
-                      "Fusion 360 CAD & rapid prototyping",
-                      "Java FTC SDK + control loops",
-                      "REV + goBilda competitive builds",
-                      "3D printing, laser cutting, CNC",
-                      "Sensor integration & auton paths",
-                      "Demo Day + portfolio reel",
+                      {
+                        title: "Fusion 360 CAD & rapid prototyping",
+                        sub: "Sketches → parts → assemblies → testable mechanisms.",
+                      },
+                      {
+                        title: "Java FTC SDK + control loops",
+                        sub: "Encoders, PID basics, driver control structure.",
+                      },
+                      {
+                        title: "REV + goBilda competitive builds",
+                        sub: "Drive trains, intakes, lifts, and wiring standards.",
+                      },
+                      {
+                        title: "3D printing, laser cutting, CNC",
+                        sub: "Safe tooling, fixtures, and iteration workflow.",
+                      },
+                      {
+                        title: "Sensor integration & auton paths",
+                        sub: "Distance/IMU sensors, autonomous routines.",
+                      },
+                      {
+                        title: "Demo Day + portfolio reel",
+                        sub: "Showcase, documentation, and presentation skills.",
+                      },
                     ].map((t) => (
                       <div
-                        key={t}
+                        key={t.title}
                         className="flex items-start gap-2 rounded-md border px-3 py-2"
                         style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(10,12,16,0.12)" }}
                       >
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
-                        <span className="text-neutral-300">{t}</span>
+                        <div className="text-neutral-200">
+                          <div className="font-medium">{t.title}</div>
+                          <div className="text-xs text-neutral-400">{t.sub}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
