@@ -234,10 +234,7 @@ export default function AsimovCampLanding() {
   }, [mobileOpen, showReel]);
 
   return (
-    <div
-      className="min-h-screen w-full text-white relative overflow-hidden"
-      style={{ textShadow: "0 2px 12px rgba(0,0,0,0.75)" }}
-    >
+    <div className="min-h-screen w-full text-white relative overflow-hidden">
       {/* Full-page video background */}
       <div className="fixed inset-0 -z-10">
         <video
@@ -256,24 +253,22 @@ export default function AsimovCampLanding() {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(1200px 600px at 10% -10%, rgba(122,162,247,.18), transparent 60%),
-              radial-gradient(800px 400px at 90% 10%, rgba(93,228,199,.12), transparent 60%),
-              linear-gradient(180deg, rgba(10,11,16,0.55), rgba(7,8,14,0.70))
+              linear-gradient(180deg, rgba(7,9,12,0.55), rgba(5,7,10,0.86))
             `,
           }}
         />
       </div>
 
-      <div className="pointer-events-none fixed inset-0 [background-image:radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
+      <div className="pointer-events-none fixed inset-0 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
       <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
       {/* Floating highlight reel toggle */}
       <button
         type="button"
         onClick={() => setShowReel((v) => !v)}
         className="fixed bottom-6 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide text-[#071410]
-                   bg-gradient-to-r from-teal-300 via-cyan-300 to-emerald-300
-                   shadow-[0_10px_30px_rgba(94,234,212,0.35)] ring-1 ring-white/40
-                   transition-transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-[0.98]"
+                   bg-[#8EF4D2] border border-[#D5FFF2]
+                   shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
+                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] active:scale-[0.98]"
         aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
         style={{ textShadow: "none" }}
       >
@@ -457,15 +452,15 @@ export default function AsimovCampLanding() {
           {/* hero stats + highlights */}
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <div className="relative">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-teal-400/20 to-indigo-400/10 blur-xl" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-white/6 to-transparent" />
               <div
-                className="relative rounded-3xl border p-6 md:p-8 backdrop-blur-md"
-                style={{ borderColor: ink.line, background: "rgba(10,12,18,0.28)" }}
+                className="relative rounded-2xl border p-6 md:p-8"
+                style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
               >
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Camp Snapshot</div>
+                    <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-300">Camp Snapshot</div>
                     <div className="mt-1 text-lg md:text-xl font-semibold text-white">Build fast. Lead teams. Ship real robots.</div>
                   </div>
                   <div className="hidden md:flex items-center gap-2 text-xs text-neutral-400">
@@ -483,8 +478,8 @@ export default function AsimovCampLanding() {
                   ].map(([n, l]) => (
                     <div
                       key={l}
-                      className="rounded-xl border px-3 py-3"
-                      style={{ borderColor: ink.line, background: "rgba(12,14,22,0.22)" }}
+                      className="rounded-lg border px-3 py-3"
+                      style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(12,14,18,0.18)" }}
                     >
                       <div className="font-extrabold text-lg md:text-xl">{n}</div>
                       <div className="text-neutral-400">{l}</div>
@@ -494,8 +489,8 @@ export default function AsimovCampLanding() {
 
                 {/* Capabilities */}
                 <div
-                  className="mt-5 rounded-2xl border p-4"
-                  style={{ borderColor: ink.line, background: "rgba(10,12,18,0.22)" }}
+                  className="mt-5 rounded-xl border p-4"
+                  style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.16)" }}
                 >
                   <div className="flex items-center gap-2 text-sm text-neutral-300">
                     <Trophy className="w-4 h-4" aria-hidden />
@@ -512,8 +507,8 @@ export default function AsimovCampLanding() {
                     ].map((t) => (
                       <div
                         key={t}
-                        className="flex items-start gap-2 rounded-lg border px-3 py-2"
-                        style={{ borderColor: ink.line, background: "rgba(10,12,18,0.18)" }}
+                        className="flex items-start gap-2 rounded-md border px-3 py-2"
+                        style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(10,12,16,0.12)" }}
                       >
                         <Check className="w-4 h-4 mt-0.5" style={{ color: ink.accent }} aria-hidden />
                         <span className="text-neutral-300">{t}</span>
