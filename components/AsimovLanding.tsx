@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  Check, Shield, Rocket, Cpu, Sparkles, Video, Wrench,
+  Check, Shield, Cpu, Sparkles, Video, Wrench,
   CalendarDays, ChevronRight, Trophy, Menu, X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -334,12 +334,12 @@ export default function AsimovCampLanding() {
     
     {/* LEFT — LOGO */}
     <div className="flex items-center gap-3 shrink-0">
-      <Rocket
+      <img
+        src="/favicon.ico"
+        alt="Camp Asimov"
         className={`h-6 w-6 transition-all duration-300 ${
           scrolled ? "scale-90" : "scale-100"
         }`}
-        style={{ color: ink.accent }}
-        aria-hidden
       />
       <span
         className={`font-semibold tracking-wide transition-all duration-300 ${
@@ -819,46 +819,59 @@ export default function AsimovCampLanding() {
       {/* TUITION & DATES */}
       <section id="pricing" className="py-20 border-t" style={{ borderColor: ink.line }}>
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-2xl md:text-3xl font-bold">Tuition & Dates</h2>
-          <div className="mt-6 grid md:grid-cols-4 gap-6">
-            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
-              <div className="text-neutral-400 text-sm">Tuition</div>
-              <div className="mt-2 text-3xl font-extrabold">
-                $1,200 <span className="text-base font-medium text-neutral-400">/ week</span>
-              </div>
-              <div className="mt-1 text-neutral-400 text-sm">3-week intensive • $3,600 total</div>
-              <div className="mt-6">
-                     <SessionPicker compact />
-                </div>
+          <div className="flex items-end justify-between flex-wrap gap-4">
+            <h2 className="text-2xl md:text-3xl font-bold">Tuition & Dates</h2>
+            <div className="text-sm text-neutral-300">3‑week intensive • Mon–Fri 9:00–3:30</div>
+          </div>
 
+          <div className="mt-6 grid lg:grid-cols-3 gap-6">
+            {/* Primary card */}
+            <div
+              className="rounded-2xl border p-6 lg:col-span-2"
+              style={{ borderColor: "rgba(255,255,255,0.18)", background: "rgba(12,14,18,0.22)" }}
+            >
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div>
+                  <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">Tuition</div>
+                  <div className="mt-2 text-4xl md:text-5xl font-extrabold">
+                    $1,200 <span className="text-base font-medium text-neutral-300">/ week</span>
+                  </div>
+                  <div className="mt-2 text-neutral-300 text-sm">3-week intensive • $3,600 total</div>
+                </div>
+                <div className="w-full max-w-md">
+                  <SessionPicker compact />
+                </div>
+              </div>
+              <div className="mt-6 grid sm:grid-cols-2 gap-4 text-sm text-neutral-300">
+                <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
+                  <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Dates</div>
+                  <div className="mt-1 font-semibold text-white">June 8–26 • July 6–24</div>
+                </div>
+                <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
+                  <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Location</div>
+                  <div className="mt-1 font-semibold text-white">Los Angeles (exact site TBD)</div>
+                </div>
+              </div>
             </div>
 
-            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
-              <div className="text-neutral-400 text-sm">Ages</div>
-              <div className="mt-2 text-xl font-semibold">10–17</div>
+            {/* Supporting cards */}
+            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
+              <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">Ages</div>
+              <div className="mt-2 text-2xl font-semibold">10–17</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
                 <li>Grouped by age/experience</li>
                 <li>1:8 <strong>Teacher : Student</strong> ratio</li>
-                <li>LA location • Mon–Fri 9:00–3:30</li>
+                <li>Mentor-heavy, small teams</li>
               </ul>
             </div>
 
-            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
-              <div className="text-neutral-400 text-sm">What’s included</div>
-              <ul className="mt-3 space-y-2 text-sm text-neutral-300">
+            <div className="rounded-2xl border p-6 lg:col-span-2" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
+              <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">What’s included</div>
+              <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm text-neutral-300">
                 <li>REV Robotics + goBilda parts & safe fab lab</li>
                 <li>Autodesk Fusion 360 CAD, Java programming</li>
                 <li>Daily field tests & Demo Day showcase</li>
-              </ul>
-            </div>
-
-            <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.surface }}>
-              <div className="text-neutral-400 text-sm">Logistics</div>
-              <ul className="mt-3 space-y-2 text-sm text-neutral-300">
-                <li>📅 Dates: June 8–26 • July 6–24</li>
-                <li>🕘 Hours: 9:00 am – 3:30 pm</li>
-                <li>📍 Location: Los Angeles (exact site TBD)</li>
-                <li>👩‍🏫 1:8 Teacher : Student ratio</li>
+                <li>Tools, materials, PPE, and coaching</li>
               </ul>
             </div>
           </div>
