@@ -73,7 +73,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
             {SESSIONS.map((s) => (
               <option key={s.id} value={s.id} disabled={!!s.soldOut}>
                 {s.label}
-                {s.soldOut ? "  -  Sold out" : ""}
+                {s.soldOut ? " (Sold out)" : ""}
               </option>
             ))}
           </select>
