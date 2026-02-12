@@ -22,7 +22,7 @@ const ink = {
   bg: "#0A0B10",
   surface: "#101219",
   panel: "#0f1321",
-  accent: "#5DE4C7",
+  accent: "#8EF4D2",
   accent2: "#7AA2F7",
   line: "rgba(255,255,255,0.08)",
 };
@@ -173,7 +173,7 @@ function AutoPlayVideo(props: {
           <button
             type="button"
             onClick={onTapPlay}
-            className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm"
+            className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-sm transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             aria-label="Play video"
           >
             <div className="rounded-full border px-5 py-2 text-sm text-white/90">
@@ -265,12 +265,11 @@ export default function AsimovCampLanding() {
       <button
         type="button"
         onClick={() => setShowReel((v) => !v)}
-        className="fixed bottom-6 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide text-[#071410]
-                   bg-[#8EF4D2] border border-[#D5FFF2]
-                   shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
+        className="fixed bottom-6 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
+                   border shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
                    transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] active:scale-[0.98]"
         aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
-        style={{ textShadow: "none" }}
+        style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
       >
         <Sparkles className="h-4 w-4" />
         {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
@@ -291,7 +290,7 @@ export default function AsimovCampLanding() {
           >
             <button
               type="button"
-              className="absolute -top-10 right-0 rounded-full border px-3 py-1 text-sm text-white/90"
+              className="absolute -top-10 right-0 rounded-full border px-3 py-1 text-sm text-white/90 transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
               style={{ borderColor: ink.line, background: "rgba(10,11,16,0.8)" }}
               onClick={() => setShowReel(false)}
               aria-label="Close highlight reel"
@@ -359,10 +358,14 @@ export default function AsimovCampLanding() {
       <a href="#faq" className="hover:text-white">FAQ</a>
       <a href="#contact" className="hover:text-white">Contact</a>
 
-      <Button asChild className="ml-2" style={{ backgroundColor: "#7AA2F7", color: "#081b17", textShadow: "none" }}>
+      <Button
+        asChild
+        className="ml-2 border"
+        style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
+      >
         <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
       </Button>
-      <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
+      <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
         <a href="#pricing">Register</a>
       </Button>
     </nav>
@@ -370,7 +373,7 @@ export default function AsimovCampLanding() {
     {/* MOBILE — HAMBURGER */}
     <button
       type="button"
-      className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border"
+      className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
       style={{ borderColor: ink.line, background: "rgba(12,14,20,0.5)" }}
       aria-label={mobileOpen ? "Close menu" : "Open menu"}
       aria-controls="mobile-menu"
@@ -401,10 +404,14 @@ export default function AsimovCampLanding() {
       <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
 
       <div className="flex gap-2 pt-2">
-        <Button asChild className="flex-1" style={{ backgroundColor: "#7AA2F7", color: "#081b17", textShadow: "none" }}>
+        <Button
+          asChild
+          className="flex-1 border"
+          style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
+        >
           <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
         </Button>
-        <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
+        <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
           <a href="#pricing" onClick={() => setMobileOpen(false)}>Register</a>
         </Button>
       </div>
@@ -434,7 +441,7 @@ export default function AsimovCampLanding() {
               Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 items-center">
-              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#081b17", textShadow: "none" }}>
+              <Button asChild size="lg" className="px-6 py-6 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
                 <a href="#program">Curriculum Overview</a>
               </Button>
               <SessionPicker compact />
@@ -1038,7 +1045,7 @@ export default function AsimovCampLanding() {
             <Button
               type="submit"
               className="px-6 py-3 rounded-xl font-semibold"
-              style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
+              style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}
             >
               Send
             </Button>

@@ -5,6 +5,9 @@ import { ChevronDown } from "lucide-react";
 
 type Session = { id: string; label: string; link: string; soldOut?: boolean };
 
+const CTA_BG = "#8EF4D2";
+const CTA_TEXT = "#071410";
+
 const SESSIONS: Session[] = [
   { id: "june", label: "June 8–26", link: "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00" },
   { id: "july", label: "July 6–24", link: "https://buy.stripe.com/3cIfZhccA3KRcdg1NG0sU01" },
@@ -76,15 +79,15 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           </select>
           <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2">
             <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-white/10 to-white/0 shadow-[0_0_0_1px_rgba(0,0,0,0.2)]">
-              <ChevronDown className="h-4 w-4 text-teal-200/90" />
+              <ChevronDown className="h-4 w-4 text-[#8EF4D2]" />
             </div>
           </div>
         </div>
         <button
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
-          className="w-full px-4 py-2 rounded-lg text-sm font-semibold leading-tight disabled:opacity-50"
-          style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
+          className="w-full px-4 py-2 rounded-xl text-sm font-semibold leading-tight transition-transform hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-50"
+          style={{ backgroundColor: CTA_BG, color: CTA_TEXT, textShadow: "none" }}
           aria-live="polite"
         >
           {status === "going" ? "Opening…" : "Register for Summer 2026"}
@@ -131,8 +134,8 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
         <button
           onClick={go}
           disabled={!selected || !!selected?.soldOut || status === "going"}
-          className="px-6 py-3 rounded-xl font-semibold disabled:opacity-50"
-          style={{ backgroundColor: "#00f0b5", color: "#081b17", textShadow: "none" }}
+          className="px-6 py-3 rounded-xl font-semibold transition-transform hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-50"
+          style={{ backgroundColor: CTA_BG, color: CTA_TEXT, textShadow: "none" }}
           aria-live="polite"
         >
           {status === "going"
