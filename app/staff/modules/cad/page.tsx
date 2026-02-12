@@ -27,7 +27,7 @@ export default function CadModuleIndex() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-12 text-white">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">3D CAD  -  Staff Training</h1>
+        <h1 className="text-3xl font-bold">3D CAD: Staff Training</h1>
         <Link
           href="/staff"
           className="px-4 py-2 rounded-xl font-semibold"
