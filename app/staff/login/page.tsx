@@ -58,7 +58,7 @@ export default function StaffLoginPage() {
           type="submit"
           disabled={loading}
           className="px-6 py-3 rounded-xl font-semibold"
-          style={{ backgroundColor: "#8EF4D2", color: "#071410", opacity: loading ? 0.7 : 1 }}
+          style={{ backgroundColor: "#8FD7FF", color: "#071410", opacity: loading ? 0.7 : 1 }}
         >
           {loading ? "Signing in…" : "Sign in"}
         </button>

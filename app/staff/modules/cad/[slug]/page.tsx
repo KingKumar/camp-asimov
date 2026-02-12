@@ -7,7 +7,7 @@ import { CAD_LESSONS } from "../lessons";
 
 const PANEL_BG = "#101219";
 const BORDER = "rgba(255,255,255,0.08)";
-const ACCENT = "#8EF4D2";
+const ACCENT = "#8FD7FF";
 
 export default function CadLessonPage() {
   const { slug } = useParams<{ slug: string }>();

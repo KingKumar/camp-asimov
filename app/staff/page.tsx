@@ -33,7 +33,7 @@ export default function StaffPortalPage() {
           disabled={busy}
           className="px-4 py-2 rounded-xl font-semibold transition"
           style={{
-            backgroundColor: "#8EF4D2",
+            backgroundColor: "#8FD7FF",
             color: "#071410",
             opacity: busy ? 0.7 : 1,
           }}

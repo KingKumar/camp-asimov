@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 type Session = { id: string; label: string; link: string; soldOut?: boolean };
 
-const CTA_BG = "#8EF4D2";
+const CTA_BG = "#8FD7FF";
 const CTA_TEXT = "#071410";
 
 const SESSIONS: Session[] = [
@@ -66,7 +66,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
             id="camp-session"
             value={sel}
             onChange={(e) => setSel(e.target.value)}
-            className="w-full appearance-none px-4 py-2.5 pr-11 rounded-xl bg-neutral-900/80 border border-neutral-700/70 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] focus:outline-none focus:ring-2 focus:ring-teal-300/40"
+            className="w-full appearance-none px-4 py-2.5 pr-11 rounded-xl bg-neutral-900/80 border border-neutral-700/70 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] focus:outline-none focus:ring-2 focus:ring-[rgba(143,215,255,0.45)]"
             style={{ WebkitAppearance: "none", MozAppearance: "none", appearance: "none", backgroundImage: "none" }}
             aria-describedby="session-help"
           >
@@ -79,7 +79,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           </select>
           <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2">
             <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-white/10 to-white/0 shadow-[0_0_0_1px_rgba(0,0,0,0.2)]">
-              <ChevronDown className="h-4 w-4 text-[#8EF4D2]" />
+              <ChevronDown className="h-4 w-4 text-[#8FD7FF]" />
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
               onClick={() => !s.soldOut && setSel(s.id)}
               disabled={!!s.soldOut}
               className={`rounded-xl px-4 py-3 text-left border transition
-                ${active ? "border-teal-400" : "border-white/15"}
+                ${active ? "border-[rgba(143,215,255,0.8)]" : "border-white/15"}
                 ${s.soldOut ? "opacity-50 cursor-not-allowed" : "hover:border-white/40"}`}
             >
               <div className="font-medium">{s.label}</div>

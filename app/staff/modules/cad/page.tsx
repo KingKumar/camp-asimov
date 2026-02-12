@@ -6,7 +6,7 @@ import { CAD_LESSONS } from "./lessons";
 
 const PANEL_BG = "#101219";
 const BORDER = "rgba(255,255,255,0.08)";
-const ACCENT = "#8EF4D2";
+const ACCENT = "#8FD7FF";
 
 export default function CadModuleIndex() {
   const [completed, setCompleted] = useState<Record<string, boolean>>({});
@@ -63,7 +63,7 @@ export default function CadModuleIndex() {
                   </p>
                 </div>
                 <span
-                  className={`text-xs px-2 py-1 rounded ${isDone ? "bg-green-500/20 text-green-300" : "bg-neutral-700/40 text-neutral-300"}`}
+                  className={`text-xs px-2 py-1 rounded ${isDone ? "bg-[rgba(143,215,255,0.2)] text-[rgba(143,215,255,0.9)]" : "bg-neutral-700/40 text-neutral-300"}`}
                 >
                   {isDone ? "Completed" : "Not started"}
                 </span>

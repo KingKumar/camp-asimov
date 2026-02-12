@@ -22,8 +22,8 @@ const ink = {
   bg: "#0A0B10",
   surface: "#101219",
   panel: "#0f1321",
-  accent: "#8EF4D2",
-  accent2: "#8EF4D2",
+  accent: "#8FD7FF",
+  accent2: "#8FD7FF",
   line: "rgba(255,255,255,0.08)",
 };
 
@@ -600,7 +600,10 @@ export default function AsimovCampLanding() {
         className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
         style={{ background: ink.surface, borderColor: ink.line }}
       >
-        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-indigo-500/10 via-transparent to-teal-400/10" />
+        <div
+          className="absolute -inset-1 rounded-2xl pointer-events-none"
+          style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.16), transparent 60%)" }}
+        />
         <div className="relative">
           <h3 className="text-xl font-semibold">
             Week 1: Design, Fabrication & Rapid Prototyping
@@ -643,7 +646,10 @@ export default function AsimovCampLanding() {
         className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
         style={{ background: ink.surface, borderColor: ink.line }}
       >
-        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-tr from-teal-400/10 via-transparent to-indigo-500/10" />
+        <div
+          className="absolute -inset-1 rounded-2xl pointer-events-none"
+          style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.16), transparent 60%)" }}
+        />
         <div className="relative">
           <h3 className="text-xl font-semibold">
             Week 2: Code, Control Systems & Sensor Integration
@@ -686,7 +692,10 @@ export default function AsimovCampLanding() {
         className="rounded-2xl p-6 border shadow-lg md:col-span-2 relative overflow-hidden"
         style={{ background: ink.surface, borderColor: ink.line }}
       >
-        <div className="absolute -inset-1 rounded-2xl pointer-events-none bg-gradient-to-br from-indigo-400/10 via-transparent to-teal-300/10" />
+        <div
+          className="absolute -inset-1 rounded-2xl pointer-events-none"
+          style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.14), transparent 60%)" }}
+        />
         <div className="relative">
           <h3 className="text-xl font-semibold">Week 3: Test, Iterate, Compete</h3>
 
@@ -768,9 +777,15 @@ export default function AsimovCampLanding() {
           className="w-full md:w-2/3 lg:w-1/2 rounded-2xl p-6 border text-center relative overflow-hidden"
           style={{ borderColor: ink.line, background: ink.panel }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 pointer-events-none" />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.14), transparent 70%)" }}
+          />
           <div className="relative">
-            <div className="flex items-center justify-center gap-2 text-teal-300 text-sm uppercase tracking-wide font-semibold">
+            <div
+              className="flex items-center justify-center gap-2 text-sm uppercase tracking-wide font-semibold"
+              style={{ color: ink.accent }}
+            >
               <Trophy className="h-4 w-4" /> Level 3: Competitive Leadership
             </div>
             <p className="mt-2 text-neutral-200 text-sm">
@@ -1012,7 +1027,8 @@ export default function AsimovCampLanding() {
                 href="/safety-plan.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block sm:inline underline text-teal-300 mt-2 sm:mt-0 sm:ml-2"
+                className="block sm:inline underline mt-2 sm:mt-0 sm:ml-2"
+                style={{ color: ink.accent }}
               >
                 View our Safety Plan (PDF)
               </a>
@@ -1056,7 +1072,7 @@ export default function AsimovCampLanding() {
               <div>Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
               <div>Los Angeles, CA</div>
               <div>
-                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline text-teal-200">{CONTACT_EMAIL}</a>
+                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline" style={{ color: ink.accent }}>{CONTACT_EMAIL}</a>
               </div>
             </div>
           </div>
