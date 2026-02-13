@@ -433,7 +433,7 @@ export default function AsimovCampLanding() {
               style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)", borderColor: ink.line, background: "rgba(8,10,16,0.45)" }}
             >
               Led by Educator & Technologist{" "}
-              <strong className="font-semibold text-white">Ronit Kumar</strong>, Head of Robotics Program at Crossroads School for the Arts and Sciences and former architect for Brentwood School&apos;s Robotics Program and Center for Innovation and Leadership.
+              <strong className="font-semibold text-white">Ronit Kumar</strong>, Head of Robotics Program at Crossroads School for the Arts and Sciences and founder of Brentwood School&apos;s Robotics Program and Center for Innovation and Leadership.
             </p>
           </div>
 
