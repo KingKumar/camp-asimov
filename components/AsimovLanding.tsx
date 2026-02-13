@@ -419,7 +419,7 @@ export default function AsimovCampLanding() {
               <Button
                 asChild
                 size="lg"
-                className="px-6 py-6 text-base border"
+                className="px-6 py-6 text-base border w-full max-w-md"
                 style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
               >
                 <a href="#program">Curriculum Overview</a>
