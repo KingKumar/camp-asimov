@@ -37,6 +37,13 @@ export default function StaffLoginPage() {
 
   return (
     <main className="max-w-sm mx-auto px-6 py-20 text-white">
+      <a
+        href="/"
+        className="inline-block text-sm underline mb-6"
+        style={{ color: "#8FD7FF" }}
+      >
+        ← Back to home
+      </a>
       <h1 className="text-2xl font-bold">Staff Portal Login</h1>
       <p className="mt-2 text-neutral-400 text-sm">
         Enter the staff password to access training resources.
