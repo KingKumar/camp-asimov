@@ -674,7 +674,7 @@ export default function AsimovCampLanding() {
           <div className="mt-8 w-full">
             <div className="mx-auto w-full max-w-7xl">
               <div
-                className="relative rounded-2xl border p-5 md:p-10 min-h-[70vh] md:min-h-0 flex flex-col"
+                className="relative rounded-2xl border p-5 md:p-10 h-[72vh] md:h-auto min-h-0 flex flex-col"
                 style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
                 onPointerEnter={() => setIsTestimonialPaused(true)}
                 onPointerLeave={() => setIsTestimonialPaused(false)}
@@ -682,7 +682,7 @@ export default function AsimovCampLanding() {
                 onPointerUp={() => setIsTestimonialPaused(false)}
                 onPointerCancel={() => setIsTestimonialPaused(false)}
               >
-                <div className="relative overflow-hidden flex-1">
+                <div className="relative flex-1 min-h-0 overflow-hidden">
                   <AnimatePresence initial={false} custom={testimonialDirection} mode="wait">
                     <motion.div
                       key={testimonialIndex}
@@ -692,24 +692,27 @@ export default function AsimovCampLanding() {
                       animate="center"
                       exit="exit"
                       transition={{ duration: 0.35, ease: "easeOut" }}
+                      className="flex flex-col h-full min-h-0"
                     >
                       <div className="flex items-center gap-3 text-sm text-neutral-300">
                         <Star className="h-5 w-5" style={{ color: ink.accent }} />
                         <span className="font-semibold text-white">{activeTestimonial.name}</span>
                       </div>
-                      <div className="mt-2 text-neutral-300">{activeTestimonial.role}</div>
+                      <div className="mt-2 text-sm text-neutral-300">{activeTestimonial.role}</div>
 
-                      <div
-                        className="mt-6 border-l-2 pl-4 text-base md:text-xl text-white/90 leading-relaxed"
-                        style={{ borderColor: "rgba(143,215,255,0.6)" }}
-                      >
-                        “{activeTestimonial.quote}”
-                      </div>
+                      <div className="mt-4 flex-1 min-h-0 overflow-auto pr-1 space-y-4">
+                        <div
+                          className="border-l-2 pl-4 text-sm md:text-xl text-white/90 leading-snug md:leading-relaxed"
+                          style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                        >
+                          “{activeTestimonial.quote}”
+                        </div>
 
-                      <div className="mt-6 text-sm text-neutral-300 space-y-1">
-                        {activeTestimonial.details.map((d) => (
-                          <div key={d}>{d}</div>
-                        ))}
+                        <div className="text-xs md:text-sm text-neutral-300 space-y-1">
+                          {activeTestimonial.details.map((d) => (
+                            <div key={d}>{d}</div>
+                          ))}
+                        </div>
                       </div>
                     </motion.div>
                   </AnimatePresence>
