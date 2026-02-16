@@ -76,6 +76,15 @@ const testimonials = [
       "Electrical Engineering, Harvard University",
     ],
   },
+  {
+    name: "Paulo S.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "When I first joined robotics, I was just looking for a fun afterschool activity while learning how to build robots. I didn’t realize it would become one of the core memories of my childhood. Mr. Kumar was not only a guiding force in robotics, but also a mentor and friend through the challenges of teenage life. The friendships I built and the lessons I learned are invaluable. Some of my closest friends from middle and high school came from robotics.",
+    details: [
+      "Financial Engineering, University of Miami",
+    ],
+  },
 ];
 
 // ======================================
