@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Cpu, Sparkles, Wrench,
-  Trophy, Menu, X, Star, ChevronLeft, ChevronRight
+  Trophy, Menu, X, Star, ChevronLeft, ChevronRight, Video
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SessionPicker from "@/components/SessionPicker";
@@ -196,32 +196,10 @@ function AutoPlayVideo(props: {
 // ======================================
 export default function AsimovCampLanding() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [showReel, setShowReel] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
-
- const sentinelRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-    const el = sentinelRef.current;
-    if (!el) return;
-
-    const io = new IntersectionObserver(
-        ([entry]) => {
-        // scrolled = header should shrink
-        setScrolled(!entry.isIntersecting);
-        },
-        {
-        rootMargin: "-1px 0px 0px 0px",
-        threshold: 0,
-        }
-    );
-
-    io.observe(el);
-    return () => io.disconnect();
-    }, []);
 
 
   /** prevent background scroll when mobile menu opens */
@@ -285,20 +263,31 @@ export default function AsimovCampLanding() {
       </div>
 
       <div className="pointer-events-none fixed inset-0 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
-      <div ref={sentinelRef} aria-hidden className="h-0 w-px" />
+      
       {/* Floating highlight reel toggle */}
       <button
         type="button"
         onClick={() => setShowReel((v) => !v)}
-        className="fixed bottom-24 md:bottom-10 right-6 z-[70] group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
+        className="fixed bottom-24 md:bottom-10 right-6 z-[70] hidden md:inline-flex group items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
                    border shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
-                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] active:scale-[0.98]
+                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]
                    lg:right-10"
         aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
         style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
       >
         <Sparkles className="h-4 w-4" />
         {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
+      </button>
+      <button
+        type="button"
+        onClick={() => setShowReel((v) => !v)}
+        className="fixed bottom-20 right-4 z-[70] md:hidden inline-flex items-center justify-center h-12 w-12 rounded-full border
+                   shadow-[0_10px_20px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
+                   transition-transform hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
+        aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
+        style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
+      >
+        <Video className="h-5 w-5" />
       </button>
 
       {/* Highlight reel overlay */}
@@ -348,11 +337,7 @@ export default function AsimovCampLanding() {
 <header
       className={`
     fixed top-0 z-50 border-b w-full
-    transition-all duration-300
-    ${scrolled
-      ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]"
-      : "py-4 md:py-5 backdrop-blur-lg bg-[rgba(10,11,16,0.65)]"
-    }
+    py-2 backdrop-blur-md bg-[rgba(10,11,16,0.85)]
   `}
   style={{ borderColor: ink.line }}
 >
@@ -363,14 +348,10 @@ export default function AsimovCampLanding() {
       <img
         src="/favicon.ico"
         alt="Camp Asimov"
-        className={`h-6 w-6 transition-all duration-300 ${
-          scrolled ? "scale-90" : "scale-100"
-        }`}
+        className="h-6 w-6"
       />
       <span
-        className={`font-semibold tracking-wide transition-all duration-300 ${
-          scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
-        }`}
+        className="font-semibold tracking-wide text-sm md:text-base"
       >
         CAMP ASIMOV
       </span>
@@ -655,11 +636,11 @@ export default function AsimovCampLanding() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                <div className="mt-8 flex flex-col items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <button
                       type="button"
-                      className="h-10 w-10 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+                      className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
                       onClick={() =>
                         setTestimonialIndex((i) =>
@@ -668,18 +649,18 @@ export default function AsimovCampLanding() {
                       }
                       aria-label="Previous testimonial"
                     >
-                      <ChevronLeft className="h-4 w-4" />
+                      <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                       type="button"
-                      className="h-10 w-10 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+                      className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
                       onClick={() =>
                         setTestimonialIndex((i) => (i + 1) % testimonials.length)
                       }
                       aria-label="Next testimonial"
                     >
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight className="h-6 w-6" />
                     </button>
                   </div>
                   <div className="text-xs text-neutral-400">
