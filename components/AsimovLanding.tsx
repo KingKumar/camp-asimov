@@ -362,9 +362,9 @@ export default function AsimovCampLanding() {
   }, []);
 
   return (
-    <div className="min-h-[100svh] min-h-[100dvh] w-full text-white relative overflow-x-hidden pt-12 md:pt-16">
+    <>
       {/* Full-page video background */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay
@@ -387,7 +387,9 @@ export default function AsimovCampLanding() {
         />
       </div>
 
-      <div className="pointer-events-none fixed inset-0 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
+      <div className="pointer-events-none fixed inset-0 z-[1] [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
+
+      <div className="min-h-[100svh] min-h-[100dvh] w-full text-white relative z-10 overflow-x-hidden pt-12 md:pt-16">
       
       {/* Floating highlight reel toggle */}
       <button
@@ -1458,5 +1460,6 @@ export default function AsimovCampLanding() {
         
       </footer>
     </div>
+    </>
   );
 }
