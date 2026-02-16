@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Check, Shield, Cpu, Sparkles, Wrench,
   Trophy, Menu, X, Star, ChevronLeft, ChevronRight, Video
@@ -207,8 +207,12 @@ export default function AsimovCampLanding() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showReel, setShowReel] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [testimonialDirection, setTestimonialDirection] = useState<1 | -1>(1);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isTestimonialPaused, setIsTestimonialPaused] = useState(false);
+  const [testimonialProgress, setTestimonialProgress] = useState(0);
+  const testimonialProgressRef = useRef(0);
 
 
   /** prevent background scroll when mobile menu opens */
@@ -220,6 +224,53 @@ export default function AsimovCampLanding() {
   }, [mobileOpen, showReel]);
 
   const activeTestimonial = testimonials[testimonialIndex] || testimonials[0];
+
+  useEffect(() => {
+    testimonialProgressRef.current = 0;
+    setTestimonialProgress(0);
+  }, [testimonialIndex]);
+
+  useEffect(() => {
+    if (isTestimonialPaused || showAllTestimonials) return;
+    let raf = 0;
+    let last = performance.now();
+    const duration = 10000;
+
+    const tick = (now: number) => {
+      const delta = now - last;
+      last = now;
+      const next = Math.min(testimonialProgressRef.current + delta / duration, 1);
+      testimonialProgressRef.current = next;
+      setTestimonialProgress(next);
+
+      if (next >= 1) {
+        testimonialProgressRef.current = 0;
+        setTestimonialProgress(0);
+        setTestimonialDirection(1);
+        setTestimonialIndex((i) => (i + 1) % testimonials.length);
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [isTestimonialPaused, showAllTestimonials]);
+
+  const testimonialVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 80 : -80,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -80 : 80,
+      opacity: 0,
+    }),
+  };
 
   useEffect(() => {
     const ids = ["testimonials", "program", "why", "safety", "faq", "contact"];
@@ -625,36 +676,66 @@ export default function AsimovCampLanding() {
               <div
                 className="relative rounded-2xl border p-6 md:p-10"
                 style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
+                onMouseEnter={() => setIsTestimonialPaused(true)}
+                onMouseLeave={() => setIsTestimonialPaused(false)}
+                onTouchStart={() => setIsTestimonialPaused(true)}
+                onTouchEnd={() => setIsTestimonialPaused(false)}
               >
-                <div className="flex items-center gap-3 text-sm text-neutral-300">
-                  <Star className="h-5 w-5" style={{ color: ink.accent }} />
-                  <span className="font-semibold text-white">{activeTestimonial.name}</span>
-                </div>
-                <div className="mt-2 text-neutral-300">{activeTestimonial.role}</div>
+                <div className="relative overflow-hidden">
+                  <AnimatePresence initial={false} custom={testimonialDirection} mode="wait">
+                    <motion.div
+                      key={testimonialIndex}
+                      custom={testimonialDirection}
+                      variants={testimonialVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                    >
+                      <div className="flex items-center gap-3 text-sm text-neutral-300">
+                        <Star className="h-5 w-5" style={{ color: ink.accent }} />
+                        <span className="font-semibold text-white">{activeTestimonial.name}</span>
+                      </div>
+                      <div className="mt-2 text-neutral-300">{activeTestimonial.role}</div>
 
-                <div
-                  className="mt-6 border-l-2 pl-4 text-lg md:text-xl text-white/90 leading-relaxed"
-                  style={{ borderColor: "rgba(143,215,255,0.6)" }}
-                >
-                  “{activeTestimonial.quote}”
+                      <div
+                        className="mt-6 border-l-2 pl-4 text-lg md:text-xl text-white/90 leading-relaxed"
+                        style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                      >
+                        “{activeTestimonial.quote}”
+                      </div>
+
+                      <div className="mt-6 text-sm text-neutral-300 space-y-1">
+                        {activeTestimonial.details.map((d) => (
+                          <div key={d}>{d}</div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
-                <div className="mt-6 text-sm text-neutral-300 space-y-1">
-                  {activeTestimonial.details.map((d) => (
-                    <div key={d}>{d}</div>
-                  ))}
+                <div className="mt-6 h-1 w-full rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    className="h-full"
+                    style={{
+                      width: `${Math.min(testimonialProgress * 100, 100)}%`,
+                      backgroundColor: ink.accent,
+                      transition: "width 0.1s linear",
+                    }}
+                  />
                 </div>
 
-                <div className="mt-8 flex flex-col items-center gap-3">
+                <div className="mt-6 flex flex-col items-center gap-3">
                   <div className="flex items-center gap-4">
                     <button
                       type="button"
                       className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
                       onClick={() =>
+                        (setTestimonialDirection(-1),
                         setTestimonialIndex((i) =>
                           (i - 1 + testimonials.length) % testimonials.length
-                        )
+                        ))
                       }
                       aria-label="Previous testimonial"
                     >
@@ -665,7 +746,8 @@ export default function AsimovCampLanding() {
                       className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
                       onClick={() =>
-                        setTestimonialIndex((i) => (i + 1) % testimonials.length)
+                        (setTestimonialDirection(1),
+                        setTestimonialIndex((i) => (i + 1) % testimonials.length))
                       }
                       aria-label="Next testimonial"
                     >
