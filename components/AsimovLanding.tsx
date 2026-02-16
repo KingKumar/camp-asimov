@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Check, Shield, Cpu, Sparkles, Wrench,
-  Trophy, Menu, X
+  Trophy, Menu, X, Star, ChevronLeft, ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SessionPicker from "@/components/SessionPicker";
@@ -44,6 +44,28 @@ const faqs = [
   {
     q: "What is your teacher : student ratio?",
     a: "We target a 1:8 Teacher : Student ratio, with additional mentors during machine time.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Paige B.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "Robotics played a foundational role in shaping how I think and solve problems. It taught me resilience, creativity, and how to break complex challenges into manageable pieces. The experience sparked a lasting passion for technology and still influences how I approach my work and the world around me.",
+    details: [
+      "Computer Science, Colgate University",
+      "AI Engineer, Activision (Infinity Ward)",
+    ],
+  },
+  {
+    name: "Bella L.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "One of my favorite parts of robotics was the community and the way Kumar always made the space inviting and lighthearted. Even though building a robot could be frustrating at times, I loved the challenge of thinking creatively and learning to pivot quickly when something didn't work. It was always so gratifying to step back and see the final product with my team.",
+    details: [
+      "Neurobiology, University of California, Davis",
+    ],
   },
 ];
 
@@ -176,6 +198,9 @@ export default function AsimovCampLanding() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showReel, setShowReel] = useState(false);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
@@ -207,8 +232,34 @@ export default function AsimovCampLanding() {
     };
   }, [mobileOpen, showReel]);
 
+  const activeTestimonial = testimonials[testimonialIndex] || testimonials[0];
+
+  useEffect(() => {
+    const ids = ["testimonials", "program", "why", "safety", "faq", "contact"];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (!sections.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen w-full text-white relative overflow-hidden">
+    <div className="min-h-screen w-full text-white relative overflow-x-hidden pt-12 md:pt-16">
       {/* Full-page video background */}
       <div className="fixed inset-0 -z-10">
         <video
@@ -295,8 +346,8 @@ export default function AsimovCampLanding() {
       ======================================= */}
       {/* ================= NAV ================= */}
 <header
-  className={`
-    sticky top-0 z-50 border-b w-full
+      className={`
+    fixed top-0 z-50 border-b w-full
     transition-all duration-300
     ${scrolled
       ? "py-2 backdrop-blur-md bg-[rgba(10,11,16,0.8)]"
@@ -327,11 +378,48 @@ export default function AsimovCampLanding() {
 
     {/* RIGHT: DESKTOP NAV */}
     <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300 ml-auto">
-      <a href="#program" className="hover:text-white">Program Details</a>
-      <a href="#why" className="hover:text-white">Why Us</a>
-      <a href="#safety" className="hover:text-white">Safety</a>
-      <a href="#faq" className="hover:text-white">FAQ</a>
-      <a href="#contact" className="hover:text-white">Contact</a>
+      <a
+        href="#testimonials"
+        className={`hover:text-white ${activeSection === "testimonials" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "testimonials" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        Testimonials
+      </a>
+      <a
+        href="#program"
+        className={`hover:text-white ${activeSection === "program" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "program" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        Program Details
+      </a>
+      <a
+        href="#why"
+        className={`hover:text-white ${activeSection === "why" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "why" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        Why Us
+      </a>
+      <a
+        href="#safety"
+        className={`hover:text-white ${activeSection === "safety" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "safety" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        Safety
+      </a>
+      <a
+        href="#faq"
+        className={`hover:text-white ${activeSection === "faq" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "faq" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        FAQ
+      </a>
+      <a
+        href="#contact"
+        className={`hover:text-white ${activeSection === "contact" ? "font-semibold" : "text-neutral-300"}`}
+        style={activeSection === "contact" ? { color: ink.accent, textDecoration: "underline", textDecorationColor: ink.accent, textUnderlineOffset: 6 } : undefined}
+      >
+        Contact
+      </a>
 
       <Button
         asChild
@@ -372,11 +460,12 @@ export default function AsimovCampLanding() {
       className="px-4 sm:px-6 pb-4 pt-2 space-y-2 border-t"
       style={{ borderColor: ink.line, background: "rgba(10,11,16,0.9)" }}
     >
-      <a href="#program" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Program Details</a>
-      <a href="#why"     className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Why Us</a>
-      <a href="#safety"  className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Safety</a>
-      <a href="#faq"     className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>FAQ</a>
-      <a href="#contact" className="block px-3 py-2 rounded-lg hover:bg-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
+      <a href="#testimonials" className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "testimonials" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>Testimonials</a>
+      <a href="#program" className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "program" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>Program Details</a>
+      <a href="#why"     className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "why" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>Why Us</a>
+      <a href="#safety"  className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "safety" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>Safety</a>
+      <a href="#faq"     className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "faq" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>FAQ</a>
+      <a href="#contact" className={`block px-3 py-2 rounded-lg hover:bg-white/5 ${activeSection === "contact" ? "text-white" : "text-neutral-300"}`} onClick={() => setMobileOpen(false)}>Contact</a>
 
       <div className="flex gap-2 pt-2">
         <Button
@@ -398,7 +487,7 @@ export default function AsimovCampLanding() {
 
       {/* HERO */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 pt-8 pb-20 md:pt-16 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+        <div className="mx-auto max-w-7xl px-6 pt-4 pb-20 md:pt-8 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
               initial={{ y: 14, opacity: 0 }}
@@ -528,6 +617,118 @@ export default function AsimovCampLanding() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-20 border-t scroll-mt-28 md:scroll-mt-32" style={{ borderColor: ink.line }}>
+        <div className="px-6">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex items-end justify-between flex-wrap gap-4">
+              <h2 id="testimonials" className="text-2xl md:text-3xl font-bold">Testimonials</h2>
+              <div className="text-sm text-neutral-300">Real stories from students</div>
+            </div>
+          </div>
+
+          <div className="mt-8 w-full">
+            <div className="mx-auto w-full max-w-7xl">
+              <div
+                className="relative rounded-2xl border p-6 md:p-10"
+                style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
+              >
+                <div className="flex items-center gap-3 text-sm text-neutral-300">
+                  <Star className="h-5 w-5" style={{ color: ink.accent }} />
+                  <span className="font-semibold text-white">{activeTestimonial.name}</span>
+                </div>
+                <div className="mt-2 text-neutral-300">{activeTestimonial.role}</div>
+
+                <div
+                  className="mt-6 border-l-2 pl-4 text-lg md:text-xl text-white/90 leading-relaxed"
+                  style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                >
+                  “{activeTestimonial.quote}”
+                </div>
+
+                <div className="mt-6 text-sm text-neutral-300 space-y-1">
+                  {activeTestimonial.details.map((d) => (
+                    <div key={d}>{d}</div>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      className="h-10 w-10 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+                      style={{ borderColor: ink.accent, color: ink.accent }}
+                      onClick={() =>
+                        setTestimonialIndex((i) =>
+                          (i - 1 + testimonials.length) % testimonials.length
+                        )
+                      }
+                      aria-label="Previous testimonial"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      className="h-10 w-10 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+                      style={{ borderColor: ink.accent, color: ink.accent }}
+                      onClick={() =>
+                        setTestimonialIndex((i) => (i + 1) % testimonials.length)
+                      }
+                      aria-label="Next testimonial"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <div className="text-xs text-neutral-400">
+                    {testimonialIndex + 1} / {testimonials.length}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 text-center">
+                <Button
+                  type="button"
+                  onClick={() => setShowAllTestimonials((v) => !v)}
+                  className="px-6 py-3 border"
+                  style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
+                >
+                  {showAllTestimonials ? "Close all testimonials" : "View all testimonials"}
+                </Button>
+              </div>
+
+              {showAllTestimonials && (
+                <div className="mt-6 grid gap-4">
+                  {testimonials.map((t) => (
+                    <div
+                      key={t.name}
+                      className="rounded-2xl border p-6"
+                      style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
+                    >
+                      <div className="flex items-center gap-3 text-sm text-neutral-300">
+                        <Star className="h-5 w-5" style={{ color: ink.accent }} />
+                        <span className="font-semibold text-white">{t.name}</span>
+                      </div>
+                      <div className="mt-2 text-neutral-300">{t.role}</div>
+                      <div
+                        className="mt-4 border-l-2 pl-4 text-base md:text-lg text-white/90 leading-relaxed"
+                        style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                      >
+                        “{t.quote}”
+                      </div>
+                      <div className="mt-4 text-sm text-neutral-300 space-y-1">
+                        {t.details.map((d) => (
+                          <div key={d}>{d}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
