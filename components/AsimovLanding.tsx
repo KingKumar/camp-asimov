@@ -67,6 +67,15 @@ const testimonials = [
       "Neurobiology, University of California, Davis",
     ],
   },
+  {
+    name: "Beckett O.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "Robotics gave me hands on skills that I've applied across high school and college, and it fundamentally shaped how I approach learning and problem solving. Seeing something you designed, built, or programmed come to life is incredibly rewarding and creates lasting motivation to keep building and creating. The robotics community is full of passionate, talented people, and Mr. Kumar is an incredible teacher and mentor whose excitement for robotics is truly infectious. He is deeply dedicated to helping his students accomplish whatever they set their sights on.",
+    details: [
+      "Electrical Engineering, Harvard University",
+    ],
+  },
 ];
 
 // ======================================
