@@ -121,12 +121,18 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background: #0A0B10;
+    color: #fff;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
   }
 }
 
 html {
   scroll-behavior: smooth;
+  background: #0A0B10;
+  height: 100%;
 }
 
 /* ------------------------------------------------------

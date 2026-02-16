@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Check, Shield, Cpu, Sparkles, Wrench,
@@ -214,6 +214,9 @@ export default function AsimovCampLanding() {
   const [testimonialProgress, setTestimonialProgress] = useState(0);
   const testimonialProgressRef = useRef(0);
   const testimonialLastRef = useRef<number>(0);
+  const testimonialBoxRef = useRef<HTMLDivElement | null>(null);
+  const testimonialContentRef = useRef<HTMLDivElement | null>(null);
+  const [testimonialScale, setTestimonialScale] = useState(1);
 
 
   /** prevent background scroll when mobile menu opens */
@@ -226,10 +229,15 @@ export default function AsimovCampLanding() {
 
   const activeTestimonial = testimonials[testimonialIndex] || testimonials[0];
 
-  useEffect(() => {
+  const resetTestimonialProgress = useCallback(() => {
     testimonialProgressRef.current = 0;
+    testimonialLastRef.current = Date.now();
     setTestimonialProgress(0);
-  }, [testimonialIndex]);
+  }, []);
+
+  useEffect(() => {
+    resetTestimonialProgress();
+  }, [testimonialIndex, resetTestimonialProgress]);
 
   useEffect(() => {
     if (isTestimonialPaused || showAllTestimonials) return;
@@ -250,7 +258,7 @@ export default function AsimovCampLanding() {
     }, 50);
 
     return () => window.clearInterval(interval);
-  }, [isTestimonialPaused, showAllTestimonials]);
+  }, [isTestimonialPaused, showAllTestimonials, testimonialIndex]);
 
   const testimonialVariants = {
     enter: (dir: number) => ({
@@ -266,6 +274,68 @@ export default function AsimovCampLanding() {
       opacity: 0,
     }),
   };
+
+  const updateTestimonialScale = useCallback(() => {
+    const box = testimonialBoxRef.current;
+    const content = testimonialContentRef.current;
+    if (!box || !content) return;
+    const availableH = Math.max(0, box.clientHeight - 8); // small safety buffer
+    if (!availableH) return;
+
+    const maxScale = 1.6;
+    const minScale = 0.5;
+    const safety = 0.97;
+    let low = minScale;
+    let high = maxScale;
+    let best = minScale;
+
+    // Binary search for the largest scale that still fits
+    for (let i = 0; i < 8; i += 1) {
+      const mid = (low + high) / 2;
+      content.style.width = `${100 / mid}%`;
+      const baseH = content.scrollHeight;
+      if (!baseH) break;
+      const scaledH = baseH * mid;
+      if (scaledH <= availableH * safety) {
+        best = mid;
+        low = mid;
+      } else {
+        high = mid;
+      }
+    }
+
+    setTestimonialScale(Number(best.toFixed(3)));
+  }, []);
+
+  useLayoutEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      updateTestimonialScale();
+      requestAnimationFrame(updateTestimonialScale);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [testimonialIndex, showAllTestimonials, updateTestimonialScale]);
+
+  const handleTestimonialNav = (dir: 1 | -1) => {
+    resetTestimonialProgress();
+    setTestimonialDirection(dir);
+    setTestimonialIndex((i) => (i + dir + testimonials.length) % testimonials.length);
+  };
+
+  useEffect(() => {
+    const onResize = () => updateTestimonialScale();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [updateTestimonialScale]);
+
+  useEffect(() => {
+    const box = testimonialBoxRef.current;
+    const content = testimonialContentRef.current;
+    if (!box || !content || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => updateTestimonialScale());
+    ro.observe(box);
+    ro.observe(content);
+    return () => ro.disconnect();
+  }, [updateTestimonialScale]);
 
   useEffect(() => {
     const ids = ["testimonials", "program", "why", "safety", "faq", "contact"];
@@ -292,7 +362,7 @@ export default function AsimovCampLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full text-white relative overflow-x-hidden pt-12 md:pt-16">
+    <div className="min-h-[100svh] min-h-[100dvh] w-full text-white relative overflow-x-hidden pt-12 md:pt-16">
       {/* Full-page video background */}
       <div className="fixed inset-0 -z-10">
         <video
@@ -678,7 +748,12 @@ export default function AsimovCampLanding() {
                 onPointerCancel={() => setIsTestimonialPaused(false)}
               >
                 <div className="relative flex-1 min-h-0 overflow-hidden">
-                  <AnimatePresence initial={false} custom={testimonialDirection} mode="wait">
+                  <AnimatePresence
+                    initial={false}
+                    custom={testimonialDirection}
+                    mode="wait"
+                    onExitComplete={() => requestAnimationFrame(updateTestimonialScale)}
+                  >
                     <motion.div
                       key={testimonialIndex}
                       custom={testimonialDirection}
@@ -688,6 +763,7 @@ export default function AsimovCampLanding() {
                       exit="exit"
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="flex flex-col h-full min-h-0"
+                      onAnimationComplete={() => requestAnimationFrame(updateTestimonialScale)}
                     >
                       <div className="flex items-center gap-3 text-sm text-neutral-300">
                         <Star className="h-5 w-5" style={{ color: ink.accent }} />
@@ -695,18 +771,31 @@ export default function AsimovCampLanding() {
                       </div>
                       <div className="mt-1 text-[12px] md:text-sm text-neutral-300">{activeTestimonial.role}</div>
 
-                      <div className="mt-3 flex-1 min-h-0 overflow-hidden space-y-3">
+                      <div
+                        ref={testimonialBoxRef}
+                        className="mt-3 flex-1 min-h-0 overflow-hidden"
+                      >
                         <div
-                          className="border-l-2 pl-4 text-[13px] md:text-xl text-white/90 leading-snug md:leading-relaxed"
-                          style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                          ref={testimonialContentRef}
+                          className="space-y-3"
+                          style={{
+                            transform: `scale(${testimonialScale})`,
+                            transformOrigin: "top left",
+                            width: `${100 / testimonialScale}%`,
+                          }}
                         >
-                          “{activeTestimonial.quote}”
-                        </div>
+                          <div
+                            className="border-l-2 pl-4 text-[13px] md:text-xl text-white/90 leading-snug md:leading-relaxed"
+                            style={{ borderColor: "rgba(143,215,255,0.6)" }}
+                          >
+                            “{activeTestimonial.quote}”
+                          </div>
 
-                        <div className="text-[11px] md:text-sm text-neutral-300 space-y-1">
-                          {activeTestimonial.details.map((d) => (
-                            <div key={d}>{d}</div>
-                          ))}
+                          <div className="text-[11px] md:text-sm text-neutral-300 space-y-1">
+                            {activeTestimonial.details.map((d) => (
+                              <div key={d}>{d}</div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -730,12 +819,7 @@ export default function AsimovCampLanding() {
                       type="button"
                       className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
-                      onClick={() =>
-                        (setTestimonialDirection(-1),
-                        setTestimonialIndex((i) =>
-                          (i - 1 + testimonials.length) % testimonials.length
-                        ))
-                      }
+                      onClick={() => handleTestimonialNav(-1)}
                       aria-label="Previous testimonial"
                     >
                       <ChevronLeft className="h-6 w-6" />
@@ -744,10 +828,7 @@ export default function AsimovCampLanding() {
                       type="button"
                       className="h-14 w-14 rounded-full border flex items-center justify-center transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
                       style={{ borderColor: ink.accent, color: ink.accent }}
-                      onClick={() =>
-                        (setTestimonialDirection(1),
-                        setTestimonialIndex((i) => (i + 1) % testimonials.length))
-                      }
+                      onClick={() => handleTestimonialNav(1)}
                       aria-label="Next testimonial"
                     >
                       <ChevronRight className="h-6 w-6" />
