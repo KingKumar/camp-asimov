@@ -213,6 +213,7 @@ export default function AsimovCampLanding() {
   const [isTestimonialPaused, setIsTestimonialPaused] = useState(false);
   const [testimonialProgress, setTestimonialProgress] = useState(0);
   const testimonialProgressRef = useRef(0);
+  const testimonialLastRef = useRef<number>(0);
 
 
   /** prevent background scroll when mobile menu opens */
@@ -232,29 +233,23 @@ export default function AsimovCampLanding() {
 
   useEffect(() => {
     if (isTestimonialPaused || showAllTestimonials) return;
-    let raf = 0;
-    let last = performance.now();
     const duration = 10000;
-
-    const tick = (now: number) => {
-      const delta = now - last;
-      last = now;
-      const next = Math.min(testimonialProgressRef.current + delta / duration, 1);
-      testimonialProgressRef.current = next;
-      setTestimonialProgress(next);
-
+    testimonialLastRef.current = Date.now();
+    const interval = window.setInterval(() => {
+      const now = Date.now();
+      const delta = now - testimonialLastRef.current;
+      testimonialLastRef.current = now;
+      let next = testimonialProgressRef.current + delta / duration;
       if (next >= 1) {
-        testimonialProgressRef.current = 0;
-        setTestimonialProgress(0);
+        next = 0;
         setTestimonialDirection(1);
         setTestimonialIndex((i) => (i + 1) % testimonials.length);
       }
+      testimonialProgressRef.current = next;
+      setTestimonialProgress(next);
+    }, 50);
 
-      raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => window.clearInterval(interval);
   }, [isTestimonialPaused, showAllTestimonials]);
 
   const testimonialVariants = {
@@ -674,7 +669,7 @@ export default function AsimovCampLanding() {
           <div className="mt-8 w-full">
             <div className="mx-auto w-full max-w-7xl">
               <div
-                className="relative rounded-2xl border p-5 md:p-10 h-[72vh] md:h-auto min-h-0 flex flex-col"
+                className="relative rounded-2xl border p-4 md:p-10 h-[78vh] md:h-auto min-h-0 flex flex-col"
                 style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
                 onPointerEnter={() => setIsTestimonialPaused(true)}
                 onPointerLeave={() => setIsTestimonialPaused(false)}
@@ -698,17 +693,17 @@ export default function AsimovCampLanding() {
                         <Star className="h-5 w-5" style={{ color: ink.accent }} />
                         <span className="font-semibold text-white">{activeTestimonial.name}</span>
                       </div>
-                      <div className="mt-2 text-sm text-neutral-300">{activeTestimonial.role}</div>
+                      <div className="mt-1 text-[12px] md:text-sm text-neutral-300">{activeTestimonial.role}</div>
 
-                      <div className="mt-4 flex-1 min-h-0 overflow-auto pr-1 space-y-4">
+                      <div className="mt-3 flex-1 min-h-0 overflow-hidden space-y-3">
                         <div
-                          className="border-l-2 pl-4 text-sm md:text-xl text-white/90 leading-snug md:leading-relaxed"
+                          className="border-l-2 pl-4 text-[13px] md:text-xl text-white/90 leading-snug md:leading-relaxed"
                           style={{ borderColor: "rgba(143,215,255,0.6)" }}
                         >
                           “{activeTestimonial.quote}”
                         </div>
 
-                        <div className="text-xs md:text-sm text-neutral-300 space-y-1">
+                        <div className="text-[11px] md:text-sm text-neutral-300 space-y-1">
                           {activeTestimonial.details.map((d) => (
                             <div key={d}>{d}</div>
                           ))}
