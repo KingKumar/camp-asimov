@@ -676,10 +676,11 @@ export default function AsimovCampLanding() {
               <div
                 className="relative rounded-2xl border p-6 md:p-10"
                 style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
-                onMouseEnter={() => setIsTestimonialPaused(true)}
-                onMouseLeave={() => setIsTestimonialPaused(false)}
-                onTouchStart={() => setIsTestimonialPaused(true)}
-                onTouchEnd={() => setIsTestimonialPaused(false)}
+                onPointerEnter={() => setIsTestimonialPaused(true)}
+                onPointerLeave={() => setIsTestimonialPaused(false)}
+                onPointerDown={() => setIsTestimonialPaused(true)}
+                onPointerUp={() => setIsTestimonialPaused(false)}
+                onPointerCancel={() => setIsTestimonialPaused(false)}
               >
                 <div className="relative overflow-hidden">
                   <AnimatePresence initial={false} custom={testimonialDirection} mode="wait">
