@@ -674,7 +674,7 @@ export default function AsimovCampLanding() {
           <div className="mt-8 w-full">
             <div className="mx-auto w-full max-w-7xl">
               <div
-                className="relative rounded-2xl border p-6 md:p-10"
+                className="relative rounded-2xl border p-5 md:p-10 min-h-[70vh] md:min-h-0 flex flex-col"
                 style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
                 onPointerEnter={() => setIsTestimonialPaused(true)}
                 onPointerLeave={() => setIsTestimonialPaused(false)}
@@ -682,7 +682,7 @@ export default function AsimovCampLanding() {
                 onPointerUp={() => setIsTestimonialPaused(false)}
                 onPointerCancel={() => setIsTestimonialPaused(false)}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden flex-1">
                   <AnimatePresence initial={false} custom={testimonialDirection} mode="wait">
                     <motion.div
                       key={testimonialIndex}
@@ -700,7 +700,7 @@ export default function AsimovCampLanding() {
                       <div className="mt-2 text-neutral-300">{activeTestimonial.role}</div>
 
                       <div
-                        className="mt-6 border-l-2 pl-4 text-lg md:text-xl text-white/90 leading-relaxed"
+                        className="mt-6 border-l-2 pl-4 text-base md:text-xl text-white/90 leading-relaxed"
                         style={{ borderColor: "rgba(143,215,255,0.6)" }}
                       >
                         “{activeTestimonial.quote}”
