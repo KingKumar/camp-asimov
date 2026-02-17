@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
 
@@ -10,11 +12,17 @@ export default function ContactSection() {
         <div className="relative w-full overflow-hidden border-y -mt-12 md:-mt-16" style={{ borderColor: ink.line }}>
           <iframe
             title="Camp Asimov in Santa Monica"
-            className="h-[272px] md:h-[368px] w-full"
+            className="h-[272px] md:h-[368px] w-full transition-opacity duration-500 opacity-0"
             src="https://www.google.com/maps?q=Santa%20Monica%2C%20CA&z=13&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            onLoad={(e) => {
+              const el = e.currentTarget;
+              el.classList.remove("opacity-0");
+              el.classList.add("opacity-100");
+            }}
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-black/55 pointer-events-none" />
           <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
             <div className="text-center text-white text-3xl md:text-4xl font-bold drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)]">

@@ -15,6 +15,7 @@ export default function AutoPlayVideo(props: AutoPlayVideoProps) {
   const ref = useRef<HTMLVideoElement | null>(null);
   const [needsTap, setNeedsTap] = useState(false);
   const [isPortrait, setIsPortrait] = useState<boolean | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -66,7 +67,7 @@ export default function AutoPlayVideo(props: AutoPlayVideoProps) {
     <div className={`relative overflow-hidden rounded-2xl border ${ratioClass} ${className}`}>
       <video
         ref={ref}
-        className={`h-full w-full ${isPortrait ? "object-cover" : "object-cover"}`}
+        className={`h-full w-full transition-opacity duration-500 ${isReady ? "opacity-100" : "opacity-0"} ${isPortrait ? "object-cover" : "object-cover"}`}
         src={src}
         poster={poster}
         muted
@@ -74,7 +75,11 @@ export default function AutoPlayVideo(props: AutoPlayVideoProps) {
         loop
         preload="metadata"
         onLoadedMetadata={onMeta}
+        onLoadedData={() => setIsReady(true)}
       />
+      {!isReady && (
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+      )}
       {needsTap && (
         <button
           type="button"
