@@ -45,6 +45,16 @@ const testimonials = [
       "Financial Engineering, University of Miami",
     ],
   },
+  {
+    name: "James K.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "Robotics in high school was the first time I studied engineering in a true academic setting. Mr. Kumar pushed us to understand how and why systems work, which gave us the ability to troubleshoot effectively when things failed. That mindset stayed with me through my studies in Aerospace Engineering at Worcester Polytechnic Institute, and I still rely on those same skills today working on airborne radar systems at Raytheon. I am grateful for the strong foundation and steady, practical approach to engineering that Mr. Kumar instilled.",
+    details: [
+      "Aerospace Engineering, Worcester Polytechnic Institute",
+      "Airborne Radar Systems, Raytheon",
+    ],
+  },
 ];
 
 export default function TestimonialsSection() {
