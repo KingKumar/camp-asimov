@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Sparkles, Video } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
@@ -233,7 +234,14 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
       </header>
 
       <div className="min-h-[100svh] min-h-[100dvh] w-full text-white relative z-10 overflow-x-hidden pt-12 md:pt-16">
-        {children}
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {children}
+        </motion.div>
 
         <footer className="border-t py-8 text-center text-xs text-neutral-500" style={{ borderColor: ink.line }}>
           <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between">

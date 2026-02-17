@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, Shield, Trophy } from "lucide-react";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SessionPicker from "@/components/SessionPicker";
 import { ink } from "@/components/theme";
@@ -34,7 +35,7 @@ export default function HomePage() {
               className="px-6 py-6 text-base border w-full max-w-md"
               style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}
             >
-              <a href="/program">Curriculum Overview</a>
+              <Link href="/program">Curriculum Overview</Link>
             </Button>
             <div className="w-full max-w-md mx-auto">
               <SessionPicker compact />
