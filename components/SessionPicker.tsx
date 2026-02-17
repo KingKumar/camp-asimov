@@ -148,7 +148,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
         </button>
 
         <a
-          href="#pricing"
+          href="/program#pricing"
           className="px-6 py-3 rounded-xl border"
           style={{ borderColor: "rgba(255,255,255,0.15)" }}
         >

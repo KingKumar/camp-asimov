@@ -1,10 +1,10 @@
 import SiteShell from "@/components/SiteShell";
-import HomePage from "@/components/HomePage";
+import FAQSection from "@/components/sections/FAQSection";
 
 export default function Page() {
   return (
     <SiteShell enableReel>
-      <HomePage />
+      <FAQSection />
     </SiteShell>
   );
 }
