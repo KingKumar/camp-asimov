@@ -72,7 +72,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
             type="button"
             onClick={() => setShowReel((v) => !v)}
             className="fixed bottom-24 md:bottom-10 right-6 z-[70] hidden md:inline-flex group items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
-                   border shadow-[0_12px_24px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
+                   border shadow-[0_12px_24px_rgba(143,215,255,0.35),0_0_0_1px_rgba(0,0,0,0.35)]
                    transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]
                    lg:right-10"
             aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
@@ -85,7 +85,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
             type="button"
             onClick={() => setShowReel((v) => !v)}
             className="fixed bottom-20 right-4 z-[70] md:hidden inline-flex items-center justify-center h-12 w-12 rounded-full border
-                   shadow-[0_10px_20px_rgba(48,220,170,0.30),0_0_0_1px_rgba(0,0,0,0.35)]
+                   shadow-[0_10px_20px_rgba(143,215,255,0.35),0_0_0_1px_rgba(0,0,0,0.35)]
                    transition-transform hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
             aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
             style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
@@ -176,7 +176,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
               <Link href="/staff" aria-label="Open Staff Portal">Staff Portal</Link>
             </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              <Link href="/program#pricing">Register</Link>
+              <Link href="/program#pricing">Register for Summer 2026</Link>
             </Button>
           </nav>
 
@@ -225,7 +225,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
               </Button>
               <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
                 <Link href="/program#pricing" onClick={() => setMobileOpen(false)}>
-                  Register
+                  Register for Summer 2026
                 </Link>
               </Button>
             </div>

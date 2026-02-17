@@ -9,7 +9,7 @@ import { ink } from "@/components/theme";
 export default function ProgramDetailsSection() {
   return (
     <>
-      <section className="py-16">
+      <section className="pt-6 md:pt-8 pb-16">
         <div className="mx-auto max-w-7xl px-6 text-white">
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
@@ -270,10 +270,10 @@ export default function ProgramDetailsSection() {
         </div>
       </section>
 
-      <section id="pricing" className="py-16">
+      <section id="pricing" className="pt-6 md:pt-8 pb-16">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="flex items-end justify-between flex-wrap gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold">Tuition & Dates</h2>
+          <div className="flex items-end justify-center flex-wrap gap-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-center w-full">Tuition & Dates</h2>
             <div className="text-sm text-neutral-300">3‑week intensive • Mon–Fri 9:00–3:30</div>
           </div>
 

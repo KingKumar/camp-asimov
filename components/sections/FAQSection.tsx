@@ -25,9 +25,9 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="py-16">
+    <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-2xl md:text-3xl font-bold">FAQ</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center">FAQ</h2>
         <div className="mt-8 grid gap-6">
           {faqs.map((f) => (
             <div

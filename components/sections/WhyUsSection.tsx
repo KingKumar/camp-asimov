@@ -5,9 +5,9 @@ import { ink } from "@/components/theme";
 
 export default function WhyUsSection() {
   return (
-    <section className="py-16">
+    <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold">Built around student growth</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center">Built around student growth</h2>
         <p className="mt-3 text-neutral-200 max-w-4xl mx-auto">
           Camp Asimov is a mentor-driven build lab where <strong>every student builds their own robot</strong>, makes decisions, and sees the impact of their choices on a working machine. We run tight, personal coaching with a <strong>8:1 student to teacher ratio</strong>, so students get real guidance without losing independence. We focus on <strong>confidence</strong>, <strong>craft</strong>, and <strong>leadership</strong>. Students ship working mechanisms, document their process, and present like pros.
         </p>

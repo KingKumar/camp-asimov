@@ -5,13 +5,13 @@ const CONTACT_EMAIL = "info@campasimov.com";
 
 export default function ContactSection() {
   return (
-    <section className="py-16">
+    <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-8">
         <div
           className="rounded-2xl border p-6 md:p-7"
           style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center">
             Contact us to learn more about LA&apos;s #1 robotics summer camp.
           </h2>
           <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>

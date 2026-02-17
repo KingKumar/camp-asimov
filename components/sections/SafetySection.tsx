@@ -4,9 +4,9 @@ import { ink } from "@/components/theme";
 
 export default function SafetySection() {
   return (
-    <section className="py-16">
+    <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold">Safety Protocols</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center">Safety Protocols</h2>
 
         <div
           className="mt-4 rounded-2xl border p-5 md:p-6"

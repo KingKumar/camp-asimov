@@ -160,11 +160,11 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-16">
+    <section className="pt-6 md:pt-8 pb-16">
       <div className="px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="flex items-end justify-between flex-wrap gap-4">
-            <h2 className="text-3xl md:text-4xl font-bold">Testimonials</h2>
+          <div className="flex items-end justify-center flex-wrap gap-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Testimonials</h2>
           </div>
           <p className="mt-4 text-white font-semibold">
             Ronit Kumar has spent over a decade coaching robotics and building programs at leading independent schools. A graduate of The Ohio State University College of Engineering with a degree in Computer Science and Engineering, Ronit’s journey in robotics began as a dedicated member of his own FRC team and has continued throughout his entire educational career. He has developed a structured approach that teaches students the core fundamentals of engineering, including thoughtful design, mechanical system implementation, and programming. His students learn technical best practices along with collaboration, leadership, and the independence to drive robotics development on their own. Ronit is deeply proud of the paths his students have gone on to pursue. Their voices and experiences speak best to the impact of this work. Please take a moment to read their testimonials.
