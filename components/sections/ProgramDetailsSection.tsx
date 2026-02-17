@@ -304,6 +304,12 @@ export default function ProgramDetailsSection() {
                   <div className="mt-1 font-semibold text-white">Los Angeles (exact site TBD)</div>
                 </div>
               </div>
+              <div className="mt-4 text-xs md:text-sm text-neutral-300">
+                Refund policy available here:{" "}
+                <a className="underline" href="/refunds.html" style={{ color: ink.accent }}>
+                  View refund policy
+                </a>
+              </div>
             </div>
 
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>

@@ -244,7 +244,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
         </motion.div>
 
         <footer className="border-t py-8 text-center text-xs text-neutral-500" style={{ borderColor: ink.line }}>
-          <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="mx-auto max-w-7xl px-6 flex flex-col gap-4 items-center justify-center text-center">
             <div>© {new Date().getFullYear()} Camp Asimov. All rights reserved.</div>
             <div className="flex gap-4">
               <a className="hover:text-neutral-300" href="/privacy.html">Privacy</a>
