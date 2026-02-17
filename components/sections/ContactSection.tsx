@@ -5,15 +5,37 @@ const CONTACT_EMAIL = "info@campasimov.com";
 
 export default function ContactSection() {
   return (
-    <section className="pt-6 md:pt-8 pb-16">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-8">
+    <section className="pt-0 pb-16">
+      <div className="w-full">
+        <div className="relative w-full overflow-hidden border-y -mt-12 md:-mt-16" style={{ borderColor: ink.line }}>
+          <iframe
+            title="Camp Asimov in Santa Monica"
+            className="h-[272px] md:h-[368px] w-full"
+            src="https://www.google.com/maps?q=Santa%20Monica%2C%20CA&z=13&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <div className="absolute inset-0 bg-black/55 pointer-events-none" />
+          <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
+            <div className="text-center text-white text-3xl md:text-4xl font-bold drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)]">
+              Contact us to learn more about LA&apos;s #1 robotics summer camp.
+            </div>
+          </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Santa%20Monica%2C%20CA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0"
+            aria-label="Open Google Maps for Santa Monica"
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-8 mt-10">
         <div
           className="rounded-2xl border p-6 md:p-7"
           style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center">
-            Contact us to learn more about LA&apos;s #1 robotics summer camp.
-          </h2>
           <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>
           <p className="mt-2 text-neutral-200">
             We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.
