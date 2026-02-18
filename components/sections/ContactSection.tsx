@@ -21,6 +21,7 @@ export default function ContactSection() {
               el.classList.remove("opacity-0");
               el.classList.add("opacity-100");
             }}
+            style={{ opacity: 0.65 }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-black/55 pointer-events-none" />
