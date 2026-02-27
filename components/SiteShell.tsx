@@ -27,6 +27,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showReel, setShowReel] = useState(false);
+  const hideReelToggle = pathname.startsWith("/apply");
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen || showReel ? "hidden" : "";
@@ -65,7 +66,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
 
       <div className="pointer-events-none fixed inset-0 z-[1] [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
 
-      {enableReel && (
+      {enableReel && !hideReelToggle && (
         <>
           {/* Floating highlight reel toggle */}
           <button
