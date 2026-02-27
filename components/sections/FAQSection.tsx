@@ -1,5 +1,5 @@
 import { ink } from "@/components/theme";
-import { COHORT_CAP, MIN_ENROLLMENT_FAQ_ANSWER } from "@/lib/campConfig";
+import { COHORT_CAP, SESSION_REFUND_FAQ_ANSWER } from "@/lib/campConfig";
 
 const faqs = [
   {
@@ -32,11 +32,11 @@ const faqs = [
   },
   {
     q: "How do you handle allergies and medications?",
-    a: "Tell us on the registration form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing.",
+    a: "Tell us on the Founding Cohort Interest Form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing.",
   },
   {
-    q: "What if the cohort minimum isn't met?",
-    a: MIN_ENROLLMENT_FAQ_ANSWER,
+    q: "What if Camp Asimov does not move forward with a session?",
+    a: SESSION_REFUND_FAQ_ANSWER,
   },
 ];
 

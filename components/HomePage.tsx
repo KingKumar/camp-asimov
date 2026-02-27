@@ -58,8 +58,11 @@ export default function HomePage() {
               <Link href="/program">Curriculum Overview</Link>
             </Button>
             <div className="w-full max-w-md mx-auto">
-              <SessionPicker compact ctaLabel="Request an Invite" showCohortNote includeRefundInNote />
+              <SessionPicker compact ctaLabel="Request an Invite" showCohortNote />
             </div>
+            <p className="w-full max-w-md text-sm text-neutral-200 text-center leading-relaxed">
+              Enrollment is by invitation following review of the Founding Cohort Interest Form.
+            </p>
           </div>
           <p
             className="mt-4 inline-block max-w-2xl rounded-full border px-4 py-2 text-xs md:text-sm text-neutral-200 backdrop-blur-sm text-center"

@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "How do you handle allergies and medications?",
-    a: "Tell us on the registration form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing.",
+    a: "Tell us on the Founding Cohort Interest Form. Students may carry epi-pens/inhalers; staff are briefed and we maintain a posted response plan. We discourage food sharing.",
   },
   {
     q: "What is your teacher : student ratio?",
@@ -390,7 +390,7 @@ export default function AsimovCampLanding() {
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(180deg, rgba(7,9,12,0.55), rgba(5,7,10,0.86))
+              linear-gradient(180deg, rgba(7,9,12,0.66), rgba(5,7,10,0.95))
             `,
           }}
         />

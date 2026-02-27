@@ -57,7 +57,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(180deg, rgba(7,9,12,0.55), rgba(5,7,10,0.86))
+              linear-gradient(180deg, rgba(7,9,12,0.66), rgba(5,7,10,0.95))
             `,
           }}
         />

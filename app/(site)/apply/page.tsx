@@ -30,6 +30,9 @@ export default function ApplyPage({ searchParams }: ApplyPageProps) {
         <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
           Camp Asimov runs two 3-week founding cohorts this summer, each capped at {COHORT_CAP} students. Complete the form below and we will follow up within 24-48 hours.
         </p>
+        <p className="mt-3 text-base md:text-lg text-neutral-200 leading-relaxed">
+          Founding Cohort enrollment is limited. Submissions are reviewed on a rolling basis. Selected families will receive an invitation to enroll.
+        </p>
 
         <form
           action={FORMSPREE_FOUNDING_COHORT_ACTION}
