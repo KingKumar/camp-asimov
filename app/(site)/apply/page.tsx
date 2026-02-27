@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
@@ -20,8 +19,13 @@ const experienceOptions = [
 export default function ApplyPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-  const preferredCohort = APPLY_COHORT_OPTIONS.find((option) => option.value === searchParams.get("cohort"))?.label ?? "Either";
+  const [preferredCohort, setPreferredCohort] = useState("Either");
+
+  useEffect(() => {
+    const cohort = new URLSearchParams(window.location.search).get("cohort");
+    const selected = APPLY_COHORT_OPTIONS.find((option) => option.value === cohort)?.label ?? "Either";
+    setPreferredCohort(selected);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
