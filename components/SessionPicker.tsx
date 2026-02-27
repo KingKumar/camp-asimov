@@ -2,6 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import {
+  COHORT_A_DATES,
+  COHORT_B_DATES,
+  FOUNDING_COHORT_CTA_MICROCOPY_LINES,
+  FOUNDING_COHORT_NOTE_LINES,
+} from "@/lib/campConfig";
 
 type Session = { id: string; label: string; link: string; soldOut?: boolean };
 
@@ -9,8 +15,8 @@ const CTA_BG = "#8FD7FF";
 const CTA_TEXT = "#071410";
 
 const SESSIONS: Session[] = [
-  { id: "june", label: "June 8–26", link: "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00" },
-  { id: "july", label: "July 6–24", link: "https://buy.stripe.com/3cIfZhccA3KRcdg1NG0sU01" },
+  { id: "june", label: COHORT_A_DATES, link: "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00" },
+  { id: "july", label: COHORT_B_DATES, link: "https://buy.stripe.com/3cIfZhccA3KRcdg1NG0sU01" },
   // { id: "july", label: "July 6–24", link: "", soldOut: true },
 ];
 
@@ -21,7 +27,19 @@ declare global {
   }
 }
 
-export default function SessionPicker({ compact = false }: { compact?: boolean }) {
+type SessionPickerProps = {
+  compact?: boolean;
+  ctaLabel?: string;
+  showCohortNote?: boolean;
+  includeRefundInNote?: boolean;
+};
+
+export default function SessionPicker({
+  compact = false,
+  ctaLabel = "Reserve a Seat",
+  showCohortNote = false,
+  includeRefundInNote = false,
+}: SessionPickerProps) {
   // Preselect first available session
   const firstAvailable = useMemo(() => SESSIONS.find((s) => !s.soldOut)?.id ?? "", []);
   const [sel, setSel] = useState<string>(firstAvailable);
@@ -55,11 +73,15 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
     window.location.href = selected.link;
   };
 
+  const noteLines = includeRefundInNote
+    ? FOUNDING_COHORT_CTA_MICROCOPY_LINES
+    : FOUNDING_COHORT_NOTE_LINES;
+
   if (compact) {
     return (
       <div className="flex flex-col gap-2">
         <label className="sr-only" htmlFor="camp-session">
-          Choose session
+          Choose cohort
         </label>
         <div className="relative w-full">
           <select
@@ -90,10 +112,20 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           style={{ backgroundColor: CTA_BG, color: CTA_TEXT, textShadow: "none" }}
           aria-live="polite"
         >
-          {status === "going" ? "Opening…" : "Register for Summer 2026"}
+          {status === "going" ? "Opening..." : ctaLabel}
         </button>
+        {showCohortNote ? (
+          <div
+            className="rounded-lg border-l pl-4 py-2 text-sm text-neutral-200 leading-6"
+            style={{ borderColor: "rgba(255,255,255,0.32)" }}
+          >
+            {noteLines.map((line) => (
+              <div key={line}>{line}</div>
+            ))}
+          </div>
+        ) : null}
         <span id="session-help" className="sr-only">
-          Select a session and press Register for Summer 2026 to proceed to payment.
+          Select a session and press {ctaLabel} to proceed to payment.
         </span>
       </div>
     );
@@ -104,7 +136,7 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
       className="rounded-2xl border p-4 md:p-6"
       style={{ background: "rgba(16,18,25,0.9)", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      <h3 className="text-lg font-semibold mb-3">Choose your session</h3>
+      <h3 className="text-lg font-semibold mb-3">Choose your cohort</h3>
 
       <div className="grid sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Camp sessions">
         {SESSIONS.map((s) => {
@@ -139,11 +171,11 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           aria-live="polite"
         >
           {status === "going"
-            ? "Opening…"
+            ? "Opening..."
             : selected?.soldOut
             ? "Session full"
             : selected
-            ? "Continue to payment"
+            ? ctaLabel
             : "Select a session"}
         </button>
 
@@ -155,6 +187,16 @@ export default function SessionPicker({ compact = false }: { compact?: boolean }
           Tuition details
         </a>
       </div>
+      {showCohortNote ? (
+        <div
+          className="mt-4 rounded-lg border-l pl-4 py-2 text-sm text-neutral-200 leading-6"
+          style={{ borderColor: "rgba(255,255,255,0.32)" }}
+        >
+          {noteLines.map((line) => (
+            <div key={line}>{line}</div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

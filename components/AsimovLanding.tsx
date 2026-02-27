@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "What do students bring and wear?",
-    a: "Closed-toe shoes, hair tied back, no dangling jewelry, a labeled water bottle, and lunch. We supply all tools, materials, and safety gear.",
+    a: "Bring lunch daily, plus closed-toe shoes, hair tied back, no dangling jewelry, and a labeled water bottle. We supply all tools, materials, and safety gear.",
   },
   {
     q: "How do you handle allergies and medications?",

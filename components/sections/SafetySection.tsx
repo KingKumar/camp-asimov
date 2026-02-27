@@ -6,14 +6,14 @@ export default function SafetySection() {
   return (
     <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-center">Safety Protocols</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center">Safety-First Engineering Lab</h2>
 
         <div
           className="mt-4 rounded-2xl border p-5 md:p-6"
           style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
         >
           <p className="text-neutral-200 leading-relaxed text-center">
-            We operate a youth-safety program that meets California requirements for youth-serving organizations. All staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and <strong> mandated reporter training</strong>. Students progress through <strong>tool certifications</strong>, wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs (laser cutter, 3D printers, soldering, CNC). We train lithium-ion battery handling for robotics power systems and maintain on-site emergency supplies.
+            Camp Asimov runs as a safety-first engineering build lab with clear operating discipline. Staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and <strong>mandated reporter training</strong>. Students earn <strong>tool certifications</strong>, wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs (laser cutter, 3D printers, soldering, CNC). We also train lithium-ion battery handling and maintain on-site emergency supplies.
           </p>
         </div>
 

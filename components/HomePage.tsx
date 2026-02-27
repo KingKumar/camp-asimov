@@ -7,27 +7,47 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SessionPicker from "@/components/SessionPicker";
 import { ink } from "@/components/theme";
+import { COHORT_CAP, NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
 
 export default function HomePage() {
   return (
     <section className="relative">
       <div className="mx-auto max-w-7xl px-6 pt-4 pb-20 md:pt-8 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+        <motion.h1
+          initial={{ y: 14, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="md:col-span-2 text-4xl md:text-6xl font-black leading-tight"
+          style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
+        >
+          Where LA&apos;s most driven students build real robots.
+        </motion.h1>
+
         <div>
-          <motion.h1
-            initial={{ y: 14, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-black leading-tight"
-            style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
-          >
-            LA’s premier mentor-driven robotics & maker camp
-          </motion.h1>
           <p
             className="mt-6 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            Independent schools often can’t give robotics-obsessed students enough time, mentoring, or resources. Camp Asimov fixes that: a focused, mentor-heavy build lab where students learn to lead their own projects, master tools, and level up for LA’s most competitive robotics programs.
+            A selective 3-week robotics intensive capped at {COHORT_CAP} students.
           </p>
+          <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
+            <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
+              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Who It&apos;s For</div>
+              <ul className="mt-2 space-y-1 text-neutral-200">
+                {WHO_ITS_FOR_LINES.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
+              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Not A Fit If...</div>
+              <ul className="mt-2 space-y-1 text-neutral-200">
+                {NOT_A_FIT_LINES.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <div className="mt-8 flex flex-col items-center gap-3">
             <Button
               asChild
@@ -38,7 +58,7 @@ export default function HomePage() {
               <Link href="/program">Curriculum Overview</Link>
             </Button>
             <div className="w-full max-w-md mx-auto">
-              <SessionPicker compact />
+              <SessionPicker compact ctaLabel="Reserve a Seat" showCohortNote includeRefundInNote />
             </div>
           </div>
           <p
@@ -60,7 +80,7 @@ export default function HomePage() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-300">Camp Snapshot</div>
-                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Build fast. Lead teams. Ship real robots.</div>
+                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Small teams. High mentor access. Real outcomes.</div>
                 </div>
                 <div className="hidden md:flex items-center gap-2 text-xs text-neutral-400">
                   <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
@@ -91,33 +111,33 @@ export default function HomePage() {
               >
                 <div className="flex items-center gap-2 text-sm text-neutral-300">
                   <Trophy className="w-4 h-4" aria-hidden />
-                  Expert coaching, small teams, big results.
+                  Cohorts engineered for quality over volume.
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm">
                   {[
                     {
-                      title: "Fusion 360 CAD & rapid prototyping",
-                      sub: "Sketches → parts → assemblies → testable mechanisms.",
+                      title: "CAD portfolio that proves design fluency",
+                      sub: "Fusion 360 files, assemblies, and iteration history.",
                     },
                     {
-                      title: "Java FTC SDK + control loops",
-                      sub: "Encoders, PID basics, driver control structure.",
+                      title: "FTC-ready software fundamentals",
+                      sub: "Java control structure, encoders, and feedback loops.",
                     },
                     {
-                      title: "REV + goBilda competitive builds",
-                      sub: "Drive trains, intakes, lifts, and wiring standards.",
+                      title: "Competition-grade hardware execution",
+                      sub: "REV + goBilda builds with clean wiring standards.",
                     },
                     {
-                      title: "3D printing, laser cutting, CNC",
-                      sub: "Safe tooling, fixtures, and iteration workflow.",
+                      title: "Toolchain confidence under supervision",
+                      sub: "3D printing, laser, CNC, fixtures, and safe workflow.",
                     },
                     {
-                      title: "Sensor integration & autonomous pathing",
-                      sub: "Distance/IMU sensors, autonomous routines.",
+                      title: "Autonomous routines with sensor integration",
+                      sub: "Distance/IMU use, pathing logic, and test loops.",
                     },
                     {
-                      title: "Demo Day + portfolio reel",
-                      sub: "Showcase, documentation, and presentation skills.",
+                      title: "Demo Day reel and technical presentation",
+                      sub: "Clear documentation, iteration story, confident delivery.",
                     },
                   ].map((t) => (
                     <div

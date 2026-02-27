@@ -176,7 +176,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
               <Link href="/staff" aria-label="Open Staff Portal">Staff Portal</Link>
             </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              <Link href="/program#pricing">Register for Summer 2026</Link>
+              <Link href="/program#pricing">Reserve a Seat</Link>
             </Button>
           </nav>
 
@@ -225,7 +225,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
               </Button>
               <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
                 <Link href="/program#pricing" onClick={() => setMobileOpen(false)}>
-                  Register for Summer 2026
+                  Reserve a Seat
                 </Link>
               </Button>
             </div>
@@ -248,7 +248,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
             <div>© {new Date().getFullYear()} Camp Asimov. All rights reserved.</div>
             <div className="flex gap-4">
               <a className="hover:text-neutral-300" href="/privacy.html">Privacy</a>
-              <a className="hover:text-neutral-300" href="/refunds.html">Refunds</a>
+              <a className="hover:text-neutral-300" href="/refunds">Refunds</a>
               <a className="hover:text-neutral-300" href="/staff">Staff Login</a>
             </div>
           </div>

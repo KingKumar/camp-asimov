@@ -5,6 +5,7 @@ import { Cpu, Trophy, Wrench } from "lucide-react";
 
 import SessionPicker from "@/components/SessionPicker";
 import { ink } from "@/components/theme";
+import { COHORT_A_DATES, COHORT_B_DATES, COHORT_CAP, COHORT_DATES, NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
 
 export default function ProgramDetailsSection() {
   return (
@@ -18,7 +19,7 @@ export default function ProgramDetailsSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-center"
           >
-            3-Week Robotics Intensive
+            3-Week Robotics Build Lab Intensive
           </motion.h2>
 
           <motion.p
@@ -28,7 +29,7 @@ export default function ProgramDetailsSection() {
             viewport={{ once: true }}
             className="mt-4 text-lg text-neutral-300 text-center max-w-4xl mx-auto"
           >
-            A single, immersive program that moves students from core engineering principles to tested, competition-ready mechanisms. Each week blends hands-on building, structured coaching, and iteration, no kits, no busywork, just real robotics.
+            A selective, high-intensity program that moves students from engineering fundamentals to tested, competition-ready systems. Every week emphasizes build velocity, technical ownership, and coached iteration.
           </motion.p>
 
           <div className="mt-10 grid md:grid-cols-2 gap-6">
@@ -49,7 +50,7 @@ export default function ProgramDetailsSection() {
                   Week 1: Design, Fabrication & Rapid Prototyping
                 </h3>
                 <p className="mt-2 text-neutral-300">
-                  Students learn safe fabrication and bring mechanisms from concept → CAD → prototype → hardware.
+                  Students establish the engineering foundation and ship first-pass hardware from concept through testable prototype.
                 </p>
                 <div className="mt-4 grid sm:grid-cols-2 gap-6">
                   <div>
@@ -91,7 +92,7 @@ export default function ProgramDetailsSection() {
                   Week 2: Code, Control Systems & Sensor Integration
                 </h3>
                 <p className="mt-2 text-neutral-300">
-                  Students bring mechanisms to life with structured programming and integrated sensing.
+                  Students connect hardware to reliable software behavior through structured control architecture and sensing.
                 </p>
                 <div className="mt-4 grid sm:grid-cols-2 gap-6">
                   <div>
@@ -132,7 +133,7 @@ export default function ProgramDetailsSection() {
               <div className="relative">
                 <h3 className="text-xl font-semibold">Week 3: Test, Iterate, Compete</h3>
                 <p className="mt-2 text-neutral-300">
-                  Students stress-test, analyze failures, and iterate under pressure, ending with our
+                  Students stress-test, analyze failures, and iterate under pressure, ending with a
                   <strong> Family Scrimmage Showcase</strong>.
                 </p>
                 <div className="mt-4 grid md:grid-cols-2 gap-6">
@@ -190,7 +191,7 @@ export default function ProgramDetailsSection() {
             </h3>
 
             <p className="mt-3 text-neutral-300 text-center max-w-3xl mx-auto">
-              Students are placed where they’ll be challenged. Movement between levels is encouraged as abilities grow.
+              Students are placed by capability and readiness for technical rigor. Advancement is earned through execution quality, not age.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4">
@@ -291,22 +292,33 @@ export default function ProgramDetailsSection() {
                   <div className="mt-2 text-neutral-300 text-sm">3-week intensive • $3,600 total</div>
                 </div>
                 <div className="w-full max-w-md">
-                  <SessionPicker compact />
+                  <SessionPicker compact ctaLabel="Reserve a Seat" />
                 </div>
+              </div>
+              <div className="mt-4 rounded-xl border px-4 py-3 text-sm text-neutral-200" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
+                Limited seats by design. Cohorts are capped at {COHORT_CAP} to preserve high mentor access and build quality.
               </div>
               <div className="mt-6 grid sm:grid-cols-2 gap-4 text-sm text-neutral-300">
                 <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
                   <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Dates</div>
-                  <div className="mt-1 font-semibold text-white">June 8–26 • July 6–24</div>
+                  <div className="mt-1 font-semibold text-white">{COHORT_DATES}</div>
                 </div>
                 <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
                   <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Location</div>
                   <div className="mt-1 font-semibold text-white">Los Angeles (exact site TBD)</div>
                 </div>
               </div>
+              <div className="mt-4 rounded-xl border px-4 py-3 text-sm text-neutral-300" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
+                <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Founding Cohorts</div>
+                <ul className="mt-2 space-y-1">
+                  <li><span className="font-semibold text-white">Cohort A:</span> {COHORT_A_DATES}</li>
+                  <li><span className="font-semibold text-white">Cohort B:</span> {COHORT_B_DATES}</li>
+                  <li className="font-semibold text-white">Capped at {COHORT_CAP} per cohort</li>
+                </ul>
+              </div>
               <div className="mt-4 text-xs md:text-sm text-neutral-300">
                 Refund policy available here:{" "}
-                <a className="underline" href="/refunds.html" style={{ color: ink.accent }}>
+                <a className="underline" href="/refunds" style={{ color: ink.accent }}>
                   View refund policy
                 </a>
               </div>
@@ -318,14 +330,34 @@ export default function ProgramDetailsSection() {
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
                 <li>Grouped by age/experience</li>
                 <li>1:8 <strong>Teacher : Student</strong> ratio</li>
-                <li>Mentor-heavy, small teams</li>
+                <li>High-intensity, mentor-heavy build days</li>
               </ul>
+            </div>
+
+            <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
+              <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">Fit & Expectations</div>
+              <div className="mt-4">
+                <div className="text-base font-semibold text-white">Who it&apos;s for</div>
+                <ul className="mt-2 space-y-2 text-base leading-relaxed text-neutral-200">
+                  {WHO_ITS_FOR_LINES.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-6">
+                <div className="text-base font-semibold text-white">Not a fit if...</div>
+                <ul className="mt-2 space-y-2 text-base leading-relaxed text-neutral-200">
+                  {NOT_A_FIT_LINES.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
               <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">What’s included</div>
               <div className="mt-2 text-sm text-neutral-300">
-                A premium, all inclusive program built for real skill growth with no hidden fees.
+                A premium, all-inclusive engineering build lab with professional tooling, structured coaching, and measurable outcomes.
               </div>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-300">
                 <li>Expert coaching in small teams (1:8 ratio)</li>
