@@ -12,7 +12,7 @@ import { NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
 export default function HomePage() {
   return (
     <section className="relative">
-      <div className="mx-auto max-w-7xl px-6 pt-4 pb-20 md:pt-8 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-7xl px-6 pt-8 pb-20 md:pt-8 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
         <motion.h1
           initial={{ y: 14, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -25,7 +25,7 @@ export default function HomePage() {
 
         <div>
           <p
-            className="mt-1 md:mt-2 text-lg text-neutral-300 max-w-prose"
+            className="mt-0 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             A selective 3-week robotics intensive. Two sessions. 16 students per cohort.
