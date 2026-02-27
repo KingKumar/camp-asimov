@@ -1,14 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { FormEvent, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
-import { APPLY_COHORT_OPTIONS, COHORT_CAP, FORMSPREE_FOUNDING_COHORT_ACTION, FORMSPREE_THANK_YOU_PATH } from "@/lib/campConfig";
-
-type ApplyPageProps = {
-  searchParams?: {
-    cohort?: string;
-  };
-};
+import { APPLY_COHORT_OPTIONS, COHORT_CAP, FORMSPREE_FOUNDING_COHORT_ACTION } from "@/lib/campConfig";
 
 const gradeOptions = ["5", "6", "7", "8", "9", "10", "11", "12"];
 
@@ -19,8 +17,40 @@ const experienceOptions = [
   "Advanced competitive / team lead",
 ];
 
-export default function ApplyPage({ searchParams }: ApplyPageProps) {
-  const preferredCohort = APPLY_COHORT_OPTIONS.find((option) => option.value === searchParams?.cohort)?.label ?? "Either";
+export default function ApplyPage() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const preferredCohort = APPLY_COHORT_OPTIONS.find((option) => option.value === searchParams.get("cohort"))?.label ?? "Either";
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch(FORMSPREE_FOUNDING_COHORT_ACTION, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        window.location.href = "/apply/thanks";
+        return;
+      }
+
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="pt-6 md:pt-8 pb-16">
@@ -35,12 +65,10 @@ export default function ApplyPage({ searchParams }: ApplyPageProps) {
         </p>
 
         <form
-          action={FORMSPREE_FOUNDING_COHORT_ACTION}
-          method="POST"
+          onSubmit={handleSubmit}
           className="mt-8 rounded-2xl border p-6 md:p-8 space-y-5"
           style={{ borderColor: ink.line, background: "rgba(10,12,16,0.34)" }}
         >
-          <input type="hidden" name="_next" value={FORMSPREE_THANK_YOU_PATH} />
           <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
           <div className="grid md:grid-cols-2 gap-5">
@@ -116,13 +144,14 @@ export default function ApplyPage({ searchParams }: ApplyPageProps) {
           </div>
 
           <div className="pt-1 flex flex-col sm:flex-row gap-3">
-            <Button type="submit" className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              Request an Invite
+            <Button type="submit" disabled={loading} className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
+              {loading ? "Submitting..." : "Request an Invite"}
             </Button>
             <Button asChild className="px-6 py-3 text-base border" style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}>
               <Link href="/program">View Program Details</Link>
             </Button>
           </div>
+          {error ? <p className="text-sm text-neutral-200">{error}</p> : null}
         </form>
       </div>
     </section>

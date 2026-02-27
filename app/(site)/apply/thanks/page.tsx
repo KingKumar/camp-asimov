@@ -10,7 +10,7 @@ export default function ApplyThanksPage() {
         <div className="rounded-2xl border p-8 md:p-10 text-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.34)" }}>
           <h1 className="text-3xl md:text-4xl font-bold">Application Received</h1>
           <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
-            Thanks for your interest in Camp Asimov. We review founding cohort inquiries in the order received and will follow up within 24-48 hours.
+            Thanks for your interest in Camp Asimov. Founding cohort submissions are reviewed on a rolling basis. We&apos;ll follow up within 24-48 hours.
           </p>
           <div className="mt-7">
             <Button asChild className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
