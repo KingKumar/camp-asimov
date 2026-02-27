@@ -17,7 +17,7 @@ export default function HomePage() {
           initial={{ y: 14, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="md:col-span-2 text-4xl md:text-6xl font-black leading-tight"
+          className="md:col-span-2 text-4xl md:text-6xl font-black leading-[1.02]"
           style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
         >
           Where LA&apos;s most driven students build real robots.
@@ -25,7 +25,7 @@ export default function HomePage() {
 
         <div>
           <p
-            className="mt-6 text-lg text-neutral-300 max-w-prose"
+            className="mt-1 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             A selective 3-week robotics intensive capped at {COHORT_CAP} students.
