@@ -3,7 +3,7 @@ import { DECISION_DATE } from "@/lib/campConfig";
 
 const policyItems = [
   `If minimum total enrollment is not reached by ${DECISION_DATE}, deposits will be fully refunded within 5 business days.`,
-  "Full refund (minus Stripe fees) up to 30 days before camp start.",
+  "Full refund up to 30 days before camp start.",
   "50% refund between 14-29 days before start.",
   "Within 14 days: credit toward a later session if space allows.",
   "Withdrawals after camp begins are non-refundable.",

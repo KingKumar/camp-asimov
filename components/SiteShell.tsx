@@ -176,7 +176,7 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
               <Link href="/staff" aria-label="Open Staff Portal">Staff Portal</Link>
             </Button>
             <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              <Link href="/program#pricing">Reserve a Seat</Link>
+              <Link href="/apply">Request an Invite</Link>
             </Button>
           </nav>
 
@@ -224,8 +224,8 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
                 </Link>
               </Button>
               <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-                <Link href="/program#pricing" onClick={() => setMobileOpen(false)}>
-                  Reserve a Seat
+                <Link href="/apply" onClick={() => setMobileOpen(false)}>
+                  Request an Invite
                 </Link>
               </Button>
             </div>

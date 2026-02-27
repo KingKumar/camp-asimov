@@ -3,21 +3,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import {
+  APPLY_COHORT_OPTIONS,
   COHORT_A_DATES,
   COHORT_B_DATES,
   FOUNDING_COHORT_CTA_MICROCOPY_LINES,
   FOUNDING_COHORT_NOTE_LINES,
 } from "@/lib/campConfig";
 
-type Session = { id: string; label: string; link: string; soldOut?: boolean };
+type Session = { id: string; label: string; soldOut?: boolean };
 
 const CTA_BG = "#8FD7FF";
 const CTA_TEXT = "#071410";
 
 const SESSIONS: Session[] = [
-  { id: "june", label: COHORT_A_DATES, link: "https://buy.stripe.com/9B6cN5a4schn5OS2RK0sU00" },
-  { id: "july", label: COHORT_B_DATES, link: "https://buy.stripe.com/3cIfZhccA3KRcdg1NG0sU01" },
-  // { id: "july", label: "July 6–24", link: "", soldOut: true },
+  { id: "june", label: COHORT_A_DATES },
+  { id: "july", label: COHORT_B_DATES },
 ];
 
 /** Optional analytics typing (avoids `any`) */
@@ -36,7 +36,7 @@ type SessionPickerProps = {
 
 export default function SessionPicker({
   compact = false,
-  ctaLabel = "Reserve a Seat",
+  ctaLabel = "Request an Invite",
   showCohortNote = false,
   includeRefundInNote = false,
 }: SessionPickerProps) {
@@ -57,20 +57,20 @@ export default function SessionPicker({
   const selected = useMemo(() => SESSIONS.find((s) => s.id === sel), [sel]);
 
   const go = () => {
-    if (!selected || selected.soldOut || !selected.link) return;
+    if (!selected || selected.soldOut) return;
     setStatus("going");
 
     // Optional analytics without `any`
     if (typeof window !== "undefined" && Array.isArray(window.dataLayer)) {
       window.dataLayer.push({
-        event: "cta_enroll_click",
-        session_id: selected.id,
-        session_label: selected.label,
+        event: "cta_invite_click",
+        cohort_id: selected.id,
+        cohort_label: selected.label,
       });
     }
 
-    // Same-tab Stripe checkout is best for completion rate
-    window.location.href = selected.link;
+    const cohortParam = APPLY_COHORT_OPTIONS.find((o) => o.value === selected.id)?.value ?? "either";
+    window.location.href = `/apply?cohort=${cohortParam}`;
   };
 
   const noteLines = includeRefundInNote
@@ -125,7 +125,7 @@ export default function SessionPicker({
           </div>
         ) : null}
         <span id="session-help" className="sr-only">
-          Select a session and press {ctaLabel} to proceed to payment.
+          Select a cohort and press {ctaLabel} to open the founding cohort interest form.
         </span>
       </div>
     );
@@ -155,7 +155,7 @@ export default function SessionPicker({
             >
               <div className="font-medium">{s.label}</div>
               <div className="text-xs text-neutral-400">
-                {s.soldOut ? "Sold out" : "Deposit $1,200"}
+                {s.soldOut ? "Unavailable" : "Founding cohort"}
               </div>
             </button>
           );
@@ -176,15 +176,15 @@ export default function SessionPicker({
             ? "Session full"
             : selected
             ? ctaLabel
-            : "Select a session"}
+            : "Select a cohort"}
         </button>
 
         <a
-          href="/program#pricing"
+          href="/apply"
           className="px-6 py-3 rounded-xl border"
           style={{ borderColor: "rgba(255,255,255,0.15)" }}
         >
-          Tuition details
+          Open interest form
         </a>
       </div>
       {showCohortNote ? (

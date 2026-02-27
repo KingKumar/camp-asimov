@@ -58,7 +58,7 @@ export default function HomePage() {
               <Link href="/program">Curriculum Overview</Link>
             </Button>
             <div className="w-full max-w-md mx-auto">
-              <SessionPicker compact ctaLabel="Reserve a Seat" showCohortNote includeRefundInNote />
+              <SessionPicker compact ctaLabel="Request an Invite" showCohortNote includeRefundInNote />
             </div>
           </div>
           <p

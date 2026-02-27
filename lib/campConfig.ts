@@ -1,9 +1,16 @@
 export const DECISION_DATE = "April 30, 2026";
 export const COHORT_CAP = 16;
+export const FORMSPREE_FOUNDING_COHORT_ACTION = "https://formspree.io/f/mjgelnqn";
+export const FORMSPREE_THANK_YOU_PATH = "/apply/thanks";
 
 export const COHORT_A_DATES = "June 8-26";
 export const COHORT_B_DATES = "July 6-24";
 export const COHORT_DATES = `${COHORT_A_DATES} • ${COHORT_B_DATES}`;
+export const APPLY_COHORT_OPTIONS = [
+  { value: "june", label: "June 8–26" },
+  { value: "july", label: COHORT_B_DATES },
+  { value: "either", label: "Either" },
+];
 
 export const FOUNDING_COHORT_CTA_MICROCOPY_LINES = [
   "Two 3-week founding cohorts (June & July)",
