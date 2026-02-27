@@ -28,7 +28,7 @@ export default function HomePage() {
             className="mt-1 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            A selective 3-week robotics intensive capped at {COHORT_CAP} students.
+            A selective 3-week robotics intensive. Two sessions. 16 students per cohort.
           </p>
           <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
             <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
