@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SessionPicker from "@/components/SessionPicker";
 import { ink } from "@/components/theme";
-import { COHORT_CAP, NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
+import { NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
 
 export default function HomePage() {
   return (
