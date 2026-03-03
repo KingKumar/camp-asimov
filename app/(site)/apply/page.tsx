@@ -20,6 +20,7 @@ export default function ApplyPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [preferredCohort, setPreferredCohort] = useState("Either");
+  const [hearAbout, setHearAbout] = useState("");
 
   useEffect(() => {
     const cohort = new URLSearchParams(window.location.search).get("cohort");
@@ -129,6 +130,40 @@ export default function ApplyPage() {
                 ))}
               </select>
             </div>
+            <div>
+              <label htmlFor="hear_about" className="block text-sm font-semibold text-neutral-100">How did you hear about Camp Asimov?</label>
+              <select
+                id="hear_about"
+                name="hear_about"
+                required
+                value={hearAbout}
+                onChange={(e) => setHearAbout(e.target.value)}
+                className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                style={{ borderColor: ink.line }}
+              >
+                <option value="" disabled>Select one</option>
+                <option value="Google search">Google search</option>
+                <option value="Google advertisement">Google advertisement</option>
+                <option value="Friend or family recommendation">Friend or family recommendation</option>
+                <option value="Robotics team or coach">Robotics team or coach</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Another website or blog">Another website or blog</option>
+                <option value="School or teacher">School or teacher</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            {(hearAbout === "Friend or family recommendation" || hearAbout === "Robotics team or coach") ? (
+              <div className="md:col-span-2">
+                <label htmlFor="referrer_name" className="block text-sm font-semibold text-neutral-100">If someone referred you, who?</label>
+                <input id="referrer_name" name="referrer_name" type="text" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-transparent text-white" style={{ borderColor: ink.line }} />
+              </div>
+            ) : null}
+            {(hearAbout === "Another website or blog" || hearAbout === "Other") ? (
+              <div className="md:col-span-2">
+                <label htmlFor="hear_about_details" className="block text-sm font-semibold text-neutral-100">Please share details</label>
+                <textarea id="hear_about_details" name="hear_about_details" rows={3} className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-transparent text-white" style={{ borderColor: ink.line }} />
+              </div>
+            ) : null}
             <div>
               <label htmlFor="school" className="block text-sm font-semibold text-neutral-100">School (Optional)</label>
               <input id="school" name="school" type="text" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-transparent text-white" style={{ borderColor: ink.line }} />
