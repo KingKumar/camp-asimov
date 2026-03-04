@@ -135,14 +135,6 @@ const rhythm: RhythmItem[] = [
   },
 ];
 
-const buildOutcomes = [
-  "Independence",
-  "Safe shop habits",
-  "Collaboration",
-  "Iteration discipline",
-  "Documentation",
-];
-
 export default function ProgramDetailsSection() {
   return (
     <>
@@ -265,18 +257,9 @@ export default function ProgramDetailsSection() {
             </div>
 
             <div className="mt-5 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Builds</p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {buildOutcomes.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium text-neutral-200"
-                    style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <p className="text-sm md:text-[15px] leading-relaxed text-neutral-200">
+                Camp Asimov days are intentionally structured for sustained focus and steady progress, with natural breaks built into the rhythm and short, fun team games that keep energy high. The result is a balanced experience: serious engineering work, strong mentorship, and an environment where students stay engaged all day.
+              </p>
             </div>
           </motion.div>
 
