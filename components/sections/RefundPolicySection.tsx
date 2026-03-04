@@ -1,12 +1,12 @@
 import { ink } from "@/components/theme";
 
 const policyItems = [
-  "If Camp Asimov does not move forward with a session, all paid deposits will be fully refunded within 5 business days.",
-  "Full refund up to 30 days before camp start.",
-  "50% refund between 14-29 days before start.",
-  "Within 14 days: credit toward a later session if space allows.",
+  "If Camp Asimov does not move forward with a scheduled session, all paid deposits will be fully refunded within 5 business days.",
+  "Full refund (minus $150 administrative fee) if cancellation occurs 30 days or more before the session start date.",
+  "50% refund if cancellation occurs 14-29 days before the session start date.",
+  "Within 14 days of the session start date: tuition is non-refundable, but a credit toward a future session may be issued at Camp Asimov's discretion if space is available.",
   "Withdrawals after camp begins are non-refundable.",
-  "If Camp Asimov must cancel a session, families receive a full refund.",
+  "If Camp Asimov must cancel a session for any reason, families will receive a full refund of all payments made.",
 ];
 
 export default function RefundPolicySection() {
@@ -28,7 +28,7 @@ export default function RefundPolicySection() {
             ))}
           </ul>
           <p className="mt-5">
-            All refund requests must be emailed to{" "}
+            All refund requests must be submitted in writing to{" "}
             <a href="mailto:info@campasimov.com" className="underline" style={{ color: ink.accent }}>
               info@campasimov.com
             </a>
