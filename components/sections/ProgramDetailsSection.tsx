@@ -3,9 +3,145 @@
 import { motion } from "framer-motion";
 import { Cpu, Trophy, Wrench } from "lucide-react";
 
+import MediaGallery, { type MediaItem } from "@/components/MediaGallery";
 import SessionPicker from "@/components/SessionPicker";
 import { ink } from "@/components/theme";
 import { COHORT_A_DATES, COHORT_B_DATES, COHORT_CAP, COHORT_DATES, NOT_A_FIT_LINES, WHO_ITS_FOR_LINES } from "@/lib/campConfig";
+
+type WeekSection = {
+  id: string;
+  title: string;
+  description: string;
+  focusAreas: string[];
+  outcomes: string[];
+  media: MediaItem[];
+};
+
+type RhythmItem = {
+  time: string;
+  title: string;
+  detail: string;
+};
+
+const weeks: WeekSection[] = [
+  {
+    id: "week1",
+    title: "Week 1: Design, Fabrication & Rapid Prototyping",
+    description:
+      "Students establish the engineering foundation and ship first-pass hardware from concept through testable prototype.",
+    focusAreas: [
+      "3D design with Autodesk Fusion 360",
+      "Drivetrains, intakes, linkages (REV + goBilda)",
+      "Design-driven development & feedback loops",
+      "Safe lab operation & tool certification",
+    ],
+    outcomes: [
+      "Early prototypes completed",
+      "Fusion files & sketches saved",
+      "Understanding mechanical trade-offs",
+      "Confident, safe shop habits",
+    ],
+    media: [
+      {
+        type: "video",
+        src: "/claw.mp4",
+        alt: "Week 1 claw prototype in action",
+        caption: "Week 1 claw mechanism prototype",
+      },
+    ],
+  },
+  {
+    id: "week2",
+    title: "Week 2: Code, Control Systems & Sensor Integration",
+    description:
+      "Students connect hardware to reliable software behavior through structured control architecture and sensing.",
+    focusAreas: [
+      "Java with REV Control Hub",
+      "Encoders, positional control, driver controls",
+      "Sensor integration (distance/vision)",
+      "Intro to autonomous routines & path planning",
+    ],
+    outcomes: [
+      "Operable robot subsystems",
+      "Functional OpModes",
+      "Sensing + feedback control working on-bot",
+      "First mini-autonomous routines",
+    ],
+    media: [
+      {
+        type: "video",
+        src: "/videos/coding-feature.mp4",
+        alt: "Week 2 coding and control systems development",
+      },
+    ],
+  },
+  {
+    id: "week3",
+    title: "Week 3: Test, Iterate, Compete",
+    description:
+      "Students stress-test, analyze failures, and iterate under pressure, ending with a Family Scrimmage Showcase.",
+    focusAreas: [
+      "Reliability testing & failure analysis",
+      "Iteration journals & subsystem ownership",
+      "Strategy refinement & driver practice",
+      "Presentation & storytelling",
+    ],
+    outcomes: [
+      "Reliable competition systems",
+      "Clear documentation of changes",
+      "Real scrimmage match experience",
+      "Polished final presentation",
+    ],
+    media: [
+      {
+        type: "video",
+        src: "/videos/practice-clip.mp4",
+        alt: "Week 3 driving practice and match preparation",
+      },
+    ],
+  },
+];
+
+const rhythm: RhythmItem[] = [
+  {
+    time: "9:00",
+    title: "Morning briefing & safety checks",
+    detail: "Day objectives, tooling checks, and lab readiness before build starts.",
+  },
+  {
+    time: "9:20",
+    title: "Build block (mechanical / coding / testing)",
+    detail: "Focused subsystem work with coach-guided technical checkpoints.",
+  },
+  {
+    time: "11:00",
+    title: "Coach check-ins & feedback loops",
+    detail: "Debug decisions, review progress, and tighten execution quality.",
+  },
+  {
+    time: "12:00",
+    title: "Lunch & recharge",
+    detail: "Reset for the afternoon block and review next priorities.",
+  },
+  {
+    time: "12:30",
+    title: "Afternoon build block (subsystems + iteration)",
+    detail: "Integrate hardware and software, test quickly, and iterate with intent.",
+  },
+  {
+    time: "3:30",
+    title: "End-of-day demos & iteration planning",
+    detail: "Show outcomes, capture learnings, and define next-step build goals.",
+  },
+];
+
+const buildOutcomes = [
+  "Independence",
+  "Safe shop habits",
+  "Collaboration",
+  "Iteration discipline",
+  "Documentation",
+];
 
 export default function ProgramDetailsSection() {
   return (
@@ -32,132 +168,60 @@ export default function ProgramDetailsSection() {
             A selective, high-intensity program that moves students from engineering fundamentals to tested, competition-ready systems. Every week emphasizes build velocity, technical ownership, and coached iteration.
           </motion.p>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-6">
-            <motion.article
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
-              style={{ background: ink.surface, borderColor: ink.line }}
-            >
-              <div
-                className="absolute -inset-1 rounded-2xl pointer-events-none"
-                style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.16), transparent 60%)" }}
-              />
-              <div className="relative">
-                <h3 className="text-xl font-semibold">
-                  Week 1: Design, Fabrication & Rapid Prototyping
-                </h3>
-                <p className="mt-2 text-neutral-300">
-                  Students establish the engineering foundation and ship first-pass hardware from concept through testable prototype.
-                </p>
-                <div className="mt-4 grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li>3D design with <strong>Autodesk Fusion 360</strong></li>
-                      <li>Drivetrains, intakes, linkages (REV + goBilda)</li>
-                      <li>Design-driven development & feedback loops</li>
-                      <li>Safe lab operation & tool certification</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Outcomes</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li>Early prototypes completed</li>
-                      <li>Fusion files & sketches saved</li>
-                      <li>Understanding mechanical trade-offs</li>
-                      <li>Confident, safe shop habits</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.article>
+          <div className="mt-10 grid gap-6">
+            {weeks.map((week, index) => (
+              <motion.article
+                key={week.id}
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="rounded-2xl border p-6 md:p-8 shadow-lg relative overflow-hidden"
+                style={{ background: ink.surface, borderColor: ink.line }}
+              >
+                <div
+                  className="absolute -inset-1 rounded-2xl pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.16), transparent 60%)" }}
+                />
 
-            <motion.article
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="rounded-2xl p-6 border shadow-lg relative overflow-hidden"
-              style={{ background: ink.surface, borderColor: ink.line }}
-            >
-              <div
-                className="absolute -inset-1 rounded-2xl pointer-events-none"
-                style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.16), transparent 60%)" }}
-              />
-              <div className="relative">
-                <h3 className="text-xl font-semibold">
-                  Week 2: Code, Control Systems & Sensor Integration
-                </h3>
-                <p className="mt-2 text-neutral-300">
-                  Students connect hardware to reliable software behavior through structured control architecture and sensing.
-                </p>
-                <div className="mt-4 grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li><strong>Java</strong> with REV Control Hub</li>
-                      <li>Encoders, positional control, driver controls</li>
-                      <li>Sensor integration (distance/vision)</li>
-                      <li>Intro to autonomous routines & path planning</li>
-                    </ul>
+                <div className={`relative grid items-start gap-6 lg:gap-8 ${week.media.length ? "xl:grid-cols-[minmax(0,1fr)_minmax(340px,0.9fr)] xl:items-center" : ""}`}>
+                  <div className="order-2 xl:order-1">
+                    <h3 className="text-xl md:text-2xl font-semibold leading-tight">{week.title}</h3>
+                    <p className="mt-3 text-neutral-300 text-base leading-relaxed max-w-3xl">{week.description}</p>
+                    <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                      <div
+                        className="rounded-xl border p-4"
+                        style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(10,12,16,0.18)" }}
+                      >
+                        <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
+                        <ul className="mt-2 list-disc list-inside text-neutral-300 text-sm leading-relaxed space-y-1.5">
+                          {week.focusAreas.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div
+                        className="rounded-xl border p-4"
+                        style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(10,12,16,0.18)" }}
+                      >
+                        <div className="text-sm font-medium text-neutral-200">Outcomes</div>
+                        <ul className="mt-2 list-disc list-inside text-neutral-300 text-sm leading-relaxed space-y-1.5">
+                          {week.outcomes.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Outcomes</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li>Operable robot subsystems</li>
-                      <li>Functional OpModes</li>
-                      <li>Sensing + feedback control working on-bot</li>
-                      <li>First mini-autonomous routines</li>
-                    </ul>
-                  </div>
+                  {week.media.length ? (
+                    <aside className="order-1 xl:order-2 w-full xl:max-w-[460px] xl:justify-self-end xl:self-center">
+                      <MediaGallery media={week.media} />
+                    </aside>
+                  ) : null}
                 </div>
-              </div>
-            </motion.article>
-
-            <motion.article
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              viewport={{ once: true }}
-              className="rounded-2xl p-6 border shadow-lg md:col-span-2 relative overflow-hidden"
-              style={{ background: ink.surface, borderColor: ink.line }}
-            >
-              <div
-                className="absolute -inset-1 rounded-2xl pointer-events-none"
-                style={{ background: "linear-gradient(135deg, rgba(143,215,255,0.14), transparent 60%)" }}
-              />
-              <div className="relative">
-                <h3 className="text-xl font-semibold">Week 3: Test, Iterate, Compete</h3>
-                <p className="mt-2 text-neutral-300">
-                  Students stress-test, analyze failures, and iterate under pressure, ending with a
-                  <strong> Family Scrimmage Showcase</strong>.
-                </p>
-                <div className="mt-4 grid md:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li>Reliability testing & failure analysis</li>
-                      <li>Iteration journals & subsystem ownership</li>
-                      <li>Strategy refinement & driver practice</li>
-                      <li>Presentation & storytelling</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-neutral-200">Outcomes</div>
-                    <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-                      <li>Reliable competition systems</li>
-                      <li>Clear documentation of changes</li>
-                      <li>Real scrimmage match experience</li>
-                      <li>Polished final presentation</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.article>
+              </motion.article>
+            ))}
           </div>
 
           <motion.div
@@ -165,16 +229,55 @@ export default function ProgramDetailsSection() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-8 rounded-2xl p-5 border text-sm"
+            className="mt-8 rounded-2xl border p-5 md:p-6"
             style={{ background: ink.panel, borderColor: ink.line }}
           >
-            <div className="font-semibold text-neutral-100">Daily Rhythm</div>
-            <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
-              <li>Morning briefing & safety checks</li>
-              <li>Build blocks (mechanical / coding / testing)</li>
-              <li>Coach check-ins & feedback loops</li>
-              <li>End-of-day demos & iteration planning</li>
-            </ul>
+            <h3 className="text-lg md:text-xl font-semibold text-neutral-100">Daily Rhythm</h3>
+
+            <div className="mt-4 space-y-3.5">
+              {rhythm.map((item, idx) => (
+                <div key={`${item.time}-${item.title}`} className="relative pl-11">
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-4 top-0 h-full w-px bg-white/15"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-[11px] top-[18px] h-2.5 w-2.5 rounded-full border border-white/40 bg-[#8fd7ff]"
+                  />
+                  {idx === rhythm.length - 1 ? (
+                    <div aria-hidden="true" className="absolute left-4 bottom-0 h-2 w-px bg-transparent" />
+                  ) : null}
+
+                  <div className="rounded-xl border px-3 py-3.5 md:px-4 md:py-3" style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(10,12,16,0.2)" }}>
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
+                      <span className="inline-flex h-7 w-fit items-center rounded-full border px-2.5 text-xs font-semibold tracking-wide text-[#d8f0ff]" style={{ borderColor: "rgba(143,215,255,0.45)", background: "rgba(143,215,255,0.12)" }}>
+                        {item.time}
+                      </span>
+                      <div>
+                        <p className="text-sm md:text-[15px] font-semibold text-white">{item.title}</p>
+                        <p className="mt-1 text-sm text-neutral-300 leading-relaxed">{item.detail}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Builds</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {buildOutcomes.map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium text-neutral-200"
+                    style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(10,12,16,0.18)" }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           <div className="mt-12 h-px w-full" style={{ background: ink.line }} />
