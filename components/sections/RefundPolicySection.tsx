@@ -1,11 +1,13 @@
 import { ink } from "@/components/theme";
 
 const policyItems = [
-  "If Camp Asimov does not move forward with a scheduled session (including insufficient enrollment), all deposits and payments are fully refunded within 5 business days.",
-  "Full refund (minus $150 administrative fee) if cancellation occurs 30 days or more before the session start date.",
-  "50% refund if cancellation occurs 14-29 days before the session start date.",
-  "Within 14 days of the session start date, tuition is non-refundable, though a credit toward a future session may be issued at Camp Asimov's discretion.",
-  "Withdrawals after camp begins are non-refundable.",
+  "Session confirmation: Camp Asimov sessions proceed once minimum enrollment is reached. Families will be notified when a session is confirmed.",
+  "If a session does not proceed: If Camp Asimov does not move forward with a scheduled session (including due to insufficient enrollment), all deposits and payments will be fully refunded within 5 business days.",
+  "30+ days before session start: Full refund minus a $150 administrative fee.",
+  "14–29 days before session start: 50% refund of tuition paid.",
+  "Within 14 days of the session start date: Tuition is non-refundable. At Camp Asimov’s discretion, a credit toward a future session may be issued if space is available.",
+  "After the session begins: Withdrawals after camp begins are non-refundable.",
+  "Program cancellation by Camp Asimov: If Camp Asimov cancels a confirmed session for any reason, families will receive a full refund of all payments made.",
 ];
 
 export default function RefundPolicySection() {
@@ -26,13 +28,7 @@ export default function RefundPolicySection() {
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className="mt-5">
-            All refund requests must be submitted in writing to{" "}
-            <a href="mailto:info@campasimov.com" className="underline" style={{ color: ink.accent }}>
-              info@campasimov.com
-            </a>
-            .
-          </p>
+          <p className="mt-5">All refund requests must be submitted in writing to info@campasimov.com.</p>
         </div>
       </div>
     </section>
