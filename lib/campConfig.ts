@@ -1,6 +1,8 @@
 export const DECISION_DATE = "April 30, 2026";
 export const COHORT_CAP = 16;
 export const FORMSPREE_FOUNDING_COHORT_ACTION = "https://formspree.io/f/mjgelnqn";
+export const FORMSPREE_ENROLLMENT_FORM_ACTION =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENROLLMENT_FORM_ACTION ?? FORMSPREE_FOUNDING_COHORT_ACTION;
 
 export const COHORT_A_DATES = "June 8-26";
 export const COHORT_B_DATES = "July 6-24";
