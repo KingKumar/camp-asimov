@@ -1,12 +1,11 @@
 import { ink } from "@/components/theme";
 
 const policyItems = [
-  "If Camp Asimov does not move forward with a scheduled session, all paid deposits will be fully refunded within 5 business days.",
+  "If Camp Asimov does not move forward with a scheduled session (including insufficient enrollment), all deposits and payments are fully refunded within 5 business days.",
   "Full refund (minus $150 administrative fee) if cancellation occurs 30 days or more before the session start date.",
   "50% refund if cancellation occurs 14-29 days before the session start date.",
-  "Within 14 days of the session start date: tuition is non-refundable, but a credit toward a future session may be issued at Camp Asimov's discretion if space is available.",
+  "Within 14 days of the session start date, tuition is non-refundable, though a credit toward a future session may be issued at Camp Asimov's discretion.",
   "Withdrawals after camp begins are non-refundable.",
-  "If Camp Asimov must cancel a session for any reason, families will receive a full refund of all payments made.",
 ];
 
 export default function RefundPolicySection() {
