@@ -26,7 +26,6 @@ const roboticsProgramOptions = [
 ];
 const programmingOptions = ["None", "Scratch", "Python", "Java", "C++", "Arduino", "Other"];
 const cadOptions = ["None", "Fusion 360", "Onshape", "Tinkercad", "SolidWorks", "Other"];
-const hearAboutOptions = ["Google Search", "Friend or Referral", "Robotics Team", "School", "Social Media", "Other"];
 
 export default function EnrollmentFormPage() {
   const [loading, setLoading] = useState(false);
@@ -255,8 +254,8 @@ export default function EnrollmentFormPage() {
             </section>
 
             <section>
-              <h2 className="text-lg md:text-xl font-semibold">Medical / Health / Safety Information</h2>
-              <p className="mt-2 text-xs md:text-sm text-neutral-300">This information helps us support a safe environment for all students.</p>
+              <h2 className="text-lg md:text-xl font-semibold">Medical / Safety Information</h2>
+              <p className="mt-2 text-xs md:text-sm text-neutral-300">This information helps us maintain a safe environment for all students.</p>
               <div className="mt-4 grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="allergies" className="block text-sm font-semibold text-neutral-100">Allergies</label>
@@ -308,25 +307,16 @@ export default function EnrollmentFormPage() {
                 {medicationCarry === "Yes" ? (
                   <div className="md:col-span-2">
                     <label htmlFor="medication_needs" className="block text-sm font-semibold text-neutral-100">Please explain medication needs</label>
-                    <textarea id="medication_needs" name="medication_needs_details" rows={3} className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
+                    <textarea
+                      id="medication_needs"
+                      name="medication_needs_details"
+                      required={medicationCarry === "Yes"}
+                      rows={3}
+                      className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                      style={{ borderColor: ink.line }}
+                    />
                   </div>
                 ) : null}
-                <div>
-                  <label htmlFor="physician_name" className="block text-sm font-semibold text-neutral-100">Physician Name</label>
-                  <input id="physician_name" name="physician_name" type="text" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
-                </div>
-                <div>
-                  <label htmlFor="physician_phone" className="block text-sm font-semibold text-neutral-100">Physician Phone Number</label>
-                  <input id="physician_phone" name="physician_phone_number" type="tel" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
-                </div>
-                <div>
-                  <label htmlFor="insurance_provider" className="block text-sm font-semibold text-neutral-100">Health Insurance Provider</label>
-                  <input id="insurance_provider" name="health_insurance_provider" type="text" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
-                </div>
-                <div>
-                  <label htmlFor="insurance_policy_number" className="block text-sm font-semibold text-neutral-100">Insurance Policy Number</label>
-                  <input id="insurance_policy_number" name="insurance_policy_number" type="text" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
-                </div>
               </div>
             </section>
 
@@ -460,24 +450,6 @@ export default function EnrollmentFormPage() {
                   <label htmlFor="signature_date" className="block text-sm font-semibold text-neutral-100">Date</label>
                   <input id="signature_date" name="signature_date" type="date" required className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
                 </div>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-lg md:text-xl font-semibold">How Did You Hear About Camp Asimov?</h2>
-              <div className="mt-4">
-                <select
-                  name="hear_about_camp_asimov"
-                  required
-                  defaultValue=""
-                  className="w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
-                  style={{ borderColor: ink.line }}
-                >
-                  <option value="" disabled>Select one</option>
-                  {hearAboutOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
               </div>
             </section>
 
