@@ -639,7 +639,7 @@ export default function AsimovCampLanding() {
               style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)", borderColor: ink.line, background: "rgba(8,10,16,0.45)" }}
             >
               Led by Educator & Technologist{" "}
-              <strong className="font-semibold text-white">Ronit Kumar</strong>, Head of Robotics Program at Crossroads School for the Arts and Sciences and founder of Brentwood School&apos;s Robotics Program and Center for Innovation and Leadership.
+              Ronit founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences, bringing more than a decade of experience mentoring students in engineering and robotics.
             </p>
           </div>
 
@@ -1410,7 +1410,7 @@ export default function AsimovCampLanding() {
             </p>
             <div className="mt-4 text-sm text-neutral-200 space-y-1">
               <div><span className="font-semibold text-white">Academic Director:</span> Ronit Kumar</div>
-              <div>Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
+              <div>Founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.</div>
               <div>Los Angeles, CA</div>
               <div>
                 Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline" style={{ color: ink.accent }}>{CONTACT_EMAIL}</a>

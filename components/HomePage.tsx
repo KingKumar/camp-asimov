@@ -68,8 +68,7 @@ export default function HomePage() {
             className="mt-4 inline-block max-w-2xl rounded-full border px-4 py-2 text-xs md:text-sm text-neutral-200 backdrop-blur-sm text-center"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)", borderColor: ink.line, background: "rgba(8,10,16,0.45)" }}
           >
-            Led by Educator & Technologist{" "}
-            <strong className="font-semibold text-white">Ronit Kumar</strong>, Head of Robotics Program at Crossroads School for the Arts and Sciences and founder of Brentwood School&apos;s Robotics Program and Center for Innovation and Leadership.
+            Ronit founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences, bringing more than a decade of experience mentoring students in engineering and robotics.
           </p>
         </div>
 
@@ -160,6 +159,37 @@ export default function HomePage() {
             </div>
           </div>
         </motion.div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 pb-16">
+        <div className="grid grid-cols-1 min-[901px]:grid-cols-[1.2fr_1fr] gap-6 min-[901px]:gap-12 items-stretch">
+          <div className="rounded-2xl border p-6 md:p-8 h-full flex flex-col justify-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
+            <h2 className="text-3xl md:text-4xl font-bold">Meet the Instructor</h2>
+            <div className="mt-4 space-y-4 text-neutral-200 leading-relaxed md:text-lg">
+              <p>
+                Ronit Kumar is an educator, technologist, and veteran robotics mentor who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.
+              </p>
+              <p>
+                Over the past decade, he has helped students grow in mechanical design, CAD, programming, and competitive robotics through hands-on mentorship and real engineering challenges. His students have gone on to study engineering, computer science, and science at universities including Harvard, Colgate, and UC Davis.
+              </p>
+              <p>
+                Camp Asimov was created to give motivated students a more serious robotics experience - one centered on technical growth, independence, creativity, and meaningful mentorship.
+              </p>
+              <p>Ronit personally leads instruction and works directly with students throughout the program.</p>
+              <p className="text-sm md:text-base text-neutral-300">Longtime FIRST robotics competitor, mentor, and coach.</p>
+            </div>
+          </div>
+          <div className="rounded-2xl border p-4 md:p-5 flex items-center justify-center min-[901px]:h-full" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
+            <img
+              src="/ronit.JPG"
+              alt="Ronit Kumar, Camp Asimov instructor"
+              className="w-full h-auto max-h-[420px] min-[901px]:w-auto min-[901px]:h-full min-[901px]:max-h-[520px] min-[901px]:max-w-full object-contain rounded-xl"
+            />
+          </div>
+        </div>
+        <p className="mt-10 max-w-7xl text-center text-[0.9rem] leading-[1.5] text-neutral-200/80">
+          Camp Asimov is an independent educational program and is not affiliated with, sponsored by, or endorsed by Crossroads School for Arts &amp; Sciences or Brentwood School.
+        </p>
       </div>
     </section>
   );

@@ -51,7 +51,7 @@ export default function ContactSection() {
           </p>
           <div className="mt-4 text-sm text-neutral-200 space-y-1">
             <div><span className="font-semibold text-white">Academic Director:</span> Ronit Kumar</div>
-            <div>Bringing experience as Robotics Program Head at Brentwood School and Crossroads School for the Arts and Sciences.</div>
+            <div>Founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.</div>
             <div>Los Angeles, CA</div>
             <div>
               Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline" style={{ color: ink.accent }}>{CONTACT_EMAIL}</a>

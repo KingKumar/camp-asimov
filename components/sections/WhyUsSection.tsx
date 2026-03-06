@@ -44,7 +44,7 @@ export default function WhyUsSection() {
 
         <div className="mt-8 rounded-2xl border p-6" style={{ borderColor: ink.line, background: ink.panel }}>
           <div className="text-base md:text-lg text-neutral-200 leading-relaxed text-center">
-            Led by <strong>Ronit Kumar</strong>, longtime robotics program head and educator in Los Angeles independent schools. Ronit has spent more than a decade teaching engineering fundamentals and over fifteen years in competitive robotics as a student, mentor, and program leader.
+            Led by <strong>Ronit Kumar</strong>, who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences. Ronit has spent more than a decade teaching engineering fundamentals and over fifteen years in competitive robotics as a student, mentor, and program leader.
             <span className="block mt-2">
               Camp Asimov was built for students who want serious technical growth: thoughtful design, disciplined build execution, and the confidence to lead engineering work.
             </span>
