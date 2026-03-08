@@ -26,6 +26,8 @@ const roboticsProgramOptions = [
 ];
 const programmingOptions = ["None", "Scratch", "Python", "Java", "C++", "Arduino", "Other"];
 const cadOptions = ["None", "Fusion 360", "Onshape", "Tinkercad", "SolidWorks", "Other"];
+const laptopAccessOptions = ["Yes", "No", "Not sure yet"];
+const laptopOsOptions = ["MacOS", "Windows", "Other / Not sure"];
 
 export default function EnrollmentFormPage() {
   const [loading, setLoading] = useState(false);
@@ -33,6 +35,7 @@ export default function EnrollmentFormPage() {
   const [submitted, setSubmitted] = useState(false);
   const [medicationCarry, setMedicationCarry] = useState("");
   const [parentEmail, setParentEmail] = useState("");
+  const [laptopAccess, setLaptopAccess] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -126,6 +129,47 @@ export default function EnrollmentFormPage() {
                     This helps us match your enrollment form with your reservation payment.
                   </p>
                 </div>
+              </div>
+              <div className="mt-5 max-w-2xl space-y-5">
+                <div>
+                  <label htmlFor="laptop_access" className="block text-sm font-semibold text-neutral-100">
+                    Does your child have access to a laptop they can bring to the program?
+                  </label>
+                  <select
+                    id="laptop_access"
+                    name="laptop_access_for_program"
+                    required
+                    value={laptopAccess}
+                    onChange={(e) => setLaptopAccess(e.target.value)}
+                    className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                    style={{ borderColor: ink.line }}
+                  >
+                    <option value="" disabled>Select one</option>
+                    {laptopAccessOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+                {laptopAccess === "Yes" ? (
+                  <div>
+                    <label htmlFor="laptop_os" className="block text-sm font-semibold text-neutral-100">
+                      What operating system does the laptop use?
+                    </label>
+                    <select
+                      id="laptop_os"
+                      name="laptop_operating_system"
+                      required={laptopAccess === "Yes"}
+                      defaultValue=""
+                      className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                      style={{ borderColor: ink.line }}
+                    >
+                      <option value="" disabled>Select one</option>
+                      {laptopOsOptions.map((option) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
+                ) : null}
               </div>
             </section>
 

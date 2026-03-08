@@ -453,6 +453,24 @@ export default function ProgramDetailsSection() {
                 <li>Daily testing, iteration, and Demo Day showcase</li>
                 <li>Portfolio photos/video + presentation coaching</li>
               </ul>
+              <p className="mt-4 text-sm text-neutral-300 leading-relaxed">
+                Students typically work on their own laptops so they can keep their CAD environment and development tools configured for continued use after the program.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
+              <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">Laptop / Personal Device</div>
+              <div className="mt-3 space-y-3 text-sm text-neutral-300 leading-relaxed">
+                <p>
+                  Students are encouraged to bring their own laptop if possible. Working on a personal machine allows students to keep their CAD environment, files, and development tools set up exactly as they used them during the program.
+                </p>
+                <p>
+                  This approach helps students continue developing their projects and skills after the program ends, rather than leaving their work behind on a shared computer.
+                </p>
+                <p>
+                  If a student does not have access to a suitable laptop, please let us know in the enrollment form and we will work with you to ensure they can fully participate.
+                </p>
+              </div>
             </div>
           </div>
         </div>

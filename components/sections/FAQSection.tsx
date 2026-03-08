@@ -31,6 +31,10 @@ const faqs = [
     a: "Bring lunch daily, plus closed-toe shoes, hair tied back, no dangling jewelry, and a labeled water bottle. We supply all tools, materials, and safety gear.",
   },
   {
+    q: "Do students need to bring a laptop?",
+    a: "Students are encouraged to bring their own laptop if possible. Working on a personal machine allows them to keep their design environment, files, and robotics software set up exactly as they used them during the program. This makes it much easier for students to continue building and experimenting after the program ends. If a student does not have access to a laptop, please let us know and we will ensure they have access to what they need during the program.",
+  },
+  {
     q: "What is your teacher-to-student ratio?",
     a: "We target a 1:8 teacher-to-student ratio, with additional mentors during machine and testing blocks.",
   },
