@@ -162,10 +162,10 @@ export default function HomePage() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pb-16">
-        <div className="grid grid-cols-1 min-[901px]:grid-cols-[1.2fr_1fr] gap-6 min-[901px]:gap-12 items-stretch">
+        <div className="grid grid-cols-1 min-[901px]:grid-cols-[1.45fr_0.55fr] gap-6 min-[901px]:gap-10 items-stretch">
           <div className="rounded-2xl border p-6 md:p-8 h-full flex flex-col justify-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
             <h2 className="text-3xl md:text-4xl font-bold">Meet the Instructor</h2>
-            <div className="mt-4 space-y-4 text-neutral-200 leading-relaxed md:text-lg">
+            <div className="mt-4 space-y-4 text-neutral-200 leading-relaxed text-[1.02rem] md:text-[1.18rem]">
               <p>
                 Ronit Kumar is an educator, technologist, and veteran robotics mentor who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.
               </p>
@@ -182,11 +182,11 @@ export default function HomePage() {
               <p className="text-sm md:text-base text-neutral-300">Longtime FIRST robotics competitor, mentor, and coach.</p>
             </div>
           </div>
-          <div className="rounded-2xl border p-4 md:p-5 flex items-center justify-center min-[901px]:h-full" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
+          <div className="rounded-2xl border p-2 md:p-3 flex items-center justify-center min-[901px]:h-full" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
             <img
               src="/ronit.JPG"
               alt="Ronit Kumar, Camp Asimov instructor"
-              className="w-full h-auto max-h-[420px] min-[901px]:w-auto min-[901px]:h-full min-[901px]:max-h-[520px] min-[901px]:max-w-full object-contain rounded-xl"
+              className="w-full h-auto max-h-[420px] min-[901px]:w-auto min-[901px]:h-full min-[901px]:max-h-[500px] min-[901px]:max-w-full object-contain rounded-xl"
             />
           </div>
         </div>
