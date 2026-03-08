@@ -19,6 +19,10 @@ const faqs = [
     a: "Yes, for beginners who are ready for full-day technical effort, daily feedback, and disciplined build work. We group by age and experience and coach students up quickly.",
   },
   {
+    q: "Will students work in teams or build their own robots?",
+    a: "At Camp Asimov, each student builds their own robot. Students still learn in a collaborative environment and support one another, but engineering responsibility stays personal. This helps students build real confidence, deeper understanding, and the ability to contribute meaningfully when they return to team-based robotics environments.",
+  },
+  {
     q: "How do cohort caps work?",
     a: `Each founding cohort is capped at ${COHORT_CAP} students. We keep cohorts small by design to protect mentoring quality and technical output.`,
   },

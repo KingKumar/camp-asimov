@@ -28,7 +28,7 @@ export default function HomePage() {
             className="mt-0 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            A selective 3-week robotics intensive. Two sessions. 16 students per cohort.
+            A selective 3-week robotics intensive where each student builds their own robot. Two sessions. 16 students per cohort.
           </p>
           <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
             <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
@@ -61,7 +61,7 @@ export default function HomePage() {
               <SessionPicker compact ctaLabel="Request an Invite" showCohortNote />
             </div>
             <p className="w-full max-w-md text-sm text-neutral-200 text-center leading-relaxed">
-              Enrollment is by invitation following review of the Founding Cohort Interest Form.
+              Apply for a program where every student builds their own robot with direct mentor feedback.
             </p>
           </div>
           <p
@@ -82,7 +82,7 @@ export default function HomePage() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-300">Camp Snapshot</div>
-                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Small teams. High mentor access. Real outcomes.</div>
+                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Small cohorts. Individual robot builds. Real outcomes.</div>
                 </div>
                 <div className="hidden md:flex items-center gap-2 text-xs text-neutral-400">
                   <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
@@ -174,6 +174,9 @@ export default function HomePage() {
               </p>
               <p>
                 Camp Asimov was created to give motivated students a more serious robotics experience - one centered on technical growth, independence, creativity, and meaningful mentorship.
+              </p>
+              <p>
+                Ronit&apos;s core teaching philosophy is simple: students learn engineering fastest when they are directly responsible for their own builds. Camp Asimov is intentionally structured so students develop the mechanical judgment and technical confidence to become the teammate who can actually build, troubleshoot, and improve the robot.
               </p>
               <p>Ronit personally leads instruction and works directly with students throughout the program.</p>
               <p className="text-sm md:text-base text-neutral-300">Longtime FIRST robotics competitor, mentor, and coach.</p>

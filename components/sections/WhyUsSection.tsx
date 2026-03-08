@@ -9,22 +9,22 @@ export default function WhyUsSection() {
       <div className="mx-auto max-w-7xl px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-center">Why families choose Camp Asimov</h2>
         <p className="mt-3 text-neutral-200 max-w-4xl mx-auto">
-          This is a selective engineering build lab, not a high-volume camp format. We keep teams small and standards high so students can produce meaningful work: competition-ready systems, documented engineering decisions, and polished technical presentations.
+          Many robotics environments rely on large group builds where only a few students handle the real engineering. Camp Asimov is intentionally designed so each student builds their own robot and develops direct mechanical fluency, technical independence, and the confidence to contribute meaningfully on future teams.
         </p>
 
         <div className="mt-6 grid sm:grid-cols-2 gap-4">
           {[
             {
-              title: "Small cohorts by design",
-              text: "Cohorts are intentionally capped to preserve high-mentor access, faster feedback cycles, and serious daily build momentum.",
+              title: "Individual build responsibility",
+              text: "Every student works on their own robot platform, with direct responsibility for mechanical decisions, assembly quality, and iteration outcomes.",
             },
             {
               title: "Mentoring with engineering rigor",
-              text: "An 8:1 teacher-to-student ratio supports structured check-ins, subsystem ownership, and accountable execution.",
+              text: "An 8:1 teacher-to-student ratio supports structured check-ins, hands-on repetition, and accountable execution across each student&apos;s build.",
             },
             {
               title: "Outcomes that transfer",
-              text: "Students leave with CAD portfolio assets, autonomous routines, and FTC-ready systems they can defend and improve.",
+              text: "Students leave with mechanical confidence, stronger troubleshooting ability, and the practical fluency to build and improve robots on real teams.",
             },
             {
               title: "Elite coaching leadership",
@@ -46,7 +46,7 @@ export default function WhyUsSection() {
           <div className="text-base md:text-lg text-neutral-200 leading-relaxed text-center">
             Led by <strong>Ronit Kumar</strong>, who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences. Ronit has spent more than a decade teaching engineering fundamentals and over fifteen years in competitive robotics as a student, mentor, and program leader.
             <span className="block mt-2">
-              Camp Asimov was built for students who want serious technical growth: thoughtful design, disciplined build execution, and the confidence to lead engineering work.
+              Camp Asimov was built for students who want serious technical growth: real ownership of the engineering process, disciplined build execution, and the confidence to lead engineering work.
             </span>
           </div>
         </div>

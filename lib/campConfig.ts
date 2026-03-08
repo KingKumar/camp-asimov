@@ -22,16 +22,17 @@ export const FOUNDING_COHORT_CTA_MICROCOPY_LINES = [
 export const FOUNDING_COHORT_NOTE_LINES = [
   "Two 3-week founding cohorts (June & July)",
   `Capped at ${COHORT_CAP} students per cohort`,
+  "Every student builds and iterates on their own robot platform.",
 ];
 
 export const WHO_ITS_FOR_LINES = [
-  "Students already building or competing in robotics.",
-  "Beginners ready for full-day, high-intensity engineering work.",
+  "Students who want to do real build work and develop technical independence.",
+  "Students ready to take ownership of engineering challenges, troubleshooting, and iteration.",
 ];
 
 export const NOT_A_FIT_LINES = [
-  "Students looking for a casual crafts or half-day camp vibe.",
-  "Students not ready for daily build discipline and feedback.",
+  "Students looking for a casual crafts, shared-kit, or half-day camp vibe.",
+  "Students not ready for direct build responsibility, daily feedback, and disciplined iteration.",
 ];
 
 export const SESSION_REFUND_FAQ_ANSWER =

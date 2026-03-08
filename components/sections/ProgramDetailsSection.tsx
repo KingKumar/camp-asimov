@@ -28,7 +28,7 @@ const weeks: WeekSection[] = [
     id: "week1",
     title: "Week 1: Design, Fabrication & Rapid Prototyping",
     description:
-      "Students establish the engineering foundation and ship first-pass hardware from concept through testable prototype.",
+      "Students establish the engineering foundation on their own robot platform and ship first-pass hardware from concept through testable prototype.",
     focusAreas: [
       "3D design with Autodesk Fusion 360",
       "Drivetrains, intakes, linkages (REV + goBilda)",
@@ -54,7 +54,7 @@ const weeks: WeekSection[] = [
     id: "week2",
     title: "Week 2: Code, Control Systems & Sensor Integration",
     description:
-      "Students connect hardware to reliable software behavior through structured control architecture and sensing.",
+      "Students connect their own hardware to reliable software behavior through structured control architecture and sensing.",
     focusAreas: [
       "Java with REV Control Hub",
       "Encoders, positional control, driver controls",
@@ -79,7 +79,7 @@ const weeks: WeekSection[] = [
     id: "week3",
     title: "Week 3: Test, Iterate, Compete",
     description:
-      "Students stress-test, analyze failures, and iterate under pressure, ending with a Family Scrimmage Showcase.",
+      "Students stress-test their own builds, analyze failures, and iterate under pressure, ending with a Family Scrimmage Showcase.",
     focusAreas: [
       "Reliability testing & failure analysis",
       "Iteration journals & subsystem ownership",
@@ -157,7 +157,7 @@ export default function ProgramDetailsSection() {
             viewport={{ once: true }}
             className="mt-4 text-lg text-neutral-300 text-center max-w-4xl mx-auto"
           >
-            A selective, high-intensity program that moves students from engineering fundamentals to tested, competition-ready systems. Every week emphasizes build velocity, technical ownership, and coached iteration.
+            A selective, high-intensity program where every student builds and refines their own robot. The curriculum is built around individual build responsibility, hands-on repetition, and real ownership of the engineering process so students understand not just what works, but why it works.
           </motion.p>
 
           <div className="mt-10 grid gap-6">
@@ -258,7 +258,7 @@ export default function ProgramDetailsSection() {
 
             <div className="mt-5 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
               <p className="text-sm md:text-[15px] leading-relaxed text-neutral-200">
-                Camp Asimov days are intentionally structured for sustained focus and steady progress, with natural breaks built into the rhythm and short, fun team games that keep energy high. The result is a balanced experience: serious engineering work, strong mentorship, and an environment where students stay engaged all day.
+                Camp Asimov days are intentionally structured for sustained focus and steady progress, with natural breaks built into the rhythm and short, fun team games that keep energy high. Students still collaborate and support each other, but engineering responsibility stays personal so each student develops technical independence and mechanical confidence.
               </p>
             </div>
           </motion.div>
@@ -443,10 +443,10 @@ export default function ProgramDetailsSection() {
             <div className="rounded-2xl border p-6 lg:col-span-3" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
               <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">What’s included</div>
               <div className="mt-2 text-sm text-neutral-300">
-                A premium, all-inclusive engineering build lab with professional tooling, structured coaching, and measurable outcomes.
+                A premium, all-inclusive engineering build lab where each student owns real robot build work with professional tooling, structured coaching, and measurable outcomes.
               </div>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-300">
-                <li>Expert coaching in small teams (1:8 ratio)</li>
+                <li>Individual robot builds with direct mentor coaching (1:8 ratio)</li>
                 <li>FTC‑grade parts: REV Robotics + goBilda builds</li>
                 <li>Autodesk Fusion 360 CAD + Java programming</li>
                 <li>Full lab access, safety training, PPE included</li>
