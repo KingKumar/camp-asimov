@@ -28,6 +28,14 @@ const programmingOptions = ["None", "Scratch", "Python", "Java", "C++", "Arduino
 const cadOptions = ["None", "Fusion 360", "Onshape", "Tinkercad", "SolidWorks", "Other"];
 const laptopAccessOptions = ["Yes", "No", "Not sure yet"];
 const laptopOsOptions = ["MacOS", "Windows", "Other / Not sure"];
+const referralSourceOptions = [
+  "Google search",
+  "Friend / student referral",
+  "Parent referral",
+  "Robotics team or club",
+  "School recommendation",
+  "Other",
+];
 
 export default function EnrollmentFormPage() {
   const [loading, setLoading] = useState(false);
@@ -36,6 +44,7 @@ export default function EnrollmentFormPage() {
   const [medicationCarry, setMedicationCarry] = useState("");
   const [parentEmail, setParentEmail] = useState("");
   const [laptopAccess, setLaptopAccess] = useState("");
+  const [referralSource, setReferralSource] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -452,6 +461,50 @@ export default function EnrollmentFormPage() {
                   </label>
                 </div>
               </fieldset>
+            </section>
+
+            <section>
+              <h2 className="text-lg md:text-xl font-semibold">How did you hear about Camp Asimov?</h2>
+              <div className="mt-4 max-w-2xl space-y-4">
+                <div>
+                  <label htmlFor="referral_source" className="block text-sm font-semibold text-neutral-100">
+                    How did you hear about Camp Asimov?
+                  </label>
+                  <select
+                    id="referral_source"
+                    name="referral_source"
+                    required
+                    value={referralSource}
+                    onChange={(e) => setReferralSource(e.target.value)}
+                    className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                    style={{ borderColor: ink.line }}
+                  >
+                    <option value="" disabled>Select one</option>
+                    {referralSourceOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {(referralSource === "Friend / student referral" || referralSource === "Parent referral") ? (
+                  <div>
+                    <label htmlFor="referrer_name" className="block text-sm font-semibold text-neutral-100">
+                      Who referred you to Camp Asimov?
+                    </label>
+                    <input
+                      id="referrer_name"
+                      name="referrer_name"
+                      type="text"
+                      className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white"
+                      style={{ borderColor: ink.line }}
+                    />
+                  </div>
+                ) : null}
+
+                <p className="text-sm text-neutral-300 leading-relaxed">
+                  Many students enjoy attending Camp Asimov with a friend. When a student enrolls through a referral from an already enrolled family, both families receive a small tuition credit as a thank-you.
+                </p>
+              </div>
             </section>
 
             <section>
