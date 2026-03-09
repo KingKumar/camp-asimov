@@ -11,8 +11,12 @@ const faqs = [
     a: `Cohorts are intentionally capped at ${COHORT_CAP} students to preserve high mentor access, technical rigor, and build quality.`,
   },
   {
-    q: "Where is it and what are the hours?",
-    a: "Camp runs Mon–Fri, 9:00–3:30 at our Los Angeles location (final site announced after enrollment). Early drop 8:30 and late pickup until 4:00 are available.",
+    q: "Where will the camp take place?",
+    a: "Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica. Final location details will be confirmed with enrolled families before the program begins.",
+  },
+  {
+    q: "What are the camp hours?",
+    a: "Camp runs Mon–Fri, 9:00–3:30. Early drop 8:30 and late pickup until 4:00 are available.",
   },
   {
     q: "Is it right for beginners?",

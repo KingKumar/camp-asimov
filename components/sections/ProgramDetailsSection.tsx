@@ -391,7 +391,10 @@ export default function ProgramDetailsSection() {
                 </div>
                 <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
                   <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Location</div>
-                  <div className="mt-1 font-semibold text-white">Los Angeles (exact site TBD)</div>
+                  <div className="mt-1 font-semibold text-white">Santa Monica (Bergamot Station area)</div>
+                  <div className="mt-1 text-xs leading-relaxed text-neutral-300">
+                    Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica, a creative and accessible part of the Westside. Final location details will be shared with enrolled families before the program begins.
+                  </div>
                 </div>
               </div>
               <div className="mt-4 rounded-xl border px-4 py-3 text-sm text-neutral-300" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
