@@ -20,7 +20,7 @@ export default function ContactSection() {
           <iframe
             title="Camp Asimov in the Bergamot Station area of Santa Monica"
             className="h-[350px] w-full transition-opacity duration-500 opacity-0"
-            src="https://www.google.com/maps?q=34.0272,-118.4690&z=15&output=embed"
+            src="https://www.google.com/maps?q=34.0272,-118.4690&z=14&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             onLoad={(e) => {
