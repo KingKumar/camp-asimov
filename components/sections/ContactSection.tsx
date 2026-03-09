@@ -8,12 +8,19 @@ const CONTACT_EMAIL = "info@campasimov.com";
 export default function ContactSection() {
   return (
     <section className="pt-0 pb-16">
+      <div className="w-full bg-black -mt-12 md:-mt-16">
+        <div className="mx-auto max-w-7xl px-6 py-3 text-center">
+          <p className="text-sm md:text-base font-semibold text-white">
+            Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica. Final location details will be shared with enrolled families.
+          </p>
+        </div>
+      </div>
       <div className="w-full">
-        <div className="relative w-full overflow-hidden border-y -mt-12 md:-mt-16" style={{ borderColor: ink.line }}>
+        <div className="relative w-full overflow-hidden border-y" style={{ borderColor: ink.line }}>
           <iframe
-            title="Camp Asimov in Santa Monica"
-            className="h-[272px] md:h-[368px] w-full transition-opacity duration-500 opacity-0"
-            src="https://www.google.com/maps?q=Santa%20Monica%2C%20CA&z=13&output=embed"
+            title="Camp Asimov in the Bergamot Station area of Santa Monica"
+            className="h-[350px] w-full transition-opacity duration-500 opacity-0"
+            src="https://www.google.com/maps?q=34.0272,-118.4690&z=15&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             onLoad={(e) => {
@@ -21,21 +28,21 @@ export default function ContactSection() {
               el.classList.remove("opacity-0");
               el.classList.add("opacity-100");
             }}
-            style={{ opacity: 0.65 }}
+            style={{ opacity: 0.88 }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-black/55 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/35 pointer-events-none" />
           <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
             <div className="text-center text-white text-3xl md:text-4xl font-bold drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)]">
               Contact us to learn more about LA&apos;s #1 robotics summer camp.
             </div>
           </div>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Santa%20Monica%2C%20CA"
+            href="https://www.google.com/maps/search/?api=1&query=34.0272,-118.4690"
             target="_blank"
             rel="noopener noreferrer"
             className="absolute inset-0"
-            aria-label="Open Google Maps for Santa Monica"
+            aria-label="Open Google Maps for the Bergamot Station area in Santa Monica"
           />
         </div>
       </div>
