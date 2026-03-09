@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "What are the camp hours?",
-    a: "Camp runs Mon–Fri, 9:00–3:30. Early drop 8:30 and late pickup until 4:00 are available.",
+    a: "Camp runs Mon–Fri, 9:00–4:00. Early drop-off is available at 8:30, and pickup is available until 4:30.",
   },
   {
     q: "Is it right for beginners?",
