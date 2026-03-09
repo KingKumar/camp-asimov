@@ -8,7 +8,7 @@ const CONTACT_EMAIL = "info@campasimov.com";
 export default function ContactSection() {
   return (
     <section className="pt-0 pb-16">
-      <div className="w-full bg-black -mt-12 md:-mt-16">
+      <div className="w-full bg-black -mt-12 md:-mt-16 pt-12 md:pt-16">
         <div className="mx-auto max-w-7xl px-6 py-3 text-center">
           <p className="text-sm md:text-base font-semibold text-white">
             Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica. Final location details will be shared with enrolled families.
