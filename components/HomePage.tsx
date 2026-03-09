@@ -64,12 +64,6 @@ export default function HomePage() {
               Apply for a program where every student builds their own robot with direct mentor feedback.
             </p>
           </div>
-          <p
-            className="mt-4 inline-block max-w-2xl rounded-full border px-4 py-2 text-xs md:text-sm text-neutral-200 backdrop-blur-sm text-center"
-            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.6)", borderColor: ink.line, background: "rgba(8,10,16,0.45)" }}
-          >
-            Ronit founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences, bringing more than a decade of experience mentoring students in engineering and robotics.
-          </p>
         </div>
 
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -190,9 +184,6 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <p className="mt-10 max-w-7xl text-center text-[0.9rem] leading-[1.5] text-neutral-200/80">
-          Camp Asimov is an independent educational program and is not affiliated with, sponsored by, or endorsed by Crossroads School for Arts &amp; Sciences or Brentwood School.
-        </p>
       </div>
     </section>
   );
