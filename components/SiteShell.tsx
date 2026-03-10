@@ -246,7 +246,18 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
 
         <footer className="border-t py-8 text-center text-xs text-neutral-500" style={{ borderColor: ink.line }}>
           <div className="mx-auto max-w-7xl px-6 flex flex-col gap-4 items-center justify-center text-center">
-            <div>© {new Date().getFullYear()} Camp Asimov. All rights reserved.</div>
+            <div>© 2026 Camp Asimov LLC</div>
+            <div className="mt-1 text-[0.9rem] leading-[1.4] text-neutral-300/70">
+              <div>Santa Monica, CA</div>
+              <div>
+                <a href="mailto:info@campasimov.com" className="hover:text-neutral-300">
+                  info@campasimov.com
+                </a>
+              </div>
+            </div>
+            <p className="mt-1 max-w-4xl text-[0.85rem] leading-[1.4] text-neutral-300/70">
+              Camp Asimov is an independent educational program operated by Camp Asimov LLC and is not affiliated with, sponsored by, or endorsed by any school or educational institution.
+            </p>
             <div className="flex gap-4">
               <a className="hover:text-neutral-300" href="/privacy.html">Privacy</a>
               <a className="hover:text-neutral-300" href="/refunds">Refunds</a>
