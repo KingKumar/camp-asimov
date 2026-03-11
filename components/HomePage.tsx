@@ -96,7 +96,7 @@ export default function HomePage() {
               <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
                 {[
                   ["3", "Weeks"],
-                  ["10–17", "Ages"],
+                  ["10–15", "Ages"],
                   ["1:8", "Teacher : Student"],
                 ].map(([n, l]) => (
                   <div

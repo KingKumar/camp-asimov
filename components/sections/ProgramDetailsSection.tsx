@@ -442,7 +442,7 @@ export default function ProgramDetailsSection() {
 
             <div className="rounded-2xl border p-6" style={{ borderColor: ink.line, background: "rgba(12,14,18,0.18)" }}>
               <div className="text-neutral-300 text-sm uppercase tracking-[0.2em]">Ages</div>
-              <div className="mt-2 text-2xl font-semibold">10–17</div>
+              <div className="mt-2 text-2xl font-semibold">10–15</div>
               <ul className="mt-3 space-y-2 text-sm text-neutral-300">
                 <li>Grouped by age/experience</li>
                 <li>1:8 <strong>Teacher : Student</strong> ratio</li>
