@@ -4,11 +4,11 @@ import { COHORT_CAP, PROGRAM_ADDRESS_FULL, SESSION_REFUND_FAQ_ANSWER } from "@/l
 const faqs = [
   {
     q: "Who This Program Is For",
-    a: "Camp Asimov is designed for students who are excited by building, making, troubleshooting, and understanding how robots actually work. It is a strong fit for beginners ready for a serious introduction and for experienced students who want stronger build, CAD, wiring, and programming skills.",
+    a: "Camp Asimov is designed for students who are excited by building, making, troubleshooting, and understanding how robots actually work. It is a strong fit for beginners ready for a serious introduction and for experienced students who want stronger skills in CAD (3D design software), wiring, and programming.",
   },
   {
     q: "How selective is Camp Asimov?",
-    a: `Cohorts are intentionally capped at ${COHORT_CAP} students to preserve high mentor access, technical rigor, and build quality.`,
+    a: `Cohorts are intentionally capped at ${COHORT_CAP} students so each student gets more direct mentoring and closer technical feedback.`,
   },
   {
     q: "Where will the camp take place?",
@@ -20,15 +20,15 @@ const faqs = [
   },
   {
     q: "Are beginners welcome?",
-    a: "Yes. Students of all experience levels are welcome. On the first day, students are assessed based on building, CAD, and programming experience, then instruction is adjusted so each student works at an appropriate level of challenge.",
+    a: "Yes. Students of all experience levels are welcome. On the first day, students are assessed based on prior experience with building, CAD (3D design software), and programming, then instruction is adjusted so each student works at an appropriate level of challenge.",
   },
   {
     q: "Will students work in teams or build their own robots?",
-    a: "At Camp Asimov, each student builds their own robot. Students still learn in a collaborative environment and support one another, but engineering responsibility stays personal. This helps students build real confidence, deeper understanding, and the ability to contribute meaningfully when they return to team-based robotics environments.",
+    a: "At Camp Asimov, each student builds their own robot. Students still collaborate and support one another, but each student is responsible for their own design, wiring, code, testing, and troubleshooting. This builds deeper understanding and stronger confidence when they return to team-based robotics.",
   },
   {
     q: "What will students be able to do by the end?",
-    a: "By the end of the program, students can design basic parts in CAD, assemble a drivetrain and subsystems, wire core electronics, write and test control code, troubleshoot failures, and iterate based on testing.",
+    a: "By the end of the program, students can design parts in CAD (3D design software), assemble a drivetrain (the system that helps the robot move), wire core electronics, write and test robot code in Java (an industry-standard language used by many robotics teams), troubleshoot failures, and improve designs through testing.",
   },
   {
     q: "How do cohort caps work?",
@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "What is your teacher-to-student ratio?",
-    a: "We target a 1:8 teacher-to-student ratio, with additional mentors during machine and testing blocks.",
+    a: "We target a 1:8 teacher-to-student ratio, with additional mentor support during custom-part building and testing periods.",
   },
   {
     q: "How do you handle allergies and medications?",

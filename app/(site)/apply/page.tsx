@@ -12,7 +12,7 @@ const gradeOptions = ["5", "6", "7", "8", "9", "10", "11", "12"];
 const experienceOptions = [
   "New to robotics",
   "Some experience (class/club)",
-  "Competitive (FTC/VEX/FRC)",
+  "Competitive (FTC/VEX/FRC teams)",
   "Advanced competitive / team lead",
 ];
 
@@ -61,7 +61,7 @@ export default function ApplyPage() {
     <section className="pt-6 md:pt-8 pb-16">
       <div className="mx-auto max-w-4xl px-6 text-white">
         <h1 className="text-3xl md:text-4xl font-bold">Founding Cohort Interest Form</h1>
-        <p className="mt-3 text-lg text-neutral-200">Small cohorts. High mentor access. Real engineering.</p>
+        <p className="mt-3 text-lg text-neutral-200">Small cohorts. High mentor access. Hands-on robot design, build, wiring, programming, and testing.</p>
         <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
           Camp Asimov runs two 3-week founding cohorts this summer, each capped at {COHORT_CAP} students. Complete the form below and we will follow up within 24-48 hours.
         </p>

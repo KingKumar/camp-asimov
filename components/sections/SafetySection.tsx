@@ -13,16 +13,16 @@ export default function SafetySection() {
           style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
         >
           <p className="text-neutral-200 leading-relaxed text-center">
-            Camp Asimov runs as a safety-first engineering build lab with clear operating discipline. Staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and <strong>mandated reporter training</strong>. Students earn <strong>tool certifications</strong>, wear <strong>PPE</strong>, and work in <strong>staff-supervised zones</strong> with machine-specific SOPs (laser cutter, 3D printers, soldering, CNC). We also train lithium-ion battery handling and maintain on-site emergency supplies.
+            Camp Asimov runs as a safety-first engineering lab with clear routines and close supervision. Staff and regular volunteers complete <strong>DOJ Live Scan background checks</strong> and <strong>mandated reporter training</strong>. Students are trained before using tools, wear required <strong>PPE (protective equipment)</strong>, and work in staff-supervised build zones. We also train safe battery handling and keep emergency supplies on site.
           </p>
         </div>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
           {[
-            "PPE & Certified Tool Zones: eye protection, hair secured, closed-toe shoes; badges required for laser, 3D printers, soldering.",
-            "Laser & Fab SOPs (ANSI Z136-aligned): enclosed Class-1 operation, interlocks maintained, venting checked, signage posted.",
-            "Fume Control & ESD: local exhaust for soldering, flux training, burn kit on bench; anti-static handling for electronics.",
-            "Medical & Emergency Ready: allergy/med alerts, epi-pen/inhaler plan, CPR/First Aid trained staff, incident logs & notifications.",
+            "Protective gear and certified tool zones: eye protection, secured hair, closed-toe shoes, and required sign-off before using laser cutters, 3D printers, or soldering stations.",
+            "Machine safety procedures: enclosed laser operation, safety interlocks, ventilation checks, and posted rules at every machine.",
+            "Clean electronics workflow: fume extraction for soldering, burn kit access, and anti-static handling to protect components.",
+            "Medical and emergency readiness: allergy/medication alerts, epi-pen/inhaler plan, CPR/First Aid-trained staff, and documented incident response.",
           ].map((s) => (
             <div key={s} className="rounded-2xl border p-5 text-sm" style={{ borderColor: ink.line, background: ink.surface }}>
               <div className="flex items-start gap-2">

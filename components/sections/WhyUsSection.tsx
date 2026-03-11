@@ -24,7 +24,7 @@ export default function WhyUsSection() {
             },
             {
               title: "How independence is taught",
-              text: "The goal is to help students become the builder on their robotics team: the student who understands the mechanical design, wiring, CAD, and code that make the robot work.",
+              text: "The goal is to help students become the builder on their robotics team: the student who understands the robot&apos;s structure, wiring, CAD (3D design software), and code.",
             },
             {
               title: "Mentoring with engineering rigor",

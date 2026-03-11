@@ -33,13 +33,13 @@ type RhythmItem = {
 const weeks: WeekSection[] = [
   {
     id: "week1",
-    title: "Week 1: Design, Fabrication & Rapid Prototyping",
+    title: "Week 1: Design, Making Custom Parts, and Rapid Prototyping",
     description:
-      "Students establish the engineering foundation on their own robot platform and ship first-pass hardware from concept through testable prototype.",
+      "Students build the foundation on their own robot by moving from concept to a first working prototype they can test and improve.",
     focusAreas: [
-      "3D design with Autodesk Fusion 360",
-      "Drivetrains, intakes, linkages (REV + goBilda)",
-      "Design-driven development & feedback loops",
+      "CAD (3D design software) with Autodesk Fusion 360",
+      "Drivetrain work (the system that helps the robot move), intakes, and linkages using REV + goBilda parts",
+      "Testing, feedback, and redesign cycles",
       "Safe lab operation & tool certification",
     ],
     outcomes: [
@@ -61,24 +61,24 @@ const weeks: WeekSection[] = [
     id: "week2",
     title: "Week 2: Code, Control Systems & Sensor Integration",
     description:
-      "Students connect their own hardware to reliable software behavior through clear control logic and sensor integration.",
+      "Students connect their hardware to reliable software behavior by learning how code and electronics control movement and response.",
     focusAreas: [
-      "Java with REV Control Hub",
-      "Encoders, positional control, driver controls",
-      "Sensor integration (distance/vision)",
-      "Intro to autonomous routines & path planning",
+      "Java, an industry-standard programming language used in competitive robotics, with REV Control Hub",
+      "Encoders and driver controls so the robot can move precisely",
+      "Sensors (distance/vision) so the robot can detect and react",
+      "Intro to autonomous routines (robot actions that run without driver input)",
     ],
     outcomes: [
-      "Operable robot subsystems",
-      "Functional OpModes",
-      "Sensing + feedback control working on-bot",
+      "Reliable robot systems that work together",
+      "Functional driver-control and autonomous code modes",
+      "Sensor-based control working reliably on the robot",
       "First mini-autonomous routines",
     ],
     media: [
       {
         type: "video",
         src: "/videos/coding-feature.mp4",
-        alt: "Week 2 coding and control systems development",
+        alt: "Week 2 coding and robot control development",
       },
     ],
   },
@@ -86,7 +86,7 @@ const weeks: WeekSection[] = [
     id: "week3",
     title: "Week 3: Test, Iterate, Compete",
     description:
-      "Students stress-test their own builds, analyze failures, and iterate under pressure, ending with a Family Scrimmage Showcase.",
+      "Students stress-test their builds, identify failures, and improve step by step, ending with a Family Scrimmage Showcase.",
     focusAreas: [
       "Reliability testing & failure analysis",
       "Iteration journals and responsibility for key robot systems",
@@ -118,7 +118,7 @@ const rhythm: RhythmItem[] = [
   {
     time: "9:20",
     title: "Build block (mechanical / coding / testing)",
-    detail: "Focused subsystem work with coach-guided technical checkpoints.",
+    detail: "Focused work on key robot systems with coach-guided checkpoints.",
   },
   {
     time: "11:00",
@@ -132,8 +132,8 @@ const rhythm: RhythmItem[] = [
   },
   {
     time: "12:30",
-    title: "Afternoon build block (subsystems + iteration)",
-    detail: "Integrate hardware and software, test quickly, and iterate with intent.",
+    title: "Afternoon build block (key robot systems + testing improvements)",
+    detail: "Integrate hardware and software, test quickly, and improve through repeated testing.",
   },
   {
     time: "3:30",
@@ -164,10 +164,10 @@ export default function ProgramDetailsSection() {
             viewport={{ once: true }}
             className="mt-4 text-lg text-neutral-300 text-center max-w-4xl mx-auto"
           >
-            This is a focused three-week robotics engineering program where students spend each day designing, building, wiring, programming, testing, and improving their own robot. Students learn through direct responsibility, iteration, mistakes, and improvement so they understand not just what works, but why it works.
+            This is a focused three-week robotics engineering program where students spend each day designing, building, wiring, programming, testing, and improving their own robot. Students learn by taking direct responsibility for their work, finding problems, and improving the robot step by step.
           </motion.p>
           <p className="mt-3 text-center text-sm md:text-base text-neutral-200 max-w-4xl mx-auto">
-            Students of all experience levels are welcome. On the first day, students are assessed in building, CAD, and programming so instruction can be adjusted to the right challenge level.
+            Students of all experience levels are welcome. On the first day, students are assessed in building, CAD (3D design software), and programming so instruction can be adjusted to the right challenge level.
           </p>
 
           <div className="mt-10 grid gap-6">
@@ -236,12 +236,12 @@ export default function ProgramDetailsSection() {
           >
             <h3 className="text-lg md:text-xl font-semibold text-neutral-100">By the End of the Program, Students Will Be Able To:</h3>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2 text-sm md:text-base text-neutral-200 leading-relaxed">
-              <li>Design basic robot parts and assemblies in CAD</li>
-              <li>Assemble a drivetrain and mechanical subsystems</li>
+              <li>Design simple robot parts and assemblies in CAD (3D design software)</li>
+              <li>Assemble a drivetrain and other key moving systems of a robot</li>
               <li>Wire motors, servos, and core electronics</li>
-              <li>Write and test basic robot control code</li>
+              <li>Write and test basic robot code in Java (an industry-standard language used by many robotics teams)</li>
               <li>Troubleshoot mechanical and electrical issues</li>
-              <li>Iterate on designs based on testing data</li>
+              <li>Improve robot designs through testing and redesign</li>
             </ul>
           </motion.div>
 
@@ -306,7 +306,7 @@ export default function ProgramDetailsSection() {
             </h3>
 
             <p className="mt-3 text-neutral-300 text-center max-w-3xl mx-auto">
-              Students are placed by capability and readiness for technical rigor. Advancement is earned through consistent, high-quality build work, not age.
+              Students are placed by capability and readiness for technical work. Advancement is earned through consistent, high-quality build and testing work, not age.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4">
@@ -330,7 +330,7 @@ export default function ProgramDetailsSection() {
                     <Trophy className="h-4 w-4" /> Level 3: Competitive Leadership
                   </div>
                   <p className="mt-2 text-neutral-200 text-sm">
-                    Advanced build strategy, autonomous systems, test-based iteration, leadership on key robot systems, and mentoring peers.
+                    Advanced build strategy, autonomous routines, test-based improvement, leadership on key robot systems, and mentoring peers.
                   </p>
                 </div>
               </motion.div>
@@ -349,7 +349,7 @@ export default function ProgramDetailsSection() {
                     <Wrench className="h-4 w-4" /> Level 2: Intermediate Integration
                   </div>
                   <p className="mt-2 text-neutral-200 text-sm">
-                    CAD → Build → Wiring → Code → Sensing → Testing. Students take responsibility for major robot systems and contribute to match strategy.
+                    CAD (3D design) to build to wiring to code to sensors to testing. Students take responsibility for major robot systems and contribute to match strategy.
                   </p>
                 </div>
               </motion.div>
@@ -368,7 +368,7 @@ export default function ProgramDetailsSection() {
                     <Cpu className="h-4 w-4" /> Level 1: Foundations
                   </div>
                   <p className="mt-2 text-neutral-200 text-sm">
-                    Tool safety, CAD basics, programming fundamentals, mechanical principles, fast prototyping, & growth mindset.
+                    Tool safety, CAD basics, programming fundamentals, mechanical principles, fast prototyping, and a strong improvement mindset.
                   </p>
                 </div>
               </motion.div>
@@ -477,10 +477,10 @@ export default function ProgramDetailsSection() {
               </div>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-300">
                 <li>Individual robot builds with direct mentor coaching (1:8 ratio)</li>
-                <li>FTC‑grade parts: REV Robotics + goBilda builds</li>
-                <li>Autodesk Fusion 360 CAD + Java programming</li>
-                <li>Full lab access, safety training, PPE included</li>
-                <li>Daily testing, iteration, and Demo Day showcase</li>
+                <li>Competition-grade parts used in FTC robotics: REV Robotics + goBilda builds</li>
+                <li>Autodesk Fusion 360 CAD (3D design software) + Java (an industry-standard robotics language)</li>
+                <li>Full lab access, safety training, and required PPE (protective equipment) included</li>
+                <li>Daily testing, improvement cycles, and Demo Day showcase</li>
                 <li>Portfolio photos/video + presentation coaching</li>
               </ul>
               <p className="mt-4 text-sm text-neutral-300 leading-relaxed">

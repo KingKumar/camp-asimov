@@ -177,7 +177,7 @@ export default function TestimonialsSection() {
             <h2 className="text-3xl md:text-4xl font-bold text-center">Testimonials</h2>
           </div>
           <p className="mt-4 text-white">
-            Families choose Camp Asimov for measurable growth, not just activity time. These testimonials reflect what students carry forward: disciplined problem-solving, engineering confidence, and outcomes that transfer into advanced coursework, competitions, and STEM careers.
+            Families choose Camp Asimov for measurable growth, not just activity time. These testimonials show what students carry forward: stronger problem-solving, more confidence building and troubleshooting robots, and skills that transfer to advanced classes, competitions, and STEM pathways.
           </p>
         </div>
 

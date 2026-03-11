@@ -28,13 +28,16 @@ export default function HomePage() {
             className="mt-0 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            Students design, build, and program their own robot while learning CAD, mechanisms, electronics, and control systems in a small cohort setting.
+            Students design, build, and program their own robot while learning CAD (3D design software), electronics, and how the moving parts, wiring, and code all work together.
           </p>
           <p className="mt-2 text-sm md:text-base text-neutral-300">
             Two summer sessions • 16 students per cohort • Santa Monica
           </p>
           <p className="mt-3 text-sm md:text-base text-neutral-200 max-w-prose">
-            Students of all experience levels are welcome. On day one, we assess each student&apos;s build, CAD, and coding background and adjust instruction to the right level of challenge.
+            Students of all experience levels are welcome. On day one, students are assessed on prior experience with building, 3D design, and programming, and instruction is adjusted so each student works at an appropriate level.
+          </p>
+          <p className="mt-2 text-sm md:text-base text-neutral-200 max-w-prose">
+            Camp Asimov is led by Ronit Kumar, an engineer and long-time robotics mentor.
           </p>
           <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
             <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
@@ -119,23 +122,23 @@ export default function HomePage() {
                   {[
                     {
                       title: "CAD portfolio that proves design fluency",
-                      sub: "Fusion 360 files, assemblies, and iteration history.",
+                      sub: "Fusion 360 files, part designs, and documented design improvements.",
                     },
                     {
                       title: "FTC-ready software fundamentals",
-                      sub: "Java control structure, encoders, and feedback loops.",
+                      sub: "Java (an industry-standard robotics language), plus motor control and sensor logic used in team competition robots.",
                     },
                     {
                       title: "Competition-grade hardware execution",
-                      sub: "REV + goBilda builds with clean wiring standards.",
+                      sub: "REV and goBilda hardware with clean, reliable wiring.",
                     },
                     {
-                      title: "Confidence with fabrication tools under supervision",
+                      title: "Confidence making custom robot parts under supervision",
                       sub: "3D printing, laser, CNC, fixtures, and safe workflow.",
                     },
                     {
-                      title: "Autonomous routines with sensor integration",
-                      sub: "Distance/IMU use, pathing logic, and test loops.",
+                      title: "Autonomous routines with sensors",
+                      sub: "Using distance and orientation sensors so robots can respond to the environment.",
                     },
                     {
                       title: "Demo Day reel and technical presentation",
@@ -168,6 +171,9 @@ export default function HomePage() {
             <div className="mt-4 space-y-4 text-neutral-200 leading-relaxed text-[1.02rem] md:text-[1.18rem]">
               <p>
                 Ronit Kumar is an educator, technologist, and veteran robotics mentor who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.
+              </p>
+              <p>
+                Ronit Kumar holds an engineering degree and has spent more than a decade mentoring robotics students and helping them design and build competitive robots.
               </p>
               <p>
                 Over the past decade, he has helped students grow in mechanical design, CAD, programming, and competitive robotics through hands-on mentorship and practical robot design and troubleshooting challenges. His students have gone on to study engineering, computer science, and science at universities including Harvard, Colgate, and UC Davis.

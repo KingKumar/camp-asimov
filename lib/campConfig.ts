@@ -25,12 +25,12 @@ export const FOUNDING_COHORT_CTA_MICROCOPY_LINES = [
 export const FOUNDING_COHORT_NOTE_LINES = [
   "Two 3-week founding cohorts (June & July)",
   `Capped at ${COHORT_CAP} students per cohort`,
-  "Every student builds and iterates on their own robot platform.",
+  "Every student builds, tests, and improves their own robot.",
 ];
 
 export const WHO_ITS_FOR_LINES = [
   "Beginners who are ready for a serious introduction to robotics engineering.",
-  "Students already in robotics who want stronger build, CAD, wiring, and programming skills.",
+  "Students already in robotics who want stronger skills in CAD (3D design software), wiring, and programming.",
   "Students motivated by making, troubleshooting, and improving real robot systems.",
   "Students who want to become stronger contributors on robotics teams.",
 ];
