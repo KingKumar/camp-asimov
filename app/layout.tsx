@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Camp Asimov: Robotics & Maker Summer Camp",
-  description: "Build robots, code, and create your future at Camp Asimov. Summer robotics & maker camp for ages 10–17.",
+  title: "Camp Asimov | Robotics Engineering Summer Program | Santa Monica",
+  description:
+    "A 3-week robotics engineering program where students design, build, and program their own robot. Small cohorts. Santa Monica.",
   keywords: [
     "LA robotics camp",
     "summer STEM Los Angeles",
@@ -25,12 +26,19 @@ export const metadata: Metadata = {
     "robotics summer program"
   ],
   openGraph: {
-    title: "Camp Asimov: LA’s Robotics & Maker Summer Camp",
+    title: "Camp Asimov | Robotics Engineering Summer Program",
     description:
-      "3-week intensive with CAD, goBilda, coding, and a family scrimmage showcase. Ages 10–17.",
+      "Students design, build, and program their own robot in a 3-week small-cohort robotics engineering program in Santa Monica.",
     url: "https://www.campasimov.com",
     type: "website",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Camp Asimov | Robotics Engineering Summer Program",
+    description:
+      "Students design, build, and program their own robot in a 3-week small-cohort robotics engineering program in Santa Monica.",
+    images: ["/og-image.jpg"],
   },
   icons: {
     icon: "/favicon.ico", 

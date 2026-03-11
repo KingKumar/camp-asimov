@@ -13,6 +13,8 @@ import SessionPicker from "@/components/SessionPicker";
 // Config / constants
 // ------------------------------------
 const CONTACT_EMAIL = "info@campasimov.com";
+const PROGRAM_ADDRESS_LINE_1 = "2341 Michigan Ave";
+const PROGRAM_ADDRESS_LINE_2 = "Santa Monica, CA 90404";
 
 const ink = {
   bg: "#0A0B10",
@@ -27,7 +29,7 @@ const ink = {
 const faqs = [
   {
     q: "Where is it and what are the hours?",
-    a: "Camp runs Mon–Fri, 9:00–3:30 at our Los Angeles location (final site announced after enrollment). Early drop 8:30 and late pickup until 4:00 are available.",
+    a: `Camp runs Mon-Fri, 9:00-4:00 at ${PROGRAM_ADDRESS_LINE_1}, ${PROGRAM_ADDRESS_LINE_2}. Early drop-off 8:30 and pickup until 4:30 are available.`,
   },
   {
     q: "What experience is required?",
@@ -1047,7 +1049,7 @@ export default function AsimovCampLanding() {
               <div className="text-sm font-medium text-neutral-200">Focus Areas</div>
               <ul className="mt-2 list-disc list-inside text-neutral-300 space-y-1">
                 <li>Reliability testing & failure analysis</li>
-                <li>Iteration journals & subsystem ownership</li>
+                <li>Iteration journals and responsibility for key robot systems</li>
                 <li>Strategy refinement & driver practice</li>
                 <li>Presentation & storytelling</li>
               </ul>
@@ -1223,7 +1225,8 @@ export default function AsimovCampLanding() {
                 </div>
                 <div className="rounded-xl border px-4 py-3" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
                   <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Location</div>
-                  <div className="mt-1 font-semibold text-white">Los Angeles (exact site TBD)</div>
+                  <div className="mt-1 font-semibold text-white">{PROGRAM_ADDRESS_LINE_1}</div>
+                  <div className="text-xs text-neutral-300">{PROGRAM_ADDRESS_LINE_2}</div>
                 </div>
               </div>
             </div>
@@ -1401,9 +1404,7 @@ export default function AsimovCampLanding() {
             className="rounded-2xl border p-6 md:p-7"
             style={{ borderColor: ink.line, background: "rgba(8,10,16,0.6)" }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              Contact us to learn more about LA&apos;s #1 robotics summer camp.
-            </h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Founder-Led Robotics Engineering Program</h2>
             <h3 className="text-xl font-semibold text-white">Questions? Talk to a human.</h3>
             <p className="mt-2 text-neutral-200">
               We’re builders first. If you want specifics on tools, safety, or curriculum fit, ask away.

@@ -1,5 +1,8 @@
 export const DECISION_DATE = "April 30, 2026";
 export const COHORT_CAP = 16;
+export const PROGRAM_ADDRESS_LINE_1 = "2341 Michigan Ave";
+export const PROGRAM_ADDRESS_LINE_2 = "Santa Monica, CA 90404";
+export const PROGRAM_ADDRESS_FULL = `${PROGRAM_ADDRESS_LINE_1}, ${PROGRAM_ADDRESS_LINE_2}`;
 export const FORMSPREE_FOUNDING_COHORT_ACTION = "https://formspree.io/f/mjgelnqn";
 export const FORMSPREE_ENROLLMENT_FORM_ACTION =
   process.env.NEXT_PUBLIC_FORMSPREE_ENROLLMENT_FORM_ACTION ?? FORMSPREE_FOUNDING_COHORT_ACTION;
@@ -26,13 +29,16 @@ export const FOUNDING_COHORT_NOTE_LINES = [
 ];
 
 export const WHO_ITS_FOR_LINES = [
-  "Students who want to do real build work and develop technical independence.",
-  "Students ready to take ownership of engineering challenges, troubleshooting, and iteration.",
+  "Beginners who are ready for a serious introduction to robotics engineering.",
+  "Students already in robotics who want stronger build, CAD, wiring, and programming skills.",
+  "Students motivated by making, troubleshooting, and improving real robot systems.",
+  "Students who want to become stronger contributors on robotics teams.",
 ];
 
 export const NOT_A_FIT_LINES = [
-  "Students looking for a casual crafts, shared-kit, or half-day camp vibe.",
-  "Students not ready for direct build responsibility, daily feedback, and disciplined iteration.",
+  "Students looking for a casual, low-commitment summer camp format.",
+  "Students not interested in building and troubleshooting real robot systems.",
+  "Students seeking mainly game-based coding or Lego-style robotics activities.",
 ];
 
 export const SESSION_REFUND_FAQ_ANSWER =

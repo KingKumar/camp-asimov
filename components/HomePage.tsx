@@ -20,7 +20,7 @@ export default function HomePage() {
           className="md:col-span-2 text-4xl md:text-6xl font-black leading-[1.02]"
           style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
         >
-          Where LA&apos;s most driven students build real robots.
+          3-Week Robotics Engineering Program
         </motion.h1>
 
         <div>
@@ -28,11 +28,17 @@ export default function HomePage() {
             className="mt-0 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            A selective 3-week robotics intensive where each student builds their own robot. Two sessions. 16 students per cohort.
+            Students design, build, and program their own robot while learning CAD, mechanisms, electronics, and control systems in a small cohort setting.
+          </p>
+          <p className="mt-2 text-sm md:text-base text-neutral-300">
+            Two summer sessions • 16 students per cohort • Santa Monica
+          </p>
+          <p className="mt-3 text-sm md:text-base text-neutral-200 max-w-prose">
+            Students of all experience levels are welcome. On day one, we assess each student&apos;s build, CAD, and coding background and adjust instruction to the right level of challenge.
           </p>
           <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
             <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
-              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Who It&apos;s For</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Who This Program Is For</div>
               <ul className="mt-2 space-y-1 text-neutral-200">
                 {WHO_ITS_FOR_LINES.map((line) => (
                   <li key={line}>{line}</li>
@@ -40,7 +46,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.28)" }}>
-              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Not A Fit If...</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-neutral-400">Not a Fit For</div>
               <ul className="mt-2 space-y-1 text-neutral-200">
                 {NOT_A_FIT_LINES.map((line) => (
                   <li key={line}>{line}</li>
@@ -61,7 +67,7 @@ export default function HomePage() {
               <SessionPicker compact ctaLabel="Request an Invite" showCohortNote />
             </div>
             <p className="w-full max-w-md text-sm text-neutral-200 text-center leading-relaxed">
-              Apply for a program where every student builds their own robot with direct mentor feedback.
+              Apply for a small, mentor-led program where every student builds and programs their own robot.
             </p>
           </div>
         </div>
@@ -76,7 +82,7 @@ export default function HomePage() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-300">Camp Snapshot</div>
-                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Small cohorts. Individual robot builds. Real outcomes.</div>
+                  <div className="mt-1 text-lg md:text-xl font-semibold text-white">Small cohorts. Individual robot builds. Clear technical outcomes.</div>
                 </div>
                 <div className="hidden md:flex items-center gap-2 text-xs text-neutral-400">
                   <Shield className="w-4 h-4" style={{ color: ink.accent }} aria-hidden />
@@ -107,7 +113,7 @@ export default function HomePage() {
               >
                 <div className="flex items-center gap-2 text-sm text-neutral-300">
                   <Trophy className="w-4 h-4" aria-hidden />
-                  Cohorts engineered for quality over volume.
+                  Small cohorts to keep coaching quality high.
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm">
                   {[
@@ -124,7 +130,7 @@ export default function HomePage() {
                       sub: "REV + goBilda builds with clean wiring standards.",
                     },
                     {
-                      title: "Toolchain confidence under supervision",
+                      title: "Confidence with fabrication tools under supervision",
                       sub: "3D printing, laser, CNC, fixtures, and safe workflow.",
                     },
                     {
@@ -164,10 +170,10 @@ export default function HomePage() {
                 Ronit Kumar is an educator, technologist, and veteran robotics mentor who founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.
               </p>
               <p>
-                Over the past decade, he has helped students grow in mechanical design, CAD, programming, and competitive robotics through hands-on mentorship and real engineering challenges. His students have gone on to study engineering, computer science, and science at universities including Harvard, Colgate, and UC Davis.
+                Over the past decade, he has helped students grow in mechanical design, CAD, programming, and competitive robotics through hands-on mentorship and practical robot design and troubleshooting challenges. His students have gone on to study engineering, computer science, and science at universities including Harvard, Colgate, and UC Davis.
               </p>
               <p>
-                Camp Asimov was created to give motivated students a more serious robotics experience - one centered on technical growth, independence, creativity, and meaningful mentorship.
+                Camp Asimov was created to give motivated students a more serious robotics experience - one centered on CAD, mechanical design, wiring, programming, troubleshooting, and meaningful mentorship.
               </p>
               <p>
                 Ronit&apos;s core teaching philosophy is simple: students learn engineering fastest when they are directly responsible for their own builds. Camp Asimov is intentionally structured so students develop the mechanical judgment and technical confidence to become the teammate who can actually build, troubleshoot, and improve the robot.

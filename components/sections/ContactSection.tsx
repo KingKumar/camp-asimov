@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
+import { PROGRAM_ADDRESS_LINE_1, PROGRAM_ADDRESS_LINE_2 } from "@/lib/campConfig";
 
 const CONTACT_EMAIL = "info@campasimov.com";
 
@@ -11,16 +12,16 @@ export default function ContactSection() {
       <div className="w-full bg-black -mt-12 md:-mt-16 pt-12 md:pt-16">
         <div className="mx-auto max-w-7xl px-6 py-3 text-center">
           <p className="text-sm md:text-base font-semibold text-white">
-            Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica. Final location details will be shared with enrolled families.
+            {PROGRAM_ADDRESS_LINE_1} • {PROGRAM_ADDRESS_LINE_2}
           </p>
         </div>
       </div>
       <div className="w-full">
         <div className="relative w-full overflow-hidden border-y" style={{ borderColor: ink.line }}>
           <iframe
-            title="Camp Asimov in the Bergamot Station area of Santa Monica"
+            title="Camp Asimov map in Santa Monica"
             className="h-[350px] w-full transition-opacity duration-500 opacity-0"
-            src="https://www.google.com/maps?q=34.0272,-118.4690&z=14&output=embed"
+            src="https://www.google.com/maps?q=2341+Michigan+Ave,+Santa+Monica,+CA+90404&z=15&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             onLoad={(e) => {
@@ -34,15 +35,15 @@ export default function ContactSection() {
           <div className="absolute inset-0 bg-black/35 pointer-events-none" />
           <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
             <div className="text-center text-white text-3xl md:text-4xl font-bold drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)]">
-              Contact us to learn more about LA&apos;s #1 robotics summer camp.
+              Founder-Led Robotics Engineering Program
             </div>
           </div>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=34.0272,-118.4690"
+            href="https://www.google.com/maps/search/?api=1&query=2341+Michigan+Ave,+Santa+Monica,+CA+90404"
             target="_blank"
             rel="noopener noreferrer"
             className="absolute inset-0"
-            aria-label="Open Google Maps for the Bergamot Station area in Santa Monica"
+            aria-label="Open Google Maps for Camp Asimov location in Santa Monica"
           />
         </div>
       </div>
@@ -59,7 +60,8 @@ export default function ContactSection() {
           <div className="mt-4 text-sm text-neutral-200 space-y-1">
             <div><span className="font-semibold text-white">Academic Director:</span> Ronit Kumar</div>
             <div>Founded Brentwood School&apos;s robotics program and now coaches competitive robotics teams at Crossroads School for Arts &amp; Sciences.</div>
-            <div>Los Angeles, CA</div>
+            <div>{PROGRAM_ADDRESS_LINE_1}</div>
+            <div>{PROGRAM_ADDRESS_LINE_2}</div>
             <div>
               Email: <a href={`mailto:${CONTACT_EMAIL}`} className="underline" style={{ color: ink.accent }}>{CONTACT_EMAIL}</a>
             </div>

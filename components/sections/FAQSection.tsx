@@ -1,10 +1,10 @@
 import { ink } from "@/components/theme";
-import { COHORT_CAP, SESSION_REFUND_FAQ_ANSWER } from "@/lib/campConfig";
+import { COHORT_CAP, PROGRAM_ADDRESS_FULL, SESSION_REFUND_FAQ_ANSWER } from "@/lib/campConfig";
 
 const faqs = [
   {
-    q: "Who is this for?",
-    a: "Camp Asimov is built for students who want serious engineering growth in a high-intensity environment, including students already building or competing in robotics and beginners ready for full-day technical work.",
+    q: "Who This Program Is For",
+    a: "Camp Asimov is designed for students who are excited by building, making, troubleshooting, and understanding how robots actually work. It is a strong fit for beginners ready for a serious introduction and for experienced students who want stronger build, CAD, wiring, and programming skills.",
   },
   {
     q: "How selective is Camp Asimov?",
@@ -12,19 +12,23 @@ const faqs = [
   },
   {
     q: "Where will the camp take place?",
-    a: "Camp Asimov is expected to take place in the Bergamot Station area of Santa Monica. Final location details will be confirmed with enrolled families before the program begins.",
+    a: `Camp Asimov takes place at ${PROGRAM_ADDRESS_FULL}.`,
   },
   {
     q: "What are the camp hours?",
     a: "Camp runs Mon–Fri, 9:00–4:00. Early drop-off is available at 8:30, and pickup is available until 4:30.",
   },
   {
-    q: "Is it right for beginners?",
-    a: "Yes, for beginners who are ready for full-day technical effort, daily feedback, and disciplined build work. We group by age and experience and coach students up quickly.",
+    q: "Are beginners welcome?",
+    a: "Yes. Students of all experience levels are welcome. On the first day, students are assessed based on building, CAD, and programming experience, then instruction is adjusted so each student works at an appropriate level of challenge.",
   },
   {
     q: "Will students work in teams or build their own robots?",
     a: "At Camp Asimov, each student builds their own robot. Students still learn in a collaborative environment and support one another, but engineering responsibility stays personal. This helps students build real confidence, deeper understanding, and the ability to contribute meaningfully when they return to team-based robotics environments.",
+  },
+  {
+    q: "What will students be able to do by the end?",
+    a: "By the end of the program, students can design basic parts in CAD, assemble a drivetrain and subsystems, wire core electronics, write and test control code, troubleshoot failures, and iterate based on testing.",
   },
   {
     q: "How do cohort caps work?",
