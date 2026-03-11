@@ -29,16 +29,16 @@ export const FOUNDING_COHORT_NOTE_LINES = [
 ];
 
 export const WHO_ITS_FOR_LINES = [
-  "Beginners who are ready for a serious introduction to robotics engineering.",
-  "Students already in robotics who want stronger skills in CAD (3D design software), wiring, and programming.",
-  "Students motivated by making, troubleshooting, and improving real robot systems.",
-  "Students who want to become stronger contributors on robotics teams.",
+  "Beginners ready for a serious introduction to robotics engineering.",
+  "Robotics students who want stronger skills in CAD, wiring, and programming.",
+  "Students who enjoy building, troubleshooting, and improving systems.",
+  "Students who want to contribute more to their robotics teams.",
 ];
 
 export const NOT_A_FIT_LINES = [
-  "Students looking for a casual, low-commitment summer camp format.",
-  "Students not interested in building and troubleshooting real robot systems.",
-  "Students seeking mainly game-based coding or Lego-style robotics activities.",
+  "Students looking for a casual summer camp.",
+  "Students not interested in building and troubleshooting robots.",
+  "Students seeking primarily game-based coding or Lego-style robotics.",
 ];
 
 export const SESSION_REFUND_FAQ_ANSWER =

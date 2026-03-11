@@ -28,13 +28,13 @@ export default function HomePage() {
             className="mt-0 md:mt-2 text-lg text-neutral-300 max-w-prose"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
-            Students design, build, and program their own robot while learning CAD (3D design software), electronics, and how the moving parts, wiring, and code all work together.
+            Students design, build, and program their own robot while learning CAD (3D design software), electronics, and how the robot&apos;s moving parts, wiring, and code work together - including designing and 3D printing custom robot parts.
           </p>
           <p className="mt-2 text-sm md:text-base text-neutral-300">
             Two summer sessions • 16 students per cohort • Santa Monica
           </p>
           <p className="mt-3 text-sm md:text-base text-neutral-200 max-w-prose">
-            Students of all experience levels are welcome. On day one, students are assessed on prior experience with building, 3D design, and programming, and instruction is adjusted so each student works at an appropriate level.
+            Students of all experience levels are welcome. On the first day, students are assessed and instruction is adjusted so everyone works at an appropriate level.
           </p>
           <p className="mt-2 text-sm md:text-base text-neutral-200 max-w-prose">
             Camp Asimov is led by Ronit Kumar, an engineer and long-time robotics mentor.
