@@ -304,9 +304,9 @@ export default function HomePage() {
 
       <div className="mx-auto max-w-5xl px-6 pb-16">
         <div className="rounded-2xl border p-6 md:p-7 text-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
-          <h2 className="text-2xl md:text-3xl font-bold">Ready to Take the Next Step?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Join Us</h2>
           <p className="mt-3 text-neutral-300 max-w-2xl mx-auto">
-            Apply for a small, founder-led program where every student builds and programs their own robot.
+            Apply for a small robotics engineering program where every student designs, builds, and programs their own robot.
           </p>
           <Button asChild className="mt-5 w-full max-w-xl h-14 text-xl" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
             <Link href="/apply">Request an Invite</Link>
