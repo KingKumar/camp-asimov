@@ -11,8 +11,6 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 export default function HomePage() {
   const [freezeHeroGif, setFreezeHeroGif] = useState(false);
-  const [freezeRequested, setFreezeRequested] = useState(false);
-  const [heroSvgReady, setHeroSvgReady] = useState(false);
   const heroDesktopGif = "/videos/Camp%20Asimov.gif";
   const heroDesktopSvg = "/videos/Camp%20Asimov.svg";
   const heroMobileGif = "/videos/Camp%20Asimov%20-%20mobile.gif";
@@ -20,36 +18,14 @@ export default function HomePage() {
   const [showHighlightReel, setShowHighlightReel] = useState(false);
 
   useEffect(() => {
-    const desktopSvg = new Image();
-    const mobileSvg = new Image();
-    let loadedCount = 0;
-
-    const onLoad = () => {
-      loadedCount += 1;
-      if (loadedCount >= 2) setHeroSvgReady(true);
-    };
-
-    desktopSvg.onload = onLoad;
-    mobileSvg.onload = onLoad;
-    desktopSvg.src = heroDesktopSvg;
-    mobileSvg.src = heroMobileSvg;
-  }, [heroDesktopSvg, heroMobileSvg]);
-
-  useEffect(() => {
     const freezeTimer = window.setTimeout(() => {
-      setFreezeRequested(true);
+      setFreezeHeroGif(true);
     }, 4500);
 
     return () => {
       window.clearTimeout(freezeTimer);
     };
   }, []);
-
-  useEffect(() => {
-    if (freezeRequested && heroSvgReady) {
-      setFreezeHeroGif(true);
-    }
-  }, [freezeRequested, heroSvgReady]);
 
   const facts = [
     ["3 Weeks", "Program length"],
@@ -109,17 +85,27 @@ export default function HomePage() {
           initial={{ y: 14, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.55 }}
-          className="mx-auto w-[96%] md:w-[90%] max-w-[1500px] overflow-hidden"
+          className="mx-auto w-[96%] md:w-[90%] max-w-[1500px] overflow-hidden relative"
         >
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcSet={freezeHeroGif ? heroMobileSvg : heroMobileGif}
-            />
+          <picture className={`block transition-opacity duration-300 ${freezeHeroGif ? "opacity-0" : "opacity-100"}`}>
+            <source media="(max-width: 767px)" srcSet={heroMobileGif} />
             <img
-              src={freezeHeroGif ? heroDesktopSvg : heroDesktopGif}
+              src={heroDesktopGif}
               alt="Camp Asimov animated logo and program title"
               className="w-full h-auto"
+              style={{ filter: "saturate(1.05) contrast(1.04)" }}
+            />
+          </picture>
+
+          <picture
+            className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${freezeHeroGif ? "opacity-100" : "opacity-0"}`}
+            aria-hidden={!freezeHeroGif}
+          >
+            <source media="(max-width: 767px)" srcSet={heroMobileSvg} />
+            <img
+              src={heroDesktopSvg}
+              alt=""
+              className="w-full h-full object-contain"
               style={{ filter: "saturate(1.05) contrast(1.04)" }}
             />
           </picture>
