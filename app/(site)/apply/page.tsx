@@ -98,6 +98,16 @@ export default function ApplyPage() {
               <input id="student_age" name="student_age" type="number" min={8} max={18} required className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
             </div>
             <div>
+              <label htmlFor="student_gender" className="block text-sm font-semibold text-neutral-100">Student Gender</label>
+              <select id="student_gender" name="student_gender" defaultValue="" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }}>
+                <option value="" disabled>Select gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            <div>
               <label htmlFor="grade" className="block text-sm font-semibold text-neutral-100">Grade</label>
               <select id="grade" name="grade" required defaultValue="" className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }}>
                 <option value="" disabled>Select grade</option>
