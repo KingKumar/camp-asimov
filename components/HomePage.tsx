@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
@@ -16,6 +16,10 @@ export default function HomePage() {
   const heroMobileGif = "/videos/Camp%20Asimov%20-%20mobile.gif";
   const heroMobileSvg = "/videos/Camp%20Asimov%20-%20mobile.svg";
   const [showHighlightReel, setShowHighlightReel] = useState(false);
+  const topCtaRef = useRef<HTMLDivElement | null>(null);
+  const bottomCtaRef = useRef<HTMLDivElement | null>(null);
+  const [isTopCtaVisible, setIsTopCtaVisible] = useState(true);
+  const [isBottomCtaVisible, setIsBottomCtaVisible] = useState(false);
 
   useEffect(() => {
     const freezeTimer = window.setTimeout(() => {
@@ -26,6 +30,31 @@ export default function HomePage() {
       window.clearTimeout(freezeTimer);
     };
   }, []);
+
+  useEffect(() => {
+    const topEl = topCtaRef.current;
+    const bottomEl = bottomCtaRef.current;
+    if (!topEl || !bottomEl) return;
+
+    const topObserver = new IntersectionObserver(
+      ([entry]) => setIsTopCtaVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    const bottomObserver = new IntersectionObserver(
+      ([entry]) => setIsBottomCtaVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+
+    topObserver.observe(topEl);
+    bottomObserver.observe(bottomEl);
+
+    return () => {
+      topObserver.disconnect();
+      bottomObserver.disconnect();
+    };
+  }, []);
+
+  const showStickyCta = !isTopCtaVisible && !isBottomCtaVisible && !showHighlightReel;
 
   const facts = [
     ["3 Weeks", "Program length"],
@@ -99,7 +128,6 @@ export default function HomePage() {
 
           <picture
             className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${freezeHeroGif ? "opacity-100" : "opacity-0"}`}
-            aria-hidden={!freezeHeroGif}
           >
             <source media="(max-width: 767px)" srcSet={heroMobileSvg} />
             <img
@@ -122,7 +150,7 @@ export default function HomePage() {
           Two summer sessions • 16 students per cohort • Santa Monica
         </p>
 
-        <div className="mt-7 flex flex-col items-center gap-3">
+        <div ref={topCtaRef} className="mt-7 flex flex-col items-center gap-3">
           <Button asChild className="px-6 py-3 text-base w-full max-w-md" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
             <Link href="/apply">Request an Invite</Link>
           </Button>
@@ -313,7 +341,7 @@ export default function HomePage() {
       </div>
 
       <div className="mx-auto max-w-5xl px-6 pb-16">
-        <div className="rounded-2xl border p-6 md:p-7 text-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
+        <div ref={bottomCtaRef} className="rounded-2xl border p-6 md:p-7 text-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
           <h2 className="text-2xl md:text-3xl font-bold">Join Us</h2>
           <p className="mt-3 text-neutral-300 max-w-2xl mx-auto">
             Apply for a small robotics engineering program where every student designs, builds, and programs their own robot.
@@ -323,6 +351,14 @@ export default function HomePage() {
           </Button>
         </div>
       </div>
+
+      {showStickyCta ? (
+        <div className="fixed inset-x-0 bottom-4 z-[75] px-4 flex justify-center">
+          <Button asChild className="w-full max-w-md h-13 text-lg shadow-[0_12px_30px_rgba(143,215,255,0.3)]" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
+            <Link href="/apply">Request an Invite</Link>
+          </Button>
+        </div>
+      ) : null}
     </section>
   );
 }
