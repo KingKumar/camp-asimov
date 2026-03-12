@@ -11,6 +11,10 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 export default function HomePage() {
   const [freezeHeroGif, setFreezeHeroGif] = useState(false);
+  const heroDesktopGif = "/videos/Camp%20Asimov.gif";
+  const heroDesktopSvg = "/videos/Camp%20Asimov.svg";
+  const heroMobileGif = "/videos/Camp%20Asimov%20-%20mobile.gif";
+  const heroMobileSvg = "/videos/Camp%20Asimov%20-%20mobile.svg";
   const [showHighlightReel, setShowHighlightReel] = useState(false);
 
   useEffect(() => {
@@ -83,12 +87,18 @@ export default function HomePage() {
           transition={{ duration: 0.55 }}
           className="mx-auto w-[96%] md:w-[90%] max-w-[1500px] overflow-hidden"
         >
-          <img
-            src={freezeHeroGif ? "/videos/Camp%20Asimov.svg" : "/videos/Camp%20Asimov.gif"}
-            alt="Camp Asimov animated logo and program title"
-            className="w-full h-auto"
-            style={{ filter: "saturate(1.05) contrast(1.04)" }}
-          />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={freezeHeroGif ? heroMobileSvg : heroMobileGif}
+            />
+            <img
+              src={freezeHeroGif ? heroDesktopSvg : heroDesktopGif}
+              alt="Camp Asimov animated logo and program title"
+              className="w-full h-auto"
+              style={{ filter: "saturate(1.05) contrast(1.04)" }}
+            />
+          </picture>
         </motion.div>
 
         <p
