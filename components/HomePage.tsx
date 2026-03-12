@@ -25,6 +25,7 @@ export default function HomePage() {
 
   const facts = [
     ["3 Weeks", "Program length"],
+    ["Jun 8–26 • Jul 6–24", "Dates"],
     ["10-15", "Age range"],
     ["16 Students", "Per cohort"],
     ["1:8", "Teacher-to-student"],
@@ -115,7 +116,7 @@ export default function HomePage() {
         </div>
 
         <div className="mt-8 rounded-2xl border p-3 md:p-4" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
             {facts.map(([value, label]) => (
               <div
                 key={value}
