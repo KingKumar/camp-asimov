@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Sparkles, Video } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
 
 const navLinks = [
-  { href: "/testimonials", label: "Testimonials" },
   { href: "/program", label: "Program Details" },
   { href: "/why", label: "Why Us" },
   { href: "/safety", label: "Safety" },
@@ -26,30 +25,106 @@ type SiteShellProps = {
 export default function SiteShell({ children, enableReel = false }: SiteShellProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showReel, setShowReel] = useState(false);
-  const hideReelToggle = pathname.startsWith("/apply");
+  const [bgVideoOpacity, setBgVideoOpacity] = useState(1);
+  void enableReel;
+  const glowHexes = useMemo(
+    () =>
+      Array.from({ length: 44 }, (_, i) => {
+        const size = 12 + Math.random() * 34;
+        return {
+          id: i,
+          left: 2 + Math.random() * 96,
+          top: 4 + Math.random() * 92,
+          size,
+          delay: Math.random() * 3.2,
+          duration: 3.2 + Math.random() * 2.2,
+          peak: 0.2 + Math.random() * 0.22,
+        };
+      }),
+    []
+  );
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen || showReel ? "hidden" : "";
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen, showReel]);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setBgVideoOpacity(0);
+      return;
+    }
+
+    const fadeDistance = 280;
+    const onScroll = () => {
+      const nextOpacity = Math.max(0, 1 - window.scrollY / fadeDistance);
+      setBgVideoOpacity(nextOpacity);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   const isActive = (href: string) => pathname === href;
 
   return (
     <>
       {/* Full-page video background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none" style={{ backgroundColor: "#07090c" }}>
+        <div
+          className="absolute inset-0 transition-opacity duration-300"
+          style={{
+            opacity: bgVideoOpacity <= 0.01 ? 0.98 : 0,
+            backgroundColor: "#07090c",
+            backgroundImage: `
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='90' viewBox='0 0 104 90'%3E%3Cpath d='M26 2h52l24 43-24 43H26L2 45 26 2z' fill='none' stroke='%238fd7ff' stroke-opacity='0.42' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E"),
+              linear-gradient(180deg, rgba(10,14,22,0.72), rgba(7,9,14,0.86))
+            `,
+            backgroundSize: "52px 42px, 100% 100%",
+            backgroundPosition: "0 0, 0 0",
+          }}
+        />
+        {/* Cyan hex pulses for non-video background state */}
+        <div className="absolute inset-0 overflow-hidden">
+          {glowHexes.map((hex) => (
+            <motion.div
+              key={hex.id}
+              className="absolute"
+              style={{
+                left: `${hex.left}%`,
+                top: `${hex.top}%`,
+                width: hex.size,
+                height: Math.round(hex.size * 0.88),
+                clipPath: "polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)",
+                background: "rgba(143,215,255,0.95)",
+                boxShadow: "0 0 14px rgba(143,215,255,0.45)",
+              }}
+              animate={{
+                opacity: [0, hex.peak * (1 - bgVideoOpacity), hex.peak * (1 - bgVideoOpacity), 0],
+                scale: [0.92, 1.06, 0.94],
+              }}
+              transition={{
+                duration: hex.duration,
+                delay: hex.delay,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatDelay: 0.7 + Math.random() * 1.2,
+              }}
+            />
+          ))}
+        </div>
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
           aria-hidden
+          style={{ opacity: bgVideoOpacity }}
         >
           <source src="/videos/homepage.mp4" type="video/mp4" />
         </video>
@@ -58,84 +133,16 @@ export default function SiteShell({ children, enableReel = false }: SiteShellPro
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(180deg, rgba(7,9,12,0.66), rgba(5,7,10,0.95))
+              linear-gradient(180deg, rgba(7,9,12,0.42), rgba(5,7,10,0.72))
             `,
           }}
         />
       </div>
 
-      <div className="pointer-events-none fixed inset-0 z-[1] [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
-
-      {enableReel && !hideReelToggle && (
-        <>
-          {/* Floating highlight reel toggle */}
-          <button
-            type="button"
-            onClick={() => setShowReel((v) => !v)}
-            className="fixed bottom-24 md:bottom-10 right-6 z-[70] hidden md:inline-flex group items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-wide
-                   border shadow-[0_12px_24px_rgba(143,215,255,0.35),0_0_0_1px_rgba(0,0,0,0.35)]
-                   transition-transform hover:-translate-y-0.5 hover:rotate-[-1deg] hover:scale-[1.02] hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]
-                   lg:right-10"
-            aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
-            style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
-          >
-            <Sparkles className="h-4 w-4" />
-            {showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowReel((v) => !v)}
-            className="fixed bottom-20 right-4 z-[70] md:hidden inline-flex items-center justify-center h-12 w-12 rounded-full border
-                   shadow-[0_10px_20px_rgba(143,215,255,0.35),0_0_0_1px_rgba(0,0,0,0.35)]
-                   transition-transform hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.45)] active:scale-[0.98]"
-            aria-label={showReel ? "Hide Highlight Reel" : "View Highlight Reel"}
-            style={{ textShadow: "none", backgroundColor: ink.accent, color: "#071410", borderColor: "rgba(255,255,255,0.45)" }}
-          >
-            <Video className="h-5 w-5" />
-          </button>
-
-          {/* Highlight reel overlay */}
-          {showReel && (
-            <div
-              className="fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Highlight Reel"
-              onClick={() => setShowReel(false)}
-            >
-              <div
-                className="relative w-full max-w-5xl"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  type="button"
-                  className="absolute -top-10 right-0 rounded-full border px-3 py-1 text-sm text-white/90 transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
-                  style={{ borderColor: ink.line, background: "rgba(10,11,16,0.8)" }}
-                  onClick={() => setShowReel(false)}
-                  aria-label="Close highlight reel"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    <X className="h-4 w-4" /> Close
-                  </span>
-                </button>
-                <div className="aspect-video overflow-hidden rounded-2xl border" style={{ borderColor: ink.line }}>
-                  <video
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    controls
-                    preload="metadata"
-                  >
-                    <source src="/videos/homepage.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-            </div>
-          )}
-        </>
-      )}
+      <div
+        className="pointer-events-none fixed inset-0 z-[1] [background-image:linear-gradient(rgba(143,215,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(143,215,255,0.1)_1px,transparent_1px)] [background-size:32px_32px]"
+        style={{ opacity: 0.1 * bgVideoOpacity }}
+      />
 
       {/* NAV */}
       <header

@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "How selective is Camp Asimov?",
-    a: `Cohorts are intentionally capped at ${COHORT_CAP} students so each student gets more direct mentoring and closer technical feedback.`,
+    a: `Cohorts are intentionally capped at ${COHORT_CAP} students, and we prioritize students who are highly motivated by robotics and eager to learn through daily hands-on build work. This keeps the group focused and allows for direct mentoring and stronger technical feedback.`,
   },
   {
     q: "Where will the camp take place?",

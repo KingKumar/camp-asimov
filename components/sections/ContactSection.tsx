@@ -20,7 +20,7 @@ export default function ContactSection() {
             If you have questions about tools, safety, experience level, or whether the program is a good fit, feel free to reach out.
           </p>
           <p className="mt-3 text-neutral-200 leading-relaxed">
-            We&apos;re builders first and are happy to answer detailed questions about how the program works.
+            We&apos;re happy to answer any questions about how the program works.
           </p>
           <div className="mt-6 border-t pt-5 text-sm md:text-base text-neutral-200 space-y-1.5" style={{ borderColor: "rgba(255,255,255,0.14)" }}>
             <div className="font-semibold text-white">Ronit Kumar</div>

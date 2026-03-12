@@ -28,7 +28,7 @@ export default function WhyUsSection() {
             },
             {
               title: "Mentoring with engineering rigor",
-              text: "An 8:1 teacher-to-student ratio supports structured check-ins, hands-on repetition, and careful follow-through on each student's design, build, and testing work.",
+              text: "A 1:8 teacher-to-student ratio supports structured check-ins, hands-on repetition, and careful follow-through on each student's design, build, and testing work.",
             },
           ].map((f) => (
             <div
