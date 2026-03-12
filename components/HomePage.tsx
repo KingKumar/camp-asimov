@@ -11,6 +11,8 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 export default function HomePage() {
   const [freezeHeroGif, setFreezeHeroGif] = useState(false);
+  const [freezeRequested, setFreezeRequested] = useState(false);
+  const [heroSvgReady, setHeroSvgReady] = useState(false);
   const heroDesktopGif = "/videos/Camp%20Asimov.gif";
   const heroDesktopSvg = "/videos/Camp%20Asimov.svg";
   const heroMobileGif = "/videos/Camp%20Asimov%20-%20mobile.gif";
@@ -18,14 +20,36 @@ export default function HomePage() {
   const [showHighlightReel, setShowHighlightReel] = useState(false);
 
   useEffect(() => {
+    const desktopSvg = new Image();
+    const mobileSvg = new Image();
+    let loadedCount = 0;
+
+    const onLoad = () => {
+      loadedCount += 1;
+      if (loadedCount >= 2) setHeroSvgReady(true);
+    };
+
+    desktopSvg.onload = onLoad;
+    mobileSvg.onload = onLoad;
+    desktopSvg.src = heroDesktopSvg;
+    mobileSvg.src = heroMobileSvg;
+  }, [heroDesktopSvg, heroMobileSvg]);
+
+  useEffect(() => {
     const freezeTimer = window.setTimeout(() => {
-      setFreezeHeroGif(true);
+      setFreezeRequested(true);
     }, 4500);
 
     return () => {
       window.clearTimeout(freezeTimer);
     };
   }, []);
+
+  useEffect(() => {
+    if (freezeRequested && heroSvgReady) {
+      setFreezeHeroGif(true);
+    }
+  }, [freezeRequested, heroSvgReady]);
 
   const facts = [
     ["3 Weeks", "Program length"],
