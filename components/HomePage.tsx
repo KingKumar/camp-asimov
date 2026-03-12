@@ -156,7 +156,7 @@ export default function HomePage() {
         initial={{ y: 32, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.35 }}
       >
         <div className="rounded-2xl border p-6 md:p-8" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
           <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 md:gap-8 items-center">
@@ -224,7 +224,7 @@ export default function HomePage() {
         initial={{ x: -30, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.35 }}
       >
         <div className="rounded-2xl border p-6 md:p-8" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
           <h2 className="text-2xl md:text-3xl font-bold">Is This Program Right for Your Student?</h2>
@@ -254,7 +254,7 @@ export default function HomePage() {
         initial={{ x: 30, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.35 }}
       >
         <div className="rounded-2xl border p-6 md:p-8" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
           <h2 className="text-2xl md:text-3xl font-bold">What Students Leave With</h2>
@@ -281,7 +281,7 @@ export default function HomePage() {
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.35 }}
       >
         <div className="grid grid-cols-1 min-[901px]:grid-cols-[1.35fr_0.65fr] gap-6 min-[901px]:gap-8 items-stretch">
           <div className="rounded-2xl border p-6 md:p-7 h-full flex flex-col justify-center" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.24)" }}>
