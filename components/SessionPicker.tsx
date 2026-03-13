@@ -36,7 +36,7 @@ type SessionPickerProps = {
 
 export default function SessionPicker({
   compact = false,
-  ctaLabel = "Get Program Details",
+  ctaLabel = "Enroll Now",
   showCohortNote = false,
   includeRefundInNote = false,
 }: SessionPickerProps) {

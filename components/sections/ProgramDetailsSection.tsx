@@ -407,7 +407,7 @@ export default function ProgramDetailsSection() {
                   <div className="mt-2 text-neutral-300 text-sm">3-week program • $3,600 total</div>
                 </div>
                 <div className="w-full max-w-md">
-                  <SessionPicker compact ctaLabel="Get Program Details" showCohortNote />
+                  <SessionPicker compact ctaLabel="Enroll Now" showCohortNote />
                 </div>
               </div>
               <div className="mt-4 rounded-xl border px-4 py-3 text-sm text-neutral-200" style={{ borderColor: ink.line, background: "rgba(10,12,16,0.12)" }}>
