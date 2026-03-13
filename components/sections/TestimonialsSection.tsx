@@ -55,6 +55,15 @@ const testimonials = [
       "Airborne Radar Systems, Raytheon",
     ],
   },
+  {
+    name: "Rachel K.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "Being on the robotics team with Mr. Kumar gave me a safe space to experiment, make mistakes, and learn how to approach problems from different angles. When things didn’t go according to plan, it often became a fun learning and bonding moment with the team rather than something stressful. That mindset around problem solving and collaboration has stayed with me ever since.",
+    details: [
+      "Psychology, University of Michigan",
+    ],
+  },
 ];
 
 export default function TestimonialsSection() {
