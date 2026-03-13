@@ -36,7 +36,7 @@ type SessionPickerProps = {
 
 export default function SessionPicker({
   compact = false,
-  ctaLabel = "Apply for the Summer Cohort",
+  ctaLabel = "Get Program Details",
   showCohortNote = false,
   includeRefundInNote = false,
 }: SessionPickerProps) {
