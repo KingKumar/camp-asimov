@@ -194,7 +194,7 @@ export default function ApplyPage() {
 
           <div className="pt-1 flex flex-col sm:flex-row gap-3">
             <Button type="submit" disabled={loading} className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              {loading ? "Submitting..." : "Request an Invite"}
+              {loading ? "Submitting..." : "Apply for the Summer Cohort"}
             </Button>
             <Button asChild className="px-6 py-3 text-base border" style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}>
               <Link href="/program">View Program Details</Link>
