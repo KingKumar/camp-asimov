@@ -548,7 +548,7 @@ export default function AsimovCampLanding() {
         <a href="/staff" aria-label="Open Staff Portal">Staff Portal</a>
       </Button>
       <Button asChild className="ml-2" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-        <a href="/apply">Request an Invite</a>
+        <a href="/apply">Apply for the Summer Cohort</a>
       </Button>
     </nav>
 
@@ -595,7 +595,7 @@ export default function AsimovCampLanding() {
           <a href="/staff" onClick={() => setMobileOpen(false)}>Staff Portal</a>
         </Button>
         <Button asChild className="flex-1" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-          <a href="/apply" onClick={() => setMobileOpen(false)}>Request an Invite</a>
+          <a href="/apply" onClick={() => setMobileOpen(false)}>Apply for the Summer Cohort</a>
         </Button>
       </div>
     </div>

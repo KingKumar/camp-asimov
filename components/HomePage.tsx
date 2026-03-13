@@ -152,7 +152,7 @@ export default function HomePage() {
 
         <div ref={topCtaRef} className="mt-7 flex flex-col items-center gap-3">
           <Button asChild className="px-6 py-3 text-base w-full max-w-md" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-            <Link href="/apply">Request an Invite</Link>
+            <Link href="/apply">Apply for the Summer Cohort</Link>
           </Button>
           <Button
             asChild
@@ -347,7 +347,7 @@ export default function HomePage() {
             Apply for a small robotics engineering program where every student designs, builds, and programs their own robot.
           </p>
           <Button asChild className="mt-5 w-full max-w-xl h-14 text-xl" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-            <Link href="/apply">Request an Invite</Link>
+            <Link href="/apply">Apply for the Summer Cohort</Link>
           </Button>
         </div>
       </div>
@@ -355,7 +355,7 @@ export default function HomePage() {
       {showStickyCta ? (
         <div className="fixed inset-x-0 bottom-4 z-[75] px-4 flex justify-center">
           <Button asChild className="w-full max-w-md h-13 text-lg shadow-[0_12px_30px_rgba(143,215,255,0.3)]" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-            <Link href="/apply">Request an Invite</Link>
+            <Link href="/apply">Apply for the Summer Cohort</Link>
           </Button>
         </div>
       ) : null}
