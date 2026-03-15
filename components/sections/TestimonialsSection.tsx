@@ -64,6 +64,16 @@ const testimonials = [
       "Psychology, University of Michigan",
     ],
   },
+  {
+    name: "Ryan W.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "Robotics gave me a space to confidently contribute my strengths to a team while also learning unfamiliar skills in a relaxed environment. Mr. Kumar does a wonderful job supporting team members of all experience levels and making sure everyone feels welcome. The time I spent on his teams will always be remembered fondly as my introduction to engineering.",
+    details: [
+      "Mechanical Engineering, minor in Aerospace",
+      "University of Canterbury",
+    ],
+  },
 ];
 
 export default function TestimonialsSection() {
