@@ -52,6 +52,15 @@ export default function EnrollmentFormPage() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const liabilityWaiverAgreed = formData.get("liability_waiver_medical_consent_agreement") === "Yes";
+
+    if (!liabilityWaiverAgreed) {
+      setError("Please agree to the Liability Waiver and Medical Consent to continue.");
+      setLoading(false);
+      return;
+    }
+
+    formData.set("liability_waiver_agreed", "Yes");
     formData.append("_subject", "Camp Asimov Enrollment Form Submission");
 
     try {
@@ -531,6 +540,34 @@ export default function EnrollmentFormPage() {
                   <span>I have reviewed the Camp Asimov refund policy at campasimov.com/refunds.</span>
                 </label>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-lg md:text-xl font-semibold">Liability Waiver and Medical Consent</h2>
+              <div className="mt-4 rounded-lg border px-4 py-4 text-sm md:text-base text-neutral-100 leading-relaxed space-y-4" style={{ borderColor: ink.line, background: "#111521" }}>
+                <p>
+                  I understand that participation in Camp Asimov involves hands-on engineering activities, including the use of tools, mechanical components, electronics, batteries, 3D printers, and soldering equipment, which carry inherent risks of injury.
+                </p>
+                <p>
+                  I voluntarily assume all risks associated with my child&rsquo;s participation in the program.
+                </p>
+                <p>
+                  I hereby release and hold harmless Camp Asimov LLC, its staff, instructors, assistants, and affiliates from any and all liability, claims, or damages arising from my child&rsquo;s participation in the program, except in cases of gross negligence or willful misconduct.
+                </p>
+                <p>
+                  In the event of a medical emergency, I authorize Camp Asimov staff to obtain emergency medical treatment for my child if I cannot be reached.
+                </p>
+              </div>
+              <label className="mt-4 flex items-start gap-3 rounded-lg border px-4 py-3 text-sm text-neutral-100" style={{ borderColor: ink.line, background: "#111521" }}>
+                <input
+                  type="checkbox"
+                  name="liability_waiver_medical_consent_agreement"
+                  value="Yes"
+                  required
+                  className="mt-0.5 h-4 w-4 accent-[#8fd7ff]"
+                />
+                <span>I agree to the Liability Waiver and Medical Consent above.</span>
+              </label>
             </section>
 
             <section>
