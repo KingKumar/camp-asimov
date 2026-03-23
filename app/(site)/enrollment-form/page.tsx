@@ -27,7 +27,7 @@ const roboticsProgramOptions = [
 const programmingOptions = ["None", "Scratch", "Python", "Java", "C++", "Arduino", "Other"];
 const cadOptions = ["None", "Fusion 360", "Onshape", "Tinkercad", "SolidWorks", "Other"];
 const laptopAccessOptions = ["Yes", "No", "Not sure yet"];
-const laptopOsOptions = ["MacOS", "Windows", "Other / Not sure"];
+const laptopOsOptions = ["MacOS", "Windows", "Linux", "Other / Not sure"];
 const referralSourceOptions = [
   "Google search",
   "Friend / student referral",
@@ -317,7 +317,9 @@ export default function EnrollmentFormPage() {
 
             <section>
               <h2 className="text-lg md:text-xl font-semibold">Medical / Safety Information</h2>
-              <p className="mt-2 text-xs md:text-sm text-neutral-300">This information helps us maintain a safe environment for all students.</p>
+              <p className="mt-2 text-xs md:text-sm text-neutral-300">
+                Please provide any information that will help us safely support your student during hands-on activities.
+              </p>
               <div className="mt-4 grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="allergies" className="block text-sm font-semibold text-neutral-100">Allergies</label>
@@ -328,7 +330,9 @@ export default function EnrollmentFormPage() {
                   <textarea id="medical_conditions" name="medical_conditions" rows={3} className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
                 </div>
                 <div>
-                  <label htmlFor="current_medications" className="block text-sm font-semibold text-neutral-100">Current Medications</label>
+                  <label htmlFor="current_medications" className="block text-sm font-semibold text-neutral-100">
+                    Medications your student takes or may need during the program
+                  </label>
                   <textarea id="current_medications" name="current_medications" rows={3} className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
                 </div>
                 <div>
@@ -337,7 +341,7 @@ export default function EnrollmentFormPage() {
                 </div>
                 <fieldset className="md:col-span-2">
                   <legend className="block text-sm font-semibold text-neutral-100">
-                    Does your student carry any medication that Camp Asimov staff should know about?
+                    Will your student bring any medication to camp (for example: inhaler, EpiPen, etc.)?
                   </legend>
                   <div className="mt-2 flex flex-wrap gap-4">
                     <label className="inline-flex items-center gap-2 text-sm text-neutral-100">
@@ -368,7 +372,9 @@ export default function EnrollmentFormPage() {
                 </fieldset>
                 {medicationCarry === "Yes" ? (
                   <div className="md:col-span-2">
-                    <label htmlFor="medication_needs" className="block text-sm font-semibold text-neutral-100">Please explain medication needs</label>
+                    <label htmlFor="medication_needs" className="block text-sm font-semibold text-neutral-100">
+                      Please describe the medication and any instructions Camp Asimov staff should know.
+                    </label>
                     <textarea
                       id="medication_needs"
                       name="medication_needs_details"
