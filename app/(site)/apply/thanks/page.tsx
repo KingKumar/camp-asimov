@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
@@ -9,22 +9,43 @@ import { ink } from "@/components/theme";
 const GOOGLE_ADS_SEND_TO = "AW-18036637271/mHj0CPzp-Y4cENf8xJhD";
 
 export default function ApplyThanksPage() {
+  const hasFiredRef = useRef(false);
+
   useEffect(() => {
-    const adsWindow = window as typeof window & {
-      dataLayer: unknown[];
-      gtag?: (...args: unknown[]) => void;
+    const fireConversion = () => {
+      if (hasFiredRef.current) {
+        return true;
+      }
+
+      if (typeof window === "undefined" || typeof window.gtag !== "function") {
+        return false;
+      }
+
+      window.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_SEND_TO,
+      });
+      hasFiredRef.current = true;
+      return true;
     };
 
-    adsWindow.dataLayer = adsWindow.dataLayer || [];
-    adsWindow.gtag =
-      adsWindow.gtag ||
-      ((...args: unknown[]) => {
-        adsWindow.dataLayer.push(args);
-      });
+    if (fireConversion()) {
+      return;
+    }
 
-    adsWindow.gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_SEND_TO,
-    });
+    const intervalId = window.setInterval(() => {
+      if (fireConversion()) {
+        window.clearInterval(intervalId);
+      }
+    }, 250);
+
+    const timeoutId = window.setTimeout(() => {
+      window.clearInterval(intervalId);
+    }, 5000);
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
