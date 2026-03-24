@@ -6,7 +6,7 @@ import { ink } from "@/components/theme";
 
 export default function ApplyThanksPage() {
   const googleAdsConversionLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
-  const sendTo = googleAdsConversionLabel ? `AW-17980078204/${googleAdsConversionLabel}` : null;
+  const sendTo = googleAdsConversionLabel ? `AW-18036637271/${googleAdsConversionLabel}` : null;
 
   return (
     <section className="pt-6 md:pt-8 pb-16">
