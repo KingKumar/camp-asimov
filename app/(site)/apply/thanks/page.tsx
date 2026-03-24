@@ -12,16 +12,20 @@ export default function ApplyThanksPage() {
   const hasFiredRef = useRef(false);
 
   useEffect(() => {
+    const adsWindow = window as typeof window & {
+      gtag?: (...args: unknown[]) => void;
+    };
+
     const fireConversion = () => {
       if (hasFiredRef.current) {
         return true;
       }
 
-      if (typeof window === "undefined" || typeof window.gtag !== "function") {
+      if (typeof adsWindow.gtag !== "function") {
         return false;
       }
 
-      window.gtag("event", "conversion", {
+      adsWindow.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_SEND_TO,
       });
       hasFiredRef.current = true;
