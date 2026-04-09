@@ -9,6 +9,16 @@ import { ink } from "@/components/theme";
 
 const testimonials = [
   {
+    name: "Zach W.",
+    role: "Former robotics student of Ronit Kumar",
+    quote:
+      "The skills and lessons I learned in robotics have stayed with me throughout my education and professional career. Robotics is a unique discipline that blends creativity, problem solving, programming, physics, and engineering, and it taught me to think critically about how abstract code interacts with the physical world.\n\nBeyond the technical skills, Ronit helped build a resilient mindset where challenges are seen as puzzles to solve rather than obstacles. He is a great mentor who makes a complex process both engaging and accessible for every student.",
+    details: [
+      "University of Michigan",
+      "Software Engineer",
+    ],
+  },
+  {
     name: "Paige B.",
     role: "Former robotics student of Ronit Kumar",
     quote:
@@ -246,7 +256,7 @@ export default function TestimonialsSection() {
                         }}
                       >
                         <div
-                          className="border-l-2 pl-4 text-[13px] md:text-xl text-white/90 leading-snug md:leading-relaxed"
+                          className="border-l-2 pl-4 text-[13px] md:text-xl text-white/90 leading-snug md:leading-relaxed whitespace-pre-line"
                           style={{ borderColor: "rgba(143,215,255,0.6)" }}
                         >
                           “{activeTestimonial.quote}”
@@ -326,7 +336,7 @@ export default function TestimonialsSection() {
                     </div>
                     <div className="mt-2 text-neutral-300">{t.role}</div>
                     <div
-                      className="mt-4 border-l-2 pl-4 text-base md:text-lg text-white/90 leading-relaxed"
+                      className="mt-4 border-l-2 pl-4 text-base md:text-lg text-white/90 leading-relaxed whitespace-pre-line"
                       style={{ borderColor: "rgba(143,215,255,0.6)" }}
                     >
                       “{t.quote}”
