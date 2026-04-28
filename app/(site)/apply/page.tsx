@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
+import { Check } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ink } from "@/components/theme";
-import { APPLY_COHORT_OPTIONS, COHORT_CAP, FORMSPREE_FOUNDING_COHORT_ACTION } from "@/lib/campConfig";
+import { APPLY_COHORT_OPTIONS, FORMSPREE_FOUNDING_COHORT_ACTION } from "@/lib/campConfig";
 
 const gradeOptions = ["5", "6", "7", "8", "9", "10", "11", "12"];
 
@@ -14,6 +15,23 @@ const experienceOptions = [
   "Some experience (class/club)",
   "Competitive (FTC/VEX/FRC teams)",
   "Advanced competitive / team lead",
+];
+
+const quickFacts = [
+  { label: "Ages 10–15", emphasis: true },
+  { label: "Santa Monica", emphasis: true },
+  { label: "June 8–26", emphasis: true },
+  { label: "July 6–24", emphasis: true },
+  { label: "Small cohorts" },
+  { label: "Real robot builds" },
+  { label: "Competitive Readiness" },
+  { label: "Expert Mentoring" },
+];
+
+const familyReasons = [
+  "Each student builds their own robot",
+  "Learn CAD, wiring, and Java programming",
+  "Beginner-friendly with a high ceiling for experienced students",
 ];
 
 export default function ApplyPage() {
@@ -58,25 +76,77 @@ export default function ApplyPage() {
   };
 
   return (
-    <section className="pt-6 md:pt-8 pb-16">
-      <div className="mx-auto max-w-4xl px-6 text-white">
-        <h1 className="text-3xl md:text-4xl font-bold">Founding Cohort Interest Form</h1>
-        <p className="mt-3 text-lg text-neutral-200">Small cohorts. High mentor access. Hands-on robot design, build, wiring, programming, and testing.</p>
-        <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
-          Camp Asimov runs two 3-week founding cohorts this summer, each capped at {COHORT_CAP} students. Complete the form below and we will follow up within 24-48 hours.
-        </p>
-        <p className="mt-3 text-base md:text-lg text-neutral-200 leading-relaxed">
-          Founding Cohort enrollment is limited. Submissions are reviewed on a rolling basis. Selected families will receive an invitation to enroll.
-        </p>
+    <section className="overflow-hidden pt-5 pb-16 md:pt-8">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 text-white">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(420px,1.05fr)] lg:items-start">
+          <div className="min-w-0 lg:sticky lg:top-24">
+            <p className="mb-3 inline-flex rounded-full border border-[#8FD7FF]/40 bg-[#8FD7FF]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#8FD7FF] shadow-[0_0_22px_rgba(143,215,255,0.12)]">
+              Summer 2026 Robotics Engineering
+            </p>
+            <h1 className="max-w-4xl text-[2.35rem] font-black leading-[1.04] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Camp Asimov Robotics Engineering Summer Program
+            </h1>
+            <p className="mt-4 max-w-3xl text-xl font-medium leading-snug text-neutral-100 md:text-2xl">
+              Students <span className="font-black text-white">design, build, and program</span> their own robot{" "}
+              <span className="font-black text-[#8FD7FF]">from scratch</span> in a small, hands-on engineering environment.
+            </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-8 rounded-2xl border p-6 md:p-8 space-y-5"
-          style={{ borderColor: ink.line, background: "#0f141f" }}
-        >
-          <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              {quickFacts.map((fact) => (
+                <div
+                  key={fact.label}
+                  className={`min-w-0 rounded-xl border px-3 py-2.5 text-center text-sm font-bold leading-tight shadow-[0_0_22px_rgba(143,215,255,0.08)] ${
+                    fact.emphasis ? "border-[#8FD7FF]/60 bg-[#8FD7FF]/14 text-white" : "border-white/10 bg-white/[0.045] text-neutral-100"
+                  }`}
+                >
+                  {fact.label}
+                </div>
+              ))}
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
+            <div className="mt-5 flex flex-col gap-3 sm:hidden">
+              <Button asChild className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
+                <a href="#application-form">Submit Application</a>
+              </Button>
+              <Button asChild className="border px-6 py-3 text-base" style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}>
+                <Link href="/program">View Program Details</Link>
+              </Button>
+            </div>
+
+            <div className="mt-7 rounded-2xl border border-white/10 bg-[#0f141f]/80 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur">
+              <h2 className="text-lg font-black leading-tight text-white md:text-xl">Why families apply</h2>
+              <ul className="mt-4 space-y-3 text-base text-neutral-100">
+                {familyReasons.map((reason) => (
+                  <li key={reason} className="flex gap-3 leading-snug">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#8FD7FF]/50 bg-[#8FD7FF]/12 text-[#8FD7FF]">
+                      <Check className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                    <span>{reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <form
+            id="application-form"
+            onSubmit={handleSubmit}
+            className="min-w-0 rounded-2xl border p-5 shadow-[0_28px_90px_rgba(0,0,0,0.36)] sm:p-6 md:p-8"
+            style={{
+              borderColor: "rgba(143,215,255,0.25)",
+              background: "linear-gradient(180deg, rgba(15,20,31,0.96), rgba(10,13,21,0.98))",
+            }}
+          >
+            <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+
+            <div className="mb-6 border-b pb-5" style={{ borderColor: ink.line }}>
+              <h2 className="text-2xl font-black leading-tight text-white md:text-3xl">Apply for the Summer 2026 Cohort</h2>
+              <p className="mt-3 text-base leading-snug text-neutral-200 md:text-lg">
+                Submit this short form and I&apos;ll follow up with details and next steps within 24 hours.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5">
             <div>
               <label htmlFor="parent_name" className="block text-sm font-semibold text-neutral-100">Parent/Guardian Full Name</label>
               <input id="parent_name" name="parent_guardian_full_name" type="text" required className="mt-2 w-full rounded-lg border px-3 py-2.5 text-base bg-[#111521] text-white" style={{ borderColor: ink.line }} />
@@ -192,16 +262,17 @@ export default function ApplyPage() {
             </div>
           </div>
 
-          <div className="pt-1 flex flex-col sm:flex-row gap-3">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button type="submit" disabled={loading} className="px-6 py-3 text-base" style={{ backgroundColor: ink.accent, color: "#071410", textShadow: "none" }}>
-              {loading ? "Submitting..." : "Enroll Now"}
+              {loading ? "Submitting..." : "Submit Application"}
             </Button>
             <Button asChild className="px-6 py-3 text-base border" style={{ backgroundColor: "transparent", color: ink.accent, borderColor: ink.accent, textShadow: "none" }}>
               <Link href="/program">View Program Details</Link>
             </Button>
           </div>
           {error ? <p className="text-sm text-neutral-200">{error}</p> : null}
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );
